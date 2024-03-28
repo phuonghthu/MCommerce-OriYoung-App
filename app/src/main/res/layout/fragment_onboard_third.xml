@@ -1,0 +1,48 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.group6.Fragments.OnboardFirstFragment"
+    android:paddingStart="@dimen/vertical_padding"
+    android:paddingEnd="@dimen/vertical_padding"
+    android:paddingTop="100dp"
+    android:background="#00FFFFFF">
+
+    <TextView
+        android:id="@+id/txtOnboard1Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboard3_title"
+        android:fontFamily="@font/gilroy_bold"
+        android:textSize="@dimen/h2_textSize"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/txtOnboard1Subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/onboard3_subtitle"
+        android:fontFamily="@font/gilroy_regular"
+        android:textSize="@dimen/large_textSize"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOnboard1Title"
+        android:layout_marginTop="@dimen/xlarge_margin"/>
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtOnboard1Subtitle"
+        android:layout_marginTop="@dimen/xlarge_margin"
+        android:src="@drawable/character1"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

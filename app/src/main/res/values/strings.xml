@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">Oriyoung</string>
+    <string name="skip_onboarding">Bỏ qua</string>
+    <string name="onboarding_login">Đăng nhập ngay!</string>
+    <string name="no_account">Bạn chưa có tài khoản?</string>
+    <string name="signup_now">Đăng ký!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="onboard1_title">Tận hưởng ưu đãi với OriYoung App</string>
+    <string name="onboard1_subtitle">Giá ưu đãi chỉ dành riêng trên ứng dụng. Sản phẩm độc quyền chỉ có trên cửa hàng online.</string>
+    <string name="onboard2_title">Hiểu và Đáp ứng ngay nhu cầu của bạn</string>
+    <string name="onboard2_subtitle">Mua sắm mọi lúc, mọi nơi. Xem trước sản phẩm yêu thích và được thông báo các sự kiện đặc biệt.</string>
+    <string name="onboard3_title">Miễn phí giao hàng toàn quốc</string>
+    <string name="onboard3_subtitle">Áp dụng cho đơn hàng từ 89.000đ</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
