@@ -103,7 +103,7 @@
                     app:counterMaxLength="11"
                     app:helperText="Số điện thoại không hợp lệ, vui lòng thử lại"
                     app:helperTextTextColor="@color/error"
-                    app:helperTextTextAppearance="@style/GreenText"
+                    app:helperTextTextAppearance="@style/HintText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -157,7 +157,7 @@
                     app:counterMaxLength="11"
                     app:helperText="Họ tên của bạn không chứa ký tự đặc biệt"
                     app:helperTextTextColor="@color/error"
-                    app:helperTextTextAppearance="@style/GreenText"
+                    app:helperTextTextAppearance="@style/HintText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -211,7 +211,7 @@
                     app:counterMaxLength="11"
                     app:helperText="Ngày sinh không hợp lệ, vui lòng thử lại"
                     app:helperTextTextColor="@color/error"
-                    app:helperTextTextAppearance="@style/GreenText"
+                    app:helperTextTextAppearance="@style/HintText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -305,7 +305,7 @@
                     app:counterMaxLength="11"
                     app:helperText="Email không hợp lệ, vui lòng thử lại"
                     app:helperTextTextColor="@color/error"
-                    app:helperTextTextAppearance="@style/GreenText"
+                    app:helperTextTextAppearance="@style/HintText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -337,11 +337,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
                     android:text="Bạn đã là thành viên Nhà Ori?"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đăng nhập ngay"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
                     android:textColor="@color/secondaryorange"
                     android:layout_marginStart="5dp"/>
 
