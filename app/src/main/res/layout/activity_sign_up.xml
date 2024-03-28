@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Sign_up">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="34dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:paddingStart="@dimen/horizontal_padding"
+            android:paddingEnd="@dimen/horizontal_padding">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/layout1">
+
+                <ImageView
+                    android:id="@+id/imvlogofull"
+                    android:layout_width="172dp"
+                    android:layout_height="117dp"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/logofull"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/imvreturn"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/circle_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng ký tài khoản OriYoung"
+                android:textColor="@color/primarygreen"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/h4_textSize"
+                android:layout_marginTop="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/error"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtinputphone"
+                    app:layout_constraintBottom_toBottomOf="@id/txtinputphone"
+                    android:layout_marginBottom="3dp"
+                    android:src="@drawable/circle_warning" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtinputphone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập số điện thoại của bạn"
+                    android:textColorHint="@color/greylight"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
+                    app:helperText="Số điện thoại không hợp lệ, vui lòng thử lại"
+                    app:helperTextTextColor="@color/error"
+                    app:helperTextTextAppearance="@style/GreenText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txthelp_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/medium_textSize"/>
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Họ và tên"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/error"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtinputname"
+                    app:layout_constraintBottom_toBottomOf="@id/txtinputname"
+                    android:src="@drawable/circle_warning" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtinputname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập tên của bạn"
+                    android:textColorHint="@color/greylight"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
+                    app:helperText="Họ tên của bạn không chứa ký tự đặc biệt"
+                    app:helperTextTextColor="@color/error"
+                    app:helperTextTextAppearance="@style/GreenText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txthelp_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/medium_textSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sinh nhật"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/error"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtinputday"
+                    app:layout_constraintBottom_toBottomOf="@id/txtinputday"
+                    android:src="@drawable/circle_warning" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtinputday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập ngày sinh của bạn"
+                    android:textColorHint="@color/greylight"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
+                    app:helperText="Ngày sinh không hợp lệ, vui lòng thử lại"
+                    app:helperTextTextColor="@color/error"
+                    app:helperTextTextAppearance="@style/GreenText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txthelp_day"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/medium_textSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giới tính"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_marginTop="15dp"/>
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:layout_gravity="center">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nam"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nữ"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Không tiết lộ"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/error"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize" />
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    app:layout_constraintStart_toStartOf="@+id/txtinputemail"
+                    app:layout_constraintBottom_toBottomOf="@id/txtinputemail"
+                    android:src="@drawable/circle_warning"
+                    android:layout_marginBottom="3dp"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtinputemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập email của bạn"
+                    android:textColorHint="@color/greylight"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="11"
+                    app:helperText="Email không hợp lệ, vui lòng thử lại"
+                    app:helperTextTextColor="@color/error"
+                    app:helperTextTextAppearance="@style/GreenText"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txthelp_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/medium_textSize" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/btnTieptheo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tiếp theo"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/primarygreen"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/h4_textSize"/>\
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bạn đã là thành viên Nhà Ori?"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng nhập ngay"
+                    android:textColor="@color/secondaryorange"
+                    android:layout_marginStart="5dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
