@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Trung_tam_ho_tro">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/circle_left"
+                    android:layout_weight="0"
+                    android:layout_marginStart="20dp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.8"
+                    android:text="Trung tâm hỗ trợ"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/xlarge_textSize"
+                    android:gravity="center"/>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:src="@drawable/ori"
+                android:layout_marginTop="15dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/horizontal_padding"
+                android:weightSum="3">
+                <Button
+                    android:id="@+id/btndoitra"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:text="Đổi trả"
+                    android:background="@drawable/button_layout_white_green"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/btnvanchuyen"
+                    android:layout_width="75dp"
+                    android:layout_height="35dp"
+                    android:text="Vận chuyển"
+                    android:background="@drawable/button_layout_cancel"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+                <Button
+                    android:id="@+id/btnbaomat"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:text="Bảo mật"
+                    android:background="@drawable/button_layout_white_green"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/frame_in4"
+                android:paddingHorizontal="20dp"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
