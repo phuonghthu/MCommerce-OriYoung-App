@@ -13,4 +13,10 @@
     <string name="onboard3_title">Miễn phí giao hàng toàn quốc</string>
     <string name="onboard3_subtitle">Áp dụng cho đơn hàng từ 89.000đ</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">10dp</item>
+        <item name="android:buttonTint">@color/primarydarker</item>
+        <item name="android:fontFamily">@font/gilroy_regular</item>
+
+    </style>
 </resources>
