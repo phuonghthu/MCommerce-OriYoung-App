@@ -16,5 +16,6 @@
     <string name="nav_wishlist">Yêu thích</string>
     <string name="nav_danhmuc">Danh mục</string>
     <string name="nav_trangchu">Trang chủ</string>
+    <string name="toolbar_title">Toolbar Title</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
