@@ -29,6 +29,8 @@ public class HomeActivity extends AppCompatActivity {
         frameLayout = findViewById(R.id.frame_layout);
         loadFragment(new HomeFragment(), true);
 
+
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

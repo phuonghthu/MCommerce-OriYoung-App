@@ -22,6 +22,7 @@
         android:id="@+id/bottomNavView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        style="@style/BottomNavItemStyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,9 @@
         android:backgroundTint="@color/white"
         app:itemActiveIndicatorStyle="@color/primarybackground"
         app:itemTextColor="@drawable/nav_item_color_selected"
+        app:itemTextAppearanceActive="@style/BottomNavTextAppearanceActive"
+        app:itemTextAppearanceInactive="@style/BottomNavTextAppearanceInActive"
+        app:itemTextAppearanceActiveBoldEnabled="true"
         app:itemIconTint="@color/primarydarker"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav">
