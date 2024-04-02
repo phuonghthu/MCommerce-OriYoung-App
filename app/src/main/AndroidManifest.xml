@@ -28,7 +28,12 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Trung_tam_ho_tro"
+            aandroid:name=".Trung_tam_ho_tro"
+            android:exported="false" />
+   
+        <activity
+            
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
