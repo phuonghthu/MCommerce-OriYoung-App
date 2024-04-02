@@ -22,5 +22,10 @@
     <string name="onboard2_subtitle">Mua sắm mọi lúc, mọi nơi. Xem trước sản phẩm yêu thích và được thông báo các sự kiện đặc biệt.</string>
     <string name="onboard3_title">Miễn phí giao hàng toàn quốc</string>
     <string name="onboard3_subtitle">Áp dụng cho đơn hàng từ 89.000đ</string>
+    <string name="nav_taikhoan">Tài khoản</string>
+    <string name="nav_wishlist">Yêu thích</string>
+    <string name="nav_danhmuc">Danh mục</string>
+    <string name="nav_trangchu">Trang chủ</string>
+    <string name="toolbar_title">Toolbar Title</string>
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

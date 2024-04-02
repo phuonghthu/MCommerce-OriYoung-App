@@ -22,7 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 import com.group6.Adapter.ViewPagerAdapter;
-import com.group6.oriyoung.MainActivity;
+import com.group6.oriyoung.HomeActivity;
 import com.group6.Fragments.OnboardFirstFragment;
 import com.group6.Fragments.OnboardSecondFragment;
 import com.group6.Fragments.OnboardThirdFragment;
@@ -94,7 +94,7 @@ public class OnboardingActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OnboardingActivity.this, MainActivity.class);
+                Intent intent = new Intent(OnboardingActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish(); // Tùy chọn: Đóng OnboardingActivity sau khi chuyển hướng
             }
