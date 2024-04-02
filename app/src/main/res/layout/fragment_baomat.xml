@@ -1,14 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.BaomatFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hihi" />
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_gravity="center">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mục đích thu thập"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textColor="@color/primarygreen"
+                android:textSize="@dimen/small_textSize" />
+            <TextView
+                android:id="@+id/tvmucdich"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_regular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/xsmall_textSize"
+                android:text="@string/html_mucdich"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chúng tôi luôn nỗ lực để giữ an toàn thông tin cá nhân của khách hàng, chúng tôi đã và đang thực hiện nhiều biện pháp an toàn, bao gồm:"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textColor="@color/primarygreen"
+                android:textSize="@dimen/small_textSize" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_regular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/xsmall_textSize"
+                android:text="@string/html_bienphap"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Quyền lợi của khách hàng đối với thông tin cá nhân "
+                android:fontFamily="@font/gilroy_semibold"
+                android:textColor="@color/primarygreen"
+                android:textSize="@dimen/small_textSize" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_regular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/xsmall_textSize"
+                android:text="@string/html_quyenloi"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yêu cầu xóa bỏ thông tin cá nhân"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textColor="@color/primarygreen"
+                android:textSize="@dimen/small_textSize" />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gilroy_regular"
+                android:textColor="@color/black"
+                android:textSize="@dimen/xsmall_textSize"
+                android:text="@string/html_xoa"/>
 
-</FrameLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

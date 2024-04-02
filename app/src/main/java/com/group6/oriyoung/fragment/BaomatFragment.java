@@ -10,11 +10,6 @@ import android.view.ViewGroup;
 
 import com.group6.oriyoung.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BaomatFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BaomatFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -30,15 +25,6 @@ public class BaomatFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BaomatFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static BaomatFragment newInstance(String param1, String param2) {
         BaomatFragment fragment = new BaomatFragment();
         Bundle args = new Bundle();

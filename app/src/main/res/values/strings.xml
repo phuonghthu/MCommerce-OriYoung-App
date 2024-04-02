@@ -113,7 +113,28 @@
     <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
     <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
     <string name="Confirm">Xác nhận</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="html_mucdich"><![CDATA[
+    Chúng tôi thu thập thông tin cá nhân chỉ cần thiết nhằm phục vụ cho các mục đích:\n
+    • Đơn Hàng: để xử lý các vấn đề liên quan đến đơn đặt hàng của bạn.\n
+    • Duy Trì Tài Khoản: để tạo và duy trình tài khoản của bạn với chúng tôi, bao gồm cả các chương trình khách hàng thân thiết hoặc các chương trình thưởng đi kèm với tài khoản của bạn.\n
+    • Dịch Vụ Chăm Sóc Khách Hàng: bao gồm các phản hồi cho các yêu cầu, khiếu nại và phản hồi của bạn.\n
+    • An Ninh: cho các mục đích ngăn ngừa các hoạt động phá hủy tài khoản người dùng của khách hàng hoặc các hoạt động giả mạo khách hàng.\n
+    • Theo yêu cầu của pháp luật: tùy quy định của pháp luật vào từng thời điểm, chúng tôi có thể thu thập, lưu trữ và cung cấp theo yêu cầu của cơ quan nhà nước có thẩm quyền.\n
+]]></string>
+    <string name="html_bienphap"><![CDATA[
+    • Bảo đảm an toàn trong môi trường vận hành: chúng tôi lưu trữ thông tin cá nhân khách hàng trong môi trường vận hành an toàn và chỉ có nhân viên, đại diện và nhà cung cấp dịch vụ có thể truy cập trên cơ sở cần phải biết. Chúng tôi tuân theo các tiêu chuẩn ngành, pháp luật trong việc bảo mật thông tin cá nhân khách hàng.\n
+    • Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân khách hàng, chúng tôi sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng để điều tra xử lý kịp thời và thông báo cho khách hàng được biết.\n
+    •  Các thông tin thanh toán: được bảo mật theo tiêu chuẩn ngành.\n
+]]></string>
+    <string name="html_quyenloi"><![CDATA[
+    • Khách hàng có quyền cung cấp thông tin cá nhân cho chúng tôi và có thể thay đổi quyết định đó vào bất cứ lúc nào.\n
+    • Khách hàng có quyền tự kiểm tra, cập nhật, điều chỉnh thông tin cá nhân của mình bằng cách đăng nhập vào tài khoản và chỉnh sửa thông tin cá nhân hoặc yêu cầu chúng tôi thực hiện việc này.\n
+]]></string>
+    <string name="html_xoa"><![CDATA[
+    • Khách hàng có quyền yêu cầu xóa bỏ hoàn toàn các thông tin cá nhân lưu trữ trên hệ thống của chúng tôi bất cứ khi nào.\n
+    • Khách hàng gửi thư điện tử về địa chỉ oriyoung@oriyounggmail.com để yêu cầu xóa bỏ thông tin cá nhân hoàn toàn khỏi hệ thống.
+]]></string>
+
     <string name="Search">Tìm sản phẩm</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
