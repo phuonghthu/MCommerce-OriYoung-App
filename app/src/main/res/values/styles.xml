@@ -11,6 +11,9 @@
     <style name="BottomNavItemStyle" parent="Widget.Design.BottomNavigationView">
         <item name="android:titleMargin">10dp</item>
         <item name="android:paddingVertical">6dp</item>
-
+    </style>
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/mini_textSize</item>
+        <item name="android:fontFamily">@font/gilroy_medium</item>
     </style>
 </resources>
