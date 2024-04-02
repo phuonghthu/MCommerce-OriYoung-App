@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/mini_textSize</item>
+        <item name="android:fontFamily">@font/gilroy_medium</item>
+    </style>
+</resources>

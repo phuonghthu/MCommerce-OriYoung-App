@@ -10,4 +10,5 @@
     <color name="secondarybackground">#FFF5F5</color>
     <color name="primarybackground">#F9FBF6</color>
     <color name="grey">#A2A2A2</color>
+    <color name="greylight">#D1D3D4</color>
 </resources>
