@@ -18,7 +18,8 @@
         android:textSize="@dimen/h2_textSize"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtOnboard1Subtitle"
