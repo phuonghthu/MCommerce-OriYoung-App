@@ -43,6 +43,7 @@ dependencies {
     implementation(libs.circleindicator)
     implementation(libs.viewpager2)
     implementation(libs.imageslideshow)
+    implementation(libs.circleimageview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

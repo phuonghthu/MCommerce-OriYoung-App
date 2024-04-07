@@ -10,6 +10,7 @@ constraintlayout = "2.1.4"
 circleindicator = "2.1.6"
 viewpager2 = "1.1.0-beta02"
 imageslideshow = "0.1.2"
+circleimageview = "3.1.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -22,6 +23,7 @@ constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayo
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
 viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 imageslideshow = { group = "com.github.denzcoskun", name = "imageslideshow", version.ref = "imageslideshow" }
+circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
