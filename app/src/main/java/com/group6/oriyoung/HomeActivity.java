@@ -11,9 +11,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.group6.Fragments.CategoryFragment;
-import com.group6.Fragments.HomeFragment;
-import com.group6.Fragments.WishlistFragment;
+import com.group6.fragments.CategoryFragment;
+import com.group6.fragments.HomeFragment;
+import com.group6.fragments.WishlistFragment;
 
 public class HomeActivity extends AppCompatActivity {
 

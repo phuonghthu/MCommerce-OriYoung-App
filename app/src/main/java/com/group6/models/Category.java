@@ -1,4 +1,4 @@
-package com.group6.Models;
+package com.group6.models;
 
 public class Category {
 }
