@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.group6.oriyoung.databinding.ActivitySignupPassBinding;
 
-public class signup_pass extends AppCompatActivity {
+public class SignupPassword extends AppCompatActivity {
     ActivitySignupPassBinding binding;
     ImageView imvback;
     Button Xacnhan;
@@ -52,7 +52,7 @@ public class signup_pass extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.activity_signup_success, null);
+        View dialogView = inflater.inflate(R.layout.dialog_signup_success, null);
 
         Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnKhamPhaNgay);
 
@@ -66,7 +66,7 @@ public class signup_pass extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Chuyển hướng về màn hình chính khi người dùng nhấn nút "Khám phá ngay"
-                Intent intent = new Intent(signup_pass.this, Sign_up.class);
+                Intent intent = new Intent(SignupPassword.this, HomeActivity.class);
                 startActivity(intent);
                 alertDialog.dismiss(); // Đóng dialog sau khi chuyển hướng
             }

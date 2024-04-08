@@ -1,16 +1,15 @@
-package com.group6.oriyoung.fragment;
+package com.group6.Fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.group6.oriyoung.R;
 
-public class BaomatFragment extends Fragment {
+public class SecurityFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,12 +20,12 @@ public class BaomatFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public BaomatFragment() {
+    public SecurityFragment() {
         // Required empty public constructor
     }
 
-    public static BaomatFragment newInstance(String param1, String param2) {
-        BaomatFragment fragment = new BaomatFragment();
+    public static SecurityFragment newInstance(String param1, String param2) {
+        SecurityFragment fragment = new SecurityFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -47,6 +46,6 @@ public class BaomatFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_baomat, container, false);
+        return inflater.inflate(R.layout.fragment_support_security, container, false);
     }
 }

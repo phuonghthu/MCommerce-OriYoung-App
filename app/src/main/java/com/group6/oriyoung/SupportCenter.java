@@ -8,13 +8,14 @@ import android.widget.FrameLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.group6.oriyoung.databinding.ActivityTrungTamHoTroBinding;
-import com.group6.oriyoung.fragment.BaomatFragment;
-import com.group6.oriyoung.fragment.DoitraFragment;
-import com.group6.oriyoung.fragment.VanchuyenFragment;
+import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
+import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
+import com.group6.Fragments.SecurityFragment;
+import com.group6.Fragments.ReturnFragment;
+import com.group6.Fragments.DeliveryFragment;
 
-public class Trung_tam_ho_tro extends AppCompatActivity {
-    ActivityTrungTamHoTroBinding binding;
+public class SupportCenter extends AppCompatActivity {
+    ActivitySupportCenterBinding binding;
     Button btn_dt;
     Button btn_vc;
     Button btn_bm;
@@ -25,7 +26,7 @@ public class Trung_tam_ho_tro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityTrungTamHoTroBinding.inflate(getLayoutInflater());
+        binding = ActivitySupportCenterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         btn_dt = findViewById(R.id.btndoitra);
@@ -37,7 +38,7 @@ public class Trung_tam_ho_tro extends AppCompatActivity {
         // Mặc định chọn button "Đổi trả" khi màn hình được tạo
         updateButtonState(btn_dt);
         selectedButton = btn_dt;
-        DoitraFragment doitraFragment = new DoitraFragment();
+        ReturnFragment doitraFragment = new ReturnFragment();
         fragmentManager.beginTransaction().replace(R.id.frame_in4, doitraFragment).commit();
 
         btn_dt.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +46,7 @@ public class Trung_tam_ho_tro extends AppCompatActivity {
             public void onClick(View v) {
                 updateButtonState(btn_dt);
                 selectedButton = btn_dt;
-                DoitraFragment doitraFragment = new DoitraFragment();
+                ReturnFragment doitraFragment = new ReturnFragment();
                 fragmentManager.beginTransaction().replace(R.id.frame_in4, doitraFragment).commit();
             }
         });
@@ -54,7 +55,7 @@ public class Trung_tam_ho_tro extends AppCompatActivity {
             public void onClick(View v) {
                 updateButtonState(btn_vc);
                 selectedButton = btn_vc;
-                VanchuyenFragment vanchuyenFragment = new VanchuyenFragment();
+                DeliveryFragment vanchuyenFragment = new DeliveryFragment();
                 fragmentManager.beginTransaction().replace(R.id.frame_in4, vanchuyenFragment).commit();
             }
         });
@@ -63,7 +64,7 @@ public class Trung_tam_ho_tro extends AppCompatActivity {
             public void onClick(View v) {
                 updateButtonState(btn_bm);
                 selectedButton = btn_bm;
-                BaomatFragment baomatFragment = new BaomatFragment();
+                SecurityFragment baomatFragment = new SecurityFragment();
                 fragmentManager.beginTransaction().replace(R.id.frame_in4, baomatFragment).commit();
             }
         });

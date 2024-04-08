@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Trung_tam_ho_tro">
+    tools:context=".SupportCenter">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/circle_left"
+                    android:src="@drawable/ic_circle_left"
                     android:layout_weight="0"
                     android:layout_marginStart="20dp"/>
 
@@ -42,7 +42,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:src="@drawable/ori"
+                android:src="@drawable/logo_hcn"
                 android:layout_marginTop="15dp"/>
             <LinearLayout
                 android:layout_width="match_parent"

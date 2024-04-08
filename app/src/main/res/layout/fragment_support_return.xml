@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.DoitraFragment">
+    tools:context="com.group6.Fragments.ReturnFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -32,7 +32,7 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="290dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"
@@ -53,7 +53,7 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="290dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"
