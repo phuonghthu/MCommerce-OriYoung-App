@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.group6.Fragments.OnboardFirstFragment"
+    tools:context="com.group6.fragments.OnboardFirstFragment"
     android:paddingStart="@dimen/vertical_padding"
     android:paddingEnd="@dimen/vertical_padding"
     android:paddingTop="100dp"

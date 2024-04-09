@@ -1,4 +1,4 @@
-package com.group6.Fragments;
+package com.group6.fragments;
 
 import android.os.Bundle;
 
