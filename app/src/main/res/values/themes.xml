@@ -5,6 +5,6 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:colorPrimary">@color/primarygreen</item>
     </style>
-
+k
     <style name="Theme.Oriyoung" parent="Base.Theme.Oriyoung" />
 </resources>

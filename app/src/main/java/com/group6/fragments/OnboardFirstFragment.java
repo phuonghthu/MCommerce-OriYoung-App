@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.group6.oriyoung.R;
 
-
 public class OnboardFirstFragment extends Fragment {
 
 
@@ -20,4 +19,7 @@ public class OnboardFirstFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_onboard_first, container, false);
     }
+
+
+
 }

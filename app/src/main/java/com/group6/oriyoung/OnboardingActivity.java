@@ -12,7 +12,10 @@ import androidx.viewpager2.widget.ViewPager2;
 
 
 
+
 import com.group6.adapters.ViewPagerAdapter;
+import com.group6.adapters.ViewPagerAdapter;
+
 import com.group6.fragments.OnboardFirstFragment;
 import com.group6.fragments.OnboardSecondFragment;
 import com.group6.fragments.OnboardThirdFragment;
