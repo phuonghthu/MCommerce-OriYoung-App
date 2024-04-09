@@ -69,6 +69,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/large_margin"/>
+            <LinearLayout
+                android:id="@+id/ProductImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/HeaderLayout"
+                android:layout_marginTop="@dimen/vertical_padding"
+                android:orientation="vertical">
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
