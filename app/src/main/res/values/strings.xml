@@ -22,7 +22,7 @@
     <string name="onboard2_subtitle">Mua sắm mọi lúc, mọi nơi. Xem trước sản phẩm yêu thích và được thông báo các sự kiện đặc biệt.</string>
     <string name="onboard3_title">Miễn phí giao hàng toàn quốc</string>
     <string name="onboard3_subtitle">Áp dụng cho đơn hàng từ 89.000đ</string>
-<!--<<<<<<< HEAD-->
+    <!--<<<<<<< HEAD-->
     <string name="UserInfo">Thông tin cá nhân</string>
     <string name="infoDetail_fullName">Họ và tên:</string>
     <string name="sign">*</string>
@@ -59,7 +59,7 @@
     <string name="nav_trangchu">Trang chủ</string>
     <string name="toolbar_title">Toolbar Title</string>
     <!-- TODO: Remove or change this placeholder text -->
-<!--<<<<<<< HEAD-->
+    <!--<<<<<<< HEAD-->
     <string name="Login_title">OriYoung Chào Bạn!</string>
     <string name="Login_subtitle_1">Tài khoản</string>
     <string name="Login_phone">Nhập số điện thoại</string>
@@ -77,6 +77,9 @@
     <string name="Forget_pass_subtitle">Số điện thoại</string>
     <string name="Forget_pass_description">Chúng tôi gửi thông báo qua SMS để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
     <string name="Continue">Tiếp tục</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Success_reset_password">Thay đổi mật khẩu thành công</string>
+    <string name="Success_reset_description">Tiến hành đăng nhập lại và khám phá ngay hàng ngàn ưu đãi từ OriYoung nhé!</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Reset_pass_title">Đặt lại mật khẩu</string>
     <string name="Reset_pass_subtitle_1">Mật khẩu mới</string>
