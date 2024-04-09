@@ -1,3 +1,5 @@
+import com.android.tools.profgen.expandWildcards
+
 plugins {
     alias(libs.plugins.androidApplication)
 }
@@ -20,8 +22,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
     }
@@ -47,4 +49,8 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
 
+
 }
+
+
+
