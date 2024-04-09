@@ -113,7 +113,6 @@
                     android:hint="@string/Login_password"
                     android:textColorHint="@color/primarygreen"
                     android:fontFamily="@font/gilroy_medium"
-                    android:inputType="phone"
                     android:background="@drawable/stroke"/>
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
