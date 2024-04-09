@@ -1,4 +1,4 @@
-package com.group6.Adapter;
+package com.group6.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.group6.Models.cartModel;
+import com.group6.models.cartModel;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
@@ -24,7 +24,14 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public CartAdapter(Context context, ArrayList<cartModel> carts) {
         this.context = context;
         this.carts = carts;
+        this.adapter = adapter;
+        this.totalTemp = totalTemp;
     }
+
+    //    public CartAdapter(Context context, ArrayList<cartModel> carts) {
+//        this.context = context;
+//        this.carts = carts;
+//    }
     private double totalTemp = 0.0;
 
 

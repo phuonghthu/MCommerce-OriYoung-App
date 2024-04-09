@@ -13,24 +13,36 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".UserInfoDetail"
+            android:name=".Sign_up"
             android:exported="false" />
         <activity
-            android:name=".Cart"
+            android:name=".signup_success"
             android:exported="false" />
         <activity
-            android:name=".UserInformation"
+            android:name=".signup_pass"
+            android:exported="false" />
+        <activity
+            android:name=".Signup_back"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Trung_tam_ho_tro"
+            android:exported="false" />
+        <activity
+
             android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

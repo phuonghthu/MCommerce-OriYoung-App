@@ -5,27 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.widget.ViewPager2;
 
 
 
-import com.group6.Adapter.ViewPagerAdapter;
-import com.group6.oriyoung.MainActivity;
-import com.group6.Fragments.OnboardFirstFragment;
-import com.group6.Fragments.OnboardSecondFragment;
-import com.group6.Fragments.OnboardThirdFragment;
+import com.group6.adapters.ViewPagerAdapter;
+import com.group6.fragments.OnboardFirstFragment;
+import com.group6.fragments.OnboardSecondFragment;
+import com.group6.fragments.OnboardThirdFragment;
 import com.group6.oriyoung.databinding.ActivityOnboardingBinding;
 
 import java.util.ArrayList;
@@ -94,7 +84,7 @@ public class OnboardingActivity extends AppCompatActivity {
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OnboardingActivity.this, MainActivity.class);
+                Intent intent = new Intent(OnboardingActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish(); // Tùy chọn: Đóng OnboardingActivity sau khi chuyển hướng
             }

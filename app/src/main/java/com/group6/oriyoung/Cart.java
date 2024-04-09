@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 //import com.group6.Adapter.CartAdapter;
 import com.google.android.material.textfield.TextInputEditText;
-import com.group6.Adapter.CartAdapter;
-import com.group6.Models.cartModel;
+import com.group6.adapters.CartAdapter;
+import com.group6.models.cartModel;
 import com.group6.oriyoung.databinding.ActivityCartBinding;
 
 import java.util.ArrayList;
@@ -40,8 +40,7 @@ public class Cart extends AppCompatActivity {
         carts.add(new cartModel(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 18000));
         carts.add(new cartModel(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 280000, 28000));
         carts.add(new cartModel(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 28000));
-
-
+//        adapter = new CartAdapter(getApplicationContext(), carts);
         adapter = new CartAdapter(getApplicationContext(), carts);
         binding.rvCart.setAdapter(adapter);
 
