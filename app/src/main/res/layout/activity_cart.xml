@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/vertical_padding"
     android:paddingTop="35dp"
-    tools:context=".Cart">
+    tools:context=".CartActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

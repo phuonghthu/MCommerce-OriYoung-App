@@ -1,12 +1,12 @@
 package com.group6.models;
 
-public class cartModel {
+public class Cart {
     int imvProductCart;
     String txtProductNameCart;
     double txtPriceCart;
     double txtTemp;
 
-    public cartModel(int imvProductCart, String txtProductNameCart, double txtPriceCart, double txtTemp) {
+    public Cart(int imvProductCart, String txtProductNameCart, double txtPriceCart, double txtTemp) {
         this.imvProductCart = imvProductCart;
         this.txtProductNameCart = txtProductNameCart;
         this.txtPriceCart = txtPriceCart;

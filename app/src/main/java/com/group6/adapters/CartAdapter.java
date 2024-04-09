@@ -11,17 +11,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.group6.models.cartModel;
+import com.group6.models.Cart;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     Context context;
-    ArrayList<cartModel> carts;
+    ArrayList<Cart> carts;
     CartAdapter adapter;
 
-    public CartAdapter(Context context, ArrayList<cartModel> carts) {
+    public CartAdapter(Context context, ArrayList<Cart> carts) {
         this.context = context;
         this.carts = carts;
         this.adapter = adapter;

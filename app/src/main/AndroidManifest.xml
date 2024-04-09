@@ -49,10 +49,10 @@
             android:name=".Trung_tam_ho_tro"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
