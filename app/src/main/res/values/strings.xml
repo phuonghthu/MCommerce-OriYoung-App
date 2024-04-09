@@ -22,10 +22,46 @@
     <string name="onboard2_subtitle">Mua sắm mọi lúc, mọi nơi. Xem trước sản phẩm yêu thích và được thông báo các sự kiện đặc biệt.</string>
     <string name="onboard3_title">Miễn phí giao hàng toàn quốc</string>
     <string name="onboard3_subtitle">Áp dụng cho đơn hàng từ 89.000đ</string>
+<!--<<<<<<< HEAD-->
+    <string name="UserInfo">Thông tin cá nhân</string>
+    <string name="infoDetail_fullName">Họ và tên:</string>
+    <string name="sign">*</string>
+    <string name="infoDetail_txtRadioFemale">Nữ</string>
+    <string name="infoDetail_txtRadioMale">Nam</string>
+    <string name="infoDetail_radioSecret">Không tiết lộ</string>
+    <string name="infoDetail_phone">Số điện thoại</string>
+    <string name="infoDetail_email">Email</string>
+    <string name="infoDetail_btnEdit">Chỉnh sửa</string>
+    <string name="infoDetail_btnCancel">Hủy</string>
+    <string name="Info_fullname">Họ và tên:</string>
+    <string name="Info_nameDetail">Nguyen Van A</string>
+    <string name="Info_gender">Giới tinh</string>
+    <string name="Info_GenderDetail">Nữ</string>
+    <string name="Info_emailDetail">ue.edu @gmai.com</string>
+    <string name="Info_Email">Địa chỉ email</string>
+    <string name="Info_btnEdit">Chỉnh sửa</string>
+    <string name="Info_birthDetail">09/04/1780</string>
+    <string name="Info_birth">Ngày sinh</string>
+    <string name="infoDetail_birth">Ngày sinh</string>
+    <string name="cart_txtTitle">Giỏ hàng</string>
+    <string name="cart_orderInfo">Thông tin đơn hàng</string>
+    <string name="cart_apply">Áp dụng</string>
+    <string name="cart_tempTotal">Tạm tính</string>
+    <string name="cart_tempTotalDetail">1.000.000</string>
+    <string name="cart_discount">Khuyến mãi</string>
+    <string name="cart_discountDetail">30.000</string>
+    <string name="cart_total">Tổng thanh toán</string>
+    <string name="cart_totalDetail">1.000.000</string>
+    <string name="cart_checkout">Thanh toán</string>
     <string name="nav_taikhoan">Tài khoản</string>
     <string name="nav_wishlist">Yêu thích</string>
     <string name="nav_danhmuc">Danh mục</string>
     <string name="nav_trangchu">Trang chủ</string>
     <string name="toolbar_title">Toolbar Title</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">10dp</item>
+        <item name="android:buttonTint">@color/primarydarker</item>
+        <item name="android:fontFamily">@font/gilroy_regular</item>
+    </style>
 </resources>
