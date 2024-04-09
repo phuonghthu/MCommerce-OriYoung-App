@@ -18,24 +18,23 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent">
-
                         <ImageView
                             android:id="@+id/btnBack"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/backicon"
+                            android:src="@drawable/ic_back"
                             app:layout_constraintBottom_toTopOf="@+id/rvCart"
                             app:layout_constraintStart_toStartOf="parent" />
 
                         <TextView
-                            android:id="@+id/txtGioHang"
+                            android:id="@+id/txtCart"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
                             android:fontFamily="@font/gilroy_semibold"
                             android:gravity="center"
-                            android:text="Giỏ hàng"
+                            android:text="@string/cart_txtTitle"
                             android:textSize="18dp" />
 
                         <ImageView
@@ -73,11 +72,11 @@
                     android:layout_marginBottom="20dp"
                     app:layout_constraintBottom_toBottomOf="parent">
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/txtOrderInfo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/gilroy_bold"
-                            android:text="Thông tin đơn hàng" />
+                            android:text="@string/cart_orderInfo" />
 
                         <LinearLayout
                             android:id="@+id/LinearDiscount"
@@ -91,7 +90,7 @@
                                     android:layout_weight="1">
 
                                         <com.google.android.material.textfield.TextInputEditText
-                                            android:id="@+id/edtNhapmagiamgia"
+                                            android:id="@+id/edtVoucher"
                                             android:layout_width="match_parent"
                                             android:layout_height="40dp"
                                             android:layout_gravity="center"
@@ -100,12 +99,13 @@
                                             android:textSize="10sp"/>
                                 </com.google.android.material.textfield.TextInputLayout>
                                 <Button
+                                    android:id="@+id/btnAppliedVoucher"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginLeft="10dp"
                                     android:backgroundTint="@color/primarygreen"
-                                    android:text="Áp dụng" />
+                                    android:text="@string/cart_apply" />
                         </LinearLayout>
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -115,7 +115,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Tạm tính"
+                                    android:text="@string/cart_tempTotal"
                                     android:fontFamily="@font/gilroy_regular"
                                     android:textSize="12dp"
                                     android:layout_gravity="start"/>
@@ -123,7 +123,7 @@
                                     android:id="@+id/txtTempTotal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="1.000.000"
+                                    android:text="@string/cart_tempTotalDetail"
                                     android:layout_weight="1"
                                     android:fontFamily="@font/gilroy_semibold"
                                     android:textSize="12dp"
@@ -137,7 +137,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Khuyến mãi"
+                                    android:text="@string/cart_discount"
                                     android:fontFamily="@font/gilroy_regular"
                                     android:textSize="12dp"
                                     android:layout_gravity="start"/>
@@ -145,7 +145,7 @@
                                     android:id="@+id/txtDiscount"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="30.000"
+                                    android:text="@string/cart_discountDetail"
                                     android:layout_weight="1"
                                     android:textColor="@color/secondaryorange"
                                     android:fontFamily="@font/gilroy_bold"
@@ -160,7 +160,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Tổng thanh toán"
+                                    android:text="@string/cart_total"
                                     android:fontFamily="@font/gilroy_regular"
                                     android:textSize="12dp"
                                     android:layout_gravity="start"/>
@@ -168,7 +168,7 @@
                                     android:id="@+id/txtTotal"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="1.000.000"
+                                    android:text="@string/cart_totalDetail"
                                     android:layout_weight="1"
                                     android:textColor="@color/secondaryorange"
                                     android:fontFamily="@font/gilroy_bold"
@@ -188,11 +188,12 @@
                                     android:layout_gravity="start"/>
                         </LinearLayout>
                         <Button
+                            android:id="@+id/btnCheckout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                                 android:backgroundTint="@color/primarygreen"
-                                android:text="Thanh toán"/>
+                                android:text="@string/cart_checkout"/>
                 </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

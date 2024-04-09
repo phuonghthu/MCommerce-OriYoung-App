@@ -12,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints">
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/backicon"
+            android:src="@drawable/ic_back"
             android:layout_gravity="start"/>
 
         <TextView
@@ -25,14 +26,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_semibold"
-            android:text="Thông tin cá nhân"
-            android:textSize="18dp"
+            android:text="@string/UserInfo"
+            android:textSize="18sp"
             android:layout_gravity="center"
             android:gravity="center"/>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="45dp"
+        tools:ignore="MissingConstraints">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,14 +51,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Họ và tên: "
-                    android:textSize="12dp"
+                    android:text="@string/infoDetail_fullName"
+                    android:textSize="12sp"
                     tools:ignore="TextSizeCheck" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="*"
+                    android:text="@string/sign"
                     android:textColor="@color/error"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
@@ -65,7 +68,7 @@
                 android:layout_height="wrap_content"
                 app:helperText="Vui lòng nhập thông tin"
                 app:helperTextTextColor="@color/error"
-                app:helperTextTextAppearance="@style/HelperTextAppearance"
+                app:boxStrokeColor="@color/editext"
                 app:endIconMode="clear_text"
                 android:layout_marginTop="10dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -73,8 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:fontFamily="@font/gilroy_regular"
-                    android:hint="Tên khách hàng"
-                    android:textSize="10dp"/>
+                    android:textSize="10sp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <RadioGroup
                 android:layout_width="wrap_content"
@@ -91,7 +93,7 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_regular"
                     android:layout_marginEnd="16dp"
-                    android:text="Nam" />
+                    android:text="@string/infoDetail_txtRadioMale" />
                 <RadioButton
                     android:id="@+id/radio_button2"
                     android:layout_width="wrap_content"
@@ -100,7 +102,7 @@
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_regular"
                     android:layout_marginEnd="16dp"
-                    android:text="Nữ" />
+                    android:text="@string/infoDetail_txtRadioFemale" />
                 <RadioButton
                     android:id="@+id/radio_button3"
                     android:layout_width="wrap_content"
@@ -108,7 +110,7 @@
                     android:textSize="12dp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_regular"
-                    android:text="Không tiết lộ" />
+                    android:text="@string/infoDetail_radioSecret" />
             </RadioGroup>
             <TextView
 
@@ -116,7 +118,7 @@
 
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_medium"
-                android:text="Ngày sinh "
+                android:text="@string/infoDetail_birth"
                 android:textSize="12dp"
                 tools:ignore="TextSizeCheck" />
             <com.google.android.material.textfield.TextInputLayout
@@ -129,15 +131,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:fontFamily="@font/gilroy_regular"
-                    android:hint="Ví dụ: 08/09/20022"
-                    android:textSize="10dp"/>
+                    android:textSize="12dp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_medium"
-                android:layout_marginTop="10dp"
-                android:text="Số điện thoại "
+                android:layout_marginTop="12dp"
+                android:text="@string/infoDetail_phone"
                 android:textSize="12dp"
                 tools:ignore="TextSizeCheck" />
             <com.google.android.material.textfield.TextInputLayout
@@ -151,14 +152,13 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:hint="Ví dụ: 0376183628"/>
+                    android:layout_height="40dp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_medium"
-                android:text="Email"
+                android:text="@string/infoDetail_email"
                 android:layout_marginTop="10dp"
                 android:textSize="12dp"
                 tools:ignore="TextSizeCheck" />
@@ -175,8 +175,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:fontFamily="@font/gilroy_regular"
-                    android:hint="Ví dụ: thiendia@gmail.com"
-                    android:textSize="10dp"/>
+                    android:textSize="12dp"/>
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -192,7 +191,7 @@
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="@color/primarydarker"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="Chỉnh sửa"
+                    android:text="@string/infoDetail_btnEdit"
                     android:textSize="14dp"
                     tools:ignore="TextSizeCheck"
                     android:layout_marginRight="25dp"/>
@@ -203,7 +202,7 @@
                     android:layout_marginTop="15dp"
                     android:backgroundTint="@color/primarybackground"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="Hủy"
+                    android:text="@string/infoDetail_btnCancel"
                     android:textSize="14dp"
                     android:layout_marginBottom="15dp"
                     android:textColor="@color/black"

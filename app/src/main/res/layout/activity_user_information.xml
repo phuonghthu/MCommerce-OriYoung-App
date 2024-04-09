@@ -17,7 +17,7 @@
             android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/backicon" />
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:id="@+id/txtThongtincanhan"
@@ -49,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Họ và tên: "
+                    android:text="@string/Info_fullname"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
 
@@ -59,7 +59,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/gilroy_semibold"
                     android:gravity="end"
-                    android:text="Nguyen Van A"
+                    android:text="@string/Info_nameDetail"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
 
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Giới tinh"
+                    android:text="@string/Info_gender"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
 
@@ -86,7 +86,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/gilroy_semibold"
                     android:gravity="end"
-                    android:text="Nữ"
+                    android:text="@string/Info_GenderDetail"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
             </LinearLayout>
@@ -103,7 +103,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Ngày sinh"
+                    android:text="@string/Info_birth"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
 
@@ -113,7 +113,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/gilroy_semibold"
                     android:gravity="end"
-                    android:text="09/04/1780"
+                    android:text="@string/Info_birthDetail"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
             </LinearLayout>
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Địa chỉ email"
+                    android:text="@string/Info_Email"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
                 <TextView
@@ -138,7 +138,7 @@
                     android:layout_weight="1"
                     android:fontFamily="@font/gilroy_semibold"
                     android:gravity="end"
-                    android:text="ue.edu @gmai.com"
+                    android:text="@string/Info_emailDetail"
                     android:textSize="12dp"
                     tools:ignore="TextSizeCheck" />
             </LinearLayout>
@@ -150,7 +150,7 @@
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/primarydarker"
                 android:fontFamily="@font/gilroy_bold"
-                android:text="Chỉnh sửa"
+                android:text="@string/Info_btnEdit"
                 android:textSize="14dp"
                 tools:ignore="TextSizeCheck"/>
         </LinearLayout>
