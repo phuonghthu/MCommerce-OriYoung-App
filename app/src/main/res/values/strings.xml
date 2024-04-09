@@ -52,5 +52,7 @@
     <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
     <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
     <string name="Confirm">Xác nhận</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Search">Tìm sản phẩm</string>
 
 </resources>
