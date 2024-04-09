@@ -17,6 +17,26 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
-
+    <string name="changepassword_title">Đổi mật khẩu</string>
+    <string name="changepassword_row1">Mật khẩu hiện tại</string>
+    <string name="changepassword_newpassword">Mật khẩu mới</string>
+    <string name="changepassword_retypepassword">Nhập lại mật khẩu</string>
+    <string name="dialog_deleteaccount_title">Xác Nhận Xóa Tài Khoản</string>
+    <string name="dialog_deleteaccount_subtitle">Bằng việc đồng ý, tài khoản của bạn sẽ được xóa. Bạn thật sự muốn xóa tài khoản này?</string>
+    <string name="dialog_logout_title">Xác Nhận Đăng Xuất</string>
+    <string name="dialog_logout_subtitle">Khi đăng xuất tài khoản của bạn sẽ không thể tiếp tục mua sắm và sử dụng ưu đãi của OriYoung! Bạn chắc chắn muốn đăng xuất?</string>
+    <string name="setting_title">Cài đặt</string>
+    <string name="setting_changepassword">Đổi mật khẩu</string>
+    <string name="setting_deleteaccount">Xóa tài khoản</string>
+    <string name="setting_noti">Thông báo</string>
+    <string name="account_title">OriYoung xin chào!</string>
+    <string name="account_subtitle">Đăng nhập để trải nghiệm mua sắm và nhận được những ưu đãi hấp dẫn dành riêng cho bạn!</string>
+    <string name="account_user_infor">Thông tin cá nhân</string>
+    <string name="account_preferential">Ưu đãi của tôi</string>
+    <string name="account_support_center">Trung tâm hỗ trợ</string>
+    <string name="account_setting">Cài đặt</string>
+    <string name="account_contact_oriyoung">Liên hệ OriYoung</string>
+    <string name="account_user_name">Trúc Ca</string>
+    <string name="account_user_phone">0324657544</string>
 
 </resources>

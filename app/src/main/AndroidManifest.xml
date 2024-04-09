@@ -13,26 +13,22 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".AccountActivity"
-            android:exported="false"
-            android:label="@string/title_activity_account" />
-        <activity
-            android:name=".Setting_TurnOn"
+            android:name=".Setting"
             android:exported="false" />
         <activity
-            android:name=".Activity_dialog_delete_account"
+            android:name=".DialogDeleteAccount"
             android:exported="false" />
         <activity
-            android:name=".Activity_dialog_logout"
+            android:name=".DialogLogout"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".ChangePassword"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Change_Password"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

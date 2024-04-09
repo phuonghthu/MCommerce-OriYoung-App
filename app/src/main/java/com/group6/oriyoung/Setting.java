@@ -4,10 +4,9 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.group6.oriyoung.databinding.ActivitySettingTurnOnBinding;
-public class Setting_TurnOn extends AppCompatActivity {
+public class Setting extends AppCompatActivity {
     ActivitySettingTurnOnBinding binding;
 
 
