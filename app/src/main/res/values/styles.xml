@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavTextAppearanceActive">
+        <item name="android:fontFamily">@font/gilroy_bold</item>
+    </style>
+
+    <style name="BottomNavTextAppearanceInActive">
+        <item name="android:fontFamily">@font/gilroy_regular</item>
+    </style>
+
+    <style name="BottomNavItemStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="android:titleMargin">10dp</item>
+        <item name="android:paddingVertical">6dp</item>
+    </style>
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">@dimen/mini_textSize</item>
+        <item name="android:fontFamily">@font/gilroy_medium</item>
+    </style>
+</resources>

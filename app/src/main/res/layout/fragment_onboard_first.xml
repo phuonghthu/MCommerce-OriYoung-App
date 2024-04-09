@@ -6,7 +6,6 @@
     tools:context="com.group6.fragments.OnboardFirstFragment"
     android:paddingStart="@dimen/vertical_padding"
     android:paddingEnd="@dimen/vertical_padding"
-    android:paddingTop="100dp"
     android:background="#00FFFFFF">
 
     <TextView
@@ -15,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/onboard1_title"
         android:fontFamily="@font/gilroy_bold"
-        android:textSize="@dimen/h2_textSize"
+        android:textSize="@dimen/h3_textSize"
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,15 +31,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtOnboard1Title"
-        android:layout_marginTop="@dimen/xlarge_margin"/>
+        android:layout_marginTop="@dimen/large_margin"/>
 
     <ImageView
         android:layout_width="240dp"
         android:layout_height="240dp"
+        android:scaleType="centerInside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtOnboard1Subtitle"
-        android:layout_marginTop="@dimen/xlarge_margin"
+        android:layout_marginTop="@dimen/large_margin"
         android:src="@drawable/character3"/>
 
 

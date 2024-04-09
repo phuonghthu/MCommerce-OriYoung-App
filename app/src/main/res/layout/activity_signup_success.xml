@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toast_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".signup_success"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="270dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="20dp"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/circle_check"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Đăng ký thành công"
+            android:fontFamily="@font/gilroy_semibold"
+            android:textSize="@dimen/xlarge_textSize"
+            android:gravity="center"
+            android:textColor="@color/primarygreen"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/greylight"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Bạn đã đăng kí tài khoản thành công. Hãy khám phá ngay hàng ngàn ưu đãi từ"
+            android:fontFamily="@font/gilroy_regular"
+            android:textSize="@dimen/xsmall_textSize"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OriYoung"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/xsmall_textSize"
+                android:gravity="center"
+                android:textColor="@color/primarygreen"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" nhé!"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/xsmall_textSize"
+                android:gravity="center"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/btnKhamPhaNgay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Khám phá ngay"
+            android:textSize="@dimen/small_textSize"
+            android:fontFamily="@font/gilroy_semibold"
+            android:backgroundTint="@color/primarygreen"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

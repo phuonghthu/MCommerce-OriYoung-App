@@ -25,10 +25,34 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
+            android:name=".ProductDetail"
+            android:exported="false" />
+        <activity
+            android:name=".Sign_up"
+            android:exported="false" />
+        <activity
+            android:name=".signup_success"
+            android:exported="false" />
+        <activity
+            android:name=".signup_pass"
+            android:exported="false" />
+        <activity
+            android:name=".Signup_back"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Trung_tam_ho_tro"
+            android:exported="false" />
+        <activity
             android:name=".OnboardingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

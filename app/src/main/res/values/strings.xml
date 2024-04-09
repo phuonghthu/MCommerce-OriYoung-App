@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Oriyoung</string>
+    <string name="html_trungtam"><![CDATA[
+    • Các đơn hàng phát sinh từ Đà Nẵng trở ra khu vực phía Bắc sẽ được gửi đi từ trung tâm vận hành phía Bắc của OriYoung.\n
+    • Các đơn còn lại sẽ được đóng gói và vận chuyển từ trung tâm phía Nam.\n
+]]></string>
+
+    <string name="html_thoigian"><![CDATA[
+    • Đơn nội thành Hà Nội và Hồ Chí Minh: Khách hàng sẽ nhận được trong vòng 1 -2 ngày kể từ khi đơn hàng được xác nhận (trừ trường hợp đơn hàng dạng đặt trước hoặc chưa đủ tồn kho, OriYoung sẽ gửi đi từ kho vận hành khác tỉnh và CSKH của OriYoung sẽ thông báo cho khách hàng về vấn đề này). Thông thường có thể sớm hơn tuỳ thuộc vào thời gian khách hàng đặt (Không tính chủ nhật và ngày lễ).\n
+    • Các khu vực khác: 2-5 ngày (thường là 2-4 ngày), nếu sau 3 ngày kể từ khi đặt hàng mà Anh/Chị chưa nhận được cuộc gọi giao hàng của bưu tá thì vui lòng xin liên hệ Coolmate để được hỗ trợ (không bao gồm chủ nhật và ngày lễ).\n
+    • LƯU Ý: Trong trường hợp khách hàng cần nhận hàng gấp thì có thể liên hệ Hotline OriYoung xxxx xxxx để được hỗ trợ. OriYoung không cam kết có thể hỗ trợ các trường hợp khẩn cấp 100%, tuy nhiên OriYoung chắc chắn sẽ làm mọi cách có thể để giúp khách hàng giải quyết công việc của mình.
+]]></string>
     <string name="skip_onboarding">Bỏ qua</string>
     <string name="onboarding_login">Đăng nhập ngay!</string>
     <string name="no_account">Bạn chưa có tài khoản?</string>
@@ -37,4 +47,75 @@
     <string name="account_user_name">Trúc Ca</string>
     <string name="account_user_phone">0324657544</string>
 
+=======
+<!--<<<<<<< HEAD-->
+    <string name="UserInfo">Thông tin cá nhân</string>
+    <string name="infoDetail_fullName">Họ và tên:</string>
+    <string name="sign">*</string>
+    <string name="infoDetail_txtRadioFemale">Nữ</string>
+    <string name="infoDetail_txtRadioMale">Nam</string>
+    <string name="infoDetail_radioSecret">Không tiết lộ</string>
+    <string name="infoDetail_phone">Số điện thoại</string>
+    <string name="infoDetail_email">Email</string>
+    <string name="infoDetail_btnEdit">Chỉnh sửa</string>
+    <string name="infoDetail_btnCancel">Hủy</string>
+    <string name="Info_fullname">Họ và tên:</string>
+    <string name="Info_nameDetail">Nguyen Van A</string>
+    <string name="Info_gender">Giới tinh</string>
+    <string name="Info_GenderDetail">Nữ</string>
+    <string name="Info_emailDetail">ue.edu @gmai.com</string>
+    <string name="Info_Email">Địa chỉ email</string>
+    <string name="Info_btnEdit">Chỉnh sửa</string>
+    <string name="Info_birthDetail">09/04/1780</string>
+    <string name="Info_birth">Ngày sinh</string>
+    <string name="infoDetail_birth">Ngày sinh</string>
+    <string name="cart_txtTitle">Giỏ hàng</string>
+    <string name="cart_orderInfo">Thông tin đơn hàng</string>
+    <string name="cart_apply">Áp dụng</string>
+    <string name="cart_tempTotal">Tạm tính</string>
+    <string name="cart_tempTotalDetail">1.000.000</string>
+    <string name="cart_discount">Khuyến mãi</string>
+    <string name="cart_discountDetail">30.000</string>
+    <string name="cart_total">Tổng thanh toán</string>
+    <string name="cart_totalDetail">1.000.000</string>
+    <string name="cart_checkout">Thanh toán</string>
+    <string name="nav_taikhoan">Tài khoản</string>
+    <string name="nav_wishlist">Yêu thích</string>
+    <string name="nav_danhmuc">Danh mục</string>
+    <string name="nav_trangchu">Trang chủ</string>
+    <string name="toolbar_title">Toolbar Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+<!--<<<<<<< HEAD-->
+    <string name="Login_title">OriYoung Chào Bạn!</string>
+    <string name="Login_subtitle_1">Tài khoản</string>
+    <string name="Login_phone">Nhập số điện thoại</string>
+    <string name="Login_subtitle_2">Mật khẩu</string>
+    <string name="Login_password">Nhập mật khẩu</string>
+    <string name="Required">*</string>
+    <string name="Forget_pass">Quên mật khẩu?</string>
+    <string name="Remember_login">Ghi nhớ</string>
+    <string name="Login">Đăng nhập</string>
+    <string name="Login_option">hoặc đăng nhập với</string>
+    <string name="Login_phone_error">Số điện thoại không hợp lệ, vui lòng thử lại</string>
+    <string name="Login_pass_error">Mật khẩu không hợp lệ, vui lòng thử lại</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Forget_pass_title">Quên mật khẩu</string>
+    <string name="Forget_pass_subtitle">Số điện thoại</string>
+    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua SMS để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
+    <string name="Continue">Tiếp tục</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Reset_pass_title">Đặt lại mật khẩu</string>
+    <string name="Reset_pass_subtitle_1">Mật khẩu mới</string>
+    <string name="Reset_pass_subtitle_2">Nhập lại mật khẩu</string>
+    <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
+    <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
+    <string name="Confirm">Xác nhận</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Search">Tìm sản phẩm</string>
+
+    <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textSize">10dp</item>
+        <item name="android:buttonTint">@color/primarydarker</item>
+        <item name="android:fontFamily">@font/gilroy_regular</item>
+    </style>
 </resources>
