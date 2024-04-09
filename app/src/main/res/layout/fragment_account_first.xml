@@ -6,7 +6,8 @@
     tools:context="com.group6.fragments.AccountFirstFragment"
     android:layout_gravity="center"
     android:paddingVertical="@dimen/vertical_padding"
-    android:paddingHorizontal="@dimen/horizontal_padding">
+    android:paddingHorizontal="@dimen/horizontal_padding"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/head"
