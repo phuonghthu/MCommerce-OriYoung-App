@@ -32,5 +32,12 @@ public class ForgetPassword extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        binding.btnCotinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ForgetPassword.this, ResetPassword.class);
+                startActivity(intent);
+            }
+        });
     }
 }
