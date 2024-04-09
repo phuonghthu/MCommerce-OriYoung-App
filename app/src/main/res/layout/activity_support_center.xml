@@ -14,36 +14,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="20dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_circle_left"
-                    android:layout_weight="0"
-                    android:layout_marginStart="20dp"/>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1.8"
-                    android:text="Trung tâm hỗ trợ"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textSize="@dimen/xlarge_textSize"
-                    android:gravity="center"/>
-            </LinearLayout>
-
+            android:orientation="vertical">
+            <include layout="@layout/custom_toolbar_back"/>
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:src="@drawable/logo_hcn"
-                android:layout_marginTop="15dp"/>
+                android:src="@drawable/logo_hcn" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

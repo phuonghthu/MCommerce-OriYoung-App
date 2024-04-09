@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -22,6 +23,7 @@ public class SupportCenter extends AppCompatActivity {
     FrameLayout frameLayout;
     FragmentManager fragmentManager;
     Button selectedButton; // Biến để theo dõi button được chọn hiện tại
+    TextView title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class SupportCenter extends AppCompatActivity {
         btn_bm = findViewById(R.id.btnbaomat);
         frameLayout = findViewById(R.id.frame_in4);
         fragmentManager = getSupportFragmentManager();
+        title = findViewById(R.id.toolbarTitle);
 
         // Mặc định chọn button "Đổi trả" khi màn hình được tạo
         updateButtonState(btn_dt);
@@ -68,6 +71,7 @@ public class SupportCenter extends AppCompatActivity {
                 fragmentManager.beginTransaction().replace(R.id.frame_in4, baomatFragment).commit();
             }
         });
+        title.setText("Trung tâm hỗ trợ");
 
     }
 

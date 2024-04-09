@@ -40,19 +40,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <ImageView
+                <LinearLayout
                     android:id="@+id/imvreturn"
                     android:layout_width="38dp"
                     android:layout_height="38dp"
-                    android:src="@drawable/ic_circle_left"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
+                    android:background="@drawable/ic_back_bg"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/round_arrow_back_10" />
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
