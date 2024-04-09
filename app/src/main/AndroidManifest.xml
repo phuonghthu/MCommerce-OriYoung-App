@@ -16,7 +16,7 @@
             android:name=".UserInfoDetail"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".Cart"
             android:exported="false" />
         <activity
             android:name=".UserInformation"
@@ -25,7 +25,7 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Cart"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,5 +33,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
