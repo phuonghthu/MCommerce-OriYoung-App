@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingTop="@dimen/horizontal_padding"
+    android:paddingHorizontal="@dimen/horizontal_padding">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/imvCateThumb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/cate_taytrang"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/primarydarker"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:elevation="2dp"/>
+
+    <TextView
+        android:id="@+id/txtCateName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cateName"
+        android:textSize="@dimen/small_textSize"
+        android:fontFamily="@font/gilroy_semibold"
+        android:textColor="@color/primarydarker"/>
+
+
+</LinearLayout>

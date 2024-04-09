@@ -29,10 +29,10 @@ public class OnboardingActivity extends AppCompatActivity {
 
 
     ActivityOnboardingBinding binding;
-    Button btnSkip;
+//    Button btnSkip;
     ViewPager2 viewPager;
-    LinearLayout layoutBottom;
-    CircleIndicator3 circleIndicator;
+//    LinearLayout layoutBottom;
+//    CircleIndicator3 circleIndicator;
 
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<Fragment> fragmentList;
@@ -44,9 +44,10 @@ public class OnboardingActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initUI();
+//        addEvents();
         viewPagerAdapter = new ViewPagerAdapter(fragmentList, getSupportFragmentManager(), getLifecycle());
-        viewPager.setAdapter(viewPagerAdapter);
-        circleIndicator.setViewPager(viewPager);
+        binding.viewPager.setAdapter(viewPagerAdapter);
+        binding.circleIndicator.setViewPager(viewPager);
 
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -58,11 +59,11 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 if (position == 3) {
-                    btnSkip.setVisibility(View.GONE);
-                    layoutBottom.setVisibility(View.GONE);
+                    binding.btnSkip.setVisibility(View.GONE);
+                    binding.layoutBottom.setVisibility(View.GONE);
                 }else{
-                    btnSkip.setVisibility(View.VISIBLE);
-                    layoutBottom.setVisibility(View.VISIBLE);
+                    binding.btnSkip.setVisibility(View.VISIBLE);
+                    binding.layoutBottom.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -78,13 +79,9 @@ public class OnboardingActivity extends AppCompatActivity {
     }
 
     private void initUI() {
-        btnSkip = findViewById(R.id.btnSkip);
-        viewPager = findViewById(R.id.view_pager);
-        layoutBottom= findViewById(R.id.layout_bottom);
-        circleIndicator= findViewById(R.id.circle_indicator);
+        viewPager = binding.viewPager;
 
-        // Sự kiện cho button Skip
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        binding.btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OnboardingActivity.this, HomeActivity.class);
@@ -92,6 +89,24 @@ public class OnboardingActivity extends AppCompatActivity {
                 finish(); // Tùy chọn: Đóng OnboardingActivity sau khi chuyển hướng
             }
         });
+        binding.txtSignupNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OnboardingActivity.this, Sign_up.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OnboardingActivity.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
 
         // Khởi tạo danh sách fragment
         fragmentList = new ArrayList<>();
@@ -101,4 +116,5 @@ public class OnboardingActivity extends AppCompatActivity {
 
 
     }
+
 }
