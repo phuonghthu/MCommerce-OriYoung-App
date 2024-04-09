@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.group6.fragments.HomeFragment">
+    tools:context="com.group6.fragments.HomeFragment"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,7 +35,7 @@
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
-                android:id="@+id/layoutCate"
+                android:id="@+id/cateLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/cvBanner"
@@ -61,21 +62,80 @@
 
             </LinearLayout>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cvBannerCate"
-                app:cardCornerRadius="10dp"
+            <LinearLayout
+                android:id="@+id/hotproductLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/layoutCate">
-                <com.denzcoskun.imageslider.ImageSlider
+                app:layout_constraintTop_toBottomOf="@+id/cateLayout"
+                android:layout_marginTop="@dimen/large_margin"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/horizontal_padding">
+                <LinearLayout
+                    android:id="@+id/titleOfLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:id="@+id/bannerCate"
-                    app:iss_period="1000"
-                    app:iss_auto_cycle="true"
-                    app:iss_delay="1000"
-                    app:iss_corner_radius="20" />
-            </androidx.cardview.widget.CardView>
+                    android:layout_height="wrap_content"
+                    android:weightSum="10"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="9.5"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/character1"
+                            android:scaleType="fitCenter"/>
+                        <TextView
+                            android:id="@+id/txtHotProduct"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="@string/hotproduct"
+                            android:textSize="@dimen/large_textSize"
+                            android:fontFamily="@font/gilroy_bold"
+                            android:textColor="@color/secondaryorange"
+                            android:gravity="center_vertical"
+                            android:layout_marginStart="@dimen/small_margin"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/btnXemthem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/button_layout_white_green"
+                        app:backgroundTint="@null"
+                        android:paddingHorizontal="@dimen/large_margin"
+                        android:layout_weight="0.5"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/txtXemthem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/xemthem"
+                            android:textColor="@color/primarygreen"
+                            android:fontFamily="@font/gilroy_semibold"
+                            android:textSize="@dimen/xsmall_textSize"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"/>
+                        <ImageView
+                            android:layout_marginStart="@dimen/small_margin"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_arrow_foward"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvHotProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"/>
+            </LinearLayout>
+
 
 
 
