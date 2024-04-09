@@ -59,6 +59,34 @@
     <string name="nav_trangchu">Trang chủ</string>
     <string name="toolbar_title">Toolbar Title</string>
     <!-- TODO: Remove or change this placeholder text -->
+<!--<<<<<<< HEAD-->
+    <string name="Login_title">OriYoung Chào Bạn!</string>
+    <string name="Login_subtitle_1">Tài khoản</string>
+    <string name="Login_phone">Nhập số điện thoại</string>
+    <string name="Login_subtitle_2">Mật khẩu</string>
+    <string name="Login_password">Nhập mật khẩu</string>
+    <string name="Required">*</string>
+    <string name="Forget_pass">Quên mật khẩu?</string>
+    <string name="Remember_login">Ghi nhớ</string>
+    <string name="Login">Đăng nhập</string>
+    <string name="Login_option">hoặc đăng nhập với</string>
+    <string name="Login_phone_error">Số điện thoại không hợp lệ, vui lòng thử lại</string>
+    <string name="Login_pass_error">Mật khẩu không hợp lệ, vui lòng thử lại</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Forget_pass_title">Quên mật khẩu</string>
+    <string name="Forget_pass_subtitle">Số điện thoại</string>
+    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua SMS để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
+    <string name="Continue">Tiếp tục</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Reset_pass_title">Đặt lại mật khẩu</string>
+    <string name="Reset_pass_subtitle_1">Mật khẩu mới</string>
+    <string name="Reset_pass_subtitle_2">Nhập lại mật khẩu</string>
+    <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
+    <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
+    <string name="Confirm">Xác nhận</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Search">Tìm sản phẩm</string>
+
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
         <item name="android:buttonTint">@color/primarydarker</item>
