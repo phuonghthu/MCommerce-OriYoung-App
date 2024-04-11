@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.DoitraFragment">
+    tools:context="com.group6.Fragments.ReturnFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -32,12 +32,13 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"
                 android:textSize="@dimen/xsmall_textSize"
                 android:layout_marginTop="5dp"
+                android:gravity="fill_horizontal"
                 android:text="Chúng tôi trân trọng sự tin tưởng của khách hàng khi mua sản phẩm tại OriYoung với chính sách hậu mãi được xây dựng dựa trên cam kết bảo vệ quyền lợi của người tiêu dùng để quý khách có thể yên tâm mua sắm và trải nghiệm. Tất cả sản phẩm được bán tại OriYoung là sản phẩm mới và 100% chính hãng được cấp đầy đủ giấy chứng nhận nếu phát hiện hàng giả hàng nhái cam kết hoàn tiền X%. Trong trường hợp hiếm hoi sản phẩm quý khách nhận được có khiếm khuyết, hư hỏng hoặc không như mô tả. OriYoung cam kết bảo vệ khách hàng bằng chính sách đổi trả và bảo hành."/>
             <ImageView
                 android:layout_width="85dp"
@@ -52,7 +53,7 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"

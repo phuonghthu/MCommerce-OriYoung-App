@@ -1,21 +1,20 @@
-package com.group6.oriyoung.fragment;
+package com.group6.Fragments;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.group6.oriyoung.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DoitraFragment#newInstance} factory method to
+ * Use the {@link ReturnFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DoitraFragment extends Fragment {
+public class ReturnFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +25,7 @@ public class DoitraFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DoitraFragment() {
+    public ReturnFragment() {
         // Required empty public constructor
     }
 
@@ -39,8 +38,8 @@ public class DoitraFragment extends Fragment {
      * @return A new instance of fragment DoitraFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DoitraFragment newInstance(String param1, String param2) {
-        DoitraFragment fragment = new DoitraFragment();
+    public static ReturnFragment newInstance(String param1, String param2) {
+        ReturnFragment fragment = new ReturnFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +60,6 @@ public class DoitraFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_doitra, container, false);
+        return inflater.inflate(R.layout.fragment_support_return, container, false);
     }
 }
