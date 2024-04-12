@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.group6.Fragments.ReturnFragment">
+    tools:context="com.group6.fragments.ReturnFragment"
+    android:background="@color/white">
 
     <!-- TODO: Update blank fragment layout -->
     <ScrollView
@@ -24,7 +25,7 @@
                 android:layout_height="85dp"
                 android:src="@drawable/character2"/>
             <TextView
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chính sách đổi trả sản phẩm tại OriYoung như thế nào?"
                 android:fontFamily="@font/gilroy_semibold"
@@ -32,10 +33,11 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"
+                android:justificationMode="inter_word"
                 android:textSize="@dimen/xsmall_textSize"
                 android:layout_marginTop="5dp"
                 android:gravity="fill_horizontal"
@@ -45,7 +47,7 @@
                 android:layout_height="85dp"
                 android:src="@drawable/character3"/>
             <TextView
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hình thức đổi trả"
                 android:fontFamily="@font/gilroy_semibold"
@@ -53,10 +55,11 @@
                 android:textSize="@dimen/small_textSize"
                 android:gravity="center"/>
             <TextView
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textColor="@color/black"
+                android:justificationMode="inter_word"
                 android:textSize="@dimen/xsmall_textSize"
                 android:layout_marginTop="5dp"
                 android:text="Gửi qua đường bưu điện/chuyển phát nhanh. Nhân viên OriYoung sẽ kiểm tra điều kiện của sản phẩm và hỗ trợ đổi hàng. Mọi thông tin chi tiết, thắc mắc hoặc cần trợ giúp, Quý khách vui lòng liên hệ Hotline: 1900 1818 1818"/>

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.group6.Fragments.DeliveryFragment">
+    tools:context="com.group6.fragments.DeliveryFragment"
+    android:background="@color/white">
 
 
     <!-- TODO: Update blank fragment layout -->
@@ -26,8 +27,9 @@
                 android:gravity="center">
                 <TextView
                     android:layout_marginTop="10dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
                     android:fontFamily="@font/gilroy_semibold"
                     android:textColor="@color/primarygreen"
                     android:textSize="@dimen/small_textSize"
@@ -49,8 +51,9 @@
                     android:text="ORIYOUNG CÓ HAI TRUNG TÂM VẬN HÀNH"/>
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
                     android:fontFamily="@font/gilroy_regular"
                     android:textColor="@color/black"
                     android:textSize="@dimen/xsmall_textSize"
@@ -65,8 +68,9 @@
                     android:layout_marginTop="10dp"/>
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:justificationMode="inter_word"
                     android:fontFamily="@font/gilroy_regular"
                     android:textColor="@color/black"
                     android:textSize="@dimen/xsmall_textSize"
