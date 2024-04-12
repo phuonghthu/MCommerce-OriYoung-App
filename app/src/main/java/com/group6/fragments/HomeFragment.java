@@ -24,6 +24,7 @@ import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.R;
+import com.group6.oriyoung.SearchBarActivity;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -121,4 +122,5 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
 }

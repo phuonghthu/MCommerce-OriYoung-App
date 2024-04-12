@@ -1,5 +1,6 @@
 package com.group6.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import com.group6.adapters.MenuAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.models.Category;
+import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.databinding.FragmentCategoryBinding;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
@@ -38,6 +40,8 @@ public class CategoryFragment extends Fragment {
         View view = binding.getRoot();
 
         loadCategory();
+
+        addEvents();
         return view;
     }
 
@@ -58,5 +62,15 @@ public class CategoryFragment extends Fragment {
 
         menuAdapter = new MenuAdapter(getContext(), category);
         binding.rvMenu.setAdapter(menuAdapter);
+    }
+
+    private void addEvents() {
+        binding.searchBar.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

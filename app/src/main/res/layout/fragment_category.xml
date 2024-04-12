@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:paddingTop="@dimen/horizontal_padding">
 
-    <include layout="@layout/search_bar"
+    <include layout="@layout/activity_search_bar"
         android:id="@+id/search_bar"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

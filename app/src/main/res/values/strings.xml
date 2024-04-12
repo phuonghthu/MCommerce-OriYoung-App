@@ -47,8 +47,8 @@
     <string name="account_user_name">Trúc Ca</string>
     <string name="account_user_phone">0324657544</string>
 
-=======
-<!--<<<<<<< HEAD-->
+    =======
+    <!--<<<<<<< HEAD-->
     <string name="UserInfo">Thông tin cá nhân</string>
     <string name="infoDetail_fullName">Họ và tên:</string>
     <string name="sign">*</string>
@@ -88,7 +88,7 @@
     <string name="hotproduct">Sản phẩm nổi bật</string>
     <string name="xemthem">Xem thêm</string>
     <!-- TODO: Remove or change this placeholder text -->
-<!--<<<<<<< HEAD-->
+    <!--<<<<<<< HEAD-->
     <string name="Login_title">OriYoung Chào Bạn!</string>
     <string name="Login_subtitle_1">Tài khoản</string>
     <string name="Login_phone">Nhập số điện thoại</string>
