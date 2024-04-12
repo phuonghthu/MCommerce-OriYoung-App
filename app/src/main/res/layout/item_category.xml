@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:paddingTop="@dimen/horizontal_padding"
-    android:paddingHorizontal="@dimen/horizontal_padding">
+    android:paddingHorizontal="15dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"

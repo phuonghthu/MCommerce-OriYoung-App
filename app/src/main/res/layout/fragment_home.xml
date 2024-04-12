@@ -67,9 +67,9 @@
                     android:id="@+id/rvCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:spanCount="2"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    android:orientation="horizontal" />
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/large_margin"/>
 
             </LinearLayout>
 
