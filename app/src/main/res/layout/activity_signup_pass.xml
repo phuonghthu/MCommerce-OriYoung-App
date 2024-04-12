@@ -5,7 +5,8 @@
     android:id="@+id/pass"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignupPassword">
+    tools:context=".SignupPassword"
+    android:background="@color/white">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

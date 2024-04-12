@@ -153,7 +153,6 @@
                 android:layout_marginTop="@dimen/large_margin"
                 android:background="@drawable/bg_layout"
                 android:orientation="vertical"
-                android:paddingVertical="@dimen/horizontal_padding"
                 app:layout_constraintTop_toBottomOf="@+id/hotproductLayout"
                 tools:layout_editor_absoluteX="20dp">
 
@@ -165,6 +164,7 @@
                     android:fontFamily="@font/gilroy_medium"
                     android:text="@string/mission"
                     android:textColor="@color/primarydarker"
+                    android:padding="@dimen/horizontal_padding"
                     android:textSize="@dimen/small_textSize" />
 
 
