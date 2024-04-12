@@ -11,9 +11,9 @@ import androidx.fragment.app.FragmentManager;
 
 import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
 import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
-import com.group6.Fragments.SecurityFragment;
-import com.group6.Fragments.ReturnFragment;
-import com.group6.Fragments.DeliveryFragment;
+import com.group6.fragments.DeliveryFragment;
+import com.group6.fragments.ReturnFragment;
+import com.group6.fragments.SecurityFragment;
 
 public class SupportCenter extends AppCompatActivity {
     ActivitySupportCenterBinding binding;
