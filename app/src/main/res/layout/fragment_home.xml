@@ -146,7 +146,29 @@
                     app:spanCount="2" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/txtMission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin"
+                android:background="@drawable/bg_layout"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/hotproductLayout"
+                tools:layout_editor_absoluteX="20dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textAlignment="center"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:text="@string/mission"
+                    android:textColor="@color/primarydarker"
+                    android:padding="@dimen/horizontal_padding"
+                    android:textSize="@dimen/small_textSize" />
+
+
+            </LinearLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

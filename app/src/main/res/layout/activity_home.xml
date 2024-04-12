@@ -28,7 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:flow_horizontalBias="0.0"
         android:background="@color/primarybackground"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@null"
         app:itemActiveIndicatorStyle="@color/primarybackground"
         app:itemTextColor="@drawable/nav_item_color_selected"
         app:itemTextAppearanceActive="@style/BottomNavTextAppearanceActive"

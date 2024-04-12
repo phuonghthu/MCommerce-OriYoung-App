@@ -7,7 +7,8 @@
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
     tools:context=".UserInfoDetail"
-    android:paddingTop="35dp">
+    android:paddingTop="35dp"
+    android:background="@color/white">
     <LinearLayout
         android:id="@+id/LineNaviDetailIn4"
         android:layout_width="match_parent"
