@@ -55,7 +55,6 @@ public class HomeFragment extends Fragment {
         loadCategory();
         loadBanner();
         loadHotProduct();
-        addEvents();
 
         return view;
     }
@@ -112,13 +111,5 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void addEvents() {
-        binding.searchBar.btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CartActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 }
