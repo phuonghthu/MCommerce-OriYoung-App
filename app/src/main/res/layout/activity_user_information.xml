@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/horizontal_padding"
     android:padding="@dimen/vertical_padding"
+    tools:context=".UserInformation"
     android:orientation="vertical">
     <LinearLayout
         android:id="@+id/LineNaviIn4"

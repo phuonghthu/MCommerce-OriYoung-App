@@ -25,10 +25,19 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
+            android:name=".UserInformation"
+            android:exported="false"/>
+        <activity
+            android:name=".UserInfoDetail"
+            android:exported="false"/>
+        <activity
+            android:name=".CartActivity"
+            android:exported="false"/>
+        <activity
             android:name=".ProductDetail"
             android:exported="false" />
         <activity
-            android:name=".Sign_up"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -44,9 +53,6 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".SupportCenter"
