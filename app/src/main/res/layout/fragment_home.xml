@@ -4,16 +4,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.group6.fragments.HomeFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:paddingTop="@dimen/horizontal_padding">
+
+    <include layout="@layout/search_bar"
+        android:id="@+id/search_bar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/horizontal_padding"/>
 
     <ScrollView
+        android:id="@+id/homeLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/search_bar"
+        android:layout_marginTop="@dimen/large_margin">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/horizontal_padding"
             android:paddingHorizontal="@dimen/horizontal_padding">
 
             <androidx.cardview.widget.CardView
@@ -55,10 +65,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCategory"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:spanCount="2"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
