@@ -141,6 +141,7 @@
     <string name="rating_value">5.0</string>
     <string name="hint_search">FREESHIP toàn quốc đơn từ 89K</string>
     <string name="category">Danh mục sản phẩm</string>
+    <string name="input_voucher">Nhập mã giảm giá</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
