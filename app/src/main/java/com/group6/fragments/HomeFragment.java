@@ -1,9 +1,11 @@
 package com.group6.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
@@ -20,6 +22,7 @@ import com.group6.adapters.ProductAdapter;
 import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
+import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
 
@@ -51,7 +54,8 @@ public class HomeFragment extends Fragment {
 
         loadCategory();
         loadBanner();
-        loadProduct();
+        loadHotProduct();
+        addEvents();
 
         return view;
     }
@@ -67,9 +71,9 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadCategory() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
-        binding.rvCategory.setLayoutManager(gridLayoutManager);
-        binding.rvCategory.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         category = new ArrayList<>();
 
         category.add(new Category(R.drawable.cate_taytrang, "Tẩy trang"));
@@ -85,7 +89,7 @@ public class HomeFragment extends Fragment {
         binding.rvCategory.setAdapter(categoryAdapter);
     }
 
-    private void loadProduct() {
+    private void loadHotProduct() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
         binding.rvHotProduct.setLayoutManager(gridLayoutManager);
         binding.rvHotProduct.setHasFixedSize(true);
@@ -106,5 +110,15 @@ public class HomeFragment extends Fragment {
         productAdapter = new ProductAdapter(getContext(), product);
         binding.rvHotProduct.setAdapter(productAdapter);
 
+    }
+
+    private void addEvents() {
+        binding.searchBar.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

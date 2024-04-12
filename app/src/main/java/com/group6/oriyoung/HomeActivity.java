@@ -18,7 +18,7 @@ import com.group6.fragments.WishlistFragment;
 
 public class HomeActivity extends AppCompatActivity {
 
-    FrameLayout frameLayout;
+    FrameLayout containerLayout;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottomNavView);
-        frameLayout = findViewById(R.id.frame_layout);
+        containerLayout = findViewById(R.id.containeraLayout);
         loadFragment(new HomeFragment(), true);
 
 
@@ -60,10 +60,10 @@ public class HomeActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
         if (isAppInitialized) {
-            fragmentTransaction.add(R.id.frame_layout, fragment);
+            fragmentTransaction.add(R.id.containeraLayout, fragment);
 
         }else {
-            fragmentTransaction.replace(R.id.frame_layout, fragment);
+            fragmentTransaction.replace(R.id.containeraLayout, fragment);
         }
         fragmentTransaction.commit();
     }

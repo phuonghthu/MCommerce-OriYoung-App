@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardProduct"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="10dp"
+    android:layout_marginTop="@dimen/medium_margin"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/imvCateThumb"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/cate_taytrang"
+            app:civ_border_color="@color/primarydarker" />
+        <TextView
+            android:id="@+id/txtCateName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cateName"
+            android:textSize="@dimen/large_textSize"
+            android:fontFamily="@font/gilroy_semibold"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/medium_margin"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

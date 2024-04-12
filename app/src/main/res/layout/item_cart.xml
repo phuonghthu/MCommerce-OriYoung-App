@@ -7,120 +7,115 @@
     app:cardCornerRadius="15dp"
     android:orientation="horizontal"
     android:padding="10dp"
-    android:layout_marginVertical="8dp">
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    app:cardUseCompatPadding="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:ignore="MissingConstraints">
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
                 android:gravity="center">
 
-                <ImageView
+                <com.theophrast.ui.widget.SquareImageView
                     android:id="@+id/imvCart"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:src="@drawable/img_product"/>
-                <CheckBox
-                    android:id="@+id/ckbCart"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:buttonTint="@color/primarydarker">
-                </CheckBox>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/txtProductNameCart"
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:layout_height="wrap_content"
-                    android:text="Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml
-    Micellar Water 3-in-1 Refreshing Even For Sensitive Skin"
-                    android:fontFamily="@font/gilroy_regular"
-                    android:textSize="12dp"
-                    android:textColor="@color/black"
-                    tools:ignore="HardcodedText,SpUsage" />
-                <TextView
-                    android:id="@+id/txtProductPriceCart"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="100.000"
-                    android:fontFamily="@font/gilroy_bold"
-                    android:textSize="14dp"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="28dp"
-                    android:gravity="center"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="88dp"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/frame"
-                        app:backgroundTint="@null">
-                        <TextView
-                            android:id="@+id/txtMinus"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_marginHorizontal="4dp"
-                            android:gravity="center"
-                            android:text="-"/>
-                        <TextView
-                            android:id="@+id/txtCartNumb"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:gravity="center"
-                            android:text="1">
-
-                        </TextView>
-                        <TextView
-                            android:id="@+id/txtPlus"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:gravity="center"
-                            android:layout_marginHorizontal="4dp"
-                            android:text="+"
-                            android:textColor="@color/primarydarker"/>
-                    </LinearLayout>
-                    <LinearLayout
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/txtProductNameCart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml
+    Micellar Water 3-in-1 Refreshing Even For Sensitive Skin"
+                        android:fontFamily="@font/gilroy_regular"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText,SpUsage" />
+                    <TextView
+                        android:id="@+id/txtProductPriceCart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="100.000"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="14dp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/ckbCart"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content">
+                </CheckBox>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/frame"
+                    app:backgroundTint="@null">
+                    <TextView
+                        android:id="@+id/txtMinus"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginHorizontal="4dp"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        android:layout_marginRight="10dp">
+                        android:text="-"/>
+                    <TextView
+                        android:id="@+id/txtCartNumb"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:text="1">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:fontFamily="@font/gilroy_regular"
-                            android:textSize="10dp"
-                            android:text="Tạm tính" />
+                    </TextView>
+                    <TextView
+                        android:id="@+id/txtPlus"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="4dp"
+                        android:text="+"
+                        android:textColor="@color/primarydarker"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginRight="10dp">
 
-                        <TextView
-                            android:id="@+id/txtTemp"
-                            android:textSize="14dp"
-                            android:textColor="@color/secondaryorange"
-                            android:fontFamily="@font/gilroy_semibold"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="end"
-                            android:text="100.000" />
-                    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:fontFamily="@font/gilroy_regular"
+                        android:textSize="10dp"
+                        android:text="Tạm tính" />
+
+                    <TextView
+                        android:id="@+id/txtTemp"
+                        android:textSize="14dp"
+                        android:textColor="@color/secondaryorange"
+                        android:fontFamily="@font/gilroy_semibold"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:text="100.000" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.cardview.widget.CardView>

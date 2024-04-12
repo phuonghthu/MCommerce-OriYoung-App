@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".DialogLogout"
-    android:background="@drawable/background_dialog_white"
+    android:background="@drawable/bg_dialog_white"
     android:layout_centerInParent="true"
     android:layout_gravity="center">
     <TextView

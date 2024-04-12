@@ -47,12 +47,6 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
-        TextInputEditText editText = findViewById(R.id.edtVoucher);
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editText.setSelected(true);
-            }
-        });
+
     }
 }
