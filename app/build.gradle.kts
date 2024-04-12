@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.viewpager2)
     implementation(libs.imageslideshow)
     implementation(libs.circleimageview)
+    implementation(libs.squareimageview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

@@ -10,12 +10,16 @@ import androidx.viewbinding.ViewBinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.group6.adapters.CategoryAdapter;
+import com.group6.adapters.ProductAdapter;
 import com.group6.models.Category;
+import com.group6.models.Product;
+import com.group6.models.Review;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
 
@@ -27,8 +31,12 @@ public class HomeFragment extends Fragment {
     private ImageSlider bannerSlider;
 
     CategoryAdapter categoryAdapter;
+    ProductAdapter productAdapter;
 
     ArrayList<Category> category;
+    ArrayList<Product> product;
+
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -43,6 +51,7 @@ public class HomeFragment extends Fragment {
 
         loadCategory();
         loadBanner();
+        loadProduct();
 
         return view;
     }
@@ -74,5 +83,28 @@ public class HomeFragment extends Fragment {
 
         categoryAdapter = new CategoryAdapter(getContext(), category);
         binding.rvCategory.setAdapter(categoryAdapter);
+    }
+
+    private void loadProduct() {
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+        binding.rvHotProduct.setLayoutManager(gridLayoutManager);
+        binding.rvHotProduct.setHasFixedSize(true);
+        product = new ArrayList<>();
+
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        productAdapter = new ProductAdapter(getContext(), product);
+        binding.rvHotProduct.setAdapter(productAdapter);
+
     }
 }

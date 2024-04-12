@@ -5,21 +5,23 @@ import java.util.List;
 
 public class Product implements Serializable {
     int productID;
+    int categoryID;
     String productName;
     double productPrice;
     double productDiscountPrice;
     String productDescription;
-    String productImage;
+    int productImage;
     boolean isHot;
     boolean isFavorite;
     double ratingValue;
     int ratingCount;
-    List<String> comments;
+    List<Review> review;
 
-    public Product(int productID, String productName, double productPrice, double productDiscountPrice,
-                   String productDescription, String productImage, boolean isHot, boolean isFavorite,
-                   double ratingValue, int ratingCount, List<String> comments) {
+    public Product(int productID, int categoryID, String productName, double productPrice,
+                   double productDiscountPrice, String productDescription, int productImage,
+                   boolean isHot, boolean isFavorite, double ratingValue, int ratingCount, List<Review> review) {
         this.productID = productID;
+        this.categoryID = categoryID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDiscountPrice = productDiscountPrice;
@@ -29,7 +31,7 @@ public class Product implements Serializable {
         this.isFavorite = isFavorite;
         this.ratingValue = ratingValue;
         this.ratingCount = ratingCount;
-        this.comments = comments;
+        this.review = review;
     }
 
     public int getProductID() {
@@ -38,6 +40,14 @@ public class Product implements Serializable {
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public int getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
     public String getProductName() {
@@ -72,11 +82,11 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
     }
 
-    public String getProductImage() {
+    public int getProductImage() {
         return productImage;
     }
 
-    public void setProductImage(String productImage) {
+    public void setProductImage(int productImage) {
         this.productImage = productImage;
     }
 
@@ -112,11 +122,11 @@ public class Product implements Serializable {
         this.ratingCount = ratingCount;
     }
 
-    public List<String> getComments() {
-        return comments;
+    public List<Review> getReview() {
+        return review;
     }
 
-    public void setComments(List<String> comments) {
-        this.comments = comments;
+    public void setReview(List<Review> review) {
+        this.review = review;
     }
 }

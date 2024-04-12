@@ -68,8 +68,7 @@
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@+id/cateLayout"
                 android:layout_marginTop="@dimen/large_margin"
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/horizontal_padding">
+                android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/titleOfLayout"
                     android:layout_width="match_parent"
@@ -101,13 +100,13 @@
                     <LinearLayout
                         android:id="@+id/btnXemthem"
                         android:layout_width="wrap_content"
-                        android:layout_height="28dp"
+                        android:layout_height="24dp"
                         android:orientation="horizontal"
-                        android:background="@drawable/button_layout_white_green"
+                        android:background="@drawable/bg_round_button"
                         app:backgroundTint="@null"
-                        android:paddingHorizontal="@dimen/large_margin"
+                        android:paddingHorizontal="@dimen/medium_margin"
                         android:layout_weight="0.5"
-                        android:gravity="center">
+                        android:layout_gravity="center">
                         <TextView
                             android:id="@+id/txtXemthem"
                             android:layout_width="wrap_content"
@@ -133,7 +132,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2"/>
+                    app:spanCount="2" />
             </LinearLayout>
 
 
