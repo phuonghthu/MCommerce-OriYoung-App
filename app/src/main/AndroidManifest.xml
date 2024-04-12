@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
+            android:name=".SearchBarActivity"
+            android:exported="false" />
+        <activity
             android:name=".Setting"
             android:exported="false" />
         <activity
@@ -26,13 +29,13 @@
             android:exported="false" />
         <activity
             android:name=".UserInformation"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".UserInfoDetail"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".CartActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".ProductDetail"
             android:exported="false" />

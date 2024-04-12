@@ -6,14 +6,14 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.group6.oriyoung.databinding.SearchBarBinding;
+import com.group6.oriyoung.databinding.ActivitySearchBarBinding;
 
 
 public class SearchBarActivity extends AppCompatActivity {
-    SearchBarBinding binding;
+    ActivitySearchBarBinding binding;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = SearchBarBinding.inflate(getLayoutInflater());
+        binding = ActivitySearchBarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
