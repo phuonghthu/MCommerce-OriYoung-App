@@ -7,8 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import androidx.viewbinding.ViewBinding;
 
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.ProductAdapter;
+import com.group6.adapters.SaleProductAdapter;
 import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
 
     CategoryAdapter categoryAdapter;
     ProductAdapter productAdapter;
+    SaleProductAdapter saleProductAdapter;
 
     ArrayList<Category> category;
     ArrayList<Product> product;
@@ -56,7 +60,9 @@ public class HomeFragment extends Fragment {
         loadCategory();
         loadBanner();
         loadHotProduct();
+        loadSaleProduct();
         addEvents();
+
 
         return view;
     }
@@ -111,6 +117,47 @@ public class HomeFragment extends Fragment {
         productAdapter = new ProductAdapter(getContext(), product);
         binding.rvHotProduct.setAdapter(productAdapter);
 
+    }
+
+    private void loadSaleProduct() {
+
+        int numberOfColumns = 2; // Number of columns
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        binding.rvSaleProduct.setLayoutManager(layoutManager);
+        product = new ArrayList<>();
+
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 40, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 40, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 40, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 40, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        saleProductAdapter = new SaleProductAdapter(getContext(), product);
+        binding.rvSaleProduct.setAdapter(saleProductAdapter);
+
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+        int parentWidth = displayMetrics.widthPixels;
+        float paddingDp = 20; // Padding ngang theo dp
+        float density = displayMetrics.density;
+
+// Chuyển đổi padding từ dp sang px
+        int paddingPx = (int) (paddingDp * density);
+
+// Tính toán kích thước itemWidth
+        int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
+
+        saleProductAdapter.setItemWidth(itemWidth);
     }
 
     private void addEvents() {

@@ -146,6 +146,35 @@
                     app:spanCount="2" />
             </LinearLayout>
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/SaleProductLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/hotproductLayout"
+                android:layout_marginTop="@dimen/large_margin"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/txtSaleProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/discount_title"
+                    android:textSize="@dimen/large_textSize"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:paddingVertical="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/bg_discount"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:gravity="center" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSaleProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSaleProduct"
+                    android:orientation="horizontal" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:id="@+id/txtMission"
                 android:layout_width="match_parent"
@@ -153,7 +182,7 @@
                 android:layout_marginTop="@dimen/large_margin"
                 android:background="@drawable/bg_layout"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/hotproductLayout"
+                app:layout_constraintTop_toBottomOf="@+id/discountProductLayout"
                 tools:layout_editor_absoluteX="20dp">
 
                 <TextView

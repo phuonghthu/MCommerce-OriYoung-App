@@ -16,13 +16,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <com.theophrast.ui.widget.SquareImageView
-            android:id="@+id/imvProductThumb"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/product_place_holder"/>
+            android:layout_height="wrap_content">
+            <com.theophrast.ui.widget.SquareImageView
+                android:id="@+id/imvProductThumb"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/product_place_holder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+            <TextView
+                android:id="@+id/txtDiscountPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-40%"
+                android:gravity="center"
+                android:padding="5dp"
+                android:textSize="@dimen/medium_textSize"
+                android:fontFamily="@font/gilroy_bold"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_discount"
+                app:layout_constraintTop_toTopOf="@+id/imvProductThumb"
+                app:layout_constraintEnd_toEndOf="@+id/imvProductThumb"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         <TextView
@@ -44,7 +63,7 @@
             android:layout_marginTop="@dimen/small_margin">
             <TextView
                 android:id="@+id/txtPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/product_price"
                 android:textSize="@dimen/large_textSize"
