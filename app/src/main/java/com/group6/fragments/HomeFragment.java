@@ -19,9 +19,11 @@ import android.widget.ArrayAdapter;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.group6.adapters.BrandAdapter;
 import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.SaleProductAdapter;
+import com.group6.models.Brand;
 import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
@@ -40,9 +42,11 @@ public class HomeFragment extends Fragment {
     CategoryAdapter categoryAdapter;
     ProductAdapter productAdapter;
     SaleProductAdapter saleProductAdapter;
+    BrandAdapter brandAdapter;
 
     ArrayList<Category> category;
     ArrayList<Product> product;
+    ArrayList<Brand> brand;
 
 
 
@@ -61,6 +65,7 @@ public class HomeFragment extends Fragment {
         loadBanner();
         loadHotProduct();
         loadSaleProduct();
+        loadBrand();
         addEvents();
 
 
@@ -151,13 +156,39 @@ public class HomeFragment extends Fragment {
         float paddingDp = 20; // Padding ngang theo dp
         float density = displayMetrics.density;
 
-// Chuyển đổi padding từ dp sang px
+        // Chuyển đổi padding từ dp sang px
         int paddingPx = (int) (paddingDp * density);
 
-// Tính toán kích thước itemWidth
+        // Tính toán kích thước itemWidth
         int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
 
         saleProductAdapter.setItemWidth(itemWidth);
+    }
+
+    private void loadBrand() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        linearLayoutManager.canScrollHorizontally();
+        brand = new ArrayList<>();
+
+        brand.add(new Brand(R.drawable.br_cosrx, "null"));
+        brand.add(new Brand(R.drawable.br_beplain, "null"));
+        brand.add(new Brand(R.drawable.br_klairs, "null"));
+        brand.add(new Brand(R.drawable.br_cocoon, "null"));
+        brand.add(new Brand(R.drawable.br_skin1004, "null"));
+        brand.add(new Brand(R.drawable.br_anua, "null"));
+        brand.add(new Brand(R.drawable.br_innisfree, "null"));
+        brand.add(new Brand(R.drawable.br_roundlab, "null"));
+        brand.add(new Brand(R.drawable.br_comem, "null"));
+        brand.add(new Brand(R.drawable.br_simple, "null"));
+        brand.add(new Brand(R.drawable.br_herbario, "null"));
+        brand.add(new Brand(R.drawable.br_vegick, "null"));
+
+
+        brandAdapter = new BrandAdapter(getContext(), brand);
+        binding.rvBrand.setAdapter(brandAdapter);
+
     }
 
     private void addEvents() {

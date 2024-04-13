@@ -182,7 +182,7 @@
                 android:layout_marginTop="@dimen/large_margin"
                 android:background="@drawable/bg_layout"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/discountProductLayout"
+                app:layout_constraintTop_toBottomOf="@+id/brandLayout"
                 tools:layout_editor_absoluteX="20dp">
 
                 <TextView
@@ -199,7 +199,51 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/brandLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/SaleProductLayout"
+                android:layout_marginTop="@dimen/large_margin"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/character3"
+                        android:scaleType="fitCenter"/>
+                    <TextView
+                        android:id="@+id/txtBrand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/brand"
+                        android:textSize="@dimen/large_textSize"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textColor="@color/secondaryorange"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="@dimen/small_margin"/>
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/character4"
+                        android:scaleType="fitCenter"
+                        android:layout_marginStart="@dimen/small_margin"/>
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    android:orientation="horizontal"/>
+            </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

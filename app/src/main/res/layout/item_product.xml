@@ -31,7 +31,7 @@
             android:layout_height="match_parent"
             android:text="@string/product_name"
             android:textSize="@dimen/medium_textSize"
-            android:fontFamily="@font/gilroy_bold"
+            android:fontFamily="@font/gilroy_medium"
             android:textColor="@color/black"
             android:gravity="center_vertical"
             android:maxLines="2"
@@ -61,8 +61,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center"/>
                 <TextView
@@ -93,13 +93,13 @@
                 android:fontFamily="@font/gilroy_semibold"
                 android:textColor="@color/white"
                 android:background="@drawable/bg_button_5_radius"
-                android:layout_weight="9.9"/>
+                android:layout_weight="10"/>
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_heart_outline"
-                android:layout_weight="0.1"
-                android:layout_marginStart="@dimen/medium_margin"/>
+                android:layout_weight="0."
+                android:layout_marginStart="@dimen/small_margin"/>
 
         </LinearLayout>
 
