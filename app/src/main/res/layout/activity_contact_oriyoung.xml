@@ -19,42 +19,97 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
         android:orientation="vertical"
         android:gravity="center"
-        android:paddingHorizontal="@dimen/horizontal_padding">
+        android:paddingHorizontal="@dimen/vertical_padding">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:scaleType="centerInside"
             android:layout_marginTop="@dimen/large_margin"
-            android:src="@drawable/ic_gift"/>
+            android:src="@drawable/character3"/>
 
-        <TextView
-            android:id="@+id/txtOnboard1Title"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/btnFacebook"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/my_voucher_noti"
-            android:fontFamily="@font/gilroy_bold"
-            android:textSize="@dimen/h3_textSize"
-            android:gravity="center"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="@dimen/large_margin" />
-
-        <Button
-            android:id="@+id/btnGoToStore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/go_to_store"
-            android:background="@drawable/button_layout_cancel"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_round_button"
             app:backgroundTint="@null"
-            android:textColor="@color/white"
-            android:fontFamily="@font/gilroy_semibold"
-            android:textSize="@dimen/medium_textSize"
-            android:layout_weight="1"
-            android:layout_marginTop="@dimen/large_margin" />
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_facebook"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="OriYoung"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnGmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_round_button"
+            app:backgroundTint="@null"
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo_facebook"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="cskh@oriyoung.com"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btnPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_round_button"
+            app:backgroundTint="@null"
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_account"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="669 QL1A, khu phố 3, Thủ Đức"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
 
     </LinearLayout>
 

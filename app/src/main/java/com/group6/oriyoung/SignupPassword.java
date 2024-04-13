@@ -54,7 +54,7 @@ public class SignupPassword extends AppCompatActivity {
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.custom_dialog_success, null);
 
-        Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnCallAction);
+        Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnCTA);
 
         builder.setView(dialogView);
 
