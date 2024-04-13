@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.group6.oriyoung.ContactOriyoung;
 import com.group6.oriyoung.HomeActivity;
+import com.group6.oriyoung.MyVoucher;
 import com.group6.oriyoung.OnboardingActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.Setting;
@@ -55,6 +57,23 @@ public class AccountFirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(requireContext(), Setting.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.uudaicuatoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MyVoucher.class);
+                startActivity(intent);
+
+            }
+        });
+
+        binding.lienheoriyoung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ContactOriyoung.class);
                 startActivity(intent);
             }
         });

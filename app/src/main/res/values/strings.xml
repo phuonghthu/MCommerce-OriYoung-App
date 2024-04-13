@@ -145,6 +145,8 @@
     <string name="mission">“Không chỉ nỗ lực và quan tâm đến vẻ đẹp của khách hàng, OriYoung còn hành động tích cực vì xã hội, đại diện cho thế hệ làm đẹp có ý thức"</string>
     <string name="discount_title">Deal hời - Giảm giá sốc</string>
     <string name="brand">Thương hiệu</string>
+    <string name="my_voucher_noti">Bạn chưa có ưu đãi nào!</string>
+    <string name="go_to_store">Đi đến cửa hàng</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
