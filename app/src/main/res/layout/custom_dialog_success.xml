@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="20dp"
+        android:padding="@dimen/vertical_padding"
         android:gravity="center">
         <ImageView
             android:layout_width="50dp"
@@ -28,15 +28,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng ký thành công"
-            android:fontFamily="@font/gilroy_semibold"
+            android:fontFamily="@font/gilroy_bold"
             android:textSize="@dimen/xlarge_textSize"
             android:gravity="center"
-            android:textColor="@color/primarygreen"
+            android:textColor="@color/primarydarker"
             android:layout_marginTop="@dimen/medium_margin"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="0.5dp"
-            android:background="@color/greylight"
+            android:layout_height="1dp"
+            android:background="@color/primarygreen"
             android:layout_marginTop="@dimen/large_margin"/>
 
         <TextView
@@ -51,14 +51,15 @@
             android:layout_marginTop="@dimen/large_margin" />
 
         <Button
-            android:id="@+id/btnKhamPhaNgay"
-            android:layout_width="match_parent"
+            android:id="@+id/btnCallAction"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Khám phá ngay"
             android:textSize="@dimen/medium_textSize"
             android:fontFamily="@font/gilroy_semibold"
             android:backgroundTint="@color/primarygreen"
             android:layout_gravity="center"
+            android:paddingHorizontal="@dimen/vertical_padding"
             android:layout_marginTop="@dimen/large_margin"/>
 
 
