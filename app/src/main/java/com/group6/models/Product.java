@@ -8,7 +8,7 @@ public class Product implements Serializable {
     int categoryID;
     String productName;
     double productPrice;
-    double productDiscountPrice;
+    double productDiscountPercent;
     String productDescription;
     int productImage;
     boolean isHot;
@@ -18,13 +18,13 @@ public class Product implements Serializable {
     List<Review> review;
 
     public Product(int productID, int categoryID, String productName, double productPrice,
-                   double productDiscountPrice, String productDescription, int productImage,
+                   double productDiscountPercent, String productDescription, int productImage,
                    boolean isHot, boolean isFavorite, double ratingValue, int ratingCount, List<Review> review) {
         this.productID = productID;
         this.categoryID = categoryID;
         this.productName = productName;
         this.productPrice = productPrice;
-        this.productDiscountPrice = productDiscountPrice;
+        this.productDiscountPercent = productDiscountPercent;
         this.productDescription = productDescription;
         this.productImage = productImage;
         this.isHot = isHot;
@@ -66,12 +66,12 @@ public class Product implements Serializable {
         this.productPrice = productPrice;
     }
 
-    public double getProductDiscountPrice() {
-        return productDiscountPrice;
+    public double getProductDiscountPercent() {
+        return productDiscountPercent;
     }
 
-    public void setProductDiscountPrice(double productDiscountPrice) {
-        this.productDiscountPrice = productDiscountPrice;
+    public void setProductDiscountPercent(double productDiscountPercent) {
+        this.productDiscountPercent = productDiscountPercent;
     }
 
     public String getProductDescription() {

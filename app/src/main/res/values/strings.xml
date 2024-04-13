@@ -143,6 +143,8 @@
     <string name="category">Danh mục sản phẩm</string>
     <string name="input_voucher">Nhập mã giảm giá</string>
     <string name="mission">“Không chỉ nỗ lực và quan tâm đến vẻ đẹp của khách hàng, OriYoung còn hành động tích cực vì xã hội, đại diện cho thế hệ làm đẹp có ý thức"</string>
+    <string name="discount_title">Deal hời - Giảm giá sốc</string>
+    <string name="brand">Thương hiệu</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
