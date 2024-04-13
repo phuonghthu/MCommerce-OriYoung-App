@@ -71,7 +71,7 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo_facebook"/>
+                android:src="@drawable/logo_mail"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +97,33 @@
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_account"/>
+                android:src="@drawable/ic_call"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="19001000"
+                android:textColor="@color/black"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:layout_gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/btnAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_round_button"
+            app:backgroundTint="@null"
+            android:padding="10dp"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_address"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -109,7 +135,6 @@
                 android:layout_marginStart="@dimen/medium_margin"
                 android:layout_gravity="center"/>
         </LinearLayout>
-    </LinearLayout>
 
     </LinearLayout>
 
