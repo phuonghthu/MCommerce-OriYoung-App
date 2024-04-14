@@ -83,19 +83,19 @@
                 android:gravity="center"
                 android:horizontalSpacing="10dp"
                 android:numColumns="3"
-                android:padding="10dp"
+                android:padding="2dp"
+                android:layout_marginTop="5dp"
                 android:stretchMode="columnWidth"
-                android:verticalSpacing="10dp"
+                android:isScrollContainer="false"
+                android:verticalSpacing="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/danhmuc" />
-
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Gần đây"
-                android:layout_marginTop="20dp"
                 android:fontFamily="@font/gilroy_bold"
                 android:textSize="@dimen/small_textSize"/>
             <LinearLayout

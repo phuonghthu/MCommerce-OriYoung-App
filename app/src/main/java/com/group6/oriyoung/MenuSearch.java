@@ -20,6 +20,7 @@ public class MenuSearch extends AppCompatActivity {
         binding = ActivityMenuSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         // Initialize list of categories
         categories = new ArrayList<>();
         categories.add(new Category(0, "Tẩy trang"));
