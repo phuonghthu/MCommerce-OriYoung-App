@@ -42,6 +42,7 @@
                         android:layout_marginStart="15dp"
                         android:background="@drawable/search_view_bg"
                         android:queryHint="Tìm sản phẩm"
+                        android:iconifiedByDefault="false"
                         app:layout_constraintTop_toTopOf="parent" /> <!-- Đặt ràng buộc cho SearchView đến đầu của ConstraintLayout -->
                 </LinearLayout>
                 <Button
