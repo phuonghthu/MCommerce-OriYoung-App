@@ -39,6 +39,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.txtName.setText(products.get(position).getProductName());
         holder.txtPrice.setText(String.valueOf(Math.round(products.get(position).getProductPrice())) + " VNĐ");
 
+        //Favorite system
+
     }
 
     @Override
@@ -47,8 +49,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     }
 
     public class ProductViewHolder extends RecyclerView.ViewHolder{
-        ImageView imvProductThumb;
-        TextView txtName, txtPrice, txtRatingValue;
+        ImageView imvProductThumb, imvAddToFav;
+        TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
 
 
         public ProductViewHolder(@NonNull View itemView) {
@@ -57,6 +59,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             txtName= itemView.findViewById(R.id.txtName);
             txtPrice= itemView.findViewById(R.id.txtPrice);
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
+            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
+            imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
+
         }
     }
 }
