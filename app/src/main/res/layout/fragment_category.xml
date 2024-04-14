@@ -20,7 +20,8 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/search_bar"
         android:layout_marginTop="@dimen/large_margin"
-        android:paddingHorizontal="@dimen/horizontal_padding">
+        android:paddingHorizontal="@dimen/horizontal_padding"
+        android:paddingBottom="60dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +35,8 @@
             android:layout_height="wrap_content"
             app:spanCount="2"
             android:clipToPadding="true"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:scrollbarAlwaysDrawVerticalTrack="true"/>
     </LinearLayout>
 
 
