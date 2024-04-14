@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuSearch"
+    android:layout_marginVertical="@dimen/vertical_padding"
+    android:layout_marginHorizontal="@dimen/horizontal_padding">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"> <!-- Thêm padding cho ConstraintLayout để SearchView không ăn vào mép -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toTopOf="parent">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/round_arrow_back_green"
+                        android:layout_gravity="center_vertical"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/search_bar" />
+                    <SearchView
+                        android:id="@+id/search_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/search_view_bg"
+                        android:queryHint="Tìm sản phẩm"
+                        app:layout_constraintTop_toTopOf="parent" /> <!-- Đặt ràng buộc cho SearchView đến đầu của ConstraintLayout -->
+                </LinearLayout>
+                <Button
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginEnd="10dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="68dp"
+                    android:layout_height="45dp"
+                    android:backgroundTint="@color/primarygreen"
+                    android:text="Tìm"
+                    android:textSize="@dimen/small_textSize"
+                    android:fontFamily="@font/gilroy_semibold"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh mục"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_textSize"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <Button
+                    android:id="@+id/dmTaytrang"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/primarybackground"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:text="Tẩy trang"
+                    android:textColor="@color/primarygreen"
+                    android:textSize="@dimen/small_textSize" />
+
+                <Button
+                    android:id="@+id/dmSuaruamat"
+                    android:layout_width="109dp"
+                    android:layout_height="40dp"
+                    android:text="Sữa rửa mặt"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+                <Button
+                    android:id="@+id/dmSerum"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:text="Serum"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+                <Button
+                    android:id="@+id/dmKemduong"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:text="Kem dưỡng"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/dmChongnang"
+                    android:layout_width="109dp"
+                    android:layout_height="40dp"
+                    android:text="Chống nắng"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+                <Button
+                    android:id="@+id/dmMatna"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:text="Mặt nạ"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
+                <Button
+                    android:id="@+id/dmXitkhoang"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:text="Xịt khoáng"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"/>
+                <Button
+                    android:id="@+id/dmDuongmat"
+                    android:layout_width="109dp"
+                    android:layout_height="40dp"
+                    android:text="Dưỡng mắt"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+                <Button
+                    android:id="@+id/dmDuongmoi"
+                    android:layout_width="107dp"
+                    android:layout_height="40dp"
+                    android:text="Dưỡng môi"
+                    android:backgroundTint="@color/primarybackground"
+                    android:textColor="@color/primarygreen"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gần đây"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/small_textSize"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clock"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tẩy trang COCOON"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_clock"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mặt nạ đất sét Beplain"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="10dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
