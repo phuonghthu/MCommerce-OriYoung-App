@@ -12,6 +12,7 @@ import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class SearchListProductAdapter extends ArrayAdapter<Product> {
@@ -57,22 +58,26 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
 
     public void filter(String query) {
         query = query.toLowerCase().trim(); // Chuyển đổi văn bản tìm kiếm thành chữ thường và loại bỏ khoảng trắng đầu cuối
-        productList.clear(); // Xóa danh sách sản phẩm hiện tại
 
-        if (query.isEmpty()) {
-            // Nếu văn bản tìm kiếm rỗng, hiển thị toàn bộ danh sách sản phẩm
-            productList.addAll(filteredList);
-        } else {
-            // Nếu không, lọc danh sách sản phẩm dựa trên văn bản tìm kiếm
-            for (Product product : filteredList) {
+        ArrayList<Product> matchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
+
+        if (!query.isEmpty()) {
+            // Duyệt qua danh sách sản phẩm để tìm kiếm trùng khớp
+            for (Iterator<Product> iterator = filteredList.iterator(); iterator.hasNext(); ) {
+                Product product = iterator.next();
                 if (product.getProductName().toLowerCase().startsWith(query)) {
-                    productList.add(product);
+                    matchedProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
+                    iterator.remove(); // Loại bỏ sản phẩm trùng khớp khỏi danh sách gốc
                 }
             }
         }
 
+        // Thêm các sản phẩm trùng khớp vào đầu danh sách gốc
+        productList.addAll(0, matchedProducts);
+
         // Cập nhật lại ListView
         notifyDataSetChanged();
     }
+
 
 }
