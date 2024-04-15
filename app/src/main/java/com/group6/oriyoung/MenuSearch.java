@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,6 +33,7 @@ public class MenuSearch extends AppCompatActivity {
         binding = ActivityMenuSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         addEvents();
+
 
         // Initialize GridView for categories
         GridView gridView = findViewById(R.id.category_grid_view);
@@ -84,7 +86,22 @@ public class MenuSearch extends AppCompatActivity {
                 }
             }
         });
+
+        binding.searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Gọi phương thức filter của adapter khi văn bản tìm kiếm thay đổi
+                productAdapter.filter(newText);
+                return true;
+            }
+        });
     }
+
 
     private void addEvents() {
         binding.imvback.setOnClickListener(new View.OnClickListener() {
