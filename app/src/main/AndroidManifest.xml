@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,10 +18,10 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".CartActivity"
+            android:name=".MenuSearch"
             android:exported="false" />
         <activity
-            android:name=".UserInformation"
+            android:name=".NotiActivity"
             android:exported="false" />
         <activity
             android:name=".ContactOriyoung"
@@ -40,16 +45,19 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".UserInformation"
             android:exported="false" />
         <activity
             android:name=".UserInfoDetail"
             android:exported="false" />
         <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+        <activity
             android:name=".ProductDetail"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".SignUp"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
@@ -70,13 +78,14 @@
             android:name=".SupportCenter"
             android:exported="false" />
         <activity
-            android:name=".SignUp"
+            android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".ProductCatalog"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

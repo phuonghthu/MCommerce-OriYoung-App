@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -28,6 +29,8 @@ import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
+import com.group6.oriyoung.MenuSearch;
+import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.SearchBarActivity;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
@@ -119,16 +122,16 @@ public class HomeFragment extends Fragment {
                 true, true, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         productAdapter = new ProductAdapter(getContext(), product);
         binding.rvHotProduct.setAdapter(productAdapter);
     }
@@ -206,6 +209,24 @@ public class HomeFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CartActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        binding.searchBar.btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NotiActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.searchBar.edtSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // Chuyển sang màn hình SearchActivity khi EditText nhận focus
+                    Intent intent = new Intent(getActivity(), MenuSearch.class);
+                    startActivity(intent);
+                }
             }
         });
     }
