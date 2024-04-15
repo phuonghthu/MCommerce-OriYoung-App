@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuSearch">
+    tools:context=".MenuSearch"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -44,7 +45,7 @@
                         android:background="@drawable/search_view_bg"
                         android:queryHint="Tìm sản phẩm"
                         android:iconifiedByDefault="false"
-                        app:layout_constraintTop_toTopOf="parent" /> <!-- Đặt ràng buộc cho SearchView đến đầu của ConstraintLayout -->
+                        app:layout_constraintTop_toTopOf="parent" />
                 </LinearLayout>
                 <Button
                     app:layout_constraintTop_toTopOf="parent"
@@ -66,6 +67,10 @@
                 android:layout_height="0.8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/grey" />
+            <ListView
+                android:id="@+id/lvSearchSanpham"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
 
             <TextView
                 android:id="@+id/danhmuc"
