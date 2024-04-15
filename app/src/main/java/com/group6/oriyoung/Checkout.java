@@ -54,5 +54,13 @@ public class Checkout extends AppCompatActivity {
                 finish();
             }
         });
+        binding.btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInforReceiving dialogInforReceiving = new DialogInforReceiving(Checkout.this);
+                dialogInforReceiving.show();
+            }
+        });
     }
+
 }

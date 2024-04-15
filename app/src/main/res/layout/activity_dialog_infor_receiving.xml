@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".DialogInforReceiving"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:padding="@dimen/horizontal_padding"
+    android:background="@drawable/bg_dialog_white">
+    <ImageView
+        android:id="@+id/imvCharacter3"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/character3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/txtsucessfullyorder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Đặt hàng thành công"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center"
+        android:textSize="@dimen/h3_textSize"
+        android:textColor="@color/primarygreen"
+        app:layout_constraintTop_toBottomOf="@id/imvCharacter3"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    <View
+        android:id="@+id/viewline"
+        android:layout_width="330dp"
+        android:layout_height="1dp"
+        android:background="@color/primarygreen"
+        app:layout_constraintTop_toBottomOf="@id/txtsucessfullyorder"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/txtNotiEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bạn sẽ nhận được email xác nhận"
+        android:textColor="@color/black"
+        android:fontFamily="@font/gilroy_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewline"
+        android:layout_marginTop="20dp"
+        android:gravity="center" />
+    <Button
+        android:id="@+id/btnOrderDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtNotiEmail"
+        android:layout_marginTop="20dp"
+        android:text="XEM CHI TIẾT ĐƠN HÀNG"
+        android:textColor="@color/white"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center"
+        android:backgroundTint="@color/primarygreen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
