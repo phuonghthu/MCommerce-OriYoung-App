@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".DialogInforReceiving"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:padding="@dimen/horizontal_padding"
+    android:background="@drawable/bg_dialog_white">
+    <TextView
+        android:id="@+id/txtInforReceiving"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Thông tin nhận hàng"
+        android:fontFamily="@font/gilroy_bold"
+        android:gravity="center"
+        android:textSize="@dimen/large_textSize"
+        android:textColor="@color/primarygreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="15dp" />
+    <View
+        android:id="@+id/viewline"
+        android:layout_width="330dp"
+        android:layout_height="1dp"
+        android:background="@color/primarygreen"
+        app:layout_constraintTop_toBottomOf="@id/txtInforReceiving"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"/>
+    <TextView
+        android:id="@+id/txtnewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Họ và tên"
+        android:fontFamily="@font/gilroy_regular"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewline"
+        android:layout_marginTop="20dp"/>
+    <TextView
+        android:id="@+id/redrequired1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintStart_toEndOf="@id/txtnewName"
+        app:layout_constraintTop_toTopOf="@id/txtnewName"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="2dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayout1"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:hint="Nhập họ và tên"
+        app:helperTextTextColor="#F44336"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/txtnewName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtInputEditText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtnewPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số điện thoại"
+        android:fontFamily="@font/gilroy_regular"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayout1"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/redrequired2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintStart_toEndOf="@id/txtnewPhone"
+        app:layout_constraintTop_toTopOf="@id/txtnewPhone"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="2dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayout2"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="2dp"
+        android:hint="Nhập số điện thoại"
+        app:helperTextTextColor="#F44336"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/txtnewPhone">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txtnewAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Địa chỉ"
+        android:fontFamily="@font/gilroy_regular"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayout2"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/redrequired3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintStart_toEndOf="@id/txtnewAddress"
+        app:layout_constraintTop_toTopOf="@id/txtnewAddress"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="2dp"/>
+    <LinearLayout
+        android:id="@+id/linearLayoutInputAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/txtnewAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp">
+
+
+        <Spinner
+            android:id="@+id/spinnerProvince"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="5dp" />
+
+
+        <Spinner
+            android:id="@+id/spinnerDistrict"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp" />
+
+
+        <Spinner
+            android:id="@+id/spinnerVillage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="5dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtpaticularAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số điện thoại"
+        android:fontFamily="@font/gilroy_regular"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayoutInputAddress"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/redrequired4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#F44336"
+        app:layout_constraintStart_toEndOf="@id/txtpaticularAddress"
+        app:layout_constraintTop_toTopOf="@id/txtpaticularAddress"
+        android:textSize="@dimen/xsmall_textSize"
+        android:layout_marginStart="2dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutPaticularAddress"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="2dp"
+        android:hint="Nhập địa chỉ của bạn"
+        app:helperTextTextColor="#F44336"
+        app:endIconMode="clear_text"
+        app:layout_constraintTop_toBottomOf="@id/txtpaticularAddress">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <LinearLayout
+        android:id="@+id/linearButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayoutPaticularAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btnHUY"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:backgroundTint="@color/grey"
+            android:text="HỦY"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btnLUUTHAYDOI"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:backgroundTint="@color/primarygreen"
+            android:text="LƯU THAY ĐỔI"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
