@@ -147,6 +147,19 @@
     <string name="brand">Thương hiệu</string>
     <string name="my_voucher_noti">Bạn chưa có ưu đãi nào!</string>
     <string name="go_to_store">Đi đến cửa hàng</string>
+    <string name="add">+</string>
+    <string name="decrease">-</string>
+    <string name="quantity">1</string>
+    <string name="add_product">Thêm giỏ hàng</string>
+    <string name="buy">Mua ngay</string>
+    <string name="rating_count">(2 lượt đánh giá)</string>
+    <string name="product_description_title">Thông tin sản phẩm</string>
+    <string name="product_description">Làm sạch sâu lớp trang điểm, bụi bẩn và bã nhờn trên bề mặt da. Dịu nhẹ, thông thoáng và không làm bí da. Kiểm soát dầu thừa, hỗ trợ trong việc chăm sóc da mụn.</string>
+    <string name="review_title">Đánh giá từ khách hàng</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="user_name">Cao Hương Giang</string>
+    <string name="review_detail">Mới test nhưng thấy cũng oke, shop thì nhiệt tình</string>
+    <string name="recommend_product">Sản phẩm tương tự</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
