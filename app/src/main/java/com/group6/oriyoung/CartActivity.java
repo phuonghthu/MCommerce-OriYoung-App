@@ -28,7 +28,26 @@ public class CartActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.toolbar.toolbarTitle.setText("Giỏ hàng");
         loadData();
-//        addEvent();
+        addEvent();
+    }
+
+    private void addEvent() {
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+//        binding.cartbill.findViewById(R.id.btnCheckout).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+//                finish();
+//            }
+//        });
+
+
     }
 
 
@@ -46,13 +65,5 @@ public class CartActivity extends AppCompatActivity {
         binding.rvCart.setAdapter(adapter);
     }
 
-//    private void addEvent() {
-//        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(CartActivity.this, .class);
-//                finish();
-//            }
-//        });
-//    }
+
 }

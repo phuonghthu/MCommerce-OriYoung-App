@@ -31,9 +31,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/medium_textSize"
             app:titleMarginStart="-8dp" />
-
     </androidx.appcompat.widget.Toolbar>
-
     <ImageView
         android:id="@+id/imvCart"
         android:layout_width="30dp"

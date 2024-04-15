@@ -60,7 +60,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".signup_success"
@@ -81,7 +81,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

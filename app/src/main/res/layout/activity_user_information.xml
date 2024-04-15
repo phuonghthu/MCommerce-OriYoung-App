@@ -8,6 +8,7 @@
     android:paddingBottom="@dimen/horizontal_padding"
     tools:context=".UserInformation"
     android:paddingVertical="@dimen/vertical_padding"
+    android:background="@color/primarybackground"
     android:orientation="vertical">
     <include layout="@layout/custom_toolbar_back"
         android:id="@+id/toolbar"/>
