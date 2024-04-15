@@ -53,6 +53,9 @@ public class MenuSearch extends AppCompatActivity {
         categories.add(new Category(0, "Xịt khoáng"));
         categories.add(new Category(0, "Dưỡng mắt"));
         categories.add(new Category(0, "Dưỡng môi"));
+        categories.add(new Category(0, "Toner"));
+        categories.add(new Category(0, "Tẩy tế bào chết"));
+        categories.add(new Category(0, "Tất cả"));
         // Add other categories here...
 
         // Initialize Adapter and set up GridView for categories

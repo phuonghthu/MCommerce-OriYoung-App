@@ -39,15 +39,17 @@
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/search_bar" />
                     <SearchView
-                        android:id="@+id/search_bar"
                         android:queryBackground="@null"
+                        android:id="@+id/search_bar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:background="@drawable/search_view_bg"
+                        android:background="@drawable/button_layout_white_green"
                         android:queryHint="Tìm sản phẩm"
                         android:iconifiedByDefault="false"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:textSize="@dimen/small_textSize"
+                        android:fontFamily="@font/gilroy_regular"/>
                 </LinearLayout>
                 <Button
                     app:layout_constraintTop_toTopOf="parent"
@@ -88,16 +90,15 @@
             <GridView
                 android:id="@+id/category_grid_view"
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="220dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:horizontalSpacing="10dp"
+                android:verticalSpacing="5dp"
                 android:numColumns="3"
-                android:padding="2dp"
                 android:layout_marginTop="5dp"
                 android:stretchMode="columnWidth"
                 android:isScrollContainer="false"
-                android:verticalSpacing="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/danhmuc" />
