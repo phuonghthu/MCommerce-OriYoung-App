@@ -210,12 +210,14 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        binding.searchBar.edtSearch.setOnClickListener(new View.OnClickListener() {
+        binding.searchBar.edtSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View v) {
-                // Chuyển sang màn hình SearchActivity khi click vào thanh tìm kiếm
-                Intent intent = new Intent(getActivity(), MenuSearch.class);
-                startActivity(intent);
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    // Chuyển sang màn hình SearchActivity khi EditText nhận focus
+                    Intent intent = new Intent(getActivity(), MenuSearch.class);
+                    startActivity(intent);
+                }
             }
         });
     }
