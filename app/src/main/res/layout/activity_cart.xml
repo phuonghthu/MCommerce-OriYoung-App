@@ -21,6 +21,7 @@
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
             app:layout_constraintBottom_toTopOf="@+id/cartbill">
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCart"
                     android:layout_width="match_parent"

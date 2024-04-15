@@ -44,8 +44,6 @@ public class CartActivity extends AppCompatActivity {
 //        adapter = new CartAdapter(getApplicationContext(), carts);
         adapter = new CartAdapter(getApplicationContext(), carts);
         binding.rvCart.setAdapter(adapter);
-
-
     }
 
 //    private void addEvent() {

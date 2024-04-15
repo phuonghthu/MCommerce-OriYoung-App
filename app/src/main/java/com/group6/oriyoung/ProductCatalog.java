@@ -39,9 +39,8 @@ public class ProductCatalog extends AppCompatActivity {
     }
 
     private void loadDataCatalog() {
-        int numOfRow = 2;
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, RecyclerView.VERTICAL, false);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, numOfRow, LinearLayoutManager.HORIZONTAL, false);
+
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
         binding.rvCatalog.setLayoutManager(layoutManager);
         binding.rvCatalog.setHasFixedSize(true);
         catalog = new ArrayList<>();
@@ -117,6 +116,12 @@ public class ProductCatalog extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
 

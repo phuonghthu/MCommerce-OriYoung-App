@@ -5,6 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="@dimen/vertical_padding"
+    android:backgroundTint="@color/white"
     android:background="@drawable/bottomsheet_bg">
     <LinearLayout
         android:id="@+id/Title"
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="10"
+        android:backgroundTint="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="30dp"
         android:background="@color/secondarybackground">

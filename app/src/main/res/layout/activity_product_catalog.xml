@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/secondarybackground"
+    android:background="@color/white"
     android:paddingVertical="@dimen/vertical_padding"
     tools:context=".ProductCatalog">
     <androidx.appcompat.widget.Toolbar
@@ -20,7 +20,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
@@ -36,6 +35,7 @@
         android:id="@+id/imvCart"
         android:layout_width="20dp"
         android:layout_height="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -66,18 +66,17 @@
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/imvSort"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:background="@drawable/stroke_button"
             android:paddingVertical="5dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="8dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="16dp"
                 android:gravity="center"
-                android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_sort"/>
             <TextView
@@ -88,8 +87,7 @@
                 android:fontFamily="@font/gilroy_semibold"
                 android:textColor="@color/black"
                 android:gravity="start"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginStart="8dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/imvFilter"
@@ -99,12 +97,11 @@
             android:paddingVertical="5dp"
             android:gravity="center"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="8dp"
             android:orientation="horizontal">
             <ImageView
                 android:layout_width="16dp"
                 android:gravity="center"
-                android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_filter"/>
             <TextView
@@ -115,12 +112,11 @@
                 android:fontFamily="@font/gilroy_semibold"
                 android:textColor="@color/black"
                 android:gravity="start"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginStart="10dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/imvCatalog"
-            android:layout_width="120dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
             android:background="@drawable/stroke_button"
             android:paddingVertical="5dp"
@@ -130,7 +126,6 @@
             <ImageView
                 android:layout_width="16dp"
                 android:gravity="center"
-                android:layout_marginStart="10dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_catalog"/>
             <TextView
@@ -141,20 +136,50 @@
                 android:fontFamily="@font/gilroy_semibold"
                 android:textColor="@color/black"
                 android:gravity="start"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginStart="10dp"/>
         </LinearLayout>
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/layoutOption">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCatalog"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:padding="@dimen/vertical_padding"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintTop_toBottomOf="@id/layoutOption"/>
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCatalog"
+                android:layout_width="match_parent"
+                android:padding="@dimen/horizontal_padding"
+                app:spanCount="2"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/layoutOption"/>
+            <LinearLayout
+                android:id="@+id/imvSeemore"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:background="@drawable/stroke_button"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:layout_marginEnd="5dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xem thêm"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
+                    android:gravity="start"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="10dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

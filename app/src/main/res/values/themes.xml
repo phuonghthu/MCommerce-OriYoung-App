@@ -11,4 +11,8 @@ k
         <item name="android:windowEnterAnimation">@anim/slide_in</item>
         <item name="android:windowExitAnimation">@anim/slide_out</item>
     </style>
+    <style name="DialogAnimation_Zoom">
+        <item name="android:windowEnterAnimation">@anim/zoom_in</item>
+    </style>
+
 </resources>
