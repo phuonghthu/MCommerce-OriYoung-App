@@ -1,6 +1,7 @@
 package com.group6.oriyoung;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -36,6 +37,48 @@ public class ContactOriyoung extends AppCompatActivity {
             }
         });
 
-        //Binding các nút
+        binding.btnFacebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("https://www.facebook.com/cot.ngontucotcaphe");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("https://www.facebook.com/cot.ngontucotcaphe");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+        });
+
+        binding.btnWebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                Uri uri = Uri.parse("https://oriyoung.io.vn/");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+        });
+        binding.btnPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                Uri uri = Uri.parse("tel:19001000");
+                intent.setData(uri);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }
