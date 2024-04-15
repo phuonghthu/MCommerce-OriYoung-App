@@ -57,33 +57,33 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
     }
 
     public void filter(String query) {
-        query = query.toLowerCase().trim(); // Chuyển đổi văn bản tìm kiếm thành chữ thường và loại bỏ khoảng trắng đầu cuối
+        query = query.toLowerCase().trim();
 
         ArrayList<Product> matchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
+        ArrayList<Product> unmatchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm không trùng khớp
 
         if (!query.isEmpty()) {
-            // Xóa toàn bộ các sản phẩm khỏi danh sách tìm kiếm để bắt đầu tìm kiếm mới
-            filteredList.clear();
-
-            // Thêm lại toàn bộ sản phẩm từ productList vào danh sách tìm kiếm
-            filteredList.addAll(productList);
-
             // Duyệt qua danh sách sản phẩm để tìm kiếm trùng khớp
-            for (Iterator<Product> iterator = filteredList.iterator(); iterator.hasNext(); ) {
-                Product product = iterator.next();
+            for (Product product : productList) {
                 if (product.getProductName().toLowerCase().startsWith(query)) {
                     matchedProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
-                    iterator.remove(); // Loại bỏ sản phẩm trùng khớp khỏi danh sách lọc
+                } else {
+                    unmatchedProducts.add(product); // Thêm sản phẩm không trùng khớp vào danh sách mới
                 }
             }
+        } else {
+            matchedProducts.addAll(productList); // Nếu query rỗng, thì danh sách không trùng khớp sẽ giống với danh sách gốc
         }
 
-        // Thêm các sản phẩm trùng khớp vào đầu danh sách gốc
-        productList.addAll(0, matchedProducts);
+        // Đưa các sản phẩm trùng khớp lên đầu danh sách
+        productList.clear();
+        productList.addAll(matchedProducts);
+        productList.addAll(unmatchedProducts);
 
-        // Cập nhật lại ListView
+        // Cập nhật lại RecyclerView
         notifyDataSetChanged();
     }
+
 
 
 
