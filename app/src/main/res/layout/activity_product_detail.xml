@@ -137,7 +137,8 @@
                 <include layout="@layout/product_description_layout"
                     android:id="@+id/layoutdescription"/>
                 <include layout="@layout/review_layout"
-                    android:id="@+id/layoutreview"/>
+                    android:id="@+id/layoutreview"/>/>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
