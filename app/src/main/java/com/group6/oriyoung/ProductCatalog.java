@@ -38,26 +38,9 @@ public class ProductCatalog extends AppCompatActivity {
         loadDataCatalog();
         filterEvent();
         addIntent();
-        addEvent();
 
     }
 
-    private void addEvent() {
-        binding.toolbarCatalog.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductCatalog.this, HomeActivity.class);
-                finish();
-            }
-        });
-        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductCatalog.this, MenuSearch.class);
-                finish();
-            }
-        });
-    }
 
     private void loadDataCatalog() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
@@ -139,12 +122,20 @@ public class ProductCatalog extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        binding.toolbarCatalog.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductCatalog.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductCatalog.this, MenuSearch.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

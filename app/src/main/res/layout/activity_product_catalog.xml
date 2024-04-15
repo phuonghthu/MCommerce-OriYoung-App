@@ -8,30 +8,6 @@
     android:background="@color/white"
     android:paddingVertical="@dimen/vertical_padding"
     tools:context=".ProductCatalog">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCatalog"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_back"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-        <TextView
-            android:id="@+id/txtTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/gilroy_medium"
-            android:text="Tẩy trang"
-            android:textColor="@color/black"
-            android:textSize="@dimen/medium_textSize"
-            app:titleMarginStart="-8dp" />
-    </androidx.appcompat.widget.Toolbar>
     <ImageView
         android:id="@+id/imvCart"
         android:layout_width="30dp"
@@ -55,6 +31,30 @@
         android:src="@drawable/ic_search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbarCatalog" />
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarCatalog"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_back"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gilroy_medium"
+            android:text="Tẩy trang"
+            android:textColor="@color/black"
+            android:textSize="@dimen/medium_textSize"
+            app:titleMarginStart="-8dp" />
+    </androidx.appcompat.widget.Toolbar>
+
 
     <LinearLayout
         android:id="@+id/layoutOption"
