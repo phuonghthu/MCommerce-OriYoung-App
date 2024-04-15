@@ -42,6 +42,7 @@ public class Checkout extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Checkout.this, CartActivity.class);
+                startActivity(intent);
                 finish();
             }
         });

@@ -153,4 +153,28 @@
         <item name="android:buttonTint">@color/primarydarker</item>
         <item name="android:fontFamily">@font/gilroy_regular</item>
     </style>
+    <string-array name="province_array">
+        <item>Chọn tỉnh</item>
+        <item>Hà Nội</item>
+        <item>TP. Hồ Chí Minh</item>
+        <item>Đà Nẵng</item>
+        <item>Hải Phòng</item>
+    </string-array>
+
+    <string-array name="district_array">
+        <item>Chọn quận</item>
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Quận 4</item>
+
+    </string-array>
+
+    <string-array name="village_array">
+        <item>Chọn phường</item>
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+    </string-array>
 </resources>

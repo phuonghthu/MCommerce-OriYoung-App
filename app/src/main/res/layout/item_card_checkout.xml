@@ -58,9 +58,10 @@
                         android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:textSize="@dimen/medium_textSize"
-                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/small_textSize"
+                        android:fontFamily="@font/gilroy_regular"
                         android:textColor="@color/white"
+                        android:paddingHorizontal="@dimen/horizontal_padding"
                         android:background="@drawable/bg_discount" />
                     <Space
                         android:layout_width="0dp"

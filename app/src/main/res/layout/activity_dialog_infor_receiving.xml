@@ -60,17 +60,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:hint="Nhập họ và tên"
+        app:hintEnabled="false"
         app:helperTextTextColor="#F44336"
         app:endIconMode="clear_text"
         app:layout_constraintTop_toBottomOf="@id/txtnewName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        style="@style/HintText"
+        app:boxStrokeErrorColor="@color/error">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txtInputEditText1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Nhập họ và tên"
+            android:textColorHint="@color/greylight"
+            android:background="@drawable/stroke"
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@+id/txtnewPhone"
@@ -100,14 +107,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="2dp"
-        android:hint="Nhập số điện thoại"
+        app:hintEnabled="false"
         app:helperTextTextColor="#F44336"
+        style="@style/HintText"
         app:endIconMode="clear_text"
+        app:boxStrokeErrorColor="@color/error"
         app:layout_constraintTop_toBottomOf="@id/txtnewPhone">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:background="@drawable/stroke"
+            android:textColorHint="@color/greylight"
+            android:hint="Nhập số điện thoại"/>
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:id="@+id/txtnewAddress"
@@ -138,8 +150,6 @@
         app:layout_constraintTop_toBottomOf="@id/txtnewAddress"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginTop="10dp">
 
 
@@ -148,7 +158,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/stroke"/>
 
 
         <Spinner
@@ -157,7 +168,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp" />
+            android:layout_marginEnd="5dp"
+            style="@style/HintText"
+            android:background="@drawable/stroke"
+       />
 
 
         <Spinner
@@ -165,7 +179,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="5dp" />
+            android:layout_marginStart="5dp"
+            android:background="@drawable/stroke"/>
     </LinearLayout>
 
     <TextView
@@ -196,14 +211,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="2dp"
-        android:hint="Nhập địa chỉ của bạn"
+        app:hintEnabled="false"
+        style="@style/HintText"
         app:helperTextTextColor="#F44336"
         app:endIconMode="clear_text"
+
         app:layout_constraintTop_toBottomOf="@id/txtpaticularAddress">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:hint="Nhập địa chỉ của bạn"
+            android:textColorHint="@color/greylight"
+            android:background="@drawable/stroke" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:id="@+id/linearButtons"

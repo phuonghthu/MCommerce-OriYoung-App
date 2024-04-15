@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.group6.oriyoung.ContactOriyoung;
 import com.group6.oriyoung.HomeActivity;
+import com.group6.oriyoung.Login;
 import com.group6.oriyoung.MyVoucher;
 import com.group6.oriyoung.OnboardingActivity;
 import com.group6.oriyoung.R;
@@ -74,6 +75,13 @@ public class AccountFirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), ContactOriyoung.class);
+                startActivity(intent);
+            }
+        });
+        binding.btnDangnhapngay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Login.class);
                 startActivity(intent);
             }
         });

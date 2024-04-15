@@ -431,7 +431,7 @@
                         android:layout_height="wrap_content"
                         android:text="250.000 VNĐ"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/gilroy_bold"/>
+                        android:fontFamily="@font/gilroy_medium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/ShippingFee"
@@ -455,7 +455,7 @@
                         android:layout_height="wrap_content"
                         android:text="30.000 VNĐ"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/gilroy_bold"/>
+                        android:fontFamily="@font/gilroy_medium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/TotalPayment"
