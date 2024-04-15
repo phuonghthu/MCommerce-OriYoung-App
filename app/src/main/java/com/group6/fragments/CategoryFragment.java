@@ -15,6 +15,7 @@ import com.group6.adapters.MenuAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.models.Category;
 import com.group6.oriyoung.CartActivity;
+import com.group6.oriyoung.MenuSearch;
 import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.databinding.FragmentCategoryBinding;
@@ -78,6 +79,14 @@ public class CategoryFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NotiActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.searchBar.edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang màn hình SearchActivity khi click vào thanh tìm kiếm
+                Intent intent = new Intent(getActivity(), MenuSearch.class);
                 startActivity(intent);
             }
         });

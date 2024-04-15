@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -28,6 +29,7 @@ import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
+import com.group6.oriyoung.MenuSearch;
 import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.SearchBarActivity;
@@ -205,6 +207,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), NotiActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.searchBar.edtSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Chuyển sang màn hình SearchActivity khi click vào thanh tìm kiếm
+                Intent intent = new Intent(getActivity(), MenuSearch.class);
                 startActivity(intent);
             }
         });
