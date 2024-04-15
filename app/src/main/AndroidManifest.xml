@@ -19,7 +19,7 @@
             android:name=".DialogPaymentSuccessfully"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".Checkout"
             android:exported="false" />
         <activity
             android:name=".SearchBarActivity"
@@ -73,7 +73,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".Checkout"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

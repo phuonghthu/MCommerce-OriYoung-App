@@ -3,6 +3,7 @@ package com.group6.oriyoung;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,12 @@ public class DialogInforReceiving extends Dialog {
         super.onCreate(savedInstanceState);
         binding = ActivityDialogInforReceivingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.btnHUY.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
 
     }
 
