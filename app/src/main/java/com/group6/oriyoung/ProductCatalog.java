@@ -2,7 +2,15 @@ package com.group6.oriyoung;
 
 import static java.security.AccessController.getContext;
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,8 +32,14 @@ public class ProductCatalog extends AppCompatActivity {
         binding = ActivityProductCatalogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         loadDataCatalog();
+        filterEvent();
+        addIntent();
+
 
     }
+
+
+
 
     private void loadDataCatalog() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
@@ -44,9 +58,69 @@ public class ProductCatalog extends AppCompatActivity {
         catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, true, 5.0, 100, null ));
-        catalogAdapter = new CatalogAdapter(getContext(), catalog);
+//        catalogAdapter = new CatalogAdapter(getContext(), catalog);
         binding.rvCatalog.setAdapter(catalogAdapter);
     }
+    private void filterEvent() {
+        binding.imvSort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showSortBottomSheet();
+            }
+        });
+        binding.imvFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFilterBottomsheet();
+            }
+        });
+        binding.imvCatalog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showCatalogBottomSheet();
+            }
+        });
+    }
+    private void showCatalogBottomSheet() {
+        Dialog dialog = new Dialog(ProductCatalog.this);
+        dialog.setContentView(R.layout.bottomsheet_list);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setWindowAnimations(R.style.DialogAnimation);
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+    private void showFilterBottomsheet() {
+        Dialog dialog = new Dialog(ProductCatalog.this);
+        dialog.setContentView(R.layout.bottomsheet_filter);
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setWindowAnimations(R.style.DialogAnimation);
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void showSortBottomSheet() {
+        Dialog dialog = new Dialog(ProductCatalog.this);
+        dialog.setContentView(R.layout.bottomsheet_sort);
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setWindowAnimations(R.style.DialogAnimation);
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+    private void addIntent() {
+        binding.imvCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductCatalog.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
 
 
 }

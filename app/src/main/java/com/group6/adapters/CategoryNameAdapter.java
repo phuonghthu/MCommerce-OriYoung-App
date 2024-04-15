@@ -36,6 +36,11 @@ public class CategoryNameAdapter extends BaseAdapter {
         return position;
     }
 
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        return convertView;
+    }
+
 //    @Override
 //    public View getView(int position, View convertView, ViewGroup parent) {
 //        if (convertView == null) {

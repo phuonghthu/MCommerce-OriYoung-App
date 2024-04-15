@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/vertical_padding"
+    android:background="@drawable/bottomsheet_bg">
+<LinearLayout
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="9"
+            android:text="Danh mục sản phẩm"
+            android:fontFamily="@font/gilroy_medium"
+            android:textColor="@color/black"
+            android:textSize="@dimen/medium_textSize" />
+
+        <ImageView
+            android:id="@+id/btnCatalogCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/ic_cancel" />
+    </LinearLayout>
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.8dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/grey"
+        app:layout_constraintTop_toBottomOf="@+id/Title"
+        tools:layout_editor_absoluteX="30dp" />
+
+    <TableLayout
+        android:id="@+id/Table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:weightSum="3"
+        app:layout_constraintTop_toBottomOf="@+id/view">
+        <TableRow>
+            <ImageView
+                android:id="@+id/btnTaytrang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_cleanser" />
+
+            <ImageView
+                android:id="@+id/btnSRM"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_srm" />
+
+            <ImageView
+                android:id="@+id/btnSerum"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:src="@drawable/button_serum" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="15dp">
+            <ImageView
+                android:id="@+id/btnKemDuong"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_kemduong" />
+
+            <ImageView
+                android:id="@+id/btnChongNang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_chongnang" />
+
+            <ImageView
+                android:id="@+id/btnMatNa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:src="@drawable/button_matna" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/btnXitKhoang"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_xitkhoang" />
+
+            <ImageView
+                android:id="@+id/btnDuongMat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_duongmat" />
+
+            <ImageView
+                android:id="@+id/btnDuongMoi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:src="@drawable/button_duongmoi" />
+        </TableRow>
+
+        <TableRow android:layout_marginTop="15dp">
+
+            <ImageView
+                android:id="@+id/btnToner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_toner" />
+
+            <ImageView
+                android:id="@+id/btnTayTeBaoChet"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/button_taytebaochet" />
+
+            <ImageView
+                android:id="@+id/btnAll"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:src="@drawable/button_all" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

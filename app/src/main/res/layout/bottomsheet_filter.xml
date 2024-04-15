@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/vertical_padding"
+    android:background="@drawable/bottomsheet_bg">
+    <LinearLayout
+        android:id="@+id/layoutTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="30dp">
+        <LinearLayout
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:text="Bộ lọc giá"
+                android:fontFamily="@font/gilroy_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_textSize" />
+
+            <ImageView
+                android:id="@+id/btnFilterCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_cancel" />
+        </LinearLayout>
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.8dp"
+            android:layout_marginTop="15dp"
+            android:background="@color/grey"
+            tools:layout_editor_absoluteX="30dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/layoutTitle">
+        <CheckBox
+            android:id="@+id/checkBoxUnder100k"
+            android:text="Dưới 100.000₫"
+            android:fontFamily="@font/gilroy_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox100kTo250k"
+            android:text="100.000đ - 250.000đ"
+            android:fontFamily="@font/gilroy_regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBox250kTo400k"
+            android:text="250.000đ - 400.000đ"
+            android:fontFamily="@font/gilroy_regular"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <CheckBox
+            android:id="@+id/checkBoxOver400k"
+            android:text="Trên 400.000đ"
+            android:fontFamily="@font/gilroy_regular"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
