@@ -40,7 +40,7 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".ProductCatalog"
+            android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".UserInfoDetail"
@@ -73,7 +73,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".ProductCatalog"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

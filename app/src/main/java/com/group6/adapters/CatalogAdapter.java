@@ -45,6 +45,11 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         return catalog.size();
     }
 
+    public void addItems(ArrayList<Product> newProducts) {
+        catalog.addAll(newProducts);
+        notifyDataSetChanged();
+    }
+
     public class CatalogViewHolder extends RecyclerView.ViewHolder {
         ImageView imvProductThumb;
         TextView txtName, txtPrice, txtRatingValue;
