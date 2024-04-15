@@ -40,13 +40,10 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".UserInformation"
+            android:name=".ProductCatalog"
             android:exported="false" />
         <activity
             android:name=".UserInfoDetail"
-            android:exported="false" />
-        <activity
-            android:name=".CartActivity"
             android:exported="false" />
         <activity
             android:name=".ProductDetail"
@@ -77,7 +74,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ProductCatalog"
+            android:name=".UserInformation"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

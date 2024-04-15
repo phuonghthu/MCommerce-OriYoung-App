@@ -48,6 +48,7 @@
         android:layout_marginTop="20dp"
         android:weightSum="3"
         app:layout_constraintTop_toBottomOf="@+id/view">
+
         <TableRow>
             <ImageView
                 android:id="@+id/btnTaytrang"
@@ -55,7 +56,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:src="@drawable/button_cleanser" />
-
             <ImageView
                 android:id="@+id/btnSRM"
                 android:layout_width="0dp"

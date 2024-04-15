@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".UserInfoDetail"
+    android:paddingVertical="@dimen/vertical_padding"
     android:background="@color/design_default_color_background">
     <include layout="@layout/custom_toolbar_back"
         android:id="@+id/toolbar"/>
@@ -43,11 +44,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Tên khách hàng"
-                        android:textColorHint="@color/primarygreen"
+                        android:textColorHint="@color/black"
                         android:fontFamily="@font/gilroy_regular"
-                        android:inputType="phone"
+                        android:inputType="text"
                         android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/stroke"
+                        android:background="@drawable/button_bg_state"
                         android:layout_marginBottom="15dp"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -73,13 +74,13 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Ngày sinh"
-                        android:textColorHint="@color/primarygreen"
+                        android:layout_marginBottom="15dp"
+                        android:background="@drawable/button_bg_state"
                         android:fontFamily="@font/gilroy_regular"
-                        android:inputType="phone"
-                        android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/stroke"
-                        android:layout_marginBottom="15dp"/>
+                        android:hint="Ngày sinh"
+                        android:inputType="date"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/medium_textSize" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
@@ -108,13 +109,21 @@
                         android:layout_height="wrap_content"
                         android:hint="Số điện thoại"
                         android:enabled="false"
-                        android:textColorHint="@color/primarygreen"
+                        android:textColorHint="@color/black"
                         android:fontFamily="@font/gilroy_regular"
                         android:inputType="phone"
                         android:textSize="@dimen/medium_textSize"
                         android:background="@drawable/stroke"
-                        android:layout_marginBottom="15dp"/>
+                        android:backgroundTint="#16000000"/>
                 </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vui lòng liên hệ nhân viên CSKH để thay đổi số điện thoại"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:textColor="@color/error"
+                    android:layout_marginBottom="15dp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,10 +141,8 @@
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
                     app:layout_constraintTop_toBottomOf="@id/toolbar"
-                    app:hintEnabled="false"
                     app:endIconMode="clear_text"
-                    app:errorContentDescription="Để thay đổi thông tin địa chỉ email, vui lòng liên hệ bộ phận chăm sóc khách hàng"
-                    app:boxStrokeErrorColor="@color/error"
+                    app:errorContentDescription="Vui lòng liên hệ nhân viên CSKH để thay đổi số điện thoại."
                     app:errorIconDrawable="@drawable/ic_error">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -146,9 +153,16 @@
                         android:inputType="phone"
                         android:enabled="false"
                         android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/stroke"
-                        android:layout_marginBottom="15dp"/>
+                        android:backgroundTint="#16000000"
+                        android:background="@drawable/stroke"/>
                 </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Vui lòng liên hệ nhân viên CSKH để thay đổi địa chỉ email."
+                    android:fontFamily="@font/gilroy_regular"
+                    android:textSize="@dimen/small_textSize"
+                    android:textColor="@color/error"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,7 +178,7 @@
                     android:layout_marginBottom="15dp"
                     android:backgroundTint="@color/primarygreen"
                     android:fontFamily="@font/gilroy_bold"
-                    android:text="@string/infoDetail_btnEdit"
+                    android:text="Lưu"
                     android:textSize="14dp"
                     tools:ignore="TextSizeCheck"
                     android:layout_marginRight="25dp"/>
@@ -183,5 +197,4 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
