@@ -28,6 +28,7 @@ import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
+import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.SearchBarActivity;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
@@ -109,16 +110,16 @@ public class HomeFragment extends Fragment {
 
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
+                true, false, 5.0, 100, null ));
         productAdapter = new ProductAdapter(getContext(), product);
         binding.rvHotProduct.setAdapter(productAdapter);
 
@@ -196,6 +197,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), CartActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.searchBar.btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), NotiActivity.class);
                 startActivity(intent);
             }
         });

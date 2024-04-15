@@ -16,6 +16,9 @@
             android:name=".MenuSearch"
             android:exported="false" />
         <activity
+            android:name=".NotiActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContactOriyoung"
             android:exported="false" />
         <activity
