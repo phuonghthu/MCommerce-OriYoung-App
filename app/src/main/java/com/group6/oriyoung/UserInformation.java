@@ -18,6 +18,7 @@ public class UserInformation extends AppCompatActivity {
 
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+        binding.toolbar.toolbarTitle.setText("Thông tin cá nhân");
         addEvent();
     }
 
@@ -29,5 +30,12 @@ public class UserInformation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+//        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                Intent intent = new Intent(UserInfoDetail.this, .class);
+//                finish();
+//            }
+//        });
     }
 }

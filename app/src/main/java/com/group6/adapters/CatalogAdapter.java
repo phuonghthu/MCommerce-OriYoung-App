@@ -1,6 +1,6 @@
 package com.group6.adapters;
 
-import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +16,10 @@ import com.group6.oriyoung.R;
 import java.util.ArrayList;
 
 public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogViewHolder>{
-    Activity context;
+    Context context;
     ArrayList<Product> catalog;
 
-    public CatalogAdapter(Activity context, ArrayList<Product> catalog) {
+    public CatalogAdapter(Context context, ArrayList<Product> catalog) {
         this.context = context;
         this.catalog = catalog;
     }
@@ -42,7 +42,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
 
     @Override
     public int getItemCount() {
-        return 0;
+        return catalog.size();
     }
 
     public class CatalogViewHolder extends RecyclerView.ViewHolder {

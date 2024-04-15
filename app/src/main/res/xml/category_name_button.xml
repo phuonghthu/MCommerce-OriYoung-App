@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Linear xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/btnCatalog_Category"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:backgroundTint="@color/greylight"
+        android:textColor="@color/primarygreen"
+        android:fontFamily="@font/gilroy_semibold"
+        android:textSize="@dimen/small_textSize"
+        android:padding="-5dp"/>
+</Linear>

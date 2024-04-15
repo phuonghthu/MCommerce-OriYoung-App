@@ -13,7 +13,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.group6.adapters.CatalogAdapter;
 import com.group6.adapters.ProductAdapter;
@@ -34,15 +36,12 @@ public class ProductCatalog extends AppCompatActivity {
         loadDataCatalog();
         filterEvent();
         addIntent();
-
-
     }
 
-
-
-
     private void loadDataCatalog() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        int numOfRow = 2;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2, RecyclerView.VERTICAL, false);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, numOfRow, LinearLayoutManager.HORIZONTAL, false);
         binding.rvCatalog.setLayoutManager(layoutManager);
         binding.rvCatalog.setHasFixedSize(true);
         catalog = new ArrayList<>();
@@ -58,7 +57,7 @@ public class ProductCatalog extends AppCompatActivity {
         catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, true, 5.0, 100, null ));
-//        catalogAdapter = new CatalogAdapter(getContext(), catalog);
+        catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
         binding.rvCatalog.setAdapter(catalogAdapter);
     }
     private void filterEvent() {
