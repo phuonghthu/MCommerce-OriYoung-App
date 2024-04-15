@@ -8,6 +8,7 @@ material = "1.11.0"
 activity = "1.8.0"
 constraintlayout = "2.1.4"
 circleindicator = "2.1.6"
+swiperefreshlayout = "1.1.0"
 viewpager2 = "1.1.0-beta02"
 imageslideshow = "0.1.2"
 circleimageview = "3.1.0"
@@ -27,6 +28,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
+swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 viewpager2 = { group = "androidx.viewpager2", name = "viewpager2", version.ref = "viewpager2" }
 imageslideshow = { group = "com.github.denzcoskun", name = "imageslideshow", version.ref = "imageslideshow" }
 circleimageview = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circleimageview" }

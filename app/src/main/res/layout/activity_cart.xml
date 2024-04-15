@@ -4,45 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:paddingVertical="@dimen/vertical_padding"
     android:layout_height="match_parent"
     tools:context=".CartActivity"
     android:background="@color/white">
-
-
-        <LinearLayout
-            android:id="@+id/LinearNavi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/horizontal_padding"
-            android:paddingTop="@dimen/horizontal_padding"
-            app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/btnBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/txtCart"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:gravity="center"
-                    android:text="@string/cart_txtTitle"
-                    android:textSize="18dp" />
-
-                <ImageView
-                    android:id="@+id/btnDelete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:src="@drawable/trashicon" />
-
-        </LinearLayout>
-
+        <include layout="@layout/custom_toolbar_back"
+            android:id="@+id/toolbar"/>
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"
@@ -50,7 +17,7 @@
             android:fillViewport="true"
             android:scrollbarAlwaysDrawVerticalTrack="false"
             android:paddingHorizontal="@dimen/horizontal_padding"
-            app:layout_constraintTop_toBottomOf="@+id/LinearNavi"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
             android:layout_marginTop="@dimen/medium_margin"
             android:layout_marginBottom="@dimen/medium_margin"
             app:layout_constraintBottom_toTopOf="@+id/cartbill">
@@ -59,9 +26,7 @@
                     android:id="@+id/rvCart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
-
         </ScrollView>
-
         <LinearLayout
             android:id="@id/cartbill"
             android:layout_width="match_parent"

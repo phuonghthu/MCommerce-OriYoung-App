@@ -87,7 +87,6 @@ public class HomeFragment extends Fragment {
 
     private void loadCategory() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-//        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         category = new ArrayList<>();
 
@@ -105,11 +104,22 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadHotProduct() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), RecyclerView.VERTICAL);
         binding.rvHotProduct.setLayoutManager(gridLayoutManager);
         binding.rvHotProduct.setHasFixedSize(true);
         product = new ArrayList<>();
-
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
+        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, 0, "No", R.drawable.product_place_holder,
+                true, true, 5.0, 100, null ));
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, false, 5.0, 100, null ));
@@ -124,7 +134,6 @@ public class HomeFragment extends Fragment {
                 true, false, 5.0, 100, null ));
         productAdapter = new ProductAdapter(getContext(), product);
         binding.rvHotProduct.setAdapter(productAdapter);
-
     }
 
     private void loadSaleProduct() {

@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/horizontal_padding"
         tools:ignore="MissingConstraints">
-
         <LinearLayout
             android:id="@+id/btnBack"
             android:layout_width="38dp"

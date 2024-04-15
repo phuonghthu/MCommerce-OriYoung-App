@@ -1,5 +1,6 @@
 package com.group6.oriyoung;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -25,8 +26,9 @@ public class CartActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.toolbar.toolbarTitle.setText("Giỏ hàng");
         loadData();
-        addEvent();
+//        addEvent();
     }
 
 
@@ -42,11 +44,15 @@ public class CartActivity extends AppCompatActivity {
 //        adapter = new CartAdapter(getApplicationContext(), carts);
         adapter = new CartAdapter(getApplicationContext(), carts);
         binding.rvCart.setAdapter(adapter);
-
-
     }
 
-    private void addEvent() {
-
-    }
+//    private void addEvent() {
+//        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(CartActivity.this, .class);
+//                finish();
+//            }
+//        });
+//    }
 }
