@@ -3,17 +3,8 @@ package com.group6.oriyoung;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.utils.widget.ImageFilterButton;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,10 +48,18 @@ public class Checkout extends AppCompatActivity {
         binding.btnPayment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DialogPaymentSuccessfully dialogInforReceiving = new DialogPaymentSuccessfully(Checkout.this);
+                dialogInforReceiving.show();
+            }
+        });
+        binding.imvEditInforShipping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 DialogInforReceiving dialogInforReceiving = new DialogInforReceiving(Checkout.this);
                 dialogInforReceiving.show();
             }
         });
+
     }
 
 }

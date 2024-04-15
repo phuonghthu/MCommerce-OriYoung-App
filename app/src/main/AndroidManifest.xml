@@ -16,6 +16,9 @@
             android:name=".DialogInforReceiving"
             android:exported="false" />
         <activity
+            android:name=".DialogPaymentSuccessfully"
+            android:exported="false" />
+        <activity
             android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
