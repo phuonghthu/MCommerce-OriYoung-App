@@ -25,17 +25,16 @@ public class Login extends AppCompatActivity {
     }
 
     private void addEvents() {
-//        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent()
-//            }
-//        });
         binding.txtForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, ForgetPassword.class);
-                startActivity(intent);
+                startActivity(new Intent(Login.this, ForgetPassword.class));
+            }
+        });
+        binding.txtSignupNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Login.this, SignUp.class));
             }
         });
     }
