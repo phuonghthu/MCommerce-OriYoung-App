@@ -64,7 +64,7 @@ public class MenuSearch extends AppCompatActivity {
         products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
         products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
         products.add(new Product(0, 0,"Sữa rửa mặt L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+        products.add(new Product(0, 0,"Chai Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
 
         // Add products here...
 

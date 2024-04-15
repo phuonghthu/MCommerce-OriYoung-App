@@ -65,7 +65,7 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
         } else {
             // Nếu không, lọc danh sách sản phẩm dựa trên văn bản tìm kiếm
             for (Product product : filteredList) {
-                if (product.getProductName().toLowerCase().contains(query)) {
+                if (product.getProductName().toLowerCase().startsWith(query)) {
                     productList.add(product);
                 }
             }
@@ -74,4 +74,5 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
         // Cập nhật lại ListView
         notifyDataSetChanged();
     }
+
 }
