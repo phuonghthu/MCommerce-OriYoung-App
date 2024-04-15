@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadHotProduct() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
         binding.rvHotProduct.setLayoutManager(gridLayoutManager);
         binding.rvHotProduct.setHasFixedSize(true);
         product = new ArrayList<>();
@@ -125,9 +125,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadSaleProduct() {
-
         int numberOfColumns = 2; // Number of columns
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         binding.rvSaleProduct.setLayoutManager(layoutManager);
