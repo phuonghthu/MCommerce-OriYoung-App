@@ -8,6 +8,27 @@
     tools:context=".ProductDetail"
     android:background="@color/white"
     >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/horizontal_padding"
+        android:layout_marginStart="@dimen/horizontal_padding">
+        <LinearLayout
+            android:id="@+id/btnBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/ic_back_bg"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_arrow_back_10" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     <ScrollView
@@ -18,19 +39,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
-                android:id="@+id/btnBack"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:background="@drawable/ic_back_bg"
-                app:layout_constraintStart_toStartOf="@id/containerLayout"
-                app:layout_constraintTop_toTopOf="@id/containerLayout"
-                android:gravity="center">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/round_arrow_back_10" />
-            </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/containerLayout"
                 android:layout_width="match_parent"
@@ -171,6 +180,13 @@
                     android:textColor="@color/primarydarker"
                     android:padding="@dimen/horizontal_padding"
                     android:textSize="@dimen/small_textSize" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/large_vertical_padding"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
 
 
             </LinearLayout>
@@ -180,9 +196,12 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/productscreen"
+        app:layout_constraintTop_toBottomOf="@id/productscreen"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/large_vertical_padding"
+        android:background="@color/white">
         <include
             android:id="@+id/GroupButton"
             layout="@layout/product_buttons_layout"/>

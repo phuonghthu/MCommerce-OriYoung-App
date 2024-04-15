@@ -10,8 +10,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:orientation="vertical"
-        android:background="@drawable/stroke"
-        android:layout_margin="@dimen/medium_margin">
+        android:background="@drawable/stroke">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
