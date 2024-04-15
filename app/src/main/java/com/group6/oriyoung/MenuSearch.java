@@ -1,8 +1,10 @@
 package com.group6.oriyoung;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,18 +24,21 @@ public class MenuSearch extends AppCompatActivity {
     ListView listView;
     ArrayList<Product> products;
     ArrayList<Category> categories;
+    ImageView imageViewBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMenuSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        addEvents();
 
         // Initialize GridView for categories
         GridView gridView = findViewById(R.id.category_grid_view);
 
         // Initialize ListView for products
         listView = findViewById(R.id.lvSearchSanpham);
+        imageViewBack = findViewById(R.id.imvback);
 
         // Initialize list of categories
         categories = new ArrayList<>();
@@ -54,12 +59,11 @@ public class MenuSearch extends AppCompatActivity {
 
         // Initialize list of products
         products = new ArrayList<>();
-        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml\n" +
-                "    Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml\n" +
-                "    Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Con Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml\n" +
-                "    Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+        products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+        products.add(new Product(0, 0,"Sữa rửa mặt L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+
         // Add products here...
 
         // Initialize Adapter and set up ListView for products
@@ -78,6 +82,19 @@ public class MenuSearch extends AppCompatActivity {
                 } else {
                     listView.setVisibility(View.GONE);
                 }
+            }
+        });
+    }
+
+    private void addEvents() {
+        binding.imvback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi nhấn vào ImageView
+                Intent intent = new Intent(MenuSearch.this, HomeActivity.class);
+                startActivity(intent);
+                // Kết thúc Activity hiện tại nếu bạn muốn
+                finish();
             }
         });
     }
