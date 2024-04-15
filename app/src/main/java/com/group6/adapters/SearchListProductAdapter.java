@@ -62,12 +62,18 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
         ArrayList<Product> matchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
 
         if (!query.isEmpty()) {
+            // Xóa toàn bộ các sản phẩm khỏi danh sách tìm kiếm để bắt đầu tìm kiếm mới
+            filteredList.clear();
+
+            // Thêm lại toàn bộ sản phẩm từ productList vào danh sách tìm kiếm
+            filteredList.addAll(productList);
+
             // Duyệt qua danh sách sản phẩm để tìm kiếm trùng khớp
             for (Iterator<Product> iterator = filteredList.iterator(); iterator.hasNext(); ) {
                 Product product = iterator.next();
                 if (product.getProductName().toLowerCase().startsWith(query)) {
                     matchedProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
-                    iterator.remove(); // Loại bỏ sản phẩm trùng khớp khỏi danh sách gốc
+                    iterator.remove(); // Loại bỏ sản phẩm trùng khớp khỏi danh sách lọc
                 }
             }
         }
@@ -78,6 +84,8 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
         // Cập nhật lại ListView
         notifyDataSetChanged();
     }
+
+
 
 
 }
