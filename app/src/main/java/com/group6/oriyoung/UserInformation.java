@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.group6.fragments.AccountFirstFragment;
+import com.group6.fragments.AccountSecondFragment;
 import com.group6.oriyoung.databinding.ActivityUserInformationBinding;
 
 public class UserInformation extends AppCompatActivity {
@@ -30,12 +32,12 @@ public class UserInformation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                Intent intent = new Intent(UserInfoDetail.this, .class);
-//                finish();
-//            }
-//        });
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInformation.this, AccountFirstFragment.class);
+                finish();
+            }
+        });
     }
 }
