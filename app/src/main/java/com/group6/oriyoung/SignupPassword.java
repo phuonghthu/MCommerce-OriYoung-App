@@ -52,9 +52,9 @@ public class SignupPassword extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_signup_success, null);
+        View dialogView = inflater.inflate(R.layout.custom_dialog_success, null);
 
-        Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnKhamPhaNgay);
+        Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnCTA);
 
         builder.setView(dialogView);
 

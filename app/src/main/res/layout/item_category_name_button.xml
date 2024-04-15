@@ -1,0 +1,14 @@
+<!-- res/layout/item_button.xml -->
+
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/btnCategory"
+    android:layout_width="118dp"
+    android:layout_height="wrap_content"
+    android:text="Button"
+    android:backgroundTint="@color/greylight"
+    android:textColor="@color/primarygreen"
+    android:fontFamily="@font/gilroy_semibold"
+    android:textSize="@dimen/xsmall_textSize"
+    android:paddingStart="0dp"
+    android:paddingEnd="0dp"/>

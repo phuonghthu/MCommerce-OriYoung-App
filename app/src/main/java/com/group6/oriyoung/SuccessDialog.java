@@ -11,15 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.group6.oriyoung.databinding.DialogSignupSuccessBinding;
+import com.group6.oriyoung.databinding.CustomDialogSuccessBinding;
 
         public class SuccessDialog extends AppCompatActivity {
-            DialogSignupSuccessBinding binding;
+            CustomDialogSuccessBinding binding;
 
             @Override
             protected void onCreate(Bundle savedInstanceState) {
                 super.onCreate(savedInstanceState);
-                binding = DialogSignupSuccessBinding.inflate(getLayoutInflater());
+                binding = CustomDialogSuccessBinding.inflate(getLayoutInflater());
                 setContentView(binding.getRoot());
             }
         }

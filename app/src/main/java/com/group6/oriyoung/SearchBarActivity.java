@@ -29,7 +29,14 @@ public class SearchBarActivity extends AppCompatActivity {
             }
         });
 
-//        binding.btnNoti
+        binding.btnNoti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SearchBarActivity.this, NotiActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
 

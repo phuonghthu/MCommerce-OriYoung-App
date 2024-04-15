@@ -8,52 +8,52 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
-    Context context;
-    ArrayList<Product> products;
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewholder>{
 
-    public ProductAdapter(Context context, ArrayList<Product> products) {
+    Context context;
+    ArrayList<Product> favProduct;
+
+    public FavoriteAdapter(Context context, ArrayList<Product> favProduct) {
         this.context = context;
-        this.products = products;
+        this.favProduct = favProduct;
     }
 
     @NonNull
     @Override
-    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoriteViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_product, parent, false);
-        return new ProductViewHolder(view);
+        return new FavoriteAdapter.FavoriteViewholder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        holder.imvProductThumb.setImageResource(products.get(position).getProductImage());
-        holder.txtName.setText(products.get(position).getProductName());
-        holder.txtPrice.setText(String.valueOf(Math.round(products.get(position).getProductPrice())) + " VNĐ");
+    public void onBindViewHolder(@NonNull FavoriteViewholder holder, int position) {
+        Product p = favProduct.get(position);
 
-        //Favorite system
-
+        holder.imvProductThumb.setImageResource(p.getProductImage());
+        holder.txtName.setText(p.getProductName());
+        holder.txtPrice.setText(String.valueOf(Math.round(p.getProductPrice())) + " VNĐ");
     }
 
     @Override
-    public int getItemCount() { return
-        products.size();
+    public int getItemCount() {
+        return favProduct.size();
     }
 
-    public class ProductViewHolder extends RecyclerView.ViewHolder{
+    public class FavoriteViewholder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
         TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
 
 
-        public ProductViewHolder(@NonNull View itemView) {
+        public FavoriteViewholder(@NonNull View itemView) {
             super(itemView);
             imvProductThumb= itemView.findViewById(R.id.imvProductThumb);
             txtName= itemView.findViewById(R.id.txtName);
@@ -61,7 +61,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
-
         }
     }
 }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -85,7 +84,7 @@ public class SignUp extends AppCompatActivity {
     private void showAlertDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_confirm, null);
+        View dialogView = inflater.inflate(R.layout.custom_dialog_confirm, null);
 
         Button btnDongy = dialogView.findViewById(R.id.btndongy);
         Button btnHuy = dialogView.findViewById(R.id.btnhuy);
