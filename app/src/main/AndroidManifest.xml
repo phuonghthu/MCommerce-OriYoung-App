@@ -19,7 +19,7 @@
             android:name=".ProductDetail"
             android:exported="false" />
         <activity
-            android:name=".Sign_up"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".signup_success"
@@ -43,7 +43,7 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".Sign_up"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
