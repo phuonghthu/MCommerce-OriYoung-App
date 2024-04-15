@@ -40,7 +40,7 @@ public class CategoryNameAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
-            convertView = inflater.inflate(R.layout.category_name_button, parent, false);
+            convertView = inflater.inflate(R.layout.item_category_name_button, parent, false);
         }
 
         Button btnItem = convertView.findViewById(R.id.btnCategory);

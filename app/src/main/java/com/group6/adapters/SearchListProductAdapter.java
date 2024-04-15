@@ -57,24 +57,20 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
 
     public void filter(String query) {
         query = query.toLowerCase().trim(); // Chuyển đổi văn bản tìm kiếm thành chữ thường và loại bỏ khoảng trắng đầu cuối
-        filteredList.clear(); // Xóa danh sách sản phẩm lọc
+        productList.clear(); // Xóa danh sách sản phẩm hiện tại
 
         if (query.isEmpty()) {
             // Nếu văn bản tìm kiếm rỗng, hiển thị toàn bộ danh sách sản phẩm
-            filteredList.addAll(productList);
+            productList.addAll(filteredList);
         } else {
             // Nếu không, lọc danh sách sản phẩm dựa trên văn bản tìm kiếm
-            for (Product product : productList) {
+            for (Product product : filteredList) {
                 if (product.getProductName().toLowerCase().contains(query)) {
-                    filteredList.add(product);
+                    productList.add(product);
                 }
             }
         }
 
-        // Xóa danh sách hiện tại
-        productList.clear();
-        // Thêm danh sách sản phẩm lọc vào danh sách hiện tại
-        productList.addAll(filteredList);
         // Cập nhật lại ListView
         notifyDataSetChanged();
     }
