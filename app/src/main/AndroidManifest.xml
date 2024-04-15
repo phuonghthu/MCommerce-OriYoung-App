@@ -46,7 +46,7 @@
             android:name=".CartActivity"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".ProductDetail"
             android:exported="false" />
         <activity
             android:name=".SignUp"
@@ -73,7 +73,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".ProductDetail"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

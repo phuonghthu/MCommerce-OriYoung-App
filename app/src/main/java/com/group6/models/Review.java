@@ -2,6 +2,7 @@ package com.group6.models;
 
 public class Review {
     private int reviewID;
+    private int reviewCount;
     private String reviewerName;
     private double RatingValue;
     private String reviewDescription;
@@ -13,6 +14,9 @@ public class Review {
         RatingValue = ratingValue;
         this.reviewDescription = reviewDescription;
         this.relatedProduct = relatedProduct;
+    }
+    public Review(int reviewID) {
+        this.reviewID = reviewID;
     }
 
     public int getReviewID() {
@@ -53,5 +57,12 @@ public class Review {
 
     public void setRelatedProduct(Product relatedProduct) {
         this.relatedProduct = relatedProduct;
+    }
+    public int getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
     }
 }
