@@ -49,7 +49,7 @@
                         android:iconifiedByDefault="false"
                         app:layout_constraintTop_toTopOf="parent"
                         android:textSize="@dimen/small_textSize"
-                        android:fontFamily="@font/gilroy_regular"/>
+                        app:theme="@style/SearchViewHintTextStyle"/>
                 </LinearLayout>
                 <Button
                     app:layout_constraintTop_toTopOf="parent"
