@@ -57,30 +57,32 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
     }
 
     public void filter(String query) {
-        query = query.toLowerCase().trim(); // Chuyển đổi văn bản tìm kiếm thành chữ thường và loại bỏ khoảng trắng đầu cuối
+        query = query.toLowerCase().trim();
 
-        ArrayList<Product> filteredProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
+        ArrayList<Product> matchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
+        ArrayList<Product> unmatchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm không trùng khớp
 
         if (!query.isEmpty()) {
             // Duyệt qua danh sách sản phẩm để tìm kiếm trùng khớp
             for (Product product : productList) {
-                if (product.getProductName().toLowerCase().contains(query)) {
-                    filteredProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
+                if (product.getProductName().toLowerCase().startsWith(query)) {
+                    matchedProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
+                } else {
+                    unmatchedProducts.add(product); // Thêm sản phẩm không trùng khớp vào danh sách mới
                 }
             }
+        } else {
+            matchedProducts.addAll(productList); // Nếu query rỗng, thì danh sách không trùng khớp sẽ giống với danh sách gốc
         }
 
-        // Loại bỏ các sản phẩm trùng khớp từ danh sách gốc
-        productList.removeAll(filteredProducts);
-
-        // Thêm các sản phẩm trùng khớp vào đầu danh sách gốc
-        productList.addAll(0, filteredProducts);
+        // Đưa các sản phẩm trùng khớp lên đầu danh sách
+        productList.clear();
+        productList.addAll(matchedProducts);
+        productList.addAll(unmatchedProducts);
 
         // Cập nhật lại RecyclerView
         notifyDataSetChanged();
     }
-
-
 
 
 
