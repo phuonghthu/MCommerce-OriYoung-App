@@ -124,7 +124,7 @@
                 <include layout="@layout/product_description_layout"
                     android:id="@+id/layoutdescription"/>
                 <include layout="@layout/review_layout"
-                    android:id="@+id/layoutreview"/>/>
+                    android:id="@+id/layoutreview"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -136,16 +136,19 @@
                     android:fontFamily="@font/gilroy_bold"
                     android:gravity="center_horizontal"
                     android:padding="@dimen/small_margin"/>
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:id="@+id/rvRelatedProduct"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
-<!--                    app:spanCount="2"-->
-<!--                    android:paddingHorizontal="@dimen/horizontal_padding"-->
-<!--                    android:isScrollContainer="true"/>-->
-                <include layout="@layout/item_product"
-                    android:id="@+id/relatedproduct"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRelatedProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="2"
+                    android:isScrollContainer="false"
+                    android:padding="@dimen/horizontal_padding"/>
+
+
+
+
 
 
                 <TextView
