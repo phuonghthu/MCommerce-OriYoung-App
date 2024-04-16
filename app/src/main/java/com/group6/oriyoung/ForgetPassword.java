@@ -25,7 +25,7 @@ public class ForgetPassword extends AppCompatActivity {
     }
 
     private void addEvents() {
-        binding.imvreturn.setOnClickListener(new View.OnClickListener() {
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ForgetPassword.this, Login.class);

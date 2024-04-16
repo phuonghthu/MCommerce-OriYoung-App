@@ -66,13 +66,14 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/frame"
                     app:backgroundTint="@null">
+
                     <TextView
                         android:id="@+id/txtMinus"
-                        android:layout_width="25dp"
+                        android:layout_width="33dp"
                         android:layout_height="25dp"
                         android:layout_marginHorizontal="4dp"
                         android:gravity="center"
-                        android:text="-"/>
+                        android:text="-" />
                     <TextView
                         android:id="@+id/txtCartNumb"
                         android:layout_width="25dp"

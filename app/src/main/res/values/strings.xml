@@ -91,7 +91,7 @@
     <!--<<<<<<< HEAD-->
     <string name="Login_title">OriYoung Chào Bạn!</string>
     <string name="Login_subtitle_1">Tài khoản</string>
-    <string name="Login_phone">Nhập số điện thoại</string>
+    <string name="Login_mail">Nhập mail</string>
     <string name="Login_subtitle_2">Mật khẩu</string>
     <string name="Login_password">Nhập mật khẩu</string>
     <string name="Required">*</string>
@@ -99,12 +99,12 @@
     <string name="Remember_login">Ghi nhớ</string>
     <string name="Login">Đăng nhập</string>
     <string name="Login_option">hoặc đăng nhập với</string>
-    <string name="Login_phone_error">Số điện thoại không hợp lệ, vui lòng thử lại</string>
+    <string name="Login_mail_error">Email không hợp lệ, vui lòng thử lại</string>
     <string name="Login_pass_error">Mật khẩu không hợp lệ, vui lòng thử lại</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Forget_pass_title">Quên mật khẩu</string>
-    <string name="Forget_pass_subtitle">Số điện thoại</string>
-    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua SMS để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
+    <string name="Forget_pass_subtitle">Email</string>
+    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua email để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
     <string name="Continue">Tiếp tục</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Reset_pass_title">Đặt lại mật khẩu</string>
@@ -113,6 +113,9 @@
     <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
     <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
     <string name="Confirm">Xác nhận</string>
+    <string name="Error">Đã xảy ra sự cố</string>
+    <string name="Error_description">Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại!</string>
+    <string name="Try_again">Thử lại</string>
     <string name="html_mucdich"><![CDATA[
     Chúng tôi thu thập thông tin cá nhân chỉ cần thiết nhằm phục vụ cho các mục đích:\n
     • Đơn Hàng: để xử lý các vấn đề liên quan đến đơn đặt hàng của bạn.\n
@@ -147,6 +150,21 @@
     <string name="brand">Thương hiệu</string>
     <string name="my_voucher_noti">Bạn chưa có ưu đãi nào!</string>
     <string name="go_to_store">Đi đến cửa hàng</string>
+    <string name="add">+</string>
+    <string name="decrease">-</string>
+    <string name="quantity">1</string>
+    <string name="add_product">Thêm giỏ hàng</string>
+    <string name="buy">Mua ngay</string>
+    <string name="rating_count">(2 lượt đánh giá)</string>
+    <string name="product_description_title">Thông tin sản phẩm</string>
+    <string name="product_description">Làm sạch sâu lớp trang điểm, bụi bẩn và bã nhờn trên bề mặt da. Dịu nhẹ, thông thoáng và không làm bí da. Kiểm soát dầu thừa, hỗ trợ trong việc chăm sóc da mụn.</string>
+    <string name="review_title">Đánh giá từ khách hàng</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="recommend_product">Sản phẩm tương tự</string>
+    <string name="fast_shipping">Giao hàng nhanh </string>
+    <string name="fast_shipping_description">Miễn phí giao hàng với đơn hàng từ 500K</string>
+    <string name="authentic_product">Sản phẩm chính hãng </string>
+    <string name="authentic_product_description">Cam kết 100% là hàng chính hãng, nguồn gốc rõ ràng</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>
