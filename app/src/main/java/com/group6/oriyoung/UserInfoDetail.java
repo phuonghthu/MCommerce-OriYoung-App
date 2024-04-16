@@ -37,7 +37,7 @@ public class UserInfoDetail extends AppCompatActivity {
         binding.toolbar.toolbarTitle.setText("Thông tin cá nhân");
         addEvents();
     }
-
+//=============Xử lý Intent và Dialog ==============================
     private void addEvents() {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class UserInfoDetail extends AppCompatActivity {
     }
     private void showNotification() {
         Dialog dialog = new Dialog(UserInfoDetail.this);
-        dialog.setContentView(R.layout.custom_dialog_success);
+        dialog.setContentView(R.layout.custom_dialog_complete);
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

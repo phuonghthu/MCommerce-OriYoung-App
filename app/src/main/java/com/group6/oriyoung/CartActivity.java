@@ -42,7 +42,7 @@ public class CartActivity extends AppCompatActivity {
 //        binding.cartbill.findViewById(R.id.btnCheckout).setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+//                Intent intent = new Intent(CartActivity.this, Checkout.class);
 //                finish();
 //            }
 //        });

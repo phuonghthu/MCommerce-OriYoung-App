@@ -5,37 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/primarybackground"
     android:paddingVertical="@dimen/vertical_padding"
     tools:context=".ProductCatalog">
-    <ImageView
-        android:id="@+id/imvCart"
-        android:layout_width="30dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="20dp"
-        android:src="@drawable/ic_cart"
-        app:layout_constraintEnd_toEndOf="@+id/toolbarCatalog"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toEndOf="@+id/imvSearch"
-        app:layout_constraintTop_toTopOf="@+id/toolbarCatalog" />
-
-    <ImageView
-        android:id="@+id/imvSearch"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="56dp"
-        android:src="@drawable/ic_search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/toolbarCatalog" />
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarCatalog"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
@@ -43,19 +19,41 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_back"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
+    </androidx.appcompat.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginRight="@dimen/horizontal_padding"
+        tools:layout_editor_absoluteX="325dp"
+        tools:layout_editor_absoluteY="8dp">
         <TextView
+            android:layout_weight="8"
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/gilroy_medium"
+            android:fontFamily="@font/gilroy_semibold"
             android:text="Tẩy trang"
+            android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="@dimen/medium_textSize"
-            app:titleMarginStart="-8dp" />
-    </androidx.appcompat.widget.Toolbar>
-
-
+            android:textSize="@dimen/h4_textSize"
+            android:layout_marginStart="45dp"
+            tools:layout_editor_absoluteX="43dp"
+            tools:layout_editor_absoluteY="8dp" />
+        <ImageView
+            android:id="@+id/imvSearch"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_search" />
+        <ImageView
+            android:id="@+id/imvCart"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@drawable/ic_cart" />
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/layoutOption"
         android:layout_width="match_parent"
@@ -192,4 +190,6 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
