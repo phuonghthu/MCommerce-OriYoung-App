@@ -38,20 +38,20 @@
             android:text="Tẩy trang"
             android:layout_gravity="center"
             android:textColor="@color/black"
-            android:textSize="@dimen/large_textSize"
+            android:textSize="@dimen/h4_textSize"
             android:layout_marginStart="45dp"
             tools:layout_editor_absoluteX="43dp"
             tools:layout_editor_absoluteY="8dp" />
         <ImageView
             android:id="@+id/imvSearch"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginEnd="15dp"
             android:src="@drawable/ic_search" />
         <ImageView
             android:id="@+id/imvCart"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:src="@drawable/ic_cart" />
     </LinearLayout>
     <LinearLayout

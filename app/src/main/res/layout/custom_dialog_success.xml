@@ -62,7 +62,6 @@
             android:paddingHorizontal="@dimen/vertical_padding"
             android:layout_marginTop="@dimen/large_margin"/>
 
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

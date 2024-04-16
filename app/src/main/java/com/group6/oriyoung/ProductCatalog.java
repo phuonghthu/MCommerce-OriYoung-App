@@ -38,10 +38,8 @@ public class ProductCatalog extends AppCompatActivity {
         loadDataCatalog();
         filterEvent();
         addIntent();
-
     }
-
-
+    //Load thử sản phẩm vào lits trong danh sách
     private void loadDataCatalog() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
         binding.rvCatalog.setLayoutManager(layoutManager);
@@ -63,7 +61,7 @@ public class ProductCatalog extends AppCompatActivity {
         binding.rvCatalog.setAdapter(catalogAdapter);
     }
 
-
+//============Xử lý dialog=============================
     private void filterEvent() {
         binding.imvSort.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +81,6 @@ public class ProductCatalog extends AppCompatActivity {
                 showCatalogBottomSheet();
             }
         });
-
     }
     private void showCatalogBottomSheet() {
         Dialog dialog = new Dialog(ProductCatalog.this);
@@ -107,13 +104,20 @@ public class ProductCatalog extends AppCompatActivity {
     private void showSortBottomSheet() {
         Dialog dialog = new Dialog(ProductCatalog.this);
         dialog.setContentView(R.layout.bottomsheet_sort);
-
+//        LinearLayout btnSortCancel = dialog.findViewById(R.id.btnSortCancel);
+//        btnSortCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                dialog.dismiss();
+//            }
+//        });
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setWindowAnimations(R.style.DialogAnimation);
         dialog.getWindow().setGravity(Gravity.BOTTOM);
     }
+    //================Xử lý Intent ==================================
     private void addIntent() {
         binding.imvCart.setOnClickListener(new View.OnClickListener() {
             @Override
