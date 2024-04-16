@@ -40,7 +40,6 @@
         android:text="Họ và tên"
         android:fontFamily="@font/gilroy_regular"
         android:textSize="@dimen/xsmall_textSize"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewline"
         android:layout_marginTop="20dp"/>
@@ -67,7 +66,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        style="@style/HintText"
         app:boxStrokeErrorColor="@color/error">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -75,6 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập họ và tên"
+            android:textSize="@dimen/small_textSize"
+            android:fontFamily="@font/gilroy_regular"
             android:textColorHint="@color/greylight"
             android:background="@drawable/stroke"
             />
@@ -86,7 +86,6 @@
         android:text="Số điện thoại"
         android:fontFamily="@font/gilroy_regular"
         android:textSize="@dimen/xsmall_textSize"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtInputLayout1"
         android:layout_marginTop="10dp"/>
@@ -109,7 +108,6 @@
         android:layout_marginTop="2dp"
         app:hintEnabled="false"
         app:helperTextTextColor="#F44336"
-        style="@style/HintText"
         app:endIconMode="clear_text"
         app:boxStrokeErrorColor="@color/error"
         app:layout_constraintTop_toBottomOf="@id/txtnewPhone">
@@ -117,6 +115,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:textSize="@dimen/small_textSize"
+            android:fontFamily="@font/gilroy_regular"
             android:background="@drawable/stroke"
             android:textColorHint="@color/greylight"
             android:hint="Nhập số điện thoại"/>
@@ -128,10 +128,9 @@
         android:text="Địa chỉ"
         android:fontFamily="@font/gilroy_regular"
         android:textSize="@dimen/xsmall_textSize"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtInputLayout2"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="@dimen/small_margin"/>
     <TextView
         android:id="@+id/redrequired3"
         android:layout_width="wrap_content"
@@ -147,10 +146,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/txtnewAddress"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="10dp">
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <Spinner
@@ -187,10 +186,9 @@
         android:id="@+id/txtpaticularAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Số điện thoại"
+        android:text="Địa chỉ"
         android:fontFamily="@font/gilroy_regular"
         android:textSize="@dimen/xsmall_textSize"
-        android:layout_marginStart="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayoutInputAddress"
         android:layout_marginTop="10dp"/>
@@ -212,7 +210,6 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="2dp"
         app:hintEnabled="false"
-        style="@style/HintText"
         app:helperTextTextColor="#F44336"
         app:endIconMode="clear_text"
 
@@ -221,7 +218,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập địa chỉ của bạn"
+            android:fontFamily="@font/gilroy_regular"
             android:textColorHint="@color/greylight"
+            android:textSize="@dimen/small_textSize"
             android:background="@drawable/stroke" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
