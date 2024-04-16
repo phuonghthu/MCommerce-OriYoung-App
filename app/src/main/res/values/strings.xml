@@ -113,6 +113,9 @@
     <string name="Reset_pass_subtitle_3">Nhập lại mật khẩu mới</string>
     <string name="Reset_pass_error">Mật khẩu không khớp, vui lòng kiểm tra lại</string>
     <string name="Confirm">Xác nhận</string>
+    <string name="Error">Đã xảy ra sự cố</string>
+    <string name="Error_description">Tài khoản hoặc mật khẩu không chính xác, vui lòng thử lại!</string>
+    <string name="Try_again">Thử lại</string>
     <string name="html_mucdich"><![CDATA[
     Chúng tôi thu thập thông tin cá nhân chỉ cần thiết nhằm phục vụ cho các mục đích:\n
     • Đơn Hàng: để xử lý các vấn đề liên quan đến đơn đặt hàng của bạn.\n

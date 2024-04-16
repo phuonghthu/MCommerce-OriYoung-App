@@ -92,7 +92,8 @@ public class ProductDetail extends AppCompatActivity {
 
     }
     private void loadRelatedProducts() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2, RecyclerView.HORIZONTAL,false);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, RecyclerView.VERTICAL, true);
+
         binding.rvRelatedProduct.setLayoutManager(gridLayoutManager);
         binding.rvRelatedProduct.setHasFixedSize(true);
         product = new ArrayList<>();
@@ -113,7 +114,7 @@ public class ProductDetail extends AppCompatActivity {
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, true, 5.0, 100, null ));
 
-        adapter= new ProductAdapter(this, product);
+        adapter= new ProductAdapter(getApplicationContext(), product);
         binding.rvRelatedProduct.setAdapter(adapter);
     }
 }
