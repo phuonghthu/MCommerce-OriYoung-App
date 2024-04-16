@@ -2,12 +2,14 @@ package com.group6.oriyoung;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.group6.oriyoung.databinding.ActivityDialogInforReceivingBinding;
 
@@ -19,9 +21,19 @@ public class DialogInforReceiving extends Dialog {
 
     public DialogInforReceiving(Context context) {
         super(context);
-        provinceAdapter = ArrayAdapter.createFromResource(context, R.array.province_array, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        districtAdapter = ArrayAdapter.createFromResource(context, R.array.district_array, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
-        villageAdapter = ArrayAdapter.createFromResource(context, R.array.village_array, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.gilroy_regular);
+        provinceAdapter = createAdapter(context, R.array.province_array, typeface);
+        districtAdapter = createAdapter(context, R.array.district_array, typeface);
+        villageAdapter = createAdapter(context, R.array.village_array, typeface);
+    }
+
+    private ArrayAdapter<CharSequence> createAdapter(Context context, int provinceArray, Typeface typeface) {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, provinceArray, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        return adapter;
     }
 
     @Override
@@ -29,7 +41,7 @@ public class DialogInforReceiving extends Dialog {
         super.onCreate(savedInstanceState);
         binding = ActivityDialogInforReceivingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.btnHUY.setOnClickListener(new View.OnClickListener() {
+        binding.btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();

@@ -153,6 +153,7 @@
         <item name="android:buttonTint">@color/primarydarker</item>
         <item name="android:fontFamily">@font/gilroy_regular</item>
     </style>
+
     <string-array name="province_array">
         <item>Chọn tỉnh</item>
         <item>Hà Nội</item>

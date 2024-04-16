@@ -54,14 +54,15 @@
                         android:id="@+id/txtProductQuantityCart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="x2"
+                        android:text="x22"
                         android:layout_marginStart="10dp"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:textSize="@dimen/small_textSize"
+                        android:textSize="@dimen/xsmall_textSize"
                         android:fontFamily="@font/gilroy_regular"
                         android:textColor="@color/white"
-                        android:paddingHorizontal="@dimen/horizontal_padding"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:paddingEnd="@dimen/medium_margin"
                         android:background="@drawable/bg_discount" />
                     <Space
                         android:layout_width="0dp"
