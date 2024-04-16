@@ -38,9 +38,9 @@ public class ProductCatalog extends AppCompatActivity {
         loadDataCatalog();
         filterEvent();
         addIntent();
-        addEvent();
 
     }
+
 
     private void loadDataCatalog() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
@@ -59,44 +59,11 @@ public class ProductCatalog extends AppCompatActivity {
         catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
         catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
         binding.rvCatalog.setAdapter(catalogAdapter);
-        List<Product> initialProducts = catalog.subList(0, 4);
-        ArrayList<Product> initialProductsList = new ArrayList<>(initialProducts);
-        catalogAdapter.addItems(initialProductsList);
     }
-    private void addEvent() {
-        binding.imvSeemore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                seeMoreProduct();
-            }
-        });
-    }
-    //
-    private void seeMoreProduct() {
-        int currentSize = 4;
-        int end = Math.min(currentSize + 4, catalog.size());
-        List<Product> newProducts = catalog.subList(currentSize, end);
-        ArrayList<Product> newProductsList = new ArrayList<>(newProducts);
-        catalogAdapter.addItems(newProductsList);
-        currentSize += 4;
-        if(end >=catalog.size()){
-            binding.imvSeemore.setVisibility(View.GONE);
-        }
-    }
+
+
     private void filterEvent() {
         binding.imvSort.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,12 +122,20 @@ public class ProductCatalog extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        binding.toolbarCatalog.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductCatalog.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductCatalog.this, MenuSearch.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

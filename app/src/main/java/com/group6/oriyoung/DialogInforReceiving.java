@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.group6.oriyoung.databinding.ActivityDialogInforReceivingBinding;
-
 public class DialogInforReceiving extends Dialog {
     ArrayAdapter<CharSequence> provinceAdapter;
     ArrayAdapter<CharSequence> districtAdapter;
