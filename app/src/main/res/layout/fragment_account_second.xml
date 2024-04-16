@@ -283,10 +283,10 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#DFE1DC"
             android:drawableLeft="@drawable/ic_logout"
-            android:paddingStart="130dp"
-            android:paddingEnd="130dp"
+            android:paddingStart="110dp"
+            android:paddingEnd="110dp"
             android:text="ĐĂNG XUẤT"
-
+            android:fontFamily="@font/gilroy_bold"
             android:textColor="@color/primarydarker"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -324,11 +324,14 @@
                 android:id="@+id/PaymentWhenReceive"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_frame"
+                android:background="@drawable/linear_bg_state"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 app:layout_constraintTop_toBottomOf="@id/txtPaymentMethod"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onLinearLayoutClicked">
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -346,34 +349,41 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"/>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/PaymentByMomo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_frame"
-                app:layout_constraintTop_toBottomOf="@id/PaymentWhenReceive"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/linear_bg_state"
+                app:layout_constraintTop_toBottomOf="@id/PaymentWhenReceive"
+                android:onClick="onLinearLayoutClicked"
+                android:clickable="true"
+                android:focusable="true">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_momo"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginBottom="5dp"
+                    android:src="@drawable/ic_momo" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ví Momo hoặc chuyển khoản ngân hàng"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
                     android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/gilroy_bold"/>
+                    android:fontFamily="@font/gilroy_bold"
+                    android:text="Ví Momo hoặc chuyển khoản ngân hàng"
+                    android:textColor="@color/black" />
 
 
             </LinearLayout>
+
             <View
                 android:id="@+id/lineNavi4"
                 android:layout_width="match_parent"
@@ -384,7 +394,9 @@
                 android:layout_marginStart="20dp"
                 app:layout_constraintTop_toBottomOf="@id/PaymentByMomo"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
             <LinearLayout
                 android:id="@+id/BillInfor"
                 android:layout_width="match_parent"
@@ -431,7 +443,7 @@
                         android:layout_height="wrap_content"
                         android:text="250.000 VNĐ"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/gilroy_bold"/>
+                        android:fontFamily="@font/gilroy_medium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/ShippingFee"
@@ -455,7 +467,7 @@
                         android:layout_height="wrap_content"
                         android:text="30.000 VNĐ"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/gilroy_bold"/>
+                        android:fontFamily="@font/gilroy_medium"/>
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/TotalPayment"
@@ -541,4 +553,4 @@
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

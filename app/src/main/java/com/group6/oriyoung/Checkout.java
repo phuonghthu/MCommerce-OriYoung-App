@@ -36,12 +36,14 @@ public class Checkout extends AppCompatActivity {
         cartItems.add(new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.cocon, 3));
         cartItems.add(new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.cocon, 1));
     }
-
+    private boolean isPaymentWhenReceiveSelected = false;
+    private boolean isPaymentByMomoSelected = false;
     private void addEvents() {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Checkout.this, CartActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -57,6 +59,29 @@ public class Checkout extends AppCompatActivity {
             public void onClick(View v) {
                 DialogInforReceiving dialogInforReceiving = new DialogInforReceiving(Checkout.this);
                 dialogInforReceiving.show();
+            }
+        });
+        binding.PaymentWhenReceive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPaymentWhenReceiveSelected = !isPaymentWhenReceiveSelected;
+                if (isPaymentWhenReceiveSelected) {
+                    binding.PaymentWhenReceive.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                } else {
+                    binding.PaymentWhenReceive.setBackgroundResource(R.drawable.linear_bg_state);
+                }
+            }
+        });
+
+        binding.PaymentByMomo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPaymentByMomoSelected = !isPaymentByMomoSelected;
+                if (isPaymentByMomoSelected) {
+                    binding.PaymentByMomo.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                } else {
+                    binding.PaymentByMomo.setBackgroundResource(R.drawable.linear_bg_state);
+                }
             }
         });
 

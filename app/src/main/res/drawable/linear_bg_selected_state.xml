@@ -1,0 +1,20 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State when the LinearLayout is selected -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <!-- Background color when selected -->
+            <solid android:color="@color/primarygreen" />
+            <!-- Rounded corners -->
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
+        <shape android:shape="rectangle">
+            <!-- Background color when not selected -->
+            <solid android:color="@color/primarygreen" />
+            <!-- Rounded corners -->
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+</selector>

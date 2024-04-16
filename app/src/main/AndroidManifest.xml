@@ -5,7 +5,8 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -18,14 +19,16 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-
+            android:name=".DialogNotificationSuccessfully"
+            android:exported="false" />
+        <activity
             android:name=".DialogInforReceiving"
             android:exported="false" />
         <activity
             android:name=".DialogPaymentSuccessfully"
             android:exported="false" />
         <activity
-            android:name=".Checkout"
+            android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".MenuSearch"
@@ -91,7 +94,7 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".Checkout"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
