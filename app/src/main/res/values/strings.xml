@@ -91,7 +91,7 @@
     <!--<<<<<<< HEAD-->
     <string name="Login_title">OriYoung Chào Bạn!</string>
     <string name="Login_subtitle_1">Tài khoản</string>
-    <string name="Login_phone">Nhập số điện thoại</string>
+    <string name="Login_mail">Nhập mail</string>
     <string name="Login_subtitle_2">Mật khẩu</string>
     <string name="Login_password">Nhập mật khẩu</string>
     <string name="Required">*</string>
@@ -99,12 +99,12 @@
     <string name="Remember_login">Ghi nhớ</string>
     <string name="Login">Đăng nhập</string>
     <string name="Login_option">hoặc đăng nhập với</string>
-    <string name="Login_phone_error">Số điện thoại không hợp lệ, vui lòng thử lại</string>
+    <string name="Login_mail_error">Email không hợp lệ, vui lòng thử lại</string>
     <string name="Login_pass_error">Mật khẩu không hợp lệ, vui lòng thử lại</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Forget_pass_title">Quên mật khẩu</string>
-    <string name="Forget_pass_subtitle">Số điện thoại</string>
-    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua SMS để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
+    <string name="Forget_pass_subtitle">Email</string>
+    <string name="Forget_pass_description">Chúng tôi gửi thông báo qua email để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
     <string name="Continue">Tiếp tục</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Reset_pass_title">Đặt lại mật khẩu</string>

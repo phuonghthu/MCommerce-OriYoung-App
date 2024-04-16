@@ -70,7 +70,7 @@
             android:name=".SupportCenter"
             android:exported="false" />
         <activity
-            android:name=".ProductDetail"
+            android:name=".Login"
             android:exported="false" />
         <activity
             android:name=".ForgetPassword"
@@ -79,7 +79,7 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".ProductDetail"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

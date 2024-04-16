@@ -1,8 +1,12 @@
 package com.group6.oriyoung;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +25,7 @@ public class Login extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+
         addEvents();
     }
 
@@ -37,5 +42,33 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, SignUp.class));
             }
         });
+
+        binding.btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if (v.equals(binding.btnLogin)) {
+//                Create and show custom dialog
+                Dialog dialog = new Dialog(Login.this);
+                dialog.setContentView(R.layout.custom_dialog_fail);
+                Button btnTryAgain = findViewById(R.id.btnTryAgain);
+                btnTryAgain.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
+
+            }
+        }
+    };
 }

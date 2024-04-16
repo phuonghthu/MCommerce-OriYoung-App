@@ -8,27 +8,7 @@
     tools:context=".ProductDetail"
     android:background="@color/white"
     >
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="@dimen/horizontal_padding"
-        android:layout_marginStart="@dimen/horizontal_padding">
-        <LinearLayout
-            android:id="@+id/btnBack"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@drawable/ic_back_bg"
-            android:gravity="center"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/round_arrow_back_10" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     <ScrollView
@@ -39,7 +19,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:id="@+id/containerLayout"
                 android:layout_width="match_parent"
@@ -51,7 +30,6 @@
                 android:paddingTop="38dp">
                 <include layout="@layout/product_image_layout"
                     android:id="@+id/layoutproduct"/>
-
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -193,6 +171,30 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/productscreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/large_vertical_padding"
+        android:paddingStart="@dimen/horizontal_padding"
+        android:background="@color/white">
+        <LinearLayout
+            android:id="@+id/btnBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/ic_back_bg"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/round_arrow_back_10" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
