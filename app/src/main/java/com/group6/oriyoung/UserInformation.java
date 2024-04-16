@@ -7,6 +7,8 @@ import android.view.View;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.group6.fragments.AccountFirstFragment;
+import com.group6.fragments.AccountSecondFragment;
 import com.group6.oriyoung.databinding.ActivityUserInformationBinding;
 
 public class UserInformation extends AppCompatActivity {
@@ -18,6 +20,7 @@ public class UserInformation extends AppCompatActivity {
 
         EdgeToEdge.enable(this);
         setContentView(binding.getRoot());
+        binding.toolbar.toolbarTitle.setText("Thông tin cá nhân");
         addEvent();
     }
 
@@ -27,6 +30,13 @@ public class UserInformation extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(UserInformation.this, UserInfoDetail.class);
                 startActivity(intent);
+            }
+        });
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UserInformation.this, AccountFirstFragment.class);
+                finish();
             }
         });
     }

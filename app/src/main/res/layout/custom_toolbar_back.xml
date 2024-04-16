@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/horizontal_padding"
         tools:ignore="MissingConstraints">
-
         <LinearLayout
             android:id="@+id/btnBack"
             android:layout_width="38dp"
@@ -19,6 +18,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:gravity="center">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

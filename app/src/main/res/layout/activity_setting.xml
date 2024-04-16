@@ -6,37 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Setting"
-    android:paddingVertical="@dimen/vertical_padding"
-    android:paddingHorizontal="@dimen/horizontal_padding"
     android:background="@color/white">
-    <ImageView
-        android:id="@+id/imgbackpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_backpage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-    <TextView
-        android:id="@+id/txtCaidat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/setting_title"
-        android:fontFamily="@font/gilroy_bold"
-        android:textSize="@dimen/h3_textSize"
-        app:layout_constraintStart_toEndOf="@id/imgbackpage"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/imgbackpage"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <include layout="@layout/custom_toolbar_back"
+        android:id="@+id/toolbar" />
     <androidx.cardview.widget.CardView
         android:id="@+id/cardviewdoimatkhau"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@id/txtCaidat"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         android:layout_marginTop="@dimen/large_margin"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -77,7 +59,9 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintTop_toBottomOf="@id/cardviewdoimatkhau"
         android:layout_marginTop="@dimen/large_margin"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -118,7 +102,9 @@
         app:cardUseCompatPadding="true"
         app:layout_constraintTop_toBottomOf="@id/cardviewxoataikhoan"
         android:layout_marginTop="@dimen/large_margin"
-        app:cardCornerRadius="10dp">
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

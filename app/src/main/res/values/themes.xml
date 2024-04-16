@@ -4,7 +4,16 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/primarygreen</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 k
     <style name="Theme.Oriyoung" parent="Base.Theme.Oriyoung" />
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+    <style name="DialogAnimation_Zoom">
+        <item name="android:windowEnterAnimation">@anim/zoom_in</item>
+    </style>
+
 </resources>

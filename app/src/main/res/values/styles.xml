@@ -16,4 +16,14 @@
         <item name="android:textSize">@dimen/mini_textSize</item>
         <item name="android:fontFamily">@font/gilroy_medium</item>
     </style>
+    <style name="SearchViewHintTextStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Define your desired hint text size and font here -->
+        <item name="android:textSize">@dimen/small_textSize</item>
+        <item name="android:fontFamily">@font/gilroy_regular</item>
+    </style>
+    <style name="CustomRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorControlNormal">@color/primarydarker</item>
+        <item name="colorControlActivated">@color/primarydarker</item>
+    </style>
+
 </resources>
