@@ -5,6 +5,7 @@ import static java.security.AccessController.getContext;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -92,10 +93,9 @@ public class ProductDetail extends AppCompatActivity {
 
     }
     private void loadRelatedProducts() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, RecyclerView.VERTICAL, true);
-
-        binding.rvRelatedProduct.setLayoutManager(gridLayoutManager);
-        binding.rvRelatedProduct.setHasFixedSize(true);
+        int numberOfColumns = 2;
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         product = new ArrayList<>();
 
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
