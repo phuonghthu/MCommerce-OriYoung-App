@@ -3,9 +3,12 @@ package com.group6.oriyoung;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -13,7 +16,12 @@ import android.widget.RadioGroup;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.group6.oriyoung.databinding.ActivitySignUpBinding;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class SignUp extends AppCompatActivity {
     ActivitySignUpBinding binding;
@@ -21,6 +29,8 @@ public class SignUp extends AppCompatActivity {
     LinearLayout btnTrove;
     RadioGroup radioGroup;
     RadioButton radioButtonMale, radioButtonFemale, radioButtonOther;
+    TextInputLayout txtinputphone;
+    EditText txthelp_phone;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -28,6 +38,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+//        setContentView(R.layout.activity_sign_up);
 
         // Ánh xạ
         btnTiepTheo = findViewById(R.id.btnTieptheo);
@@ -36,6 +47,24 @@ public class SignUp extends AppCompatActivity {
         radioButtonMale = findViewById(R.id.radioButtonMale);
         radioButtonFemale = findViewById(R.id.radioButtonFemale);
         radioButtonOther = findViewById(R.id.radioButtonOther);
+        txtinputphone = findViewById(R.id.txtinputphone);
+        txthelp_phone = findViewById(R.id.txthelp_phone);
+        if (binding.txthelpPhone.getText().toString().isEmpty()){
+            binding.imgErrorPhone.setVisibility(View.INVISIBLE);
+            binding.txtinputphone.setError(null);
+        }
+        if (binding.txthelpName.getText().toString().isEmpty()){
+            binding.imgErrorName.setVisibility(View.INVISIBLE);
+            binding.txtinputname.setError(null);
+        }
+        if (binding.txthelpDay.getText().toString().isEmpty()){
+            binding.imgErrorDateOfBirth.setVisibility(View.INVISIBLE);
+            binding.txtinputday.setError(null);
+        }
+        if (binding.txthelpEmail.getText().toString().isEmpty()){
+            binding.imgErrorEmail.setVisibility(View.INVISIBLE);
+            binding.txtinputemail.setError(null);
+        }
 
         // Gọi phương thức addEvents để thêm sự kiện cho các thành phần
         addEvents();
@@ -78,6 +107,114 @@ public class SignUp extends AppCompatActivity {
                 showAlertDialog();
             }
         });
+
+        txthelp_phone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = txthelp_phone.getText().toString();
+                if (content.isEmpty()) {
+//                    txtinputphone.setErrorEnabled(true);
+                    txtinputphone.setError("The phone number can not be empty!");
+                    binding.imgErrorPhone.setVisibility(View.VISIBLE);
+                }
+                else if (content.length() > 11) {
+//                    txtinputphone.setErrorEnabled(true);
+                    txtinputphone.setError("The phone is too long!");
+                    binding.imgErrorPhone.setVisibility(View.VISIBLE);
+                }
+                else {
+//                    txtinputphone.setErrorEnabled(false);
+                    txtinputphone.setError(null);
+                    binding.imgErrorPhone.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        binding.txthelpName.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = binding.txthelpName.getText().toString();
+                if (content.isEmpty()) {
+                    binding.txtinputname.setError("The name can not be empty!");
+                    binding.imgErrorName.setVisibility(View.VISIBLE);
+                }
+                else if (!content.matches("^[\\p{L} \\.\\-]+$")) {
+                    binding.txtinputname.setError("The name can not include special character!");
+                    binding.imgErrorName.setVisibility(View.VISIBLE);
+                }
+                else {
+                    binding.txtinputname.setError(null);
+                    binding.imgErrorName.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        binding.txthelpDay.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = binding.txthelpDay.getText().toString();
+                if (content.isEmpty()) {
+                    binding.txtinputday.setError("The date of birth can not be empty!");
+                    binding.imgErrorDateOfBirth.setVisibility(View.VISIBLE);
+                }
+                else {
+                    try {
+                        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+                        formatter.setLenient(false);
+                        formatter.parse(content);
+                        binding.txtinputday.setError(null);
+                        binding.imgErrorDateOfBirth.setVisibility(View.INVISIBLE);
+                    } catch (ParseException e) {
+                        binding.txtinputday.setError("Wrong format, please follow format \"dd-mm-yyyy\"! For eg: 07-01-2003");
+                        binding.imgErrorDateOfBirth.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        binding.txthelpEmail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = binding.txthelpEmail.getText().toString();
+                if (content.isEmpty()) {
+                    binding.txtinputemail.setError("The e-mail can not be empty!");
+                    binding.imgErrorEmail.setVisibility(View.VISIBLE);
+                }
+                else if (!content.matches("^(.+)@(.+)$")) {
+                    binding.txtinputemail.setError("The e-mail is invalid, please check again!");
+                    binding.imgErrorEmail.setVisibility(View.VISIBLE);
+                }
+                else {
+                    binding.txtinputemail.setError(null);
+                    binding.imgErrorEmail.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
     }
 
     // Phương thức để hiển thị AlertDialog
