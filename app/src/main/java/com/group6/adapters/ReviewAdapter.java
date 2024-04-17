@@ -9,24 +9,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.group6.models.Review;
+import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
+import com.group6.oriyoung.ReviewDetail;
 
 import java.util.ArrayList;
 
 public class ReviewAdapter extends BaseAdapter {
     Context context;
     ArrayList<Review>reviews;
-    int item_layout;
+    ;
+    int item_review_layout;
+
 
     public ReviewAdapter(Context context, int item_review_layout, ArrayList<Review> reviews) {
         this.context = context;
         this.reviews = reviews;
+        this.item_review_layout = item_review_layout;
+
     }
 
     @Override
     public int getCount() {
         return reviews.size();
     }
+
 
     @Override
     public Object getItem(int position) {
@@ -45,11 +52,16 @@ public class ReviewAdapter extends BaseAdapter {
 
             holder = new ViewHolder();
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(item_layout, null);
+            convertView = inflater.inflate(R.layout.item_review_layout, null);
 
-            holder.imvRating = convertView.findViewById(R.id.imvRating);
+            holder.txtIndividualRatingValue = convertView.findViewById(R.id.txtIndividualRatingValue);
             holder.txtUsername = convertView.findViewById(R.id.txtUsername);
             holder.txtReviewDetail = convertView.findViewById(R.id.txtReviewDetail);
+            holder.imvProductThumb = convertView.findViewById(R.id.imvProductThumb);
+            holder.txtName = convertView.findViewById(R.id.txtName);
+            holder.txtPrice = convertView.findViewById(R.id.txtPrice);
+            holder.txtRatingValue = convertView.findViewById(R.id.txtRatingValue);
+
 
             convertView.setTag(holder);
         }else {
@@ -58,14 +70,18 @@ public class ReviewAdapter extends BaseAdapter {
 
         //Liên kết data
         Review v = reviews.get(position);
-        holder.imvRating.setImageResource(v.getReviewCount());
+        holder.txtIndividualRatingValue.setText(String.valueOf(v.getIndividualRatingValue()));
         holder.txtUsername.setText(v.getReviewerName());
         holder.txtReviewDetail.setText(v.getReviewDescription());
+        holder.imvProductThumb.setImageResource(v.getProductImage());
+        holder.txtName.setText(v.getProductName());
+        holder.txtPrice.setText(String.valueOf(v.getProductPrice()));
+        holder.txtRatingValue.setText(String.valueOf(v.getRatingValue()));
         return convertView;
     }
 
     public static class ViewHolder{
-        ImageView imvRating;
-        TextView txtUsername, txtReviewDetail;
+        ImageView imvProductThumb;
+        TextView txtUsername, txtReviewDetail, txtIndividualRatingValue, txtName, txtPrice, txtRatingValue;
     }
 }

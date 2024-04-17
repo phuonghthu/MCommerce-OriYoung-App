@@ -150,14 +150,6 @@
                         android:isScrollContainer="true"
                         android:padding="@dimen/horizontal_padding"/>
                 </LinearLayout>
-
-
-
-
-
-
-
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -215,7 +207,7 @@
         android:layout_marginBottom="@dimen/large_vertical_padding"
         android:background="@color/white">
         <include
-            android:id="@+id/GroupButton"
+            android:id="@+id/GroupButtons"
             layout="@layout/product_buttons_layout"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -29,6 +29,9 @@
             android:text="@string/product_description"
             android:textSize="@dimen/medium_textSize"
             android:fontFamily="@font/gilroy_regular"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:justificationMode="inter_word"
+            android:paddingTop="@dimen/horizontal_padding"
+            />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
