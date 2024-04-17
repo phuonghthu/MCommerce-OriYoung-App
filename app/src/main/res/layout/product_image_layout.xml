@@ -12,10 +12,10 @@
         app:layout_constraintTop_toTopOf="parent"
         android:orientation="vertical"
         android:gravity="center_horizontal">
-        <ImageView
+        <com.theophrast.ui.widget.SquareImageView
             android:id="@+id/imvProductThumb"
-            android:layout_width="400dp"
-            android:layout_height="400dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:src="@drawable/pd_beplain"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -26,13 +26,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/product_name"
+                android:justificationMode="inter_word"
                 android:fontFamily="@font/gilroy_semibold"
                 android:textSize="@dimen/medium_textSize"
                 android:textColor="@color/black" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/small_margin">
                 <ImageView
                     android:layout_width="14dp"
                     android:layout_height="14dp"
@@ -64,7 +66,8 @@
                 android:text="@string/product_price"
                 android:fontFamily="@font/gilroy_bold"
                 android:textSize="@dimen/h4_textSize"
-                android:textColor="@color/secondaryorange"/>
+                android:textColor="@color/secondaryorange"
+                android:layout_marginTop="@dimen/small_margin"/>
             </LinearLayout>
 
         </LinearLayout>

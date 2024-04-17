@@ -39,13 +39,13 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        binding.cartbill.findViewById(R.id.btnCheckout).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(CartActivity.this, Checkout.class);
-//                finish();
-//            }
-//        });
+        binding.cartbill.btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartActivity.this, Checkout.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

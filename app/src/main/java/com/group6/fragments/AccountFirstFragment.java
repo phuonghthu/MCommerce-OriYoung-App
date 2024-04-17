@@ -15,6 +15,7 @@ import com.group6.oriyoung.HomeActivity;
 import com.group6.oriyoung.Login;
 import com.group6.oriyoung.MyVoucher;
 import com.group6.oriyoung.OnboardingActivity;
+import com.group6.oriyoung.OrderHistoryActivity;
 import com.group6.oriyoung.R;
 import com.group6.oriyoung.Setting;
 import com.group6.oriyoung.SupportCenter;
@@ -82,6 +83,14 @@ public class AccountFirstFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), Login.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.lichsudonhang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), OrderHistoryActivity.class);
                 startActivity(intent);
             }
         });

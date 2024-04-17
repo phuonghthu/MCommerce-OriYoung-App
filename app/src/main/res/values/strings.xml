@@ -165,6 +165,7 @@
     <string name="fast_shipping_description">Miễn phí giao hàng với đơn hàng từ 500K</string>
     <string name="authentic_product">Sản phẩm chính hãng </string>
     <string name="authentic_product_description">Cam kết 100% là hàng chính hãng, nguồn gốc rõ ràng</string>
+    <string name="order_history">Lịch sử đơn hàng</string>
 
     <style name="HelperTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
         <item name="android:textSize">10dp</item>

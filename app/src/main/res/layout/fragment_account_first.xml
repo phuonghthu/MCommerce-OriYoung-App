@@ -121,7 +121,7 @@
             android:id="@+id/imgview2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_preferential"
+            android:src="@drawable/ic_voucher"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
         <TextView
@@ -147,11 +147,51 @@
             app:layout_constraintTop_toTopOf="@id/imgview2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/hotro"
+        android:id="@+id/lichsudonhang"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@id/uudaicuatoi"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        <ImageView
+            android:id="@+id/imvOrderHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_order"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtOrderHistory"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/gilroy_regular"
+            android:text="@string/order_history"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@id/imvOrderHistory"
+            app:layout_constraintEnd_toStartOf="@id/imvRight"
+
+            app:layout_constraintStart_toEndOf="@id/imvOrderHistory"
+            app:layout_constraintTop_toTopOf="@id/imvOrderHistory" />
+        <ImageView
+            android:id="@+id/imvRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_narrow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imvOrderHistory"
+            app:layout_constraintBottom_toBottomOf="@id/imvOrderHistory"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/hotro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/lichsudonhang"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
         <ImageView
