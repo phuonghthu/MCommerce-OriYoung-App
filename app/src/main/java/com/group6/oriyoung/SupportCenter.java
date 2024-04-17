@@ -1,5 +1,6 @@
 package com.group6.oriyoung;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.group6.fragments.AccountFirstFragment;
 import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
 import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
 import com.group6.fragments.DeliveryFragment;
@@ -30,6 +32,9 @@ public class SupportCenter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySupportCenterBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        setActionBar();
+
 
         btn_dt = findViewById(R.id.btndoitra);
         btn_vc = findViewById(R.id.btnvanchuyen);
@@ -71,8 +76,18 @@ public class SupportCenter extends AppCompatActivity {
                 fragmentManager.beginTransaction().replace(R.id.frame_in4, baomatFragment).commit();
             }
         });
-        title.setText("Trung tâm hỗ trợ");
 
+    }
+
+    private void setActionBar() {
+        binding.toolbar.toolbarTitle.setText("Trung tâm hỗ trợ");
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SupportCenter.this, AccountFirstFragment.class);
+                finish();
+            }
+        });
     }
 
     private void updateButtonState(Button button) {
