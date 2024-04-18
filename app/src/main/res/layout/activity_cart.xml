@@ -5,8 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:paddingVertical="@dimen/vertical_padding"
+    android:paddingTop="@dimen/vertical_padding"
     tools:context=".CartActivity">
 
         <include
@@ -43,7 +42,7 @@
             android:fillViewport="true"
             android:paddingHorizontal="@dimen/horizontal_padding"
             android:scrollbarAlwaysDrawVerticalTrack="false"
-            app:layout_constraintBottom_toTopOf="@+id/cartbill"
+            app:layout_constraintBottom_toTopOf="@+id/cartbillLayout"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -53,14 +52,15 @@
         </ScrollView>
 
         <LinearLayout
-            android:id="@id/cartbill"
+            android:id="@+id/cartbillLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_bill_layout"
             android:padding="@dimen/horizontal_padding"
             app:layout_constraintBottom_toBottomOf="parent">
 
-                <include layout="@layout/cartbill_layout" />
+                <include layout="@layout/cartbill_layout"
+                    android:id="@+id/cartbill"/>
         </LinearLayout>
 
 
