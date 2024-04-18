@@ -3,12 +3,24 @@ package com.group6.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.group6.adapters.CategoryAdapter;
+import com.group6.adapters.DeliveringAdapter;
+import com.group6.models.Category;
+import com.group6.models.CheckoutCart;
+import com.group6.models.OrderHistory;
+import com.group6.oriyoung.Checkout;
 import com.group6.oriyoung.R;
+import com.group6.oriyoung.databinding.FragmentCategoryBinding;
+import com.group6.oriyoung.databinding.FragmentDeliveringOrderBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +28,11 @@ import com.group6.oriyoung.R;
  * create an instance of this fragment.
  */
 public class DeliveringOrderFragment extends Fragment {
+
+    FragmentDeliveringOrderBinding binding;
+    DeliveringAdapter adapter;
+    ArrayList<OrderHistory> orderHistory;
+    ArrayList<CheckoutCart> orderItems;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +78,31 @@ public class DeliveringOrderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_delivering_order, container, false);
+        binding = FragmentDeliveringOrderBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        orderItems = new ArrayList<>();
+
+        loadItems();
+
+        return view;
+    }
+
+    private void loadItems() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.rvDelivering.setLayoutManager(linearLayoutManager);
+        orderItems = new ArrayList<>(); // Khởi tạo danh sách orderItems
+
+        CheckoutCart orderItem = new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.img_product, 2);
+        orderItems.add(orderItem);
+
+        orderHistory = new ArrayList<>(); // Khởi tạo danh sách orderHistory
+
+        OrderHistory historyItem = new OrderHistory("MD123", "Đang giao", orderItems, 4, 400000);
+        orderHistory.add(historyItem);
+
+        adapter = new DeliveringAdapter(getContext(), orderHistory, orderItems);
+        binding.rvDelivering.setAdapter(adapter);
     }
 }
