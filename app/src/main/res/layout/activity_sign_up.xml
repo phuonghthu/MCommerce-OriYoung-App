@@ -108,7 +108,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="5dp">
+                    android:layout_marginTop="5dp"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/HintText"
+                    app:helperTextTextColor="@color/error">
 
                     <EditText
                         android:id="@+id/txthelp_phone"
@@ -162,14 +165,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/HintText"
+                    app:helperTextTextColor="@color/error">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txthelp_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
-                        android:textSize="@dimen/medium_textSize" />
+                        android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
@@ -216,7 +222,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:errorTextAppearance="@style/HintText"
-                    >
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/HintText"
+                    app:helperTextTextColor="@color/error">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txthelp_day"
@@ -316,7 +324,9 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:errorTextAppearance="@style/HintText"
-                    >
+                    app:endIconMode="clear_text"
+                    app:helperTextTextAppearance="@style/HintText"
+                    app:helperTextTextColor="@color/error">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txthelp_email"

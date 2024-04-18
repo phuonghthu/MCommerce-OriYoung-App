@@ -2,6 +2,7 @@ package com.group6.oriyoung;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,6 +16,7 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.group6.oriyoung.databinding.ActivitySignUpBinding;
@@ -31,6 +33,11 @@ public class SignUp extends AppCompatActivity {
     RadioButton radioButtonMale, radioButtonFemale, radioButtonOther;
     TextInputLayout txtinputphone;
     EditText txthelp_phone;
+
+    boolean isValidPhone = false;
+    boolean isValidName = false;
+    boolean isValidDOB = false;
+    boolean isValidEmail = false;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -51,19 +58,19 @@ public class SignUp extends AppCompatActivity {
         txthelp_phone = findViewById(R.id.txthelp_phone);
         if (binding.txthelpPhone.getText().toString().isEmpty()){
             binding.imgErrorPhone.setVisibility(View.INVISIBLE);
-            binding.txtinputphone.setError(null);
+            binding.txtinputphone.setHelperText(null);
         }
         if (binding.txthelpName.getText().toString().isEmpty()){
             binding.imgErrorName.setVisibility(View.INVISIBLE);
-            binding.txtinputname.setError(null);
+            binding.txtinputname.setHelperText(null);
         }
         if (binding.txthelpDay.getText().toString().isEmpty()){
             binding.imgErrorDateOfBirth.setVisibility(View.INVISIBLE);
-            binding.txtinputday.setError(null);
+            binding.txtinputday.setHelperText(null);
         }
         if (binding.txthelpEmail.getText().toString().isEmpty()){
             binding.imgErrorEmail.setVisibility(View.INVISIBLE);
-            binding.txtinputemail.setError(null);
+            binding.txtinputemail.setHelperText(null);
         }
 
         // Gọi phương thức addEvents để thêm sự kiện cho các thành phần
@@ -96,6 +103,30 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Tạo Intent để chuyển sang activity_signup_pass
+                if (!isValidPhone) {
+                    new AlertDialog.Builder(getApplicationContext())
+                            .setTitle("Unable to continue")
+                            .setMessage("Your phone is invalid!");
+                    return;
+                }
+                if (!isValidName) {
+                    new AlertDialog.Builder(getApplicationContext())
+                            .setTitle("Unable to continue")
+                            .setMessage("Your name is invalid!");
+                    return;
+                }
+                if (!isValidDOB) {
+                    new AlertDialog.Builder(getApplicationContext())
+                            .setTitle("Unable to continue")
+                            .setMessage("Your date of birth is invalid!");
+                    return;
+                }
+                if (!isValidEmail) {
+                    new AlertDialog.Builder(getApplicationContext())
+                            .setTitle("Unable to continue")
+                            .setMessage("Your e-mail is invalid!");
+                    return;
+                }
                 Intent intent = new Intent(SignUp.this, SignupPassword.class);
                 startActivity(intent); // Chuyển sang activity mới
             }
@@ -114,21 +145,29 @@ public class SignUp extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                isValidPhone = false;
                 String content = txthelp_phone.getText().toString();
                 if (content.isEmpty()) {
-//                    txtinputphone.setErrorEnabled(true);
-                    txtinputphone.setError("The phone number can not be empty!");
+                    txtinputphone.setHelperText("The phone number can not be empty!");
                     binding.imgErrorPhone.setVisibility(View.VISIBLE);
+                    txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
                 }
                 else if (content.length() > 11) {
-//                    txtinputphone.setErrorEnabled(true);
-                    txtinputphone.setError("The phone is too long!");
+                    txtinputphone.setHelperText("The phone is too long!");
                     binding.imgErrorPhone.setVisibility(View.VISIBLE);
+                    txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
+                }
+                else if (content.length() < 10) {
+                    txtinputphone.setHelperText("The phone is too short !");
+                    binding.imgErrorPhone.setVisibility(View.VISIBLE);
+                    txtinputphone.setEndIconMode(TextInputLayout.END_ICON_CLEAR_TEXT);
+                    txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
                 }
                 else {
-//                    txtinputphone.setErrorEnabled(false);
-                    txtinputphone.setError(null);
+                    isValidPhone = true;
+                    txtinputphone.setHelperText(null);
                     binding.imgErrorPhone.setVisibility(View.INVISIBLE);
+                    txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.primarygreen));
                 }
             }
 
@@ -143,18 +182,26 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String content = binding.txthelpName.getText().toString();
+                isValidName = false;
                 if (content.isEmpty()) {
-                    binding.txtinputname.setError("The name can not be empty!");
+                    binding.txtinputname.setHelperText("The name can not be empty!");
                     binding.imgErrorName.setVisibility(View.VISIBLE);
                 }
                 else if (!content.matches("^[\\p{L} \\.\\-]+$")) {
-                    binding.txtinputname.setError("The name can not include special character!");
+                    binding.txtinputname.setHelperText("The name can not include special character!");
                     binding.imgErrorName.setVisibility(View.VISIBLE);
                 }
                 else {
-                    binding.txtinputname.setError(null);
+                    isValidName = true;
+                    binding.txtinputname.setHelperText("");
                     binding.imgErrorName.setVisibility(View.INVISIBLE);
                 }
+
+                if (binding.imgErrorName.getVisibility() == View.VISIBLE) {
+                    binding.txtinputname.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
+                }
+                else
+                    binding.txtinputname.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.primarygreen));
             }
 
             @Override
@@ -168,8 +215,9 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String content = binding.txthelpDay.getText().toString();
+                isValidDOB = false;
                 if (content.isEmpty()) {
-                    binding.txtinputday.setError("The date of birth can not be empty!");
+                    binding.txtinputday.setHelperText("The date of birth can not be empty!");
                     binding.imgErrorDateOfBirth.setVisibility(View.VISIBLE);
                 }
                 else {
@@ -177,13 +225,22 @@ public class SignUp extends AppCompatActivity {
                         DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
                         formatter.setLenient(false);
                         formatter.parse(content);
-                        binding.txtinputday.setError(null);
+                        // valid
+                        isValidDOB = true;
+                        binding.txtinputday.setHelperText(null);
                         binding.imgErrorDateOfBirth.setVisibility(View.INVISIBLE);
                     } catch (ParseException e) {
-                        binding.txtinputday.setError("Wrong format, please follow format \"dd-mm-yyyy\"! For eg: 07-01-2003");
+                        binding.txtinputday.setHelperText("Wrong format, please follow format \"dd-mm-yyyy\"! For eg: 07-01-2003");
                         binding.imgErrorDateOfBirth.setVisibility(View.VISIBLE);
                     }
                 }
+
+
+                if (binding.imgErrorDateOfBirth.getVisibility() == View.VISIBLE) {
+                    binding.txtinputday.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
+                }
+                else
+                    binding.txtinputday.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.primarygreen));
             }
 
             @Override
@@ -197,18 +254,25 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String content = binding.txthelpEmail.getText().toString();
+                isValidEmail = false;
                 if (content.isEmpty()) {
-                    binding.txtinputemail.setError("The e-mail can not be empty!");
+                    binding.txtinputemail.setHelperText("The e-mail can not be empty!");
                     binding.imgErrorEmail.setVisibility(View.VISIBLE);
                 }
                 else if (!content.matches("^(.+)@(.+)$")) {
-                    binding.txtinputemail.setError("The e-mail is invalid, please check again!");
+                    binding.txtinputemail.setHelperText("The e-mail is invalid, please check again!");
                     binding.imgErrorEmail.setVisibility(View.VISIBLE);
                 }
                 else {
-                    binding.txtinputemail.setError(null);
+                    isValidEmail = true;
+                    binding.txtinputemail.setHelperText(null);
                     binding.imgErrorEmail.setVisibility(View.INVISIBLE);
                 }
+                if (binding.imgErrorEmail.getVisibility() == View.VISIBLE) {
+                    binding.txtinputemail.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
+                }
+                else
+                    binding.txtinputemail.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.primarygreen));
             }
 
             @Override
