@@ -9,14 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.group6.adapters.CategoryAdapter;
+
 import com.group6.adapters.DeliveringAdapter;
-import com.group6.models.Category;
 import com.group6.models.CheckoutCart;
 import com.group6.models.OrderHistory;
-import com.group6.oriyoung.Checkout;
 import com.group6.oriyoung.R;
-import com.group6.oriyoung.databinding.FragmentCategoryBinding;
 import com.group6.oriyoung.databinding.FragmentDeliveringOrderBinding;
 
 import java.util.ArrayList;
