@@ -16,7 +16,6 @@ import com.group6.models.Review;
 import com.group6.oriyoung.databinding.ActivityProductDetailBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ProductDetail extends AppCompatActivity {
 
