@@ -19,6 +19,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.group6.oriyoung.databinding.ActivitySignUpBinding;
 
 import java.text.DateFormat;
@@ -31,8 +35,11 @@ public class SignUp extends AppCompatActivity {
     LinearLayout btnTrove;
     RadioGroup radioGroup;
     RadioButton radioButtonMale, radioButtonFemale, radioButtonOther;
-    TextInputLayout txtinputphone;
-    EditText txthelp_phone;
+    TextInputLayout txtinputphone,txtinputname, txtinputmail, txtinputday;
+    EditText txthelp_phone, txthelp_name, txthelp_mail,txthelp_day;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    FirebaseAuth mAuth;
 
     boolean isValidPhone = false;
     boolean isValidName = false;
@@ -56,6 +63,24 @@ public class SignUp extends AppCompatActivity {
         radioButtonOther = findViewById(R.id.radioButtonOther);
         txtinputphone = findViewById(R.id.txtinputphone);
         txthelp_phone = findViewById(R.id.txthelp_phone);
+        txtinputname = findViewById(R.id.txtinputname);
+        txthelp_name = findViewById(R.id.txthelp_name);
+        txtinputmail = findViewById(R.id.txtinputemail);
+        txtinputmail = findViewById(R.id.txthelp_email);
+        txtinputday = findViewById(R.id.txtinputday);
+        txthelp_day = findViewById(R.id.txthelp_day);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        binding.btnTieptheo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                databaseReference = firebaseDatabase.getReference("user");
+
+            }
+        });
+
         if (binding.txthelpPhone.getText().toString().isEmpty()){
             binding.imgErrorPhone.setVisibility(View.INVISIBLE);
             binding.txtinputphone.setHelperText(null);
@@ -75,6 +100,15 @@ public class SignUp extends AppCompatActivity {
 
         // Gọi phương thức addEvents để thêm sự kiện cho các thành phần
         addEvents();
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            currentUser.reload();
+        }
     }
 
     // Phương thức để thêm sự kiện cho các thành phần

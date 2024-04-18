@@ -231,7 +231,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
-                        android:textSize="@dimen/medium_textSize" />
+                        android:textSize="@dimen/medium_textSize"
+                        android:drawableEnd="@drawable/ic_calendar"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
