@@ -1,25 +1,14 @@
 package com.group6.oriyoung;
 
-import static androidx.recyclerview.widget.RecyclerView.VERTICAL;
-import static java.security.AccessController.getContext;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
-import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.group6.adapters.FavoriteAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.ReviewAdapter;
 import com.group6.models.Product;
@@ -33,9 +22,14 @@ public class ProductDetail extends AppCompatActivity {
     ActivityProductDetailBinding binding;
 //    ReviewAdapter adapter;
     ArrayList<Product> product;
+    ArrayList<Review> reviews;
     TextView quantity;
     int total_quantity = 1;
-    ProductAdapter adapter;
+    int lastVisibleItemIndex = 2; // Vị trí của item cuối cùng muốn hiển thị
+    ProductAdapter productAdapter;
+    ReviewAdapter reviewAdapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +37,12 @@ public class ProductDetail extends AppCompatActivity {
         binding = ActivityProductDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-//        loadData();
+        loadReview();
         addEvents();
         loadRelatedProducts();
+
+        binding.layoutreview.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
+        binding.layoutproduct.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
 
         quantity = findViewById(R.id.txtQuantity);
 //        addtoCart = findViewById(R.id.btnAddToCart);
@@ -55,7 +52,7 @@ public class ProductDetail extends AppCompatActivity {
 
     private void addEvents() {
 
-        binding.GroupButton.btnBuyNow.setOnClickListener(new View.OnClickListener() {
+        binding.GroupButtons.btnBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductDetail.this, CartActivity.class);
@@ -69,7 +66,7 @@ public class ProductDetail extends AppCompatActivity {
 //                startActivity(intent);
             }
         });
-        binding.GroupButton.txtAdd.setOnClickListener(new View.OnClickListener() {
+        binding.GroupButtons.txtAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (total_quantity < 100){
@@ -80,7 +77,8 @@ public class ProductDetail extends AppCompatActivity {
 
             }
         });
-        binding.GroupButton.txtDelete.setOnClickListener(new View.OnClickListener() {
+
+        binding.GroupButtons.txtDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (total_quantity > 1) {
@@ -89,13 +87,20 @@ public class ProductDetail extends AppCompatActivity {
                 }
             }
         });
+        binding.layoutreview.imvViewAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductDetail.this, ReviewDetail.class));
+            }
+        });
+
+//        binding.layoutreview.txtRatingCount.setText(String.valueOf());
 
     }
     private void loadRelatedProducts() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 1, RecyclerView.VERTICAL, true);
-
-        binding.rvRelatedProduct.setLayoutManager(gridLayoutManager);
-        binding.rvRelatedProduct.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+        binding.rvRelatedProduct.setLayoutManager(layoutManager);
         product = new ArrayList<>();
 
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
@@ -114,7 +119,34 @@ public class ProductDetail extends AppCompatActivity {
                 100000, 0, "No", R.drawable.product_place_holder,
                 true, true, 5.0, 100, null ));
 
-        adapter= new ProductAdapter(getApplicationContext(), product);
-        binding.rvRelatedProduct.setAdapter(adapter);
+        productAdapter= new ProductAdapter(getApplicationContext(), product);
+        binding.rvRelatedProduct.setAdapter(productAdapter);
+
     }
-}
+    private void loadReview() {
+        reviews = new ArrayList<>();
+        reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,
+                1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, R.drawable.product_place_holder, true,  true,  5.0));
+        reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,
+                1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, R.drawable.product_place_holder, true,  true,  5.0));
+        reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,
+                1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, R.drawable.product_place_holder, true,  true,  5.0));
+        reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,
+                1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, R.drawable.product_place_holder, true,  true,  5.0));
+        reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,
+                1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+                100000, R.drawable.product_place_holder, true,  true,  5.0));
+        reviewAdapter = new ReviewAdapter(this, R.layout.item_review_layout, reviews);
+        binding.layoutreview.lvReview.setAdapter(reviewAdapter);
+
+
+
+    }
+
+
+
+    }

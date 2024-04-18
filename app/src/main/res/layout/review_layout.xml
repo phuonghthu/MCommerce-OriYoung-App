@@ -26,11 +26,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:gravity="center_vertical"
             android:weightSum="10">
             <ImageView
                 android:id="@+id/Rating"
-                android:layout_width="12dp"
-                android:layout_height="12dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:src="@drawable/ic_rate"
                 android:layout_gravity="center_vertical"
                 android:layout_weight=".25"/>
@@ -40,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/rating_value"
                 android:fontFamily="@font/gilroy_semibold"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:textColor="@color/black"
                 android:paddingStart="@dimen/small_margin"
                 android:layout_weight=".25"/>
@@ -50,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/rating_count"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:textColor="@color/black"
                 android:paddingStart="@dimen/medium_margin"
                 android:layout_weight="8"/>
@@ -65,11 +67,13 @@
                     android:layout_height="wrap_content"
                     android:text="@string/view_all"
                     android:fontFamily="@font/gilroy_regular"
-                    android:textSize="@dimen/small_textSize"
-                    android:textColor="@color/black" />
+                    android:textSize="@dimen/medium_textSize"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center_vertical"/>
                 <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:id="@+id/imvViewAll"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:src="@drawable/ic_next"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin" />
@@ -78,7 +82,10 @@
         <ListView
             android:id="@+id/lvReview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:dividerHeight="0dp"
+            android:divider="@color/white"
+            android:layout_marginBottom="@dimen/horizontal_padding"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

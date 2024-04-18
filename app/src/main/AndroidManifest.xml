@@ -19,6 +19,9 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
+            android:name=".ReviewDetail"
+            android:exported="false" />
+        <activity
             android:name=".Checkout"
             android:exported="false" />
         <activity
@@ -30,6 +33,9 @@
         <activity
             android:name=".DialogPaymentSuccessfully"
             android:exported="false" />
+        <activity
+            android:name=".ProductDetail"
+            android:exported="false"/>
         <activity
             android:name=".OrderHistoryActivity"
             android:exported="false" />
@@ -98,9 +104,6 @@
             android:exported="false" />
         <activity
             android:name=".ResetPassword"
-            android:exported="false" />
-        <activity
-            android:name=".ProductDetail"
             android:exported="false" />
         <activity
             android:name=".OnboardingActivity"
