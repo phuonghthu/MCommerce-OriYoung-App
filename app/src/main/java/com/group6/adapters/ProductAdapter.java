@@ -30,7 +30,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_product, parent, false);
+        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
         return new ProductViewHolder(view);
     }
 
@@ -38,9 +38,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         holder.imvProductThumb.setImageResource(products.get(position).getProductImage());
         holder.txtName.setText(products.get(position).getProductName());
-        holder.txtPrice.setText(String.valueOf(Math.round(products.get(position).getProductPrice())) + " VNĐ");
 
-        //Favorite system
+        double originalPrice = products.get(position).getProductPrice();
+        double discountPercent = products.get(position).getProductDiscountPercent();
+        double discountedPrice = originalPrice * (1 - (discountPercent / 100.0));
+        holder.txtPrice.setText(String.valueOf(Math.round(discountedPrice)) + " VNĐ");
+        if (discountPercent == 0) {
+            holder.txtDiscountPercent.setVisibility(View.GONE);
+        } else {
+            holder.txtDiscountPercent.setVisibility(View.VISIBLE);
+            holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
+        }
 
     }
 
@@ -51,7 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public class ProductViewHolder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
-        TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
+        TextView txtName, txtPrice, txtRatingValue, btnAddToCart, txtDiscountPercent;
 
 
         public ProductViewHolder(@NonNull View itemView) {
@@ -62,6 +70,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
+            txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
 
         }
     }

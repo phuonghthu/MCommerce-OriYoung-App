@@ -28,7 +28,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
     @Override
     public CatalogAdapter.CatalogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_product, parent, false);
+        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
         return new CatalogAdapter.CatalogViewHolder(view);
     }
 
@@ -37,7 +37,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         holder.imvProductThumb.setImageResource(catalog.get(position).getProductImage());
         holder.txtName.setText(catalog.get(position).getProductName());
         holder.txtPrice.setText(String.valueOf(Math.round(catalog.get(position).getProductPrice())) + " VNĐ");
-
+        holder.txtDiscountPercent.setVisibility(View.GONE);
     }
 
     @Override
@@ -52,13 +52,14 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
 
     public class CatalogViewHolder extends RecyclerView.ViewHolder {
         ImageView imvProductThumb;
-        TextView txtName, txtPrice, txtRatingValue;
+        TextView txtName, txtPrice, txtRatingValue, txtDiscountPercent;
         public CatalogViewHolder(@NonNull View itemView) {
             super(itemView);
             imvProductThumb= itemView.findViewById(R.id.imvProductThumb);
             txtName= itemView.findViewById(R.id.txtName);
             txtPrice= itemView.findViewById(R.id.txtPrice);
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
+            txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
         }
     }
 }

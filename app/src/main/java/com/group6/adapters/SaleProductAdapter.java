@@ -46,7 +46,12 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
         double discountPercent = products.get(position).getProductDiscountPercent();
         double discountedPrice = originalPrice * (1 - (discountPercent / 100.0));
         holder.txtPrice.setText(String.valueOf(Math.round(discountedPrice)) + " VNĐ");
-        holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
+        if (discountPercent == 0) {
+            holder.txtDiscountPercent.setVisibility(View.GONE);
+        } else {
+            holder.txtDiscountPercent.setVisibility(View.VISIBLE);
+            holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
+        }
     }
 
     @Override

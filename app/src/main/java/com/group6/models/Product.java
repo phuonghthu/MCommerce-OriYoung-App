@@ -12,7 +12,7 @@ public class Product implements Serializable {
     String productDescription;
     int productImage;
     boolean isHot;
-    boolean isFavorite;
+//    boolean isFavorite;
     double ratingValue;
     int ratingCount;
     List<Review> review;
@@ -28,7 +28,7 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
         this.productImage = productImage;
         this.isHot = isHot;
-        this.isFavorite = isFavorite;
+//        this.isFavorite = isFavorite;
         this.ratingValue = ratingValue;
         this.ratingCount = ratingCount;
         this.review = review;
@@ -98,13 +98,13 @@ public class Product implements Serializable {
         isHot = hot;
     }
 
-    public boolean isFavorite() {
-        return isFavorite;
-    }
-
-    public void setFavorite(boolean favorite) {
-        isFavorite = favorite;
-    }
+//    public boolean isFavorite() {
+//        return isFavorite;
+//    }
+//
+//    public void setFavorite(boolean favorite) {
+//        isFavorite = favorite;
+//    }
 
     public double getRatingValue() {
         return ratingValue;

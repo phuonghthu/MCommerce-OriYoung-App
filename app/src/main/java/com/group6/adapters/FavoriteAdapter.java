@@ -30,7 +30,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @Override
     public FavoriteViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_product, parent, false);
+        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
         return new FavoriteAdapter.FavoriteViewholder(view);
     }
 
@@ -41,6 +41,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
         holder.imvProductThumb.setImageResource(p.getProductImage());
         holder.txtName.setText(p.getProductName());
         holder.txtPrice.setText(String.valueOf(Math.round(p.getProductPrice())) + " VNĐ");
+        holder.txtDiscountPercent.setVisibility(View.GONE);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     public class FavoriteViewholder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
-        TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
+        TextView txtName, txtPrice, txtRatingValue, btnAddToCart, txtDiscountPercent;
 
 
         public FavoriteViewholder(@NonNull View itemView) {
@@ -61,6 +62,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
+            txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
         }
     }
 }
