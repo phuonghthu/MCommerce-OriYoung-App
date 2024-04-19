@@ -19,6 +19,7 @@ navigationUi = "2.6.0"
 squareimageview = "1.0.1"
 googleServices = "4.4.1"
 firebaseAuth = "22.3.1"
+firebaseDatabase = "20.3.1"
 
 
 [libraries]
@@ -43,6 +44,7 @@ navigation-ui = { group = "androidx.navigation", name = "navigation-ui", version
 squareimageview = { group = "com.github.theophrast", name = "squareimageview", version.ref = "squareimageview" }
 google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

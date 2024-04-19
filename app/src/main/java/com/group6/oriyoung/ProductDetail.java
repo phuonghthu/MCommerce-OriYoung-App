@@ -2,10 +2,12 @@ package com.group6.oriyoung;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +30,8 @@ public class ProductDetail extends AppCompatActivity {
     int lastVisibleItemIndex = 2; // Vị trí của item cuối cùng muốn hiển thị
     ProductAdapter productAdapter;
     ReviewAdapter reviewAdapter;
+
+
 
 
 
@@ -99,8 +103,8 @@ public class ProductDetail extends AppCompatActivity {
     }
     private void loadRelatedProducts() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         binding.rvRelatedProduct.setLayoutManager(layoutManager);
+
         product = new ArrayList<>();
 
         product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
@@ -122,7 +126,24 @@ public class ProductDetail extends AppCompatActivity {
         productAdapter= new ProductAdapter(getApplicationContext(), product);
         binding.rvRelatedProduct.setAdapter(productAdapter);
 
+//        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//
+//        int parentWidth = displayMetrics.widthPixels;
+//        float density = displayMetrics.density;
+//
+//// Chuyển đổi padding từ dp sang px
+////        int paddingPx = (int) (paddingDp * density);
+//
+//// Tính toán kích thước itemWidth
+//        int itemWidth = parentWidth  / 2;
+//
+//// Gọi phương thức setItemWidth() của Adapter để đặt kích thước cho mỗi mục trong RecyclerView
+//        productAdapter.setItemWidth(itemWidth);
+
+
     }
+
     private void loadReview() {
         reviews = new ArrayList<>();
         reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,

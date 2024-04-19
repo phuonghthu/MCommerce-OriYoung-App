@@ -17,9 +17,12 @@ import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
 
+
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
     Context context;
     ArrayList<Product> products;
+    private int itemWidth;
+
 
     public ProductAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
@@ -31,6 +34,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_product, parent, false);
+//        ViewGroup.LayoutParams layoutParams = view.getLayoutParams(); // Use 'view' instead of 'itemView'
+//        layoutParams.width = itemWidth;
+//        view.setLayoutParams(layoutParams);
         return new ProductViewHolder(view);
     }
 
@@ -49,6 +55,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         products.size();
     }
 
+
     public class ProductViewHolder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
         TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
@@ -65,5 +72,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
         }
     }
+//    public void setItemWidth(int itemWidth) {
+//        this.itemWidth = itemWidth;
+//        notifyDataSetChanged();
+//    }
+
 
 }

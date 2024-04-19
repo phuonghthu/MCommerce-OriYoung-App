@@ -17,10 +17,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.group6.oriyoung.databinding.ActivityLoginBinding;
 
 public class Login extends AppCompatActivity {
     ActivityLoginBinding binding;
+    TextInputLayout inputEmail;
     boolean isValidEmail = false;
     boolean isValidPassword = false;
     @Override
@@ -28,6 +30,11 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        inputEmail = findViewById(R.id.inputEmail);
+
+
+
 
 
         addEvents();
@@ -62,39 +69,59 @@ public class Login extends AppCompatActivity {
                 String content = binding.editTextInputMail.getText().toString();
                 isValidEmail = false;
                 if (!content.matches("^(.+)@(.+)$")) {
-                    binding.inputPhone.setError("The e-mail is invalid, please check again!");
+                    inputEmail.setErrorEnabled(true); // Kích hoạt tính năng hiển thị lỗi
+                    inputEmail.setError(getString(R.string.Login_mail_error)); // Đặt mô tả lỗi
                 }
                 else {
                     isValidEmail = true;
-                    binding.inputPhone.setErrorEnabled(false);
+                    binding.inputEmail.setErrorEnabled(false);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {}
         });
-
-        binding.editTextPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                String content = binding.editTextPassword.getText().toString();
-                isValidPassword = false;
-                if (!content.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
-                    binding.inputPassword.setHelperText("Password need more than 8 digits or numbers.");
-                }
-                else {
-                    isValidPassword = true;
-                    binding.inputPassword.setHelperText(null);
-                }
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
-        });
+//        binding.editTextInputMail.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                String content = binding.editTextInputMail.getText().toString();
+//                isValidEmail = false;
+//                if (!content.matches("^(.+)@(.+)$")) {
+//                    binding.inputPhone.setError("The e-mail is invalid, please check again!");
+//                }
+//                else {
+//                    isValidEmail = true;
+//                    binding.inputPhone.setErrorEnabled(false);
+//                }
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {}
+//        });
+//
+//        binding.editTextPassword.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                String content = binding.editTextPassword.getText().toString();
+//                isValidPassword = false;
+//                if (!content.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$")) {
+//                    binding.inputPassword.setHelperText("Password need more than 6 digits or numbers.");
+//                }
+//                else {
+//                    isValidPassword = true;
+//                    binding.inputPassword.setHelperText(null);
+//                }
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {}
+//        });
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,4 +160,6 @@ public class Login extends AppCompatActivity {
             }
         }
     };
+
+
 }

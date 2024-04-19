@@ -1,8 +1,9 @@
 {
   "project_info": {
     "project_number": "1078720021057",
-    "project_id": "category-products-3e2fe",
-    "storage_bucket": "category-products-3e2fe.appspot.com"
+    "firebase_url": "https://oriyoung-3e2fe-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "oriyoung-3e2fe",
+    "storage_bucket": "oriyoung-3e2fe.appspot.com"
   },
   "client": [
     {
@@ -12,7 +13,12 @@
           "package_name": "com.group6.oriyoung"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1078720021057-vk3cigk5u303us04nedrpbdri6r1719c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBVktzE8eX6Y-WlQJvotbCy3fMM7xElbLg"
@@ -20,7 +26,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078720021057-vk3cigk5u303us04nedrpbdri6r1719c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

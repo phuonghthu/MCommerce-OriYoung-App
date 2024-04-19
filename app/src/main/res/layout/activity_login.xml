@@ -56,7 +56,7 @@
                     android:textColor="@color/error"/>
             </LinearLayout>
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/inputPhone"
+                android:id="@+id/inputEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintTop_toBottomOf="@id/inputPhoneTitle"
@@ -65,7 +65,7 @@
                 app:endIconMode="clear_text"
                 app:errorContentDescription="@string/Login_mail_error"
                 app:boxStrokeErrorColor="@color/error"
-                app:errorIconDrawable="@drawable/ic_error">
+                app:errorIconTintMode="src_atop">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextInputMail"
                     android:layout_width="match_parent"
@@ -73,14 +73,15 @@
                     android:hint="@string/Login_mail"
                     android:textColorHint="@color/primarygreen"
                     android:fontFamily="@font/gilroy_medium"
-                    android:background="@drawable/stroke"/>
+                    android:background="@drawable/stroke"
+                    />
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                 android:id="@+id/inputPasswordTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@id/inputPhone"
+                app:layout_constraintTop_toBottomOf="@id/inputEmail"
                 android:layout_marginTop="@dimen/large_margin">
                 <TextView
                     android:layout_width="wrap_content"
