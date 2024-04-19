@@ -12,11 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.group6.adapters.CatalogAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.models.Product;
@@ -30,36 +36,75 @@ public class ProductCatalog extends BaseActivity {
     ArrayList<Product> catalog;
     CatalogAdapter catalogAdapter;
 
+    int categoryID;
+    String categoryName;
+    String searchText;
+    boolean isSearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityProductCatalogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        loadDataCatalog();
-        filterEvent();
+        getIntentExtra();
         addIntent();
     }
-    //Load thử sản phẩm vào lits trong danh sách
-//    private void loadDataCatalog() {
-//        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
-//        binding.rvCatalog.setLayoutManager(layoutManager);
-//        binding.rvCatalog.setHasFixedSize(true);
-//        catalog = new ArrayList<>();
-//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 0, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 0, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 0, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 0, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
-//        binding.rvCatalog.setAdapter(catalogAdapter);
-//    }
+
+    private void getIntentExtra() {
+        categoryID = getIntent().getIntExtra("categoryID", 0);
+        categoryName = getIntent().getStringExtra("categoryName");
+        searchText = getIntent().getStringExtra("text");
+        isSearch = getIntent().getBooleanExtra("isSearch", false);
+
+            binding.toolbar.toolbarTitle.setText(categoryName);
+            binding.toolbar.btnBack.setOnClickListener(v -> finish());
+            loadDataCatalog();
+            filterEvent();
+
+    }
+    private void loadDataCatalog() {
+        DatabaseReference myRef = database.getReference("Product");
+        binding.progressBarListProduct.setVisibility(View.VISIBLE);
+        catalog = new ArrayList<>();
+
+        Query query;
+        if (isSearch) {
+            query = myRef.orderByChild("productName").startAt(searchText).endAt(searchText + '\uf8ff');
+        } else {
+            if (categoryID == 7) {
+                query = myRef;
+            } else {
+                query = myRef.orderByChild("categoryID").equalTo(categoryID);
+            }
+        }
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for(DataSnapshot issue: snapshot.getChildren()){
+                        catalog.add(issue.getValue(Product.class));
+                    }
+                    if(catalog.size()>0){
+                        GridLayoutManager layoutManager = new GridLayoutManager(ProductCatalog.this, 2,  RecyclerView.VERTICAL, false);
+                        binding.rvCatalog.setLayoutManager(layoutManager);
+                        binding.rvCatalog.setHasFixedSize(true);
+                        catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
+                        binding.rvCatalog.setAdapter(catalogAdapter);
+                    }
+                    binding.progressBarListProduct.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+    }
 
 //============Xử lý dialog=============================
     private void filterEvent() {
@@ -119,27 +164,7 @@ public class ProductCatalog extends BaseActivity {
     }
     //================Xử lý Intent ==================================
     private void addIntent() {
-        binding.imvCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductCatalog.this, CartActivity.class);
-                startActivity(intent);
-            }
-        });
-        binding.toolbarCatalog.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductCatalog.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-        binding.imvSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductCatalog.this, MenuSearch.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 

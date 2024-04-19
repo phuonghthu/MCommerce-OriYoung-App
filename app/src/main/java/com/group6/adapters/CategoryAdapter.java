@@ -1,6 +1,7 @@
 package com.group6.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.group6.models.Category;
+import com.group6.oriyoung.ProductCatalog;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
@@ -36,11 +38,32 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
-        int drawableResoucreID = context.getResources().getIdentifier(categories.get(position).getImagePath(),
-                "drawable", holder.itemView.getContext().getPackageName());
-        Glide.with(context).load(drawableResoucreID).into(holder.imvCateThumb);
+        if (categories.get(position).getImagePath() != null) {
+            int drawableResourceID = context.getResources().getIdentifier(
+                    categories.get(position).getImagePath(), "drawable", holder.itemView.getContext().getPackageName());
+            Glide.with(context).load(drawableResourceID).into(holder.imvCateThumb);
+        }
         holder.txtCateName.setText(categories.get(position).getCategoryName());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Category clickedCategory = categories.get(position);
+                if (clickedCategory.getCategoryID() == 7) {
+                    // Hiển thị tất cả sản phẩm
+                    Intent intent = new Intent(context, ProductCatalog.class);
+                    intent.putExtra("categoryID", 7);
+                    intent.putExtra("categoryName", "Tất cả sản phẩm");
+                    context.startActivity(intent);
+                } else {
+                    // Hiển thị danh sách sản phẩm trong danh mục đã chọn
+                    Intent intent = new Intent(context, ProductCatalog.class);
+                    intent.putExtra("categoryID", clickedCategory.getCategoryID());
+                    intent.putExtra("categoryName", clickedCategory.getCategoryName());
+                    context.startActivity(intent);
+                }
+            }
+        });
 
     }
 
