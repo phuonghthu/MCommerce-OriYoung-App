@@ -1,7 +1,6 @@
 package com.group6.adapters;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
@@ -30,13 +31,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
+        View view = inflater.inflate(R.layout.item_product, parent, false);
         return new ProductViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
-        holder.imvProductThumb.setImageResource(products.get(position).getProductImage());
+        Glide.with(context).load(products.get(position).getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvProductThumb);
+
         holder.txtName.setText(products.get(position).getProductName());
 
         double originalPrice = products.get(position).getProductPrice();
@@ -49,7 +52,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             holder.txtDiscountPercent.setVisibility(View.VISIBLE);
             holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
         }
-
+        holder.txtRatingValue.setText(String.valueOf(products.get(position).getRatingValue()));
     }
 
     @Override

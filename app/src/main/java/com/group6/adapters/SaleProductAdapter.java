@@ -8,9 +8,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
@@ -30,7 +32,7 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
     @Override
     public SaleProductAdapter.SaleProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
+        View view = inflater.inflate(R.layout.item_product, parent, false);
         ViewGroup.LayoutParams layoutParams = view.getLayoutParams(); // Use 'view' instead of 'itemView'
         layoutParams.width = itemWidth;
         view.setLayoutParams(layoutParams);
@@ -39,7 +41,8 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull SaleProductViewHolder holder, int position) {
-        holder.imvProductThumb.setImageResource(products.get(position).getProductImage());
+        Glide.with(context).load(products.get(position).getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvProductThumb);
         holder.txtName.setText(products.get(position).getProductName());
 
         double originalPrice = products.get(position).getProductPrice();

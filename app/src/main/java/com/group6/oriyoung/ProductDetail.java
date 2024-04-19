@@ -39,7 +39,7 @@ public class ProductDetail extends AppCompatActivity {
 
         loadReview();
         addEvents();
-        loadRelatedProducts();
+//        loadRelatedProducts();
 
         binding.layoutreview.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
         binding.layoutproduct.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
@@ -97,32 +97,32 @@ public class ProductDetail extends AppCompatActivity {
 //        binding.layoutreview.txtRatingCount.setText(String.valueOf());
 
     }
-    private void loadRelatedProducts() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        binding.rvRelatedProduct.setLayoutManager(layoutManager);
-        product = new ArrayList<>();
-
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-
-        productAdapter= new ProductAdapter(getApplicationContext(), product);
-        binding.rvRelatedProduct.setAdapter(productAdapter);
-
-    }
+//    private void loadRelatedProducts() {
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false);
+//        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+//        binding.rvRelatedProduct.setLayoutManager(layoutManager);
+//        product = new ArrayList<>();
+//
+//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//
+//        productAdapter= new ProductAdapter(getApplicationContext(), product);
+//        binding.rvRelatedProduct.setAdapter(productAdapter);
+//
+//    }
     private void loadReview() {
         reviews = new ArrayList<>();
         reviews.add(new Review(1, "Hương Giang",5.0, "Mới test nhưng thấy cũng oke, shop thì nhiệt tình", 1,

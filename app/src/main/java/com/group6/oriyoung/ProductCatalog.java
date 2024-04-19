@@ -25,7 +25,7 @@ import com.group6.oriyoung.databinding.ActivityProductCatalogBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCatalog extends AppCompatActivity {
+public class ProductCatalog extends BaseActivity {
     ActivityProductCatalogBinding binding;
     ArrayList<Product> catalog;
     CatalogAdapter catalogAdapter;
@@ -35,31 +35,31 @@ public class ProductCatalog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProductCatalogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        loadDataCatalog();
+//        loadDataCatalog();
         filterEvent();
         addIntent();
     }
     //Load thử sản phẩm vào lits trong danh sách
-    private void loadDataCatalog() {
-        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
-        binding.rvCatalog.setLayoutManager(layoutManager);
-        binding.rvCatalog.setHasFixedSize(true);
-        catalog = new ArrayList<>();
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
-        binding.rvCatalog.setAdapter(catalogAdapter);
-    }
+//    private void loadDataCatalog() {
+//        GridLayoutManager layoutManager = new GridLayoutManager(this, 2,  RecyclerView.VERTICAL, false);
+//        binding.rvCatalog.setLayoutManager(layoutManager);
+//        binding.rvCatalog.setHasFixedSize(true);
+//        catalog = new ArrayList<>();
+//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        catalog.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
+//                100000, 0, "No", R.drawable.product_place_holder,
+//                true, true, 5.0, 100, null ));
+//        catalogAdapter = new CatalogAdapter(getApplicationContext(), catalog);
+//        binding.rvCatalog.setAdapter(catalogAdapter);
+//    }
 
 //============Xử lý dialog=============================
     private void filterEvent() {

@@ -10,28 +10,33 @@ public class Product implements Serializable {
     double productPrice;
     double productDiscountPercent;
     String productDescription;
-    int productImage;
+    String imagePath;
     boolean isHot;
 //    boolean isFavorite;
     double ratingValue;
     int ratingCount;
     List<Review> review;
+    int numberInCart;
+
+    public Product() {
+        // Empty constructor required for Firebase database deserialization
+    }
 
     public Product(int productID, int categoryID, String productName, double productPrice,
-                   double productDiscountPercent, String productDescription, int productImage,
-                   boolean isHot, boolean isFavorite, double ratingValue, int ratingCount, List<Review> review) {
+                   double productDiscountPercent, String productDescription, String imagePath,
+                   boolean isHot, double ratingValue, int ratingCount, List<Review> review, int numberInCart) {
         this.productID = productID;
         this.categoryID = categoryID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productDiscountPercent = productDiscountPercent;
         this.productDescription = productDescription;
-        this.productImage = productImage;
+        this.imagePath = imagePath;
         this.isHot = isHot;
-//        this.isFavorite = isFavorite;
         this.ratingValue = ratingValue;
         this.ratingCount = ratingCount;
         this.review = review;
+        this.numberInCart = numberInCart;
     }
 
     public int getProductID() {
@@ -82,12 +87,12 @@ public class Product implements Serializable {
         this.productDescription = productDescription;
     }
 
-    public int getProductImage() {
-        return productImage;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setProductImage(int productImage) {
-        this.productImage = productImage;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public boolean isHot() {
@@ -97,14 +102,6 @@ public class Product implements Serializable {
     public void setHot(boolean hot) {
         isHot = hot;
     }
-
-//    public boolean isFavorite() {
-//        return isFavorite;
-//    }
-//
-//    public void setFavorite(boolean favorite) {
-//        isFavorite = favorite;
-//    }
 
     public double getRatingValue() {
         return ratingValue;
@@ -128,5 +125,13 @@ public class Product implements Serializable {
 
     public void setReview(List<Review> review) {
         this.review = review;
+    }
+
+    public int getNumberInCart() {
+        return numberInCart;
+    }
+
+    public void setNumberInCart(int numberInCart) {
+        this.numberInCart = numberInCart;
     }
 }

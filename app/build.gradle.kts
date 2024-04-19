@@ -50,6 +50,8 @@ dependencies {
     implementation(libs.imageslideshow)
     implementation(libs.circleimageview)
     implementation(libs.squareimageview)
+    implementation(libs.glide)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

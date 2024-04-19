@@ -10,6 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
@@ -28,16 +31,25 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
     @Override
     public CatalogAdapter.CatalogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
+        View view = inflater.inflate(R.layout.item_product, parent, false);
         return new CatalogAdapter.CatalogViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CatalogAdapter.CatalogViewHolder holder, int position) {
-        holder.imvProductThumb.setImageResource(catalog.get(position).getProductImage());
+        Glide.with(context).load(catalog.get(position).getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvProductThumb);
         holder.txtName.setText(catalog.get(position).getProductName());
-        holder.txtPrice.setText(String.valueOf(Math.round(catalog.get(position).getProductPrice())) + " VNĐ");
-        holder.txtDiscountPercent.setVisibility(View.GONE);
+        double originalPrice = catalog.get(position).getProductPrice();
+        double discountPercent = catalog.get(position).getProductDiscountPercent();
+        double discountedPrice = originalPrice * (1 - (discountPercent / 100.0));
+        holder.txtPrice.setText(String.valueOf(Math.round(discountedPrice)) + " VNĐ");
+        if (discountPercent == 0) {
+            holder.txtDiscountPercent.setVisibility(View.GONE);
+        } else {
+            holder.txtDiscountPercent.setVisibility(View.VISIBLE);
+            holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(catalog.get(position).getProductDiscountPercent())) + "%");
+        }
     }
 
     @Override

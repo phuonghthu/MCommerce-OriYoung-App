@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewholder>{
@@ -30,7 +32,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @Override
     public FavoriteViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_saleproduct, parent, false);
+        View view = inflater.inflate(R.layout.item_product, parent, false);
         return new FavoriteAdapter.FavoriteViewholder(view);
     }
 
@@ -38,10 +40,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     public void onBindViewHolder(@NonNull FavoriteViewholder holder, int position) {
         Product p = favProduct.get(position);
 
-        holder.imvProductThumb.setImageResource(p.getProductImage());
+        Glide.with(context).load(p.getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvProductThumb);
         holder.txtName.setText(p.getProductName());
-        holder.txtPrice.setText(String.valueOf(Math.round(p.getProductPrice())) + " VNĐ");
-        holder.txtDiscountPercent.setVisibility(View.GONE);
+        double originalPrice = p.getProductPrice();
+        double discountPercent = p.getProductDiscountPercent();
+        double discountedPrice = originalPrice * (1 - (discountPercent / 100.0));
+        holder.txtPrice.setText(String.valueOf(Math.round(discountedPrice)) + " VNĐ");
+        if (discountPercent == 0) {
+            holder.txtDiscountPercent.setVisibility(View.GONE);
+        } else {
+            holder.txtDiscountPercent.setVisibility(View.VISIBLE);
+            holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(p.getProductDiscountPercent())) + "%");
+        }
     }
 
     @Override
