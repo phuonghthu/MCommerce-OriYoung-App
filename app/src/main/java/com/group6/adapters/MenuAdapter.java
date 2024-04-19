@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.group6.models.Category;
 import com.group6.oriyoung.R;
 
@@ -35,9 +36,13 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
-        holder.imvCateThumb.setImageResource(categories.get(position).getCategoryThumb());
+        String imagePath = categories.get(position).getImagePath();
+        if (imagePath != null) {
+            int drawableResoucreID = context.getResources().getIdentifier(imagePath,
+                    "drawable", holder.itemView.getContext().getPackageName());
+            Glide.with(context).load(drawableResoucreID).into(holder.imvCateThumb);
+        }
         holder.txtCateName.setText(categories.get(position).getCategoryName());
-
 
     }
 

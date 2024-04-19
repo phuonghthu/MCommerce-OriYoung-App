@@ -3,14 +3,22 @@ package com.group6.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.MenuAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.models.Category;
@@ -32,6 +40,8 @@ public class CategoryFragment extends Fragment {
 
     ArrayList<Category> category;
 
+    private DatabaseReference myRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
     @Override
@@ -48,22 +58,32 @@ public class CategoryFragment extends Fragment {
     }
 
     private void loadCategory() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
-        binding.rvMenu.setLayoutManager(gridLayoutManager);
-        binding.rvMenu.setHasFixedSize(true);
+
+        myRef = database.getReference("Category");
         category = new ArrayList<>();
 
-        category.add(new Category(R.drawable.cate_taytrang, "Tẩy trang"));
-        category.add(new Category(R.drawable.cate_toner, "Toner"));
-        category.add(new Category(R.drawable.cate_srm, "Sữa rửa mặt"));
-        category.add(new Category(R.drawable.cate_serum, "Serum"));
-        category.add(new Category(R.drawable.cate_kemduong, "Kem dưỡng"));
-        category.add(new Category(R.drawable.cate_mask, "Mặt nạ"));
-        category.add(new Category(R.drawable.cate_sunscream, "Chống nắng"));
-        category.add(new Category(R.drawable.cate_all, "Xem tất cả"));
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        category.add(issue.getValue(Category.class));
+                    }
+                }
+                if (category.size() > 0) {
+                    GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.VERTICAL, false);
+                    binding.rvMenu.setLayoutManager(gridLayoutManager);
+                    binding.rvMenu.setHasFixedSize(true);
+                    menuAdapter = new MenuAdapter(getContext(), category);
+                    binding.rvMenu.setAdapter(menuAdapter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        menuAdapter = new MenuAdapter(getContext(), category);
-        binding.rvMenu.setAdapter(menuAdapter);
+            }
+        });
+
     }
 
     private void addEvents() {

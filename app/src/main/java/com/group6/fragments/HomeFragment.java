@@ -98,21 +98,31 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadCategory() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        myRef = database.getReference("Category");
         category = new ArrayList<>();
 
-        category.add(new Category(R.drawable.cate_taytrang, "Tẩy trang"));
-        category.add(new Category(R.drawable.cate_toner, "Toner"));
-        category.add(new Category(R.drawable.cate_srm, "Sữa rửa mặt"));
-        category.add(new Category(R.drawable.cate_serum, "Serum"));
-        category.add(new Category(R.drawable.cate_kemduong, "Kem dưỡng"));
-        category.add(new Category(R.drawable.cate_mask, "Mặt nạ"));
-        category.add(new Category(R.drawable.cate_sunscream, "Chống nắng"));
-        category.add(new Category(R.drawable.cate_all, "Xem tất cả"));
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        category.add(issue.getValue(Category.class));
+                    }
+                }
+                if (category.size() > 0) {
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                    categoryAdapter = new CategoryAdapter(getContext(), category);
+                    binding.rvCategory.setAdapter(categoryAdapter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        categoryAdapter = new CategoryAdapter(getContext(), category);
-        binding.rvCategory.setAdapter(categoryAdapter);
+            }
+        });
+
     }
 
     private void loadHotProduct() {
