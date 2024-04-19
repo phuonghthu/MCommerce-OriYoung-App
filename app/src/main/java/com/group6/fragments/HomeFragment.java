@@ -57,7 +57,8 @@ public class HomeFragment extends Fragment {
     BrandAdapter brandAdapter;
 
     ArrayList<Category> category;
-    ArrayList<Product> hotProduct;
+    ArrayList<Product> product;
+    ArrayList<Product> hotproduct;
     ArrayList<Brand> brand;
     private DatabaseReference myRef;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -78,7 +79,7 @@ public class HomeFragment extends Fragment {
         loadCategory();
         loadBanner();
         loadHotProduct();
-//        loadSaleProduct();
+        loadSaleProduct();
         loadBrand();
         addEvents();
 
@@ -118,24 +119,73 @@ public class HomeFragment extends Fragment {
         myRef = database.getReference("Product");
         binding.progressBarHotProduct.setVisibility(View.VISIBLE);
 
-
-        hotProduct = new ArrayList<>();
+        hotproduct = new ArrayList<>();
         Query query = myRef.orderByChild("isHot").equalTo(true);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
-                    for(DataSnapshot issue: snapshot.getChildren()){
-                        hotProduct.add(issue.getValue(Product.class));
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        hotproduct.add(issue.getValue(Product.class));
+                        }
                     }
-                    if (hotProduct.size()>0){
+                    if (hotproduct.size() > 0) {
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
                         binding.rvHotProduct.setLayoutManager(gridLayoutManager);
                         binding.rvHotProduct.setHasFixedSize(true);
-                        productAdapter = new ProductAdapter(getContext(), hotProduct);
+                        productAdapter = new ProductAdapter(getContext(), hotproduct);
                         binding.rvHotProduct.setAdapter(productAdapter);
                     }
                     binding.progressBarHotProduct.setVisibility(View.GONE);
+                }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void loadSaleProduct() {
+        myRef = database.getReference("Product");
+        binding.progressBarSaleProduct.setVisibility(View.VISIBLE);
+
+        product = new ArrayList<>();
+        Query query = myRef.orderByChild("productDiscountPercent").startAt(0.00001);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        Product saleProduct = issue.getValue(Product.class);
+                        if (saleProduct.getProductDiscountPercent() > 0) {
+                            product.add(saleProduct);
+                        }
+                    }
+                    if (product.size() > 0) {
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                        binding.rvSaleProduct.setLayoutManager(layoutManager);
+                        saleProductAdapter = new SaleProductAdapter(getContext(), product);
+                        binding.rvSaleProduct.setAdapter(saleProductAdapter);
+
+                        DisplayMetrics displayMetrics = new DisplayMetrics();
+                        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+
+                        int parentWidth = displayMetrics.widthPixels;
+                        float paddingDp = 20; // Padding ngang theo dp
+                        float density = displayMetrics.density;
+
+                        // Chuyển đổi padding từ dp sang px
+                        int paddingPx = (int) (paddingDp * density);
+
+                        // Tính toán kích thước itemWidth
+                        int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
+
+                        saleProductAdapter.setItemWidth(itemWidth);
+                    }
+                    binding.progressBarSaleProduct.setVisibility(View.GONE);
                 }
             }
 
@@ -144,48 +194,7 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
     }
-
-//    private void loadSaleProduct() {
-//        int numberOfColumns = 2; // Number of columns
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-//        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-//        binding.rvSaleProduct.setLayoutManager(layoutManager);
-//        product = new ArrayList<>();
-//
-//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 40, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 40, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 40, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-//                100000, 40, "No", R.drawable.product_place_holder,
-//                true, true, 5.0, 100, null ));
-//        saleProductAdapter = new SaleProductAdapter(getContext(), product);
-//        binding.rvSaleProduct.setAdapter(saleProductAdapter);
-//
-//
-//        DisplayMetrics displayMetrics = new DisplayMetrics();
-//        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-//
-//        int parentWidth = displayMetrics.widthPixels;
-//        float paddingDp = 20; // Padding ngang theo dp
-//        float density = displayMetrics.density;
-//
-//        // Chuyển đổi padding từ dp sang px
-//        int paddingPx = (int) (paddingDp * density);
-//
-//        // Tính toán kích thước itemWidth
-//        int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
-//
-//        saleProductAdapter.setItemWidth(itemWidth);
-//    }
-
     private void loadBrand() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);

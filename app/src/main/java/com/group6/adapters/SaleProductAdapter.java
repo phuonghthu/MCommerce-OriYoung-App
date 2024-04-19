@@ -55,6 +55,7 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
             holder.txtDiscountPercent.setVisibility(View.VISIBLE);
             holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
         }
+        holder.txtRatingValue.setText(String.valueOf(products.get(position).getRatingValue()));
     }
 
     @Override
