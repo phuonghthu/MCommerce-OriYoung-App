@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primarybackground">
     <LinearLayout
         android:id="@+id/LinearThongtin"
         android:layout_width="match_parent"
@@ -21,7 +22,7 @@
             android:id="@+id/Discount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/medium_margin">
+            android:layout_marginTop="@dimen/small_margin">
 
             <EditText
                 android:id="@+id/edtVoucher"
@@ -36,14 +37,18 @@
                 app:layout_constraintEnd_toStartOf="@+id/btnAppliedVoucher"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="@dimen/medium_margin"/>
 
 
             <Button
                 android:id="@+id/btnAppliedVoucher"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:backgroundTint="@color/primarygreen"
+                app:backgroundTint="@null"
+                android:textColor="@color/white"
+                android:background="@drawable/button_layout_cancel"
                 android:text="@string/cart_apply"
                 android:fontFamily="@font/gilroy_semibold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -53,13 +58,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="@dimen/small_margin">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cart_tempTotal"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:layout_gravity="start"/>
             <TextView
                 android:id="@+id/txtTempTotal"
@@ -68,20 +73,20 @@
                 android:text="@string/cart_tempTotalDetail"
                 android:layout_weight="1"
                 android:fontFamily="@font/gilroy_semibold"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cart_discount"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:layout_gravity="start"/>
             <TextView
                 android:id="@+id/txtDiscount"
@@ -91,20 +96,20 @@
                 android:layout_weight="1"
                 android:textColor="@color/secondaryorange"
                 android:fontFamily="@font/gilroy_bold"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="5dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cart_total"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:layout_gravity="start"/>
             <TextView
                 android:id="@+id/txtTotal"
@@ -114,7 +119,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/secondaryorange"
                 android:fontFamily="@font/gilroy_bold"
-                android:textSize="12dp"
+                android:textSize="@dimen/small_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout

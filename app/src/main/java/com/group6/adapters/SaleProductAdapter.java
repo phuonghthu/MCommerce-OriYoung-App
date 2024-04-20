@@ -1,6 +1,7 @@
 package com.group6.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
+import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
@@ -56,6 +58,16 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
             holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(products.get(position).getProductDiscountPercent())) + "%");
         }
         holder.txtRatingValue.setText(String.valueOf(products.get(position).getRatingValue()));
+
+        // Nhấn vào từng item gửi tt mở detail
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductDetail.class);
+                intent.putExtra("object", products.get(position));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -40,14 +40,13 @@
 
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/ProductInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img"
-                android:orientation="vertical"
                 android:gravity="center_horizontal"
                 android:paddingHorizontal="@dimen/horizontal_padding"
                 android:layout_marginTop="@dimen/medium_margin">
@@ -55,6 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginTop="@dimen/small_margin">
                     <TextView
                         android:id="@+id/txtProductName"
@@ -65,45 +67,56 @@
                         android:fontFamily="@font/gilroy_semibold"
                         android:textSize="@dimen/medium_textSize"
                         android:textColor="@color/black" />
-
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:layout_width="14dp"
-                            android:layout_height="14dp"
-                            android:src="@drawable/ic_star"
-                            android:layout_gravity="center_vertical"/>
-                        <TextView
-                            android:id="@+id/txtRatingValue"
+                        android:orientation="vertical">
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/rating_value"
-                            android:fontFamily="@font/gilroy_semibold"
-                            android:textSize="@dimen/medium_textSize"
-                            android:textColor="@color/black"
-                            android:paddingStart="@dimen/small_margin"/>
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/ic_star"
+                                android:layout_gravity="center_vertical"/>
+                            <TextView
+                                android:id="@+id/txtRatingValue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_value"
+                                android:fontFamily="@font/gilroy_semibold"
+                                android:textSize="@dimen/medium_textSize"
+                                android:textColor="@color/black"
+                                android:paddingStart="@dimen/small_margin"/>
+                            <TextView
+                                android:id="@+id/txtRatingCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rating_count"
+                                android:fontFamily="@font/gilroy_regular"
+                                android:textSize="@dimen/medium_textSize"
+                                android:textColor="@color/black"
+                                android:paddingStart="@dimen/small_margin"/>
+                        </LinearLayout>
                         <TextView
-                            android:id="@+id/txtRatingCount"
+                            android:id="@+id/txtProductPrice"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/rating_count"
-                            android:fontFamily="@font/gilroy_regular"
-                            android:textSize="@dimen/medium_textSize"
-                            android:textColor="@color/black"
-                            android:paddingStart="@dimen/small_margin"/>
+                            android:text="@string/product_price"
+                            android:fontFamily="@font/gilroy_bold"
+                            android:textSize="@dimen/h4_textSize"
+                            android:textColor="@color/secondaryorange" />
                     </LinearLayout>
-                    <TextView
-                        android:id="@+id/txtProductPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/product_price"
-                        android:fontFamily="@font/gilroy_bold"
-                        android:textSize="@dimen/h4_textSize"
-                        android:textColor="@color/secondaryorange" />
                 </LinearLayout>
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/imvAddToFav"
+                    android:layout_width="31dp"
+                    android:layout_height="29dp"
+                    android:src="@drawable/ic_heart_outline"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout
                 android:id="@+id/containerLayout"

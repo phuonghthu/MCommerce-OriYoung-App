@@ -48,7 +48,11 @@ public class ProductCatalog extends BaseActivity {
         getIntentExtra();
         addIntent();
     }
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        binding = null;
+    }
     private void getIntentExtra() {
         categoryID = getIntent().getIntExtra("categoryID", 0);
         categoryName = getIntent().getStringExtra("categoryName");

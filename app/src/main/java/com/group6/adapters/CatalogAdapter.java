@@ -1,6 +1,7 @@
 package com.group6.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
+import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
 
     @Override
     public void onBindViewHolder(@NonNull CatalogAdapter.CatalogViewHolder holder, int position) {
-        Glide.with(context).load(catalog.get(position).getImagePath()).transform(new CenterCrop(),
+        Glide.with(holder.itemView.getContext()).load(catalog.get(position).getImagePath()).transform(new CenterCrop(),
                 new RoundedCorners(30)).into(holder.imvProductThumb);
         holder.txtName.setText(catalog.get(position).getProductName());
         double originalPrice = catalog.get(position).getProductPrice();
@@ -50,6 +52,20 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
             holder.txtDiscountPercent.setVisibility(View.VISIBLE);
             holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(catalog.get(position).getProductDiscountPercent())) + "%");
         }
+
+        // Nhấn vào từng item gửi tt mở detail
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(holder.itemView.getContext(), ProductDetail.class);
+                intent.putExtra("object", catalog.get(position));
+                // Thêm cờ để đảm bảo quay lại đúng chỗ
+                intent.putExtra("calling_activity", "ProductCatalog");
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
+
+
     }
 
     @Override
