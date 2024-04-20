@@ -45,7 +45,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/h1_textSize"
-                        android:src="@drawable/ic_rate"
+                        android:src="@drawable/ic_star"
                         android:layout_gravity="center_vertical"
                         android:paddingStart="@dimen/small_margin"/>
 
@@ -56,9 +56,10 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rating_count"
                     android:textSize="@dimen/medium_textSize"
-                    android:fontFamily="@font/gilroy_semibold"
+                    android:fontFamily="@font/gilroy_medium"
                     android:textColor="@color/black"
-                    android:layout_gravity="center_horizontal"/>
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/small_margin"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/medium_textSize"
-                android:src="@drawable/ic_rate"
+                android:src="@drawable/ic_star"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="@dimen/small_margin"/>
             <ProgressBar
@@ -83,7 +84,8 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:max="100"
                 android:progress="100"
-                android:progressTint="@color/primarygreen"/>
+                android:progressTint="@color/primarygreen"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
                 <LinearLayout
             android:layout_width="wrap_content"
@@ -100,7 +102,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/medium_textSize"
-                android:src="@drawable/ic_rate"
+                android:src="@drawable/ic_star"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="@dimen/small_margin"/>
             <ProgressBar
@@ -109,7 +111,8 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:max="100"
                 android:progress="0"
-                android:progressTint="@color/primarygreen"/>
+                android:progressTint="@color/primarygreen"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
                 <LinearLayout
             android:layout_width="wrap_content"
@@ -126,7 +129,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/medium_textSize"
-                android:src="@drawable/ic_rate"
+                android:src="@drawable/ic_star"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="@dimen/small_margin"/>
             <ProgressBar
@@ -135,7 +138,8 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:max="100"
                 android:progress="0"
-                android:progressTint="@color/primarygreen"/>
+                android:progressTint="@color/primarygreen"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
                 <LinearLayout
             android:layout_width="wrap_content"
@@ -149,19 +153,21 @@
                 android:textSize="@dimen/medium_textSize"
                 android:fontFamily="@font/gilroy_bold"
                 android:textColor="@color/black"/>
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/medium_textSize"
-                android:src="@drawable/ic_rate"
-                android:layout_gravity="center_vertical"
-                android:paddingStart="@dimen/small_margin"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="14dp"
+                        android:layout_gravity="center_vertical"
+                        android:paddingStart="@dimen/small_margin"
+                        android:src="@drawable/ic_star" />
             <ProgressBar
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:max="100"
                 android:progress="0"
-                android:progressTint="@color/primarygreen"/>
+                android:progressTint="@color/primarygreen"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
                 <LinearLayout
             android:layout_width="wrap_content"
@@ -178,7 +184,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/medium_textSize"
-                android:src="@drawable/ic_rate"
+                android:src="@drawable/ic_star"
                 android:layout_gravity="center_vertical"
                 android:paddingStart="@dimen/small_margin"/>
             <ProgressBar
@@ -187,7 +193,8 @@
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:max="100"
                 android:progress="0"
-                android:progressTint="@color/primarygreen"/>
+                android:progressTint="@color/primarygreen"
+                android:layout_gravity="center_vertical"/>
         </LinearLayout>
         </LinearLayout>
 
@@ -197,7 +204,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/overall"
-            android:divider="@color/white"/>
+            android:divider="@drawable/divider"
+            android:padding="@dimen/horizontal_padding"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

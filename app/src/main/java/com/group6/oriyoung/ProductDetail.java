@@ -41,8 +41,7 @@ public class ProductDetail extends AppCompatActivity {
         addEvents();
 //        loadRelatedProducts();
 
-        binding.layoutreview.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
-        binding.layoutproduct.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
+        binding.txtRatingCount.setText("( " + String.valueOf(reviews.size()) + " lượt đánh giá )");
 
         quantity = findViewById(R.id.txtQuantity);
 //        addtoCart = findViewById(R.id.btnAddToCart);
@@ -59,14 +58,15 @@ public class ProductDetail extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(ProductDetail.this, ProductList.class);
 //                startActivity(intent);
             }
         });
-        binding.GroupButtons.txtAdd.setOnClickListener(new View.OnClickListener() {
+        binding.toolbar.toolbarTitle.setText("Chi tiết sản phẩm");
+        binding.GroupButtons.imvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (total_quantity < 100){
@@ -78,7 +78,7 @@ public class ProductDetail extends AppCompatActivity {
             }
         });
 
-        binding.GroupButtons.txtDelete.setOnClickListener(new View.OnClickListener() {
+        binding.GroupButtons.imvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (total_quantity > 1) {
@@ -87,7 +87,7 @@ public class ProductDetail extends AppCompatActivity {
                 }
             }
         });
-        binding.layoutreview.imvViewAll.setOnClickListener(new View.OnClickListener() {
+        binding.reviewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProductDetail.this, ReviewDetail.class));
@@ -141,7 +141,7 @@ public class ProductDetail extends AppCompatActivity {
                 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
                 100000, R.drawable.product_place_holder, true,  true,  5.0));
         reviewAdapter = new ReviewAdapter(this, R.layout.item_review_layout, reviews);
-        binding.layoutreview.lvReview.setAdapter(reviewAdapter);
+        binding.lvReview.setAdapter(reviewAdapter);
 
 
 

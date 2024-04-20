@@ -4,71 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        android:gravity="center_horizontal">
-        <com.theophrast.ui.widget.SquareImageView
-            android:id="@+id/imvProductThumb"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:src="@drawable/pd_beplain"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/txtProductName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_name"
-                android:justificationMode="inter_word"
-                android:fontFamily="@font/gilroy_semibold"
-                android:textSize="@dimen/medium_textSize"
-                android:textColor="@color/black" />
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
-                    android:src="@drawable/ic_star"
-                    android:layout_gravity="center_vertical"/>
-                <TextView
-                    android:id="@+id/txtRatingValue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rating_value"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textSize="@dimen/medium_textSize"
-                    android:textColor="@color/black"
-                    android:paddingStart="@dimen/small_margin"/>
-                <TextView
-                    android:id="@+id/txtRatingCount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/rating_count"
-                    android:fontFamily="@font/gilroy_regular"
-                    android:textSize="@dimen/medium_textSize"
-                    android:textColor="@color/black"
-                    android:paddingStart="@dimen/small_margin"/>
-            </LinearLayout>
-            <TextView
-                android:id="@+id/txtProductPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/product_price"
-                android:fontFamily="@font/gilroy_bold"
-                android:textSize="@dimen/h4_textSize"
-                android:textColor="@color/secondaryorange" />
-            </LinearLayout>
 
-        </LinearLayout>
 
 
 

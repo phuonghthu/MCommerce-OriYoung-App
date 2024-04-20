@@ -36,36 +36,36 @@
 
                 <ImageView
                     android:id="@+id/imvRating1"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin"/>
                 <ImageView
                     android:id="@+id/imvRating2"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin"/>
                 <ImageView
                     android:id="@+id/imvRating3"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin"/>
                 <ImageView
                     android:id="@+id/imvRating4"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin"/>
                 <ImageView
                     android:id="@+id/imvRating5"
-                    android:layout_width="14dp"
-                    android:layout_height="14dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:src="@drawable/ic_star"
                     android:layout_gravity="center_vertical"
                     android:paddingStart="@dimen/small_margin"/>
