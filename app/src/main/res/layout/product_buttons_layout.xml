@@ -66,6 +66,9 @@
                 android:layout_height="match_parent"
                 android:text="@string/add_product"
                 android:textSize="@dimen/medium_textSize"
+                app:backgroundTint="@null"
+                android:textColor="@color/white"
+                android:background="@drawable/button_layout_cancel"
                 android:fontFamily="@font/gilroy_bold"
                 android:layout_weight="1"/>
 
@@ -76,6 +79,9 @@
                 android:text="@string/buy"
                 android:textSize="@dimen/medium_textSize"
                 android:fontFamily="@font/gilroy_bold"
+                app:backgroundTint="@null"
+                android:textColor="@color/white"
+                android:background="@drawable/button_layout_cancel"
                 android:layout_marginStart="@dimen/small_margin"
                 android:layout_weight="1"/>
         </LinearLayout>

@@ -54,7 +54,6 @@ public class ReviewAdapter extends BaseAdapter {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.item_review_layout, null);
 
-            holder.txtIndividualRatingValue = convertView.findViewById(R.id.txtIndividualRatingValue);
             holder.txtUsername = convertView.findViewById(R.id.txtUsername);
             holder.txtReviewDetail = convertView.findViewById(R.id.txtReviewDetail);
             holder.imvProductThumb = convertView.findViewById(R.id.imvProductThumb);
@@ -70,18 +69,17 @@ public class ReviewAdapter extends BaseAdapter {
 
         //Liên kết data
         Review v = reviews.get(position);
-        holder.txtIndividualRatingValue.setText(String.valueOf(v.getIndividualRatingValue()));
         holder.txtUsername.setText(v.getReviewerName());
         holder.txtReviewDetail.setText(v.getReviewDescription());
-        holder.imvProductThumb.setImageResource(v.getProductImage());
-        holder.txtName.setText(v.getProductName());
-        holder.txtPrice.setText(String.valueOf(v.getProductPrice()));
-        holder.txtRatingValue.setText(String.valueOf(v.getRatingValue()));
+//        holder.imvProductThumb.setImageResource(v.getProductImage());
+//        holder.txtName.setText(v.getProductName());
+//        holder.txtPrice.setText(String.valueOf(v.getProductPrice()));
+//        holder.txtRatingValue.setText(String.valueOf(v.getRatingValue()));
         return convertView;
     }
 
     public static class ViewHolder{
         ImageView imvProductThumb;
-        TextView txtUsername, txtReviewDetail, txtIndividualRatingValue, txtName, txtPrice, txtRatingValue;
+        TextView txtUsername, txtReviewDetail, txtRating, txtName, txtPrice, txtRatingValue;
     }
 }

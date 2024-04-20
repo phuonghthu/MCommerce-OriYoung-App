@@ -49,14 +49,14 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/medium_margin">
                     <LinearLayout
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/ic_back_bg"
                         app:layout_constraintStart_toStartOf="@id/containerLayout"
                         app:layout_constraintTop_toTopOf="@id/containerLayout"
-                        android:layout_marginTop="@dimen/horizontal_padding"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="wrap_content"
@@ -68,35 +68,35 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginTop="@dimen/medium_margin">
+                        android:layout_marginStart="@dimen/medium_margin">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/fast_shipping"
                             android:fontFamily="@font/gilroy_bold"
-                            android:textSize="@dimen/medium_textSize"
-                            android:paddingStart="@dimen/medium_margin"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_textSize" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/fast_shipping_description"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/gilroy_regular"
-                            android:textSize="@dimen/small_textSize"
-                            android:paddingStart="@dimen/medium_margin"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/small_textSize" />
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/medium_margin">
                     <LinearLayout
                         android:layout_width="38dp"
                         android:layout_height="38dp"
                         android:background="@drawable/ic_back_bg"
                         app:layout_constraintStart_toStartOf="@id/containerLayout"
                         app:layout_constraintTop_toTopOf="@id/containerLayout"
-                        android:layout_marginTop="@dimen/horizontal_padding"
                         android:gravity="center">
                         <ImageView
                             android:layout_width="wrap_content"
@@ -108,22 +108,22 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginTop="@dimen/medium_margin">
+                        android:layout_marginStart="@dimen/medium_margin">
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/authentic_product"
                             android:fontFamily="@font/gilroy_bold"
-                            android:textSize="@dimen/medium_textSize"
-                            android:paddingStart="@dimen/medium_margin"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/medium_textSize" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/authentic_product_description"
                             android:layout_gravity="center_vertical"
                             android:fontFamily="@font/gilroy_regular"
-                            android:textSize="@dimen/small_textSize"
-                            android:paddingStart="@dimen/medium_margin"/>
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/small_textSize" />
                     </LinearLayout>
                 </LinearLayout>
                 <ImageView
@@ -131,11 +131,13 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/line"
                     android:layout_marginTop="@dimen/large_margin"/>
-                
-                <include layout="@layout/product_description_layout"
-                    android:id="@+id/layoutdescription"/>
+
+                <include
+                    android:id="@+id/layoutdescription"
+                    layout="@layout/product_description_layout" />
+
                 <include layout="@layout/review_layout"
-                    android:id="@+id/layoutreview"/>
+                    android:id="@+id/layoutreview" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -146,7 +148,8 @@
                     android:textSize="@dimen/medium_textSize"
                     android:fontFamily="@font/gilroy_bold"
                     android:gravity="center_horizontal"
-                    android:padding="@dimen/small_margin"/>
+                    android:padding="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/medium_margin"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -166,18 +169,14 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textAlignment="center"
-                    android:fontFamily="@font/gilroy_bold_italic"
+                    android:fontFamily="@font/gilroy_medium"
                     android:text="@string/mission"
                     android:textColor="@color/primarydarker"
+                    android:background="@drawable/bg_layout"
                     android:padding="@dimen/horizontal_padding"
-                    android:textSize="@dimen/small_textSize" />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/large_vertical_padding"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    android:textSize="@dimen/small_textSize"
+                    android:layout_marginBottom="80dp"/>
+
 
 
             </LinearLayout>

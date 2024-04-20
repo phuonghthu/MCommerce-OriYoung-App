@@ -31,7 +31,7 @@
             android:fontFamily="@font/gilroy_regular"
             android:textColor="@color/black"
             android:justificationMode="inter_word"
-            android:paddingTop="@dimen/horizontal_padding"
+            android:layout_marginTop="@dimen/medium_margin"
             />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
