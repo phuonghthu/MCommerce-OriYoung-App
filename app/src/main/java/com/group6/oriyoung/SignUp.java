@@ -114,7 +114,7 @@ public class SignUp extends AppCompatActivity {
                     binding.txtinputemail.setError(getString(R.string.Login_mail_error));
                     return;
                 } else if (!name.isEmpty()) {
-                    binding.txtinputphone.setError(getString(R.string.Empty));
+                    binding.txtinputphone.setError(getString(R.string.Login_mail_error));
                     txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
                     return;
                 } else {
@@ -375,7 +375,7 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Chuyển hướng về màn hình chính khi người dùng nhấn nút "Đồng ý"
-                Intent intent = new Intent(SignUp.this, OnboardingActivity.class);
+                Intent intent = new Intent(SignUp.this, Login.class);
                 startActivity(intent);
                 alertDialog.dismiss(); // Đóng dialog sau khi chuyển hướng
             }
