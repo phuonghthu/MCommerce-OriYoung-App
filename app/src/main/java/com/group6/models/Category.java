@@ -2,13 +2,17 @@ package com.group6.models;
 
 public class Category {
     int categoryID;
-    int categoryThumb;
+    String imagePath;
     String categoryName;
 
-    public Category(int categoryThumb, String categoryName) {
-        this.categoryThumb = categoryThumb;
-        this.categoryName = categoryName;
+    public Category() {
+
+    };
+
+    public Category(int categoryID, String imagePath, String categoryName) {
         this.categoryID = categoryID;
+        this.imagePath = imagePath;
+        this.categoryName = categoryName;
     }
 
     public int getCategoryID() {
@@ -19,12 +23,12 @@ public class Category {
         this.categoryID = categoryID;
     }
 
-    public int getCategoryThumb() {
-        return categoryThumb;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setCategoryThumb(int categoryThumb) {
-        this.categoryThumb = categoryThumb;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getCategoryName() {

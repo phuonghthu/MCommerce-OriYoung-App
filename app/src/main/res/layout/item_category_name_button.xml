@@ -1,14 +1,13 @@
 <!-- res/layout/item_button.xml -->
 
-<Button
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/btnCategory"
-    android:layout_width="118dp"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
     android:text="Button"
-    android:backgroundTint="@color/greylight"
-    android:textColor="@color/primarygreen"
+    android:background="@drawable/button_layout_white_green"
+    app:backgroundTint="@null"
+    android:textColor="@color/primarydarker"
     android:fontFamily="@font/gilroy_semibold"
-    android:textSize="@dimen/xsmall_textSize"
-    android:paddingStart="0dp"
-    android:paddingEnd="0dp"/>
+    android:textSize="@dimen/xsmall_textSize" />

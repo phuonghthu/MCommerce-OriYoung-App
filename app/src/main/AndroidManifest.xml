@@ -6,7 +6,8 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,9 @@
             android:name=".ReviewDetail"
             android:exported="false" />
         <activity
+            android:name=".Checkout"
+            android:exported="false" />
+        <activity
             android:name=".DialogNotificationSuccessfully"
             android:exported="false" />
         <activity
@@ -31,10 +35,8 @@
             android:name=".DialogPaymentSuccessfully"
             android:exported="false" />
         <activity
-            android:name=".Checkout"
-            android:exported="false"/>
-        <activity
             android:name=".ProductDetail"
+            android:launchMode="singleTop"
             android:exported="false"/>
         <activity
             android:name=".OrderHistoryActivity"
@@ -100,9 +102,10 @@
             android:name=".Login"
             android:exported="false" />
         <activity
-            android:name=".OrderDetails"
+            android:name=".ProductCatalog"
+            android:launchMode="singleTop"
             android:exported="false" />
-       <activity
+        <activity
             android:name=".ForgetPassword"
             android:exported="false" />
         <activity
@@ -113,6 +116,7 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -54,9 +54,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.txtTemp.setText(String.valueOf(roundedPrice));
 
         //Dấu cộng
-        holder.txtPlus.setTag(position);
+        holder.imvPlus.setTag(position);
 
-        holder.txtPlus.setOnClickListener(new View.OnClickListener() {
+        holder.imvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag(); // Lấy vị trí của item từ tag
@@ -72,8 +72,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         });
 
         //Dấu trừ
-        holder.txtMinus.setTag(position);
-        holder.txtMinus.setOnClickListener(new View.OnClickListener() {
+        holder.imvMinus.setTag(position);
+        holder.imvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = (int) v.getTag();
@@ -114,13 +114,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imvProductCart;
+        ImageView imvProductCart, imvPlus, imvMinus;
         TextView txtProductNameCart;
         TextView txtProductPriceCart;
         TextView txtTempTotal;
         TextView txtTemp;
-        TextView txtPlus;
-        TextView txtMinus;
         TextView txtCartNumb;
 
 
@@ -132,9 +130,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             txtProductNameCart = view.findViewById(R.id.txtProductNameCart);
             txtProductPriceCart = view.findViewById(R.id.txtProductPriceCart);
             txtTemp = view.findViewById(R.id.txtTemp);
-            txtPlus = view.findViewById(R.id.txtPlus);
+            imvPlus = view.findViewById(R.id.imvPlus);
             txtTempTotal = view.findViewById(R.id.txtTempTotal);
-            txtMinus = view.findViewById(R.id.txtMinus);
+            imvMinus = view.findViewById(R.id.imvMinus);
             txtCartNumb = view.findViewById(R.id.txtCartNumb);
 
 

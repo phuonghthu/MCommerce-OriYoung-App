@@ -8,21 +8,46 @@
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="15dp"
-    android:layout_marginTop="4dp"
-    app:cardElevation="2dp">
+    android:layout_marginTop="6dp"
+    app:cardElevation="2dp"
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-        <com.theophrast.ui.widget.SquareImageView
-            android:id="@+id/imvProductThumb"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/product_place_holder"/>
+            android:layout_height="wrap_content">
+
+            <com.theophrast.ui.widget.SquareImageView
+                android:id="@+id/imvProductThumb"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/product_place_holder"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtDiscountPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-40%"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp"
+                android:textSize="@dimen/small_textSize"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_discount"
+                app:layout_constraintTop_toTopOf="@+id/imvProductThumb"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
         <TextView
@@ -30,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/product_name"
-            android:textSize="@dimen/medium_textSize"
+            android:textSize="@dimen/small_textSize"
             android:fontFamily="@font/gilroy_medium"
             android:textColor="@color/black"
             android:gravity="center_vertical"
@@ -40,8 +65,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/small_margin">
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtPrice"
                 android:layout_width="wrap_content"
@@ -61,10 +85,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="horizontal">
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
                     android:src="@drawable/ic_star"
-                    android:scaleType="fitCenter"
                     android:layout_gravity="center"/>
                 <TextView
                     android:id="@+id/txtRatingValue"
@@ -72,7 +95,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/rating_value"
                     android:textSize="@dimen/medium_textSize"
-                    android:fontFamily="@font/gilroy_semibold"
+                    android:fontFamily="@font/gilroy_medium"
                     android:textColor="@color/black"
                     android:layout_marginStart="@dimen/small_margin"/>
             </LinearLayout>
@@ -82,12 +105,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:weightSum="10"
-            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/btnAddToCart"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="25dp"
                 android:text="Thêm giỏ hàng"
                 android:gravity="center"
                 android:paddingBottom="3dp"
@@ -101,7 +124,7 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:src="@drawable/ic_heart_outline"
-                android:layout_weight="0."
+                android:layout_weight="0"
                 android:layout_marginStart="@dimen/small_margin"/>
 
         </LinearLayout>

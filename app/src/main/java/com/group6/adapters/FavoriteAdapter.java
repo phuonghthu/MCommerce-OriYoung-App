@@ -10,10 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.FavoriteViewholder>{
@@ -38,9 +40,19 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     public void onBindViewHolder(@NonNull FavoriteViewholder holder, int position) {
         Product p = favProduct.get(position);
 
-        holder.imvProductThumb.setImageResource(p.getProductImage());
+        Glide.with(context).load(p.getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvProductThumb);
         holder.txtName.setText(p.getProductName());
-        holder.txtPrice.setText(String.valueOf(Math.round(p.getProductPrice())) + " VNĐ");
+        double originalPrice = p.getProductPrice();
+        double discountPercent = p.getProductDiscountPercent();
+        double discountedPrice = originalPrice * (1 - (discountPercent / 100.0));
+        holder.txtPrice.setText(String.valueOf(Math.round(discountedPrice)) + " VNĐ");
+        if (discountPercent == 0) {
+            holder.txtDiscountPercent.setVisibility(View.GONE);
+        } else {
+            holder.txtDiscountPercent.setVisibility(View.VISIBLE);
+            holder.txtDiscountPercent.setText("-" + String.valueOf(Math.round(p.getProductDiscountPercent())) + "%");
+        }
     }
 
     @Override
@@ -50,7 +62,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     public class FavoriteViewholder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
-        TextView txtName, txtPrice, txtRatingValue, btnAddToCart;
+        TextView txtName, txtPrice, txtRatingValue, btnAddToCart, txtDiscountPercent;
 
 
         public FavoriteViewholder(@NonNull View itemView) {
@@ -61,6 +73,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
             btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
+            txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
         }
     }
 }

@@ -39,7 +39,7 @@
         android:id="@+id/btnCart"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:drawableLeft="@drawable/ic_cart"
+        android:drawableLeft="@drawable/ic_cart_toolbar"
         android:background="@drawable/bg_layout"
         android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent" />
