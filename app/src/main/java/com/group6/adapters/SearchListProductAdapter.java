@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
@@ -45,8 +48,8 @@ public class SearchListProductAdapter extends ArrayAdapter<Product> {
         Product product = productList.get(position);
         viewHolder.productName.setText(product.getProductName());
         viewHolder.productPrice.setText(String.valueOf(product.getProductPrice()));
-        viewHolder.productImage.setImageResource(product.getProductImage());
-
+        Glide.with(convertView).load(product.getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(viewHolder.productImage);
         return convertView;
     }
 

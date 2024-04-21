@@ -8,8 +8,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.CategoryNameAdapter;
 import com.group6.adapters.SearchListProductAdapter;
 import com.group6.models.Category;
@@ -18,14 +25,14 @@ import com.group6.oriyoung.databinding.ActivityMenuSearchBinding;
 
 import java.util.ArrayList;
 
-public class MenuSearch extends AppCompatActivity {
+public class MenuSearch extends BaseActivity {
     ActivityMenuSearchBinding binding;
     CategoryNameAdapter categoryNameAdapter;
     SearchListProductAdapter productAdapter;
     ListView listView;
     ArrayList<Product> products;
     ArrayList<Category> categories;
-    ImageView imageViewBack;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,51 +40,61 @@ public class MenuSearch extends AppCompatActivity {
         binding = ActivityMenuSearchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         addEvents();
+        onQuery();
+        loadCategory();
 
 
         // Initialize GridView for categories
-        GridView gridView = findViewById(R.id.category_grid_view);
+
 
         // Initialize ListView for products
         listView = findViewById(R.id.lvSearchSanpham);
-        imageViewBack = findViewById(R.id.imvback);
 
-        // Initialize list of categories
-        categories = new ArrayList<>();
-        categories.add(new Category(0, "Tẩy trang"));
-        categories.add(new Category(0, "Sữa rửa mặt"));
-        categories.add(new Category(0, "Serum"));
-        categories.add(new Category(0, "Kem dưỡng"));
-        categories.add(new Category(0, "Chống nắng"));
-        categories.add(new Category(0, "Mặt nạ"));
-        categories.add(new Category(0, "Xịt khoáng"));
-        categories.add(new Category(0, "Dưỡng mắt"));
-        categories.add(new Category(0, "Dưỡng môi"));
-        categories.add(new Category(0, "Toner"));
-        categories.add(new Category(0, "Tẩy tế bào chết"));
-        categories.add(new Category(0, "Tất cả"));
-        // Add other categories here...
-
-        // Initialize Adapter and set up GridView for categories
-        categoryNameAdapter = new CategoryNameAdapter(this, categories);
-        gridView.setAdapter(categoryNameAdapter);
 
         // Initialize list of products
-        products = new ArrayList<>();
-        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Sữa rửa mặt L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-        products.add(new Product(0, 0,"Chai Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-
-        // Add products here...
-
-        // Initialize Adapter and set up ListView for products
-        productAdapter = new SearchListProductAdapter(this, products);
-        listView.setAdapter(productAdapter);
+//        products = new ArrayList<>();
+//        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+//        products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+//        products.add(new Product(0, 0,"Sữa rửa mặt L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+//        products.add(new Product(0, 0,"Chai Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
+//
+//        // Add products here...
+//
+//        // Initialize Adapter and set up ListView for products
+//        productAdapter = new SearchListProductAdapter(this, products);
+//        listView.setAdapter(productAdapter);
 
         // Hide ListView initially
         listView.setVisibility(View.GONE);
 
+
+    }
+
+    private void loadCategory() {
+        DatabaseReference myRef = database.getReference("Category");
+        categories = new ArrayList<>();
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        categories.add(issue.getValue(Category.class));
+                    }
+                }
+                if (categories.size() > 0) {
+                    GridView gridView = findViewById(R.id.category_grid_view);
+                    categoryNameAdapter = new CategoryNameAdapter(MenuSearch.this, categories);
+                    gridView.setAdapter(categoryNameAdapter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void onQuery() {
         // Show ListView when search bar gains focus
         binding.searchBar.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
             @Override

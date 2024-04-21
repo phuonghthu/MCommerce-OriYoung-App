@@ -76,7 +76,7 @@
             <LinearLayout
                 android:id="@+id/hotproductLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 app:layout_constraintTop_toBottomOf="@+id/cateLayout"
                 android:layout_marginTop="@dimen/large_margin"
                 android:orientation="vertical">
@@ -137,13 +137,28 @@
                             android:src="@drawable/ic_arrow_foward"/>
                     </LinearLayout>
                 </LinearLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvHotProduct"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="2" />
+                    android:layout_height="match_parent">
+                    <ProgressBar
+                        android:id="@+id/progressBarHotProduct"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/rvHotProduct"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/rvHotProduct"/>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvHotProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -165,14 +180,27 @@
                     android:background="@drawable/bg_discount"
                     app:layout_constraintTop_toTopOf="parent"
                     android:gravity="center" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSaleProduct"
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/txtSaleProduct"
-                    android:orientation="horizontal" />
+                    android:layout_height="match_parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtSaleProduct">
+                    <ProgressBar
+                        android:id="@+id/progressBarSaleProduct"
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/rvSaleProduct"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="@id/rvSaleProduct"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvSaleProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <LinearLayout

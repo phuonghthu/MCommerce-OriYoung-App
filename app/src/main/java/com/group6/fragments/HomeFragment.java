@@ -3,6 +3,7 @@ package com.group6.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -20,6 +21,13 @@ import android.widget.EditText;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.group6.adapters.BrandAdapter;
 import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.ProductAdapter;
@@ -32,6 +40,7 @@ import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.MenuSearch;
 import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
+import com.google.firebase.database.DatabaseReference;
 import com.group6.oriyoung.SearchBarActivity;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
 
@@ -49,7 +58,10 @@ public class HomeFragment extends Fragment {
 
     ArrayList<Category> category;
     ArrayList<Product> product;
+    ArrayList<Product> hotproduct;
     ArrayList<Brand> brand;
+    private DatabaseReference myRef;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
 
@@ -86,83 +98,113 @@ public class HomeFragment extends Fragment {
     }
 
     private void loadCategory() {
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        myRef = database.getReference("Category");
         category = new ArrayList<>();
 
-        category.add(new Category(R.drawable.cate_taytrang, "Tẩy trang"));
-        category.add(new Category(R.drawable.cate_toner, "Toner"));
-        category.add(new Category(R.drawable.cate_srm, "Sữa rửa mặt"));
-        category.add(new Category(R.drawable.cate_serum, "Serum"));
-        category.add(new Category(R.drawable.cate_kemduong, "Kem dưỡng"));
-        category.add(new Category(R.drawable.cate_mask, "Mặt nạ"));
-        category.add(new Category(R.drawable.cate_sunscream, "Chống nắng"));
-        category.add(new Category(R.drawable.cate_all, "Xem tất cả"));
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        category.add(issue.getValue(Category.class));
+                    }
+                }
+                if (category.size() > 0) {
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+                    linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+                    categoryAdapter = new CategoryAdapter(getContext(), category);
+                    binding.rvCategory.setAdapter(categoryAdapter);
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        categoryAdapter = new CategoryAdapter(getContext(), category);
-        binding.rvCategory.setAdapter(categoryAdapter);
+            }
+        });
     }
 
     private void loadHotProduct() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
-        binding.rvHotProduct.setLayoutManager(gridLayoutManager);
-        binding.rvHotProduct.setHasFixedSize(true);
-        product = new ArrayList<>();
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 0, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        productAdapter = new ProductAdapter(getContext(), product);
-        binding.rvHotProduct.setAdapter(productAdapter);
+        myRef = database.getReference("Product");
+        binding.progressBarHotProduct.setVisibility(View.VISIBLE);
+
+        hotproduct = new ArrayList<>();
+        Query query = myRef.orderByChild("isHot").equalTo(true);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        hotproduct.add(issue.getValue(Product.class));
+                        }
+                    }
+                    if (hotproduct.size() > 0) {
+                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+                        binding.rvHotProduct.setLayoutManager(gridLayoutManager);
+                        binding.rvHotProduct.setHasFixedSize(true);
+                        productAdapter = new ProductAdapter(getContext(), hotproduct);
+
+                        binding.rvHotProduct.setAdapter(productAdapter);
+                    }
+                    binding.progressBarHotProduct.setVisibility(View.GONE);
+                }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void loadSaleProduct() {
-        int numberOfColumns = 2; // Number of columns
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-        binding.rvSaleProduct.setLayoutManager(layoutManager);
+        myRef = database.getReference("Product");
+        binding.progressBarSaleProduct.setVisibility(View.VISIBLE);
+
         product = new ArrayList<>();
+        Query query = myRef.orderByChild("productDiscountPercent").startAt(0.00001);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot issue : snapshot.getChildren()) {
+                        Product saleProduct = issue.getValue(Product.class);
+                        if (saleProduct.getProductDiscountPercent() > 0) {
+                            product.add(saleProduct);
+                        }
+                    }
+                    if (product.size() > 0) {
+                        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                        binding.rvSaleProduct.setLayoutManager(layoutManager);
+                        saleProductAdapter = new SaleProductAdapter(getContext(), product);
+                        binding.rvSaleProduct.setAdapter(saleProductAdapter);
 
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 40, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 40, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 40, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        product.add(new Product(1, 1, "Nước tẩy trang hoa hồng Cocoon tẩy sạch makeup và cấp ẩm 301ml",
-                100000, 40, "No", R.drawable.product_place_holder,
-                true, true, 5.0, 100, null ));
-        saleProductAdapter = new SaleProductAdapter(getContext(), product);
-        binding.rvSaleProduct.setAdapter(saleProductAdapter);
+                        DisplayMetrics displayMetrics = new DisplayMetrics();
+                        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
+                        int parentWidth = displayMetrics.widthPixels;
+                        float paddingDp = 20; // Padding ngang theo dp
+                        float density = displayMetrics.density;
 
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+                        // Chuyển đổi padding từ dp sang px
+                        int paddingPx = (int) (paddingDp * density);
 
-        int parentWidth = displayMetrics.widthPixels;
-        float paddingDp = 20; // Padding ngang theo dp
-        float density = displayMetrics.density;
+                        // Tính toán kích thước itemWidth
+                        int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
 
-        // Chuyển đổi padding từ dp sang px
-        int paddingPx = (int) (paddingDp * density);
+                        saleProductAdapter.setItemWidth(itemWidth);
+                    }
+                    binding.progressBarSaleProduct.setVisibility(View.GONE);
+                }
+            }
 
-        // Tính toán kích thước itemWidth
-        int itemWidth = (parentWidth - (2 * paddingPx)) / 2;
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        saleProductAdapter.setItemWidth(itemWidth);
+            }
+        });
     }
-
     private void loadBrand() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);

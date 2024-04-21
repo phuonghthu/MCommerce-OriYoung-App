@@ -36,7 +36,7 @@ public class ChangePassword extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChangePassword.this, Setting.class);
-                startActivity(intent);
+                finish();
             }
         });
         binding.btnLUUTHAYDOI.setOnClickListener(new View.OnClickListener() {

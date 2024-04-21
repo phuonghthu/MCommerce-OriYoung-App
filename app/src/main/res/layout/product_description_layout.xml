@@ -3,35 +3,5 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        android:layout_marginTop="@dimen/horizontal_padding">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_product_description"
-            android:text="@string/product_description_title"
-            android:textColor="@color/primarydarker"
-            android:textSize="@dimen/medium_textSize"
-            android:fontFamily="@font/gilroy_bold"
-            android:gravity="center_horizontal"
-            android:padding="@dimen/small_margin"/>
-        <TextView
-            android:id="@+id/txtProductDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/product_description"
-            android:textSize="@dimen/medium_textSize"
-            android:fontFamily="@font/gilroy_regular"
-            android:textColor="@color/black"
-            android:justificationMode="inter_word"
-            android:paddingTop="@dimen/horizontal_padding"
-            />
-    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
