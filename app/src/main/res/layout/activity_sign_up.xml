@@ -102,7 +102,6 @@
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/greylight"
                     app:counterEnabled="true"
-                    app:counterMaxLength="11"
                     app:errorTextAppearance="@style/HintText"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

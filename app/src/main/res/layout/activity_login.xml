@@ -108,6 +108,9 @@
                 app:endIconMode="password_toggle"
                 app:errorContentDescription="@string/Login_pass_error"
                 app:boxStrokeErrorColor="@color/error"
+                app:helperTextEnabled="true"
+                app:helperTextTextAppearance="@dimen/small_textSize"
+                app:helperText="Mật khẩu phải từ 8 ký tự trở lên và chứa ít nhất 1 chữ số"
                 app:errorIconDrawable="@drawable/ic_error">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editTextPassword"
