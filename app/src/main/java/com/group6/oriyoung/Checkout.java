@@ -84,6 +84,13 @@ public class Checkout extends AppCompatActivity {
                 }
             }
         });
+        binding.btnPayment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Checkout.this, OrderDetails.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

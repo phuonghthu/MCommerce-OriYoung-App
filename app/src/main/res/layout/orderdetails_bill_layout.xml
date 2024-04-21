@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/BillCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã đơn hàng"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"
+                android:textColor="@color/black"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/txtBillCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MDH123"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/medium_textSize"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearOrderTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/medium_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thời gian đặt hàng"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"
+                android:textColor="@color/black"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/txtOrderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/04/2024, 14:00"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearPaymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/medium_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phương thức thanh toán"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"
+                android:textColor="@color/black"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/txtPaymentMethod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="COD"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/LinearShippingStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/medium_margin">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vận chuyển"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"
+                android:textColor="@color/black"/>
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+            <TextView
+                android:id="@+id/txtShippingStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chờ lấy hàng"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"/>
+        </LinearLayout>
+        <View
+            android:id="@+id/lineNavi"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/primarygreen"
+            android:layout_marginTop="@dimen/medium_margin" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/btnCancel"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_layout_white_green"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/medium_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HỦY ĐƠN HÀNG"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textColor="@color/black"
+                    android:gravity="start"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btnContactShop"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:background="@drawable/button_layout_white_green"
+                android:paddingVertical="5dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/medium_margin"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LIÊN HỆ SHOP"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textColor="@color/black"
+                    android:gravity="start"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
