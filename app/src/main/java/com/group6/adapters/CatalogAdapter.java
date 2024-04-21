@@ -59,8 +59,9 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), ProductDetail.class);
                 intent.putExtra("object", catalog.get(position));
-                // Thêm cờ để đảm bảo quay lại đúng chỗ
-                intent.putExtra("calling_activity", "ProductCatalog");
+                // Set flag to indicate the calling activity
+                // Thay đổi cờ trong Intent
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 holder.itemView.getContext().startActivity(intent);
             }
         });

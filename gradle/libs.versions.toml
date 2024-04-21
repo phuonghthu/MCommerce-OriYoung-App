@@ -21,6 +21,9 @@ googleServices = "4.4.1"
 firebaseAuth = "22.3.1"
 glide = "5.0.0-rc01"
 firebaseDatabase = "20.3.1"
+notificationBadge = "1.0.5"
+butterknifeCompiler = "10.2.3"
+eventbus = "3.3.1"
 
 
 [libraries]
@@ -47,6 +50,9 @@ google-services = { group = "com.google.gms", name = "google-services", version.
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+notification-badge = { group = "com.nex3z", name = "notification-badge", version.ref = "notificationBadge" }
+butterknife-compiler = { group = "com.jakewharton", name = "butterknife-compiler", version.ref = "butterknifeCompiler" }
+eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

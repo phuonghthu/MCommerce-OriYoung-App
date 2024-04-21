@@ -143,6 +143,7 @@ public class HomeFragment extends Fragment {
                         binding.rvHotProduct.setLayoutManager(gridLayoutManager);
                         binding.rvHotProduct.setHasFixedSize(true);
                         productAdapter = new ProductAdapter(getContext(), hotproduct);
+
                         binding.rvHotProduct.setAdapter(productAdapter);
                     }
                     binding.progressBarHotProduct.setVisibility(View.GONE);

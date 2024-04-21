@@ -14,26 +14,67 @@
             layout="@layout/custom_toolbar_back"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:id="@+id/btnBack"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:layout_marginHorizontal="@dimen/horizontal_padding"
-            android:background="@drawable/ic_trash_bg"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
-            app:layout_constraintEnd_toEndOf="@+id/toolbar"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/toolbar"
-            app:layout_constraintTop_toTopOf="@+id/toolbar"
-            app:layout_constraintVertical_bias="0.55">
+<!--        <LinearLayout-->
+<!--            android:id="@+id/btnBack"-->
+<!--            android:layout_width="38dp"-->
+<!--            android:layout_height="38dp"-->
+<!--            android:layout_marginHorizontal="@dimen/horizontal_padding"-->
+<!--            android:background="@drawable/ic_trash_bg"-->
+<!--            android:gravity="center"-->
+<!--            app:layout_constraintBottom_toBottomOf="@+id/toolbar"-->
+<!--            app:layout_constraintEnd_toEndOf="@+id/toolbar"-->
+<!--            app:layout_constraintHorizontal_bias="1.0"-->
+<!--            app:layout_constraintStart_toStartOf="@+id/toolbar"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/toolbar"-->
+<!--            app:layout_constraintVertical_bias="0.55">-->
 
+<!--                <ImageView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_trash" />-->
+<!--        </LinearLayout>-->
+        <LinearLayout
+            android:id="@+id/blankCart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
                 <ImageView
+                    android:id="@+id/imvCart"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/ic_cart"/>
+                <TextView
+                    android:id="@+id/txtOnboard1Title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_trash" />
-        </LinearLayout>
+                    android:text="Giỏ hàng của bạn đang trống!"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/large_textSize"
+                    android:textColor="@color/black"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/large_margin" />
+                <Button
+                    android:id="@+id/btnGoToStore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go_to_store"
+                    android:background="@drawable/button_layout_cancel"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/gilroy_semibold"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/large_margin" />
 
+        </LinearLayout>
         <ScrollView
             android:id="@+id/scrollView2"
             android:layout_width="match_parent"

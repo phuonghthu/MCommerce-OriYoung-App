@@ -52,6 +52,7 @@ public class WishlistFragment extends Fragment {
 
     private void setToolbar() {
         binding.toolbar.toolbarTitle.setText("Sản phẩm yêu thích");
+        binding.toolbar.btnBack.setVisibility(View.GONE);
     }
 
 //    private void loadFavProduct() {

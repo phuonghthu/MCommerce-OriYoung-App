@@ -60,29 +60,13 @@ public class ProductDetail extends BaseActivity {
 
     private void getIntentExtra() {
         object= (Product) getIntent().getSerializableExtra("object");
-        callingActivity = getIntent().getStringExtra("calling_activity"); // Nhận tên Activity gọi đến
-    }
+            }
 
     private void setVariable() {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (callingActivity != null) {
-                    switch (callingActivity) {
-                        case "ProductCatalog":
-                            NavUtils.navigateUpFromSameTask(ProductDetail.this); // Quay về `ProductCatalog`
-                            break;
-                        case "HomeFragment":
-                            startActivity(new Intent(ProductDetail.this, HomeActivity.class)); // Quay về `HomeActivity`
-                            break;
-                        default:
-                            finish(); // Trường hợp mặc định, kết thúc `Activity`
-                            break;
-                    }
-                } else {
-                    // Nếu `callingActivity` là rỗng hoặc không xác định
-                    finish(); // Kết thúc `Activity`
-                }
+                finish();
             }
         });
 

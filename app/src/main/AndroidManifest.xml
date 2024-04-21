@@ -6,7 +6,8 @@
         android:name="android.hardware.telephony"
         android:required="false" />
 
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -35,6 +36,7 @@
             android:exported="false" />
         <activity
             android:name=".ProductDetail"
+            android:launchMode="singleTop"
             android:exported="false"/>
         <activity
             android:name=".OrderHistoryActivity"
@@ -101,6 +103,7 @@
             android:exported="false" />
         <activity
             android:name=".ProductCatalog"
+            android:launchMode="singleTop"
             android:exported="false" />
         <activity
             android:name=".ForgetPassword"
