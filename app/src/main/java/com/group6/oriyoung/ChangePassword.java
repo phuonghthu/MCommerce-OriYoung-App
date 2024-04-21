@@ -25,7 +25,7 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void addEvents() {
-        binding.btnHUY.setOnClickListener(new View.OnClickListener() {
+        binding.btnHuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ChangePassword.this, Setting.class);
@@ -39,7 +39,7 @@ public class ChangePassword extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.btnLUUTHAYDOI.setOnClickListener(new View.OnClickListener() {
+        binding.btnLuuthaydoi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogNotificationSuccessfully dialogNotificationSuccessfully = new DialogNotificationSuccessfully(ChangePassword.this);
