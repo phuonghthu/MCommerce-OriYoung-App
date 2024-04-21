@@ -114,7 +114,7 @@ public class SignUp extends AppCompatActivity {
                     binding.txtinputemail.setError(getString(R.string.Login_mail_error));
                     return;
                 } else if (!name.isEmpty()) {
-                    binding.txtinputphone.setError("Tên không được để trống!");
+                    binding.txtinputphone.setError(getString(R.string.Empty));
                     txtinputphone.setBoxStrokeColor(ContextCompat.getColor(getApplicationContext(), R.color.error));
                     return;
                 } else {

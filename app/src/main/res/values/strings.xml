@@ -99,8 +99,10 @@
     <string name="Remember_login">Ghi nhớ</string>
     <string name="Login">Đăng nhập</string>
     <string name="Login_option">hoặc đăng nhập với</string>
+    <string name="Empty">Vui lòng điền thông tin</string>
     <string name="Login_mail_error">Email không hợp lệ, vui lòng thử lại</string>
     <string name="Login_pass_error">Mật khẩu không hợp lệ, vui lòng thử lại</string>
+    <string name="Login_pass_description">Mật khẩu từ 8 ký tự trở lên và chứa ít nhất 1 chữ số</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Forget_pass_title">Quên mật khẩu</string>
     <string name="Forget_pass_subtitle">Email</string>
