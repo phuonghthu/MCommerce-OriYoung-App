@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.group6.helpers.ManagementCart;
 import com.group6.models.Product;
 import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
@@ -24,10 +25,14 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
     Context context;
     ArrayList<Product> products;
     private int itemWidth;
+    private Product object;
+    private int num = 1;
+    private ManagementCart managementCart;
 
     public SaleProductAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
+        this.managementCart = new ManagementCart(context);
     }
 
 
@@ -72,6 +77,14 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
                 context.startActivity(intent);
             }
         });
+        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                object = products.get(position); // Assign the correct Product object
+                object.setNumberInCart(num);
+                managementCart.insertProduct(object);
+            }
+        });
     }
 
     @Override
@@ -85,16 +98,16 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
     }
 
     public class SaleProductViewHolder extends RecyclerView.ViewHolder{
-        ImageView imvProductThumb;
-        TextView txtName, txtPrice, txtRatingValue, txtDiscountPercent;
-
-
+        ImageView imvProductThumb, imvAddToFav;
+        TextView txtName, txtPrice, txtRatingValue,  btnAddToCart, txtDiscountPercent;
         public SaleProductViewHolder(@NonNull View itemView) {
             super(itemView);
             imvProductThumb= itemView.findViewById(R.id.imvProductThumb);
             txtName= itemView.findViewById(R.id.txtName);
             txtPrice= itemView.findViewById(R.id.txtPrice);
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
+            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
+            imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
             txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
         }
     }

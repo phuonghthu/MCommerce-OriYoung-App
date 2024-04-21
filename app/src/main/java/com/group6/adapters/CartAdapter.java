@@ -47,9 +47,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Product cart = carts.get(position);
         holder.txtProductName.setText(cart.getProductName());
-        holder.txtProductPrice.setText(String.valueOf(Math.round(cart.getProductPrice())) + " VND");
+        holder.txtProductPrice.setText(String.valueOf(Math.round(cart.getProductPrice())) + " VNĐ");
         holder.txtItemTotal.setText(String.valueOf(Math.round(cart.getNumberInCart()
-                *cart.getProductPrice())) + " VND");
+                *cart.getProductPrice())) + " VNĐ");
         holder.txtItemQuantity.setText(cart.getNumberInCart() + "");
 
         Glide.with(holder.itemView.getContext()).load(cart.getImagePath()).transform(new CenterCrop()).into(holder.imvProduct);

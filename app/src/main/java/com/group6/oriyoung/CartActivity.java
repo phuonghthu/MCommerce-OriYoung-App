@@ -64,17 +64,26 @@ public class CartActivity extends AppCompatActivity {
         double total = Math.round(managementCart.getTotalFee());
         double subTotal = Math.round(managementCart.getTotalFee());
 
-        binding.cartbill.txtSubTotal.setText(String.valueOf(subTotal) + "VNĐ");
-        binding.cartbill.txtTotal.setText(total + "VNĐ");
+        binding.cartbill.txtSubTotal.setText(String.valueOf(subTotal) + " VNĐ");
+        binding.cartbill.txtTotal.setText(String.valueOf(total) + " VNĐ");
     }
 
     private void loadCartItem() {
         if (managementCart.getListCart().isEmpty()) {
             binding.blankCart.setVisibility(View.VISIBLE);
             binding.scrollViewCart.setVisibility(View.GONE);
+            binding.cartbillLayout.setVisibility(View.GONE);
+            binding.btnGoToStore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
         } else {
             binding.blankCart.setVisibility(View.GONE);
             binding.scrollViewCart.setVisibility(View.VISIBLE);
+            binding.cartbillLayout.setVisibility(View.VISIBLE);
         }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
