@@ -40,6 +40,7 @@ public class BrandAdapter extends RecyclerView.Adapter<BrandAdapter.BrandViewHol
         holder.imvBrandImage.setImageResource(brands.get(position).getBrandImage());
     }
 
+
     @Override
     public int getItemCount() {return brands.size();
     }

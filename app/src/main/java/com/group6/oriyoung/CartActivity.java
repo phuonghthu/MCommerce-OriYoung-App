@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import com.group6.Adapter.CartAdapter;
 import com.google.android.material.textfield.TextInputEditText;
 import com.group6.adapters.CartAdapter;
+import com.group6.helpers.ManagementCart;
 import com.group6.oriyoung.databinding.ActivityCartBinding;
 
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ public class CartActivity extends AppCompatActivity {
     ActivityCartBinding binding;
     ArrayList<com.group6.models.Cart> carts;
     CartAdapter adapter;
+    private ManagementCart managementCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,11 @@ public class CartActivity extends AppCompatActivity {
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.toolbar.toolbarTitle.setText("Giỏ hàng");
+
+        managementCart = new ManagementCart(this);
+
+        setVariable();
+        calculateCart();
         loadData();
         addEvent();
     }
@@ -48,6 +55,24 @@ public class CartActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void calculateCart() {
+        double discount = 0;
+
+        double total = Math.round(managementCart.getTotalFee()*100)/100;
+        double itemTotal = Math.round(managementCart.getTotalFee()*100)/100;
+
+        binding.cartbill.txtSubTotal.setText(itemTotal + "VNĐ");
+    }
+
+    private void setVariable() {
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
