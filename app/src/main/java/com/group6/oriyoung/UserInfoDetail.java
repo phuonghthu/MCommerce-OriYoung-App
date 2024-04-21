@@ -15,7 +15,6 @@ import android.widget.EditText;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.group6.fragments.AccountFirstFragment;
 import com.group6.oriyoung.databinding.ActivityUserInfoEdtailBinding;
 
 import java.text.SimpleDateFormat;
@@ -91,7 +90,7 @@ public class UserInfoDetail extends AppCompatActivity {
     }
     private void showNotification() {
         Dialog dialog = new Dialog(UserInfoDetail.this);
-        dialog.setContentView(R.layout.custom_dialog_complete);
+        dialog.setContentView(R.layout.custom_toast);
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

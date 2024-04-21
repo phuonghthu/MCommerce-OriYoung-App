@@ -1,9 +1,14 @@
 package com.group6.helpers;
 
 import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.group6.models.Product;
+import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
 
@@ -34,7 +39,20 @@ public class ManagementCart {
             listpop.add(item);
         }
         tinyDB.putListObject("CartList",listpop);
-        Toast.makeText(context, "Added to your Cart", Toast.LENGTH_SHORT).show();
+
+        // Inflate custom layout for the Toast
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View toastView = inflater.inflate(R.layout.custom_toast, null);
+
+        // Customize the content of the Toast
+        TextView txtTitle = toastView.findViewById(R.id.txtTitle);
+        txtTitle.setText("Thêm vào giỏ hàng thành công");
+
+        // Create and show the custom Toast
+        Toast customToast = new Toast(context);
+        customToast.setView(toastView);
+        customToast.setDuration(Toast.LENGTH_SHORT);
+        customToast.show();
     }
 
     public ArrayList<Product> getListCart() {

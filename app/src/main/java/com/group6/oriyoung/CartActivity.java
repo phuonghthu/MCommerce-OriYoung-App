@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import com.group6.Adapter.CartAdapter;
 import com.google.android.material.textfield.TextInputEditText;
 import com.group6.adapters.CartAdapter;
+import com.group6.helpers.ChangeNumberItemsListener;
 import com.group6.helpers.ManagementCart;
 import com.group6.oriyoung.databinding.ActivityCartBinding;
 
@@ -34,7 +35,7 @@ public class CartActivity extends AppCompatActivity {
 
         setVariable();
         calculateCart();
-        loadData();
+        loadCartItem();
         addEvent();
     }
 
@@ -60,10 +61,33 @@ public class CartActivity extends AppCompatActivity {
     private void calculateCart() {
         double discount = 0;
 
-        double total = Math.round(managementCart.getTotalFee()*100)/100;
-        double itemTotal = Math.round(managementCart.getTotalFee()*100)/100;
+        double total = Math.round(managementCart.getTotalFee());
+        double subTotal = Math.round(managementCart.getTotalFee());
 
-        binding.cartbill.txtSubTotal.setText(itemTotal + "VNĐ");
+        binding.cartbill.txtSubTotal.setText(String.valueOf(subTotal) + "VNĐ");
+        binding.cartbill.txtTotal.setText(total + "VNĐ");
+    }
+
+    private void loadCartItem() {
+        if (managementCart.getListCart().isEmpty()) {
+            binding.blankCart.setVisibility(View.VISIBLE);
+            binding.scrollViewCart.setVisibility(View.GONE);
+        } else {
+            binding.blankCart.setVisibility(View.GONE);
+            binding.scrollViewCart.setVisibility(View.VISIBLE);
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.rvCart.setLayoutManager(layoutManager);
+        adapter = new CartAdapter(managementCart.getListCart(), this, new ChangeNumberItemsListener() {
+            @Override
+            public void change() {
+                calculateCart();
+            }
+        });
+
+        binding.rvCart.setAdapter(adapter);
+
     }
 
     private void setVariable() {
@@ -75,20 +99,6 @@ public class CartActivity extends AppCompatActivity {
         });
     }
 
-
-    private void loadData() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        binding.rvCart.setLayoutManager(layoutManager);
-        carts = new ArrayList<>();
-        carts.add(new com.group6.models.Cart(R.drawable.img_product, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 0));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 18000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 18000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 280000, 28000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 28000));
-//        adapter = new CartAdapter(getApplicationContext(), carts);
-        adapter = new CartAdapter(getApplicationContext(), carts);
-        binding.rvCart.setAdapter(adapter);
-    }
 
 
 }

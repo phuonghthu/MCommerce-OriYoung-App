@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingVertical="10dp"
                 android:gravity="center">
 
                 <com.theophrast.ui.widget.SquareImageView
-                    android:id="@+id/imvCart"
+                    android:id="@+id/imvProduct"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:scaleType="centerCrop"
@@ -33,7 +33,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txtProductNameCart"
+                        android:id="@+id/txtProductName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_regular"
@@ -45,7 +45,7 @@
                         android:textSize="12dp"
                         tools:ignore="HardcodedText,SpUsage" />
                     <TextView
-                        android:id="@+id/txtProductPriceCart"
+                        android:id="@+id/txtProductPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="100000 VNĐ"
@@ -74,7 +74,7 @@
                                 android:src="@drawable/ic_remove_round"
                                 android:layout_gravity="center_vertical" />
                             <TextView
-                                android:id="@+id/txtCartNumb"
+                                android:id="@+id/txtItemQuantity"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:text="10"
@@ -109,7 +109,7 @@
                                 android:text="Tạm tính" />
 
                             <TextView
-                                android:id="@+id/txtTemp"
+                                android:id="@+id/txtItemTotal"
                                 android:textSize="14dp"
                                 android:textColor="@color/secondaryorange"
                                 android:fontFamily="@font/gilroy_bold"

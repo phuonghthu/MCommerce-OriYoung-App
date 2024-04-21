@@ -11,29 +11,28 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.group6.helpers.ChangeNumberItemsListener;
+import com.group6.helpers.ManagementCart;
 import com.group6.models.Cart;
+import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     Context context;
-    ArrayList<Cart> carts;
+    ArrayList<Product> carts;
+    private ManagementCart managementCart;
+    ChangeNumberItemsListener changeNumberItemsListener;
     CartAdapter adapter;
 
-    public CartAdapter(Context context, ArrayList<Cart> carts) {
-        this.context = context;
+    public CartAdapter(ArrayList<Product> carts, Context context, ChangeNumberItemsListener changeNumberItemsListener) {
         this.carts = carts;
-        this.adapter = adapter;
-        this.totalTemp = totalTemp;
+        managementCart = new ManagementCart(context);
+        this.changeNumberItemsListener = changeNumberItemsListener;
     }
-
-    //    public CartAdapter(Context context, ArrayList<cartModel> carts) {
-//        this.context = context;
-//        this.carts = carts;
-//    }
-    private double totalTemp = 0.0;
-
 
 
     @NonNull
@@ -46,65 +45,42 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.imvProductCart.setImageResource(carts.get(position).getImvProductCart());
-        holder.txtProductNameCart.setText(carts.get(position).getTxtProductNameCart());
-        double price = carts.get(position).getTxtPriceCart();
-        long roundedPrice = Math.round(price);
-        holder.txtProductPriceCart.setText(String.valueOf(roundedPrice));
-        holder.txtTemp.setText(String.valueOf(roundedPrice));
+        Product cart = carts.get(position);
+        holder.txtProductName.setText(cart.getProductName());
+        holder.txtProductPrice.setText(String.valueOf(Math.round(cart.getProductPrice())) + " VND");
+        holder.txtItemTotal.setText(String.valueOf(Math.round(cart.getNumberInCart()
+                *cart.getProductPrice())) + " VND");
+        holder.txtItemQuantity.setText(cart.getNumberInCart() + "");
 
-        //Dấu cộng
-        holder.imvPlus.setTag(position);
+        Glide.with(holder.itemView.getContext()).load(cart.getImagePath()).transform(new CenterCrop()).into(holder.imvProduct);
+
 
         holder.imvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = (int) v.getTag(); // Lấy vị trí của item từ tag
-                int currentCartNumb = Integer.parseInt(holder.txtCartNumb.getText().toString());
-                currentCartNumb++; // Tăng giá trị của txtCartNumb
-                holder.txtCartNumb.setText(String.valueOf(currentCartNumb));
-                double productPrice = carts.get(position).getTxtPriceCart();
-                int cartNumb = Integer.parseInt(holder.txtCartNumb.getText().toString());
-                double tempPrice = productPrice * cartNumb;
-                holder.txtTemp.setText(String.valueOf(tempPrice));
+                managementCart.plusNumberItem(carts, position, new ChangeNumberItemsListener() {
+                    @Override
+                    public void change() {
+                        notifyDataSetChanged();
+                        changeNumberItemsListener.change();
+                    }
+                });
 
             }
         });
 
-        //Dấu trừ
-        holder.imvMinus.setTag(position);
         holder.imvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int position = (int) v.getTag();
-                int currentCartNumb = Integer.parseInt(holder.txtCartNumb.getText().toString());
-                if(currentCartNumb >0){
-                    currentCartNumb--;
-                    holder.txtCartNumb.setText(String.valueOf(currentCartNumb));
-
-                }
-                if (currentCartNumb <= 0) {
-                    // Xóa item tại vị trí position
-                    carts.remove(position);
-                    notifyItemRemoved(position);
-                    notifyItemRangeChanged(position, carts.size());
-                }
-                double productPrice = carts.get(position).getTxtPriceCart();
-                int cartNumb = Integer.parseInt(holder.txtCartNumb.getText().toString());
-                double tempPrice = productPrice * cartNumb;
-                holder.txtTemp.setText(String.valueOf(tempPrice));
-
-                //Test
-
+                managementCart.minusNumberItem(carts, position, new ChangeNumberItemsListener() {
+                    @Override
+                    public void change() {
+                        notifyDataSetChanged();
+                        changeNumberItemsListener.change();
+                    }
+                });
             }
         });
-//        double productPrice = carts.get(position).getTxtPriceCart();
-//        int cartNumb = Integer.parseInt(holder.txtCartNumb.getText().toString());
-//        double tempPrice = productPrice * cartNumb;
-//        holder.txtTemp.setText(String.valueOf(tempPrice));
-//
-//        totalTemp += tempPrice;
-//        holder.txtTempTotal.setText(String.valueOf(totalTemp));
 
     }
 
@@ -114,26 +90,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imvProductCart, imvPlus, imvMinus;
-        TextView txtProductNameCart;
-        TextView txtProductPriceCart;
-        TextView txtTempTotal;
-        TextView txtTemp;
-        TextView txtCartNumb;
-
-
+        ImageView imvProduct, imvPlus, imvMinus;
+        TextView txtProductName, txtProductPrice, txtItemQuantity, txtItemTotal;
 
         @SuppressLint("WrongViewCast")
         public ViewHolder(View view) {
             super(view);
-            imvProductCart = view.findViewById(R.id.imvCart);
-            txtProductNameCart = view.findViewById(R.id.txtProductNameCart);
-            txtProductPriceCart = view.findViewById(R.id.txtProductPriceCart);
-            txtTemp = view.findViewById(R.id.txtTemp);
+            imvProduct = view.findViewById(R.id.imvProduct);
+            txtProductName = view.findViewById(R.id.txtProductName);
+            txtProductPrice = view.findViewById(R.id.txtProductPrice);
+            txtItemQuantity = view.findViewById(R.id.txtItemQuantity);
             imvPlus = view.findViewById(R.id.imvPlus);
-            txtTempTotal = view.findViewById(R.id.txtTempTotal);
+            txtItemTotal = view.findViewById(R.id.txtItemTotal);
             imvMinus = view.findViewById(R.id.imvMinus);
-            txtCartNumb = view.findViewById(R.id.txtCartNumb);
 
 
         }
