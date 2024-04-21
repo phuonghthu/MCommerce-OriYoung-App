@@ -21,5 +21,14 @@
         <item name="android:textSize">@dimen/small_textSize</item>
         <item name="android:fontFamily">@font/gilroy_regular</item>
     </style>
+    <style name="CustomRadioButton" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="colorControlNormal">@color/primarydarker</item>
+        <item name="colorControlActivated">@color/primarydarker</item>
+    </style>
+    <style name="TabLayoutText" parent="Widget.MaterialComponents.TabLayout">
+        <item name="android:textSize">@dimen/large_textSize</item>
+        <item name="android:fontFamily">@font/gilroy_bold</item>
+        <item name="android:textColor">@color/primarydarker</item>
+    </style>
 
 </resources>

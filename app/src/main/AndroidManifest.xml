@@ -19,7 +19,7 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".ReviewDetail"
             android:exported="false" />
         <activity
             android:name=".DialogNotificationSuccessfully"
@@ -32,6 +32,12 @@
             android:exported="false" />
         <activity
             android:name=".Checkout"
+            android:exported="false"/>
+        <activity
+            android:name=".ProductDetail"
+            android:exported="false"/>
+        <activity
+            android:name=".OrderHistoryActivity"
             android:exported="false" />
         <activity
             android:name=".MenuSearch"
@@ -70,9 +76,6 @@
             android:name=".CartActivity"
             android:exported="false" />
         <activity
-            android:name=".ProductDetail"
-            android:exported="false" />
-        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity
@@ -98,10 +101,18 @@
             android:exported="false" />
         <activity
             android:name=".OrderDetails"
+            android:exported="false" />
+       <activity
+            android:name=".ForgetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".ResetPassword"
+            android:exported="false" />
+        <activity
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

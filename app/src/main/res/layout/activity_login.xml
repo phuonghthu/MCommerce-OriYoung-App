@@ -63,16 +63,16 @@
                 android:layout_marginTop="@dimen/large_margin"
                 app:hintEnabled="false"
                 app:endIconMode="clear_text"
-                app:errorContentDescription="@string/Login_phone_error"
+                app:errorContentDescription="@string/Login_mail_error"
                 app:boxStrokeErrorColor="@color/error"
                 app:errorIconDrawable="@drawable/ic_error">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextInputMail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/Login_phone"
+                    android:hint="@string/Login_mail"
                     android:textColorHint="@color/primarygreen"
                     android:fontFamily="@font/gilroy_medium"
-                    android:inputType="phone"
                     android:background="@drawable/stroke"/>
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
@@ -105,16 +105,18 @@
                 android:layout_marginTop="@dimen/large_margin"
                 app:hintEnabled="false"
                 app:endIconMode="password_toggle"
-                app:errorContentDescription="@string/Login_phone_error"
+                app:errorContentDescription="@string/Login_pass_error"
                 app:boxStrokeErrorColor="@color/error"
                 app:errorIconDrawable="@drawable/ic_error">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/Login_password"
                     android:textColorHint="@color/primarygreen"
                     android:fontFamily="@font/gilroy_medium"
-                    android:background="@drawable/stroke"/>
+                    android:background="@drawable/stroke"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
             <LinearLayout
                 android:id="@+id/ForgetLogin"

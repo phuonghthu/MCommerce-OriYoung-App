@@ -2,6 +2,8 @@ package com.group6.oriyoung;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +28,9 @@ public class SignupPassword extends AppCompatActivity {
         imvback = findViewById(R.id.imvreturn);
         Xacnhan = findViewById(R.id.btnXacnhan);
 
+        binding.imgPassword.setVisibility(View.INVISIBLE);
+        binding.imgRepassword.setVisibility(View.INVISIBLE);
+
         addEvents();
     }
 
@@ -45,6 +50,51 @@ public class SignupPassword extends AppCompatActivity {
             public void onClick(View v) {
                 showAlertDialog();
             }
+        });
+
+        binding.editTextPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content =binding.editTextPassword.getText().toString();
+                if (content.length() < 8) {
+                    binding.imgPassword.setVisibility(View.VISIBLE);
+                    binding.txtinputpass.setErrorEnabled(true);
+                    binding.txtinputpass.setError("Password too weak and short.");
+                }
+                else {
+                    binding.imgPassword.setVisibility(View.INVISIBLE);
+                    binding.txtinputpass.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        binding.edittextRepass.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String content = binding.edittextRepass.getText().toString();
+                if (content.equals(binding.editTextPassword.getText().toString())) {
+                    binding.imgRepassword.setVisibility(View.VISIBLE);
+                    binding.txtinputpassAgain.setErrorEnabled(true);
+                    binding.txtinputpassAgain.setError("Password too weak and short.");
+                }
+                else {
+                    binding.imgRepassword.setVisibility(View.INVISIBLE);
+                    binding.txtinputpassAgain.setErrorEnabled(false);
+                    binding.txtinputpassAgain.setError("");
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
         });
     }
 

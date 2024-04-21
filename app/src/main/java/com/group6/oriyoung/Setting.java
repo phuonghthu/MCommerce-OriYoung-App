@@ -43,7 +43,7 @@ public class Setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Setting.this, AccountFirstFragment.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

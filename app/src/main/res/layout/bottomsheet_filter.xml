@@ -56,18 +56,21 @@
             android:text="Dưới 100.000₫"
             android:fontFamily="@font/gilroy_regular"
             android:layout_width="wrap_content"
+            android:buttonTint="@color/primarydarker"
             android:layout_height="wrap_content" />
 
         <CheckBox
             android:id="@+id/checkBox100kTo250k"
             android:text="100.000đ - 250.000đ"
             android:fontFamily="@font/gilroy_regular"
+            android:buttonTint="@color/primarydarker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <CheckBox
             android:id="@+id/checkBox250kTo400k"
             android:text="250.000đ - 400.000đ"
+            android:buttonTint="@color/primarydarker"
             android:fontFamily="@font/gilroy_regular"
 
             android:layout_width="wrap_content"
@@ -76,8 +79,8 @@
         <CheckBox
             android:id="@+id/checkBoxOver400k"
             android:text="Trên 400.000đ"
+            android:buttonTint="@color/primarydarker"
             android:fontFamily="@font/gilroy_regular"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
