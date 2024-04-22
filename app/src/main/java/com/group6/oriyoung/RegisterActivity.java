@@ -45,10 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
     TextInputEditText txtInputName, txtInputEmail, txtInputPassword, txtInputPasswordAgain;
 
     private static final String TAG="RegisterActivity";
-    boolean isValidName = false;
-    boolean isValidEmail = false;
-    boolean isValidPassword = false;
-    boolean isValidPasswordAgain = false;
+//    boolean isValidName = false;
+//    boolean isValidEmail = false;
+//    boolean isValidPassword = false;
+//    boolean isValidPasswordAgain = false;
 
 
     @Override
@@ -114,12 +114,20 @@ public class RegisterActivity extends AppCompatActivity {
                     txtInputPassword.clearComposingText();
                     txtInputPasswordAgain.clearComposingText();
                 } else {
-                    binding.inputName.setHelperTextEnabled(false);
-                    binding.inputEmail.setHelperTextEnabled(false);
-                    binding.inputPw.setHelperTextEnabled(false);
-                    binding.inputPwAgain.setHelperTextEnabled(false);
+//                    binding.inputName.setHelperTextEnabled(false);
+//                    binding.inputEmail.setHelperTextEnabled(false);
+//                    binding.inputPw.setHelperTextEnabled(false);
+//                    binding.inputPwAgain.setHelperTextEnabled(false);
                     registerUser(userName, email, txtPw);
                 }
+            }
+        });
+        binding.txtLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

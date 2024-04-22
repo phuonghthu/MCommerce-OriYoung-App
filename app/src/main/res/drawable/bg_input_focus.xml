@@ -5,6 +5,6 @@
         android:color="@color/primarybackground"/>
     <stroke
         android:color="@color/primarydarker"
-        android:width="3dp"/>
+        android:width="1.5dp"/>
 
 </shape>

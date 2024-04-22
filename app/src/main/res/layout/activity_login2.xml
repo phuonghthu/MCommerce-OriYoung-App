@@ -8,9 +8,19 @@
     tools:context=".RegisterActivity"
     android:background="@color/white"
     android:paddingTop="@dimen/horizontal_padding">
+    <ProgressBar
+        android:id="@+id/progressLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
 
     <LinearLayout
-        android:id="@+id/imvreturn"
+        android:id="@+id/imvBack"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:background="@drawable/ic_back_bg"
@@ -32,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="@dimen/horizontal_padding">
+            android:paddingHorizontal="@dimen/vertical_padding">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -67,6 +77,7 @@
 
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false"
@@ -90,6 +101,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputPw"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:hintEnabled="false"
@@ -114,7 +126,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
-                    android:id="@+id/txtForgetPassword"
+                    android:id="@+id/txtForgetPw"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/Forget_pass"
@@ -207,14 +219,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
-                        android:textSize="@dimen/small_textSize"
+                        android:textSize="@dimen/medium_textSize"
                         android:text="Bạn chưa có tài khoản?"/>
                     <TextView
+                        android:id="@+id/txtSignUp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Đăng ký ngay!"
                         android:fontFamily="@font/gilroy_bold"
-                        android:textSize="@dimen/small_textSize"
+                        android:textSize="@dimen/medium_textSize"
                         android:textColor="@color/secondaryorange"
                         android:layout_marginStart="5dp"/>
 
