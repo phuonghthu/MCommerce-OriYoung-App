@@ -344,7 +344,7 @@
                 android:layout_marginTop="10dp"
                 android:backgroundTint="@color/primarygreen"
                 android:fontFamily="@font/gilroy_bold"
-                android:textSize="@dimen/h4_textSize"/>\
+                android:textSize="@dimen/h4_textSize"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -92,7 +92,7 @@ public class OnboardingActivity extends AppCompatActivity {
         binding.txtSignupNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OnboardingActivity.this, SignUp.class);
+                Intent intent = new Intent(OnboardingActivity.this, RegisterActivity.class);
                 startActivity(intent);
                 finish();
             }
