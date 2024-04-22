@@ -2,13 +2,14 @@ package com.group6.oriyoung;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -24,6 +25,8 @@ import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityProductCatalogBinding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ProductCatalog extends BaseActivity {
     ActivityProductCatalogBinding binding;
@@ -35,9 +38,7 @@ public class ProductCatalog extends BaseActivity {
     String searchText;
     boolean isSearch;
 
-    // Khai báo biến để theo dõi trạng thái của bottom sheet và trạng thái của nút
-    private boolean isCatalogBottomSheetVisible = false;
-    private boolean isFilterBottomSheetVisible = false;
+    private DatabaseReference databaseRef;
     private boolean isSortBottomSheetVisible = false;
 
     @Override
@@ -46,7 +47,6 @@ public class ProductCatalog extends BaseActivity {
         binding = ActivityProductCatalogBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         getIntentExtra();
-
         filterEvent();
     }
 
@@ -68,18 +68,18 @@ public class ProductCatalog extends BaseActivity {
     }
 
     private void loadDataCatalog() {
-        DatabaseReference myRef = database.getReference("Product");
+        databaseRef = database.getReference("Product");
         binding.progressBarListProduct.setVisibility(View.VISIBLE);
         catalog = new ArrayList<>();
 
         Query query;
         if (isSearch) {
-            query = myRef.orderByChild("productName").startAt(searchText).endAt(searchText + '\uf8ff');
+            query = databaseRef.orderByChild("productName").startAt(searchText).endAt(searchText + '\uf8ff');
         } else {
             if (categoryID == 7) {
-                query = myRef;
+                query = databaseRef;
             } else {
-                query = myRef.orderByChild("categoryID").equalTo(categoryID);
+                query = databaseRef.orderByChild("categoryID").equalTo(categoryID);
             }
         }
 
@@ -108,16 +108,9 @@ public class ProductCatalog extends BaseActivity {
         });
     }
 
-    // Xử lý dialog
-    private void resetButtonBackground() {
-        binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
-        binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
-        binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
-    }
-
     private Dialog getBottomSheetDialog(View view) {
         Dialog dialog = new Dialog(ProductCatalog.this);
-        // Xử lý hiển thị bottom sheet tương ứng với view
+        // Handle displaying the corresponding bottom sheet based on the view
         if (view == binding.imvSort) {
             dialog.setContentView(R.layout.bottomsheet_sort);
         } else if (view == binding.imvFilter) {
@@ -133,82 +126,118 @@ public class ProductCatalog extends BaseActivity {
     }
 
     private void filterEvent() {
-        // Set onClickListener cho imvSort
+        // Set onClickListener for imvSort
         binding.imvSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Đổi màu nền của imvSort
+                // Change the background color of imvSort
                 binding.imvSort.setBackgroundResource(R.drawable.linear_bg_selected_state);
 
-                // Hiển thị bottom sheet tương ứng
+                // Display the corresponding bottom sheet
                 Dialog dialog = getBottomSheetDialog(binding.imvSort);
                 dialog.show();
 
-                // Xử lý sự kiện khi bottom sheet bị ẩn đi
+                // Handle the event when the bottom sheet is dismissed
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        // Reset màu nền của imvSort
+                        // Reset the background color of imvSort
                         binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
+                    }
+                });
+
+                RadioButton radioButtonName = dialog.findViewById(R.id.radioButtonName);
+                RadioButton radioButtonPriceAscending = dialog.findViewById(R.id.radioButtonPriceAscending);
+                RadioButton radioButtonPriceDescending = dialog.findViewById(R.id.radioButtonPriceDescending);
+
+                radioButtonName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Sort the catalog by product name (A-Z)
+                        Collections.sort(catalog, new Comparator<Product>() {
+                            @Override
+                            public int compare(Product p1, Product p2) {
+                                return p1.getProductName().compareToIgnoreCase(p2.getProductName());
+                            }
+                        });
+                        // Update the RecyclerView adapter with sorted data
+                        catalogAdapter.notifyDataSetChanged();
+                    }
+                });
+
+                radioButtonPriceAscending.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Sort the catalog by price in ascending order
+                        Collections.sort(catalog, new Comparator<Product>() {
+                            @Override
+                            public int compare(Product p1, Product p2) {
+                                return Double.compare(p1.getProductPrice(), p2.getProductPrice());
+                            }
+                        });
+                        // Update the RecyclerView adapter with sorted data
+                        catalogAdapter.notifyDataSetChanged();
+                    }
+                });
+
+                radioButtonPriceDescending.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Sort the catalog by price in descending order
+                        Collections.sort(catalog, new Comparator<Product>() {
+                            @Override
+                            public int compare(Product p1, Product p2) {
+                                return Double.compare(p2.getProductPrice(), p1.getProductPrice());
+                            }
+                        });
+                        // Update the RecyclerView adapter with sorted data
+                        catalogAdapter.notifyDataSetChanged();
                     }
                 });
             }
         });
-
-        // Set onClickListener cho imvFilter
+        // Set onClickListener for imvFilter
         binding.imvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Đổi màu nền của imvFilter
+                // Change the background color of imvFilter
                 binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_selected_state);
 
-                // Hiển thị bottom sheet tương ứng
+                // Display the corresponding bottom sheet
                 Dialog dialog = getBottomSheetDialog(binding.imvFilter);
                 dialog.show();
 
-                // Xử lý sự kiện khi bottom sheet bị ẩn đi
+                // Handle the event when the bottom sheet is dismissed
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        // Reset màu nền của imvFilter
+                        // Reset the background color of imvFilter
                         binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
                     }
                 });
             }
         });
 
-        // Set onClickListener cho imvCatalog
+        // Set onClickListener for imvCatalog
         binding.imvCatalog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Đổi màu nền của imvCatalog
+                // Change the background color of imvCatalog
                 binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_selected_state);
 
-                // Hiển thị bottom sheet tương ứng
+                // Display the corresponding bottom sheet
                 Dialog dialog = getBottomSheetDialog(binding.imvCatalog);
                 dialog.show();
 
-                // Xử lý sự kiện khi bottom sheet bị ẩn đi
+                // Handle the event when the bottom sheet is dismissed
                 dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
-                        // Reset màu nền của imvCatalog
+                        // Reset the background color of imvCatalog
                         binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
                     }
                 });
             }
         });
-    }
-
-    private void handleBottomSheet(View view, boolean isVisible) {
-        if (!isVisible) {
-            Dialog dialog = getBottomSheetDialog(view);
-            dialog.show();
-            view.setBackgroundResource(R.drawable.linear_bg_selected_state);
-        } else {
-            Dialog dialog = getBottomSheetDialog(view);
-            dialog.dismiss();
-            resetButtonBackground();
-        }
     }
 }
