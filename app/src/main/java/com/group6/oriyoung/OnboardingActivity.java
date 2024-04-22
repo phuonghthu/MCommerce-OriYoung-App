@@ -94,7 +94,6 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OnboardingActivity.this, RegisterActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -102,7 +101,6 @@ public class OnboardingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(OnboardingActivity.this, LoginActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

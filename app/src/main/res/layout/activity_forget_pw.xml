@@ -10,7 +10,7 @@
     android:paddingTop="@dimen/horizontal_padding">
 
     <LinearLayout
-        android:id="@+id/imvreturn"
+        android:id="@+id/imvBack"
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:background="@drawable/ic_back_bg"
@@ -148,7 +148,7 @@
                     android:text="Xác nhận"
                     android:fontFamily="@font/gilroy_bold"
                     android:textSize="@dimen/large_textSize"
-                    android:layout_marginTop="@dimen/large_margin"/>
+                    android:layout_marginTop="@dimen/xlarge_margin"/>
 
 
 
