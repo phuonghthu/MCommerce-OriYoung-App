@@ -72,7 +72,7 @@ public class SaleProductAdapter extends RecyclerView.Adapter<SaleProductAdapter.
             public void onClick(View v) {
                 Intent intent = new Intent(context, ProductDetail.class);
                 intent.putExtra("object", products.get(position));
-                // Thêm cờ vào Intent
+
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 context.startActivity(intent);
             }

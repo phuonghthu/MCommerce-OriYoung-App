@@ -13,6 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.group6.adapters.CartAdapter;
 import com.group6.helpers.ChangeNumberItemsListener;
 import com.group6.helpers.ManagementCart;
+import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityCartBinding;
 
 import java.util.ArrayList;
@@ -47,13 +48,18 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.cartbill.btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CartActivity.this, Checkout.class);
-                startActivity(intent);
-            }
-        });
+//        binding.cartbill.btnCheckout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Lấy danh sách sản phẩm trong giỏ hàng
+//                ArrayList<Product> cartItem = managementCart.getListCart();
+//
+//                // Tạo Intent để chuyển dữ liệu
+//                Intent intent = new Intent(CartActivity.this, Checkout.class);
+//                intent.putParcelableArrayListExtra("cartItems", cartItem);
+//                startActivity(intent);
+//            }
+//        });
 
 
     }

@@ -16,10 +16,14 @@ import java.util.ArrayList;
 public class ManagementCart {
     private Context context;
     private TinyDB tinyDB;
+    private static final String KEY_ITEM_TOTAL = "itemTotal";
+    private static final String KEY_ITEM_QUANTITY = "itemQuantity";
+
 
     public ManagementCart(Context context) {
         this.context = context;
         this.tinyDB=new TinyDB(context);
+
     }
 
     public void insertProduct(Product item) {
