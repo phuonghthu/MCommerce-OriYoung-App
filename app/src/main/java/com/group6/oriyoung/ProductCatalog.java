@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -32,6 +33,8 @@ public class ProductCatalog extends BaseActivity {
     ActivityProductCatalogBinding binding;
     ArrayList<Product> catalog;
     CatalogAdapter catalogAdapter;
+    ArrayList<Product> originalCatalog;
+    ArrayList<Product> filteredCatalog;
 
     int categoryID;
     String categoryName;
@@ -39,7 +42,13 @@ public class ProductCatalog extends BaseActivity {
     boolean isSearch;
 
     private DatabaseReference databaseRef;
-    private boolean isSortBottomSheetVisible = false;
+
+    // Flags to track checkbox states
+    private boolean isUnder100kChecked = false;
+    private boolean is100kTo250kChecked = false;
+    private boolean is250kTo400kChecked = false;
+    private boolean isOver400kChecked = false;
+    private boolean isAnyCheckboxChecked =false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,8 @@ public class ProductCatalog extends BaseActivity {
         setContentView(binding.getRoot());
         getIntentExtra();
         filterEvent();
+        originalCatalog = new ArrayList<>();
+        filteredCatalog = new ArrayList<>();
     }
 
     @Override
@@ -91,6 +102,8 @@ public class ProductCatalog extends BaseActivity {
                         catalog.add(issue.getValue(Product.class));
                     }
                     if (catalog.size() > 0) {
+                        originalCatalog.addAll(catalog);
+                        filteredCatalog.addAll(catalog);
                         GridLayoutManager layoutManager = new GridLayoutManager(ProductCatalog.this, 2, RecyclerView.VERTICAL, false);
                         binding.rvCatalog.setLayoutManager(layoutManager);
                         binding.rvCatalog.setHasFixedSize(true);
@@ -196,6 +209,7 @@ public class ProductCatalog extends BaseActivity {
                 });
             }
         });
+
         // Set onClickListener for imvFilter
         binding.imvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,31 +227,90 @@ public class ProductCatalog extends BaseActivity {
                     public void onDismiss(DialogInterface dialog) {
                         // Reset the background color of imvFilter
                         binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
+                        // Check if any checkbox is checked
+                        if (!isAnyCheckboxChecked) {
+                            // If no checkbox is checked, reset the catalog to original state
+                            resetCatalog();
+                        }
+                        // Reset the flag
+                        isAnyCheckboxChecked = false;
                     }
                 });
-            }
-        });
 
-        // Set onClickListener for imvCatalog
-        binding.imvCatalog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Change the background color of imvCatalog
-                binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                // Get checkboxes from the bottom sheet layout
+                CheckBox checkBoxUnder100k = dialog.findViewById(R.id.checkBoxUnder100k);
+                CheckBox checkBox100kTo250k = dialog.findViewById(R.id.checkBox100kTo250k);
+                CheckBox checkBox250kTo400k = dialog.findViewById(R.id.checkBox250kTo400k);
+                CheckBox checkBoxOver400k = dialog.findViewById(R.id.checkBoxOver400k);
 
-                // Display the corresponding bottom sheet
-                Dialog dialog = getBottomSheetDialog(binding.imvCatalog);
-                dialog.show();
-
-                // Handle the event when the bottom sheet is dismissed
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                // Set onClickListener for each checkbox
+                checkBoxUnder100k.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        // Reset the background color of imvCatalog
-                        binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
+                    public void onClick(View v) {
+                        // Cập nhật trạng thái của biến khi checkbox được chọn hoặc bỏ chọn
+                        isUnder100kChecked = checkBoxUnder100k.isChecked();
+                        // Xử lý lọc dữ liệu tương ứng với checkbox
+                        filterProducts();
+                    }
+                });
+
+                checkBox100kTo250k.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        is100kTo250kChecked = checkBox100kTo250k.isChecked();
+                        filterProducts();
+                    }
+                });
+
+                checkBox250kTo400k.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        is250kTo400kChecked = checkBox250kTo400k.isChecked();
+                        filterProducts();
+                    }
+                });
+
+                checkBoxOver400k.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isOver400kChecked = checkBoxOver400k.isChecked();
+                        filterProducts();
                     }
                 });
             }
         });
+
     }
+
+    // Function to filter products based on all selected filters
+    private void filterProducts() {
+        filteredCatalog.clear();
+        if (!isUnder100kChecked && !is100kTo250kChecked && !is250kTo400kChecked && !isOver400kChecked) {
+            // If no filters are selected, display the original catalog
+            filteredCatalog.addAll(originalCatalog);
+        } else {
+            // Apply filters based on checkbox states
+            for (Product product : originalCatalog) {
+                double price = product.getProductPrice();
+                if ((isUnder100kChecked && price < 100000) ||
+                        (is100kTo250kChecked && price >= 100000 && price <= 250000) ||
+                        (is250kTo400kChecked && price > 250000 && price <= 400000) ||
+                        (isOver400kChecked && price > 400000)) {
+                    filteredCatalog.add(product);
+                }
+            }
+        }
+        catalogAdapter.updateData(filteredCatalog);
+    }
+    private void resetCatalog() {
+        catalog.clear();
+        catalog.addAll(originalCatalog);
+        catalogAdapter.notifyDataSetChanged();
+    }
+
+
 }
+
+
+
+

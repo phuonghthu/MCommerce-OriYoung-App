@@ -3,7 +3,7 @@
     <item android:state_selected="true">
         <shape android:shape="rectangle">
             <!-- Background color when selected -->
-            <solid android:color="@color/primarygreen" />
+            <solid android:color="@color/primarylighter" />
             <!-- Rounded corners -->
             <corners android:radius="30dp" />
         </shape>
@@ -12,7 +12,7 @@
     <item>
         <shape android:shape="rectangle">
             <!-- Background color when not selected -->
-            <solid android:color="@color/primarygreen" />
+            <solid android:color="@color/primarylighter" />
             <!-- Rounded corners -->
             <corners android:radius="30dp" />
         </shape>

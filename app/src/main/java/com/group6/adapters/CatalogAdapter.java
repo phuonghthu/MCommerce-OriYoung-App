@@ -78,6 +78,12 @@ public class CatalogAdapter extends RecyclerView.Adapter<CatalogAdapter.CatalogV
         catalog.addAll(newProducts);
         notifyDataSetChanged();
     }
+    // Add the updateData method to your RecyclerView adapter (CatalogAdapter)
+    public void updateData(ArrayList<Product> newData) {
+        catalog.clear();
+        catalog.addAll(newData);
+        notifyDataSetChanged();
+    }
 
     public class CatalogViewHolder extends RecyclerView.ViewHolder {
         ImageView imvProductThumb;
