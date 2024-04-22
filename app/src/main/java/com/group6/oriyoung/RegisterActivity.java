@@ -33,6 +33,10 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.group6.models.User;
 import com.group6.oriyoung.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -73,20 +77,20 @@ public class RegisterActivity extends AppCompatActivity {
         binding.btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txtName = txtInputName.getText().toString();
-                String txtEmail = txtInputEmail.getText().toString();
+                String userName = txtInputName.getText().toString();
+                String email = txtInputEmail.getText().toString();
                 String txtPw = txtInputPassword.getText().toString();
                 String txtPwAgain = txtInputPasswordAgain.getText().toString();
 
-                if (TextUtils.isEmpty(txtName)) {
+                if (TextUtils.isEmpty(userName)) {
 //                    binding.inputName.setHelperText("Hãy nhập tên của bạn!");
                     txtInputName.setError("Tên không được để trống", null);
                     txtInputName.requestFocus();
-                } else if (TextUtils.isEmpty(txtEmail)) {
+                } else if (TextUtils.isEmpty(email)) {
 //                    binding.inputEmail.setHelperText("Hãy nhập email của bạn!");
                     txtInputEmail.setError("Email không được để trống", null);
                     txtInputEmail.requestFocus();
-                } else if (!Patterns.EMAIL_ADDRESS.matcher(txtEmail).matches()) {
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
 //                    binding.inputEmail.setHelperText("Hãy nhập đúng định dạng email");
                     txtInputEmail.setError("Email không đúng định dạng",null);
                     txtInputEmail.requestFocus();
@@ -114,51 +118,81 @@ public class RegisterActivity extends AppCompatActivity {
                     binding.inputEmail.setHelperTextEnabled(false);
                     binding.inputPw.setHelperTextEnabled(false);
                     binding.inputPwAgain.setHelperTextEnabled(false);
-                    registerUser(txtName, txtEmail, txtPw);
+                    registerUser(userName, email, txtPw);
                 }
             }
         });
     }
 
     // Register user using the credentials given
-    private void registerUser(String txtName, String txtEmail, String txtPw) {
+    private void registerUser(String userName, String email, String txtPw) {
         FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.createUserWithEmailAndPassword(txtEmail, txtPw).addOnCompleteListener(RegisterActivity.this,
+        auth.createUserWithEmailAndPassword(email, txtPw).addOnCompleteListener(RegisterActivity.this,
                 new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            LayoutInflater inflater = getLayoutInflater();
-                            View dialogView = inflater.inflate(R.layout.custom_dialog_success, null);
-
-                            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                            builder.setView(dialogView);
-
-                            Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnCTA);
-
-                            final AlertDialog dialog = builder.create();
-                            dialog.show();
-
-
-                            // Bắt sự kiện khi nút "Khám phá ngay" được nhấn
-                            btnKhamPhaNgay.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    dialog.dismiss();
-                                    // Chuyển hướng về màn hình chính khi người dùng nhấn nút "Khám phá ngay"
-                                    Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
-                                    // Prevent user from returning back to Register Activity on pressing back button
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                            | Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                            });
 
                             FirebaseUser firebaseUser = auth.getCurrentUser();
 
-                            // Send Verification Email
-                            firebaseUser.sendEmailVerification();
+                            //Update display name of user
+                            UserProfileChangeRequest profileChangeRequest = new UserProfileChangeRequest.Builder()
+                                    .setDisplayName(userName).build();
+                            assert firebaseUser != null;
+                            firebaseUser.updateProfile(profileChangeRequest);
+
+
+                            // Enter user to Firebase
+                            User user = new User(userName, null, email, null);
+
+                            // Extract user ref from Db
+                            DatabaseReference refUser = FirebaseDatabase.getInstance().getReference("User");
+
+                            refUser.child(firebaseUser.getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        // Send Verification Email
+                                        firebaseUser.sendEmailVerification();
+
+                                        // Dialog success navigate to homepage
+                                        LayoutInflater inflater = getLayoutInflater();
+                                        View dialogView = inflater.inflate(R.layout.custom_dialog_success, null);
+
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                                        builder.setView(dialogView);
+
+                                        Button btnKhamPhaNgay = dialogView.findViewById(R.id.btnCTA);
+
+                                        final AlertDialog dialog = builder.create();
+                                        dialog.show();
+
+
+                                        // Bắt sự kiện khi nút "Khám phá ngay" được nhấn
+                                        btnKhamPhaNgay.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                dialog.dismiss();
+                                                // Chuyển hướng về màn hình chính khi người dùng nhấn nút "Khám phá ngay"
+                                                Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                                                // Prevent user from returning back to Register Activity on pressing back button
+                                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                                        | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(intent);
+                                                finish();
+                                            }
+                                        });
+                                    } else {
+                                        Toast.makeText(RegisterActivity.this, "Đăng ký thất bại. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                                    }
+
+
+                                }
+                            });
+
+
+
+
 
                         } else {
                             try {
