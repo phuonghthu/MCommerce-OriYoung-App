@@ -43,7 +43,12 @@ public class ManagementCart {
             listpop.add(item);
         }
         tinyDB.putListObject("CartList",listpop);
+        showCustomToast();
 
+
+    }
+
+    private void showCustomToast() {
         // Inflate custom layout for the Toast
         LayoutInflater inflater = LayoutInflater.from(context);
         View toastView = inflater.inflate(R.layout.custom_toast, null);
