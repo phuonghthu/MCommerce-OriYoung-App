@@ -25,12 +25,22 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthEmailException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.group6.oriyoung.databinding.ActivityForgetPasswordBinding;
+
+import java.util.Collections;
+import java.util.UUID;
 
 public class ForgetPassword extends AppCompatActivity {
     ActivityForgetPasswordBinding binding;
@@ -116,43 +126,102 @@ public class ForgetPassword extends AppCompatActivity {
                     inputEmail.requestFocus();
 
                 } else{
-                    resetPassword  ();
+                    resetPassword();
                 }
             }
         });
 
 
     }
+
     private void resetPassword() {
-        mAuth.sendPasswordResetEmail(email)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                                Toast.makeText(ForgetPassword.this, "Kiểm tra email của bạn để thay đổi mật khẩu!", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(ForgetPassword.this, LoginActivity.class));
-                                finish();
-                            } else {
-                                showDialog();
-                            }
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("User");
 
-                            try {
-                                throw task.getException();
-                            } catch (FirebaseAuthInvalidCredentialsException e) {
-                                inputEmail.setError("Email không tồn tại!");
-                                inputEmail.requestFocus();
-                            } catch (FirebaseAuthInvalidUserException e) {
-                                inputEmail.setError("Email không tồn tại hoặc không đúng!");
-                                inputEmail.requestFocus();
-                            } catch (Exception e) {
-                                Log.e(TAG, e.getMessage());
-                                Toast.makeText(ForgetPassword.this, "Đã có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
+        usersRef.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Email tồn tại trong cơ sở dữ liệu, thực hiện quy trình đặt lại mật khẩu ở đây
+                    mAuth.sendPasswordResetEmail(email)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        // Thành công, hiển thị thông báo và chuyển đến màn hình đăng nhập
+                                        Toast.makeText(ForgetPassword.this, "Kiểm tra email của bạn để thay đổi mật khẩu!", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(ForgetPassword.this, LoginActivity.class));
+                                        finish();
+                                    } else {
+                                        // Có lỗi khi gửi yêu cầu reset mật khẩu
+                                        showDialog();
+                                    }
+                                }
+                            });
+                } else {
+                    // Email không tồn tại trong cơ sở dữ liệu
+                    showDialog();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Xử lý lỗi khi truy vấn cơ sở dữ liệu
+                Log.e(TAG, "Lỗi khi truy vấn cơ sở dữ liệu: " + databaseError.getMessage());
+                Toast.makeText(ForgetPassword.this, "Đã có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
-                });
-    }private void showDialog() {
+
+
+//    private void resetPassword() {
+//        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users");
+//        Query query = usersRef.orderByChild("email").equalTo(email);
+//
+//        query.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    // Email tồn tại trong cơ sở dữ liệu, thực hiện quy trình đặt lại mật khẩu ở đây
+//                    mAuth.sendPasswordResetEmail(email)
+//                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if (task.isSuccessful()) {
+//                                        // Thành công, hiển thị thông báo và chuyển đến màn hình đăng nhập
+//                                        Toast.makeText(ForgetPassword.this, "Kiểm tra email của bạn để thay đổi mật khẩu!", Toast.LENGTH_SHORT).show();
+//                                        startActivity(new Intent(ForgetPassword.this, LoginActivity.class));
+//                                        finish();
+//                                    } else {
+//                                        // Có lỗi khi gửi yêu cầu reset mật khẩu
+//                                        showDialog();
+//                                    }
+//                                }
+//                            });
+//                } else {
+//                    // Email không tồn tại trong cơ sở dữ liệu
+//                    showDialog();
+//                }
+//            }
+
+
+
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Xử lý lỗi khi truy vấn cơ sở dữ liệu
+//                Log.e(TAG, "Lỗi khi truy vấn cơ sở dữ liệu: " + databaseError.getMessage());
+//                Toast.makeText(ForgetPassword.this, "Đã có lỗi xảy ra. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
+
+
+
+
+
+    private void showDialog() {
         // Tạo dialog
         Dialog dialog = new Dialog(ForgetPassword.this);
         dialog.setContentView(R.layout.custom_dialog_fail);
@@ -178,16 +247,7 @@ public class ForgetPassword extends AppCompatActivity {
         // Hiển thị dialog
         dialog.show();
     }
-//    protected void onStart() {
-//        if (mAuth.getCurrentUser() !=null){
-//            Toast.makeText(ForgetPassword.this, "Kiểm tra email của bạn để thay đổi mật khẩu!", Toast.LENGTH_SHORT).show();
-//            startActivity(new Intent(ForgetPassword.this, LoginActivity.class));
-//            finish();
-//        }else {
-//            finish();
-//        }
-//        super.onStart();
-//    }
+
 }
 
 

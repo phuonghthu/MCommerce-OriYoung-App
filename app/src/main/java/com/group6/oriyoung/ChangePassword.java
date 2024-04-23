@@ -160,18 +160,12 @@ public class ChangePassword extends AppCompatActivity {
                 passagain = txtPassAgain.getText().toString().trim();
                 if (TextUtils.isEmpty(current)){
                     inputCurrentPass.setError(getString(R.string.Empty_error));
-//                } else if (current.length() < 8 || !current.matches("^(?=.*\\\\d).{8,}$")) {
-//                    inputCurrentPass.setError(getString(R.string.Login_pass_error));
                 } else if (TextUtils.isEmpty(newpass)) {
                     inputNewPass.setError(getString(R.string.Empty_error));
-//                } else if (newpass.length() < 8 || !newpass.matches("^(?=.*\\\\d).{8,}$")) {
-//                    inputNewPass.setError(getString(R.string.Login_pass_error));
                 } else if (newpass.compareTo(current) == 0) {
                     inputNewPass.setError("Vui lòng nhập mật khẩu mới!");
                 } else if (TextUtils.isEmpty(passagain)) {
                     inputPassAgain.setError(getString(R.string.Empty_error));
-//                } else if (passagain.length() < 8 || !passagain.matches("^(?=.*\\\\d).{8,}$")) {
-//                    inputPassAgain.setError(getString(R.string.Login_pass_error));
                 } else if (passagain.compareTo(newpass) != 0 ) {
                     inputPassAgain.setError("Mật khẩu không khớp");
                 }else {
