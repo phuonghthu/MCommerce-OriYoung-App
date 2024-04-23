@@ -75,13 +75,13 @@
             android:name=".DialogLogout"
             android:exported="false" />
         <activity
-            android:name=".ChangePassword"
+            android:name=".UserInfoDetail"
             android:exported="false" />
         <activity
             android:name=".UserInformation"
             android:exported="false" />
         <activity
-            android:name=".UserInfoDetail"
+            android:name=".ForgetPassword"
             android:exported="false" />
         <activity
             android:name=".CartActivity"
@@ -121,7 +121,7 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".ForgetPassword"
+            android:name=".ChangePassword"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

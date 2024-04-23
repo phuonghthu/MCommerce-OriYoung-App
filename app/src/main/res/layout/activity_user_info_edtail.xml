@@ -179,7 +179,8 @@
                         android:fontFamily="@font/gilroy_regular"
                         android:inputType="phone"
                         android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/button_bg_state"/>
+                        android:background="@drawable/button_bg_state"
+                        android:backgroundTint="#16000000"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                     android:layout_width="match_parent"
