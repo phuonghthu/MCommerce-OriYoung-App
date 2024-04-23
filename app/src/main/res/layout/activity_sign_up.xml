@@ -66,69 +66,58 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/horizontal_padding">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số điện thoại"
+                    android:text="@string/Forget_pass_subtitle"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_medium"
-                    android:textSize="@dimen/medium_textSize"
-                    android:layout_marginTop="15dp"/>
+                    android:textSize="@dimen/medium_textSize" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" *"
                     android:textColor="@color/error"
                     android:fontFamily="@font/gilroy_medium"
-                    android:textSize="@dimen/medium_textSize"
-                    android:layout_marginTop="15dp"/>
+                    android:textSize="@dimen/medium_textSize" />
+
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/imgErrorPhone"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtinputphone"
-                    app:layout_constraintBottom_toBottomOf="@id/txtinputphone"
-                    android:layout_marginBottom="3dp"
-                    android:src="@drawable/ic_circle_warning" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtinputphone"
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/greylight"
-                    app:counterEnabled="true"
-                    app:errorTextAppearance="@style/HintText"
+                    app:hintEnabled="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="5dp"
                     app:endIconMode="clear_text"
-                    app:helperTextTextAppearance="@style/HintText"
-                    app:helperTextTextColor="@color/error">
+                    android:layout_marginTop="@dimen/large_margin">
 
-                    <EditText
-                        android:id="@+id/txthelp_phone"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtemail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
-                        android:textSize="@dimen/medium_textSize"
-                        android:inputType="numberSigned"/>
+                        android:hint="@string/Login_mail"
+                        android:textColorHint="@color/primarygreen"
+                        android:textSize="@dimen/medium_textSize" />
                 </com.google.android.material.textfield.TextInputLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <LinearLayout
+            </androidx.constraintlayout.widget.ConstraintLayout>            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Họ và tên"
+                    android:text="@string/Signup_name"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_medium"
                     app:errorTextAppearance="@style/HintText"
@@ -146,34 +135,28 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img_error_name"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtinputname"
-                    app:layout_constraintBottom_toBottomOf="@id/txtinputname"
-                    android:src="@drawable/ic_circle_warning" />
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtinputname"
+                    android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập tên của bạn"
                     android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
-
+                    android:layout_marginTop="@dimen/large_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:endIconMode="clear_text"
-                    app:helperTextTextAppearance="@style/HintText"
                     app:helperTextTextColor="@color/error">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txthelp_name"
+                        android:id="@+id/txtname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
+                        android:hint="@string/Signup_name_hint"
+                        android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -184,7 +167,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sinh nhật"
+                    android:text="@string/Signup_DOB"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_medium"
                     android:textSize="@dimen/medium_textSize"
@@ -201,47 +184,53 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img_error_date_of_birth"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtinputday"
-                    app:layout_constraintBottom_toBottomOf="@id/txtinputday"
-                    android:src="@drawable/ic_circle_warning" />
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtinputday"
+                    android:id="@+id/inputday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập ngày sinh của bạn"
                     android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
-
+                    android:layout_marginTop="@dimen/large_margin"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:errorTextAppearance="@style/HintText"
-                    app:endIconMode="clear_text"
-                    app:helperTextTextAppearance="@style/HintText"
-                    app:helperTextTextColor="@color/error">
+                    app:endIconMode="clear_text">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txthelp_day"
+                        android:id="@+id/txtday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
+                        android:hint="@string/Signup_DOB_hint"
+                        android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"
-                        android:drawableEnd="@drawable/ic_calendar"/>
+                        android:drawableEnd="@drawable/ic_calendar"
+                        />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Giới tính"
-                android:textColor="@color/black"
-                android:fontFamily="@font/gilroy_medium"
-                android:textSize="@dimen/medium_textSize"
-                android:layout_marginTop="15dp"/>
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giới tính"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" *"
+                    android:textColor="@color/error"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textSize="@dimen/medium_textSize"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
             <RadioGroup
                 android:id="@+id/radioGroup"
                 android:layout_width="match_parent"
@@ -254,7 +243,7 @@
                     android:id="@+id/radioButtonMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nam"
+                    android:text="@string/Signup_gender_m"
                     android:fontFamily="@font/gilroy_regular"
                     android:textSize="@dimen/small_textSize"
                     android:textColor="@color/black"
@@ -264,7 +253,7 @@
                     android:id="@+id/radioButtonFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nữ"
+                    android:text="@string/Signup_gender_f"
                     android:fontFamily="@font/gilroy_regular"
                     android:textSize="@dimen/small_textSize"
                     android:textColor="@color/black"
@@ -274,74 +263,30 @@
                     android:id="@+id/radioButtonOther"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Không tiết lộ"
+                    android:text="@string/Signup_gender_n"
                     android:fontFamily="@font/gilroy_regular"
                     android:textSize="@dimen/small_textSize"
                     android:textColor="@color/black"
                     android:layout_weight="1"/>
             </RadioGroup>
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/errorgender"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Email"
-                    android:textColor="@color/black"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:textSize="@dimen/medium_textSize" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=" *"
-                    android:textColor="@color/error"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:textSize="@dimen/medium_textSize" />
+                android:text="@string/Empty_error"
+                android:textColor="@color/error"
+                android:visibility="gone"
+                android:fontFamily="@font/gilroy_medium"
+                android:textSize="@dimen/medium_textSize"/>
 
-            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageView
-                    android:id="@+id/img_error_email"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:layout_constraintStart_toStartOf="@+id/txtinputemail"
-                    app:layout_constraintBottom_toBottomOf="@id/txtinputemail"
-                    android:src="@drawable/ic_circle_warning"
-                    android:layout_marginBottom="3dp"/>
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/txtinputemail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Nhập email của bạn"
-                    android:textColorHint="@color/greylight"
-                    app:hintEnabled="false"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:errorTextAppearance="@style/HintText"
-                    app:endIconMode="clear_text"
-                    app:helperTextTextAppearance="@style/HintText"
-                    app:helperTextTextColor="@color/error">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/txthelp_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/gilroy_medium"
-                        android:textSize="@dimen/medium_textSize" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
             <Button
-                android:id="@+id/btnTieptheo"
+                android:id="@+id/btnContinue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tiếp theo"
-                android:layout_marginTop="10dp"
+                android:text="@string/Continue"
+                android:layout_marginTop="@dimen/medium_margin"
                 android:backgroundTint="@color/primarygreen"
                 android:fontFamily="@font/gilroy_bold"
                 android:textSize="@dimen/h4_textSize"/>\
@@ -349,18 +294,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="@dimen/vertical_padding"
                 android:layout_gravity="center">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/gilroy_medium"
                     android:textSize="@dimen/medium_textSize"
-                    android:text="Bạn đã là thành viên Nhà Ori?"/>
+                    android:text="@string/Signup_ques"/>
                 <TextView
+                    android:id="@+id/txtLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đăng nhập ngay"
+                    android:text="@string/Login"
                     android:fontFamily="@font/gilroy_medium"
                     android:textSize="@dimen/medium_textSize"
                     android:textColor="@color/secondaryorange"

@@ -98,10 +98,10 @@ public class Login extends AppCompatActivity {
                    inputEmail.setError(getString(R.string.Login_mail_error));
                    inputEmail.setErrorIconDrawable(null);
                    inputEmail.getBoxStrokeErrorColor();
-                }else {
+
+                } else {
                     isValidEmail = true;
                     inputEmail.setError(null);
-
                 }
             }
 
@@ -118,14 +118,15 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                isValidEmail = false;
+                isValidPass = false;
                 password = binding.editTextPassword.getText().toString().trim();
 
                 if (!password.matches("^(?=.*\\d).{8,}$")) {
                     inputPass.setError(getString(R.string.Login_pass_error));
                     inputPass.setErrorIconDrawable(null);
                     inputPass.setBoxStrokeErrorColor(ColorStateList.valueOf(getColor(R.color.error)));
-                } else {
+
+                }else{
                     isValidPass = true;
                     inputPass.setError(null);
                 }
@@ -140,48 +141,36 @@ public class Login extends AppCompatActivity {
 
 
         binding.btnLogin.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
+                String email = binding.editTextInputMail.getText().toString().trim();
+                String password = binding.editTextPassword.getText().toString().trim();
 
 
-            if (isValidEmail) {
-                email = txtinputEmail.getText().toString();
 
-            }
-            if (isValidPass) {
-                password = txtinputPass.getText().toString();
-
-            }
-            if (password.isEmpty()) {
-                inputPass.setError("Vui lòng nhập thông tin");
-                return;
-            }else{
-                inputPass.setError(null);
-            }
-            if (email.isEmpty()) {
-                inputEmail.setError("Vui lòng nhập thông tin");
-                return;
+                if(email.isEmpty() && password.isEmpty() ) {
+                    inputEmail.setError(getString(R.string.Empty_error));
+                    inputPass.setError(getString(R.string.Empty_error));
+                    inputEmail.requestFocus();
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    inputEmail.setError(getString(R.string.Login_mail_error));
+                } else if (password.isEmpty()) {
+                    inputPass.setError(getString(R.string.Empty_error));
+                } else if(password.length() < 8 || !password.matches("^(?=.*\\d).{8,}$")) {
+                    inputPass.setError(getString(R.string.Login_pass_error));
+                } else if( email.isEmpty()) {
+                    inputEmail.setError(getString(R.string.Empty_error));
+                    inputEmail.requestFocus();
                 }else{
-                inputEmail.setError(null);
-            }
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    startActivity(new Intent(Login.this, HomeActivity.class));
-                                    finish();
-                                } else {
-                                    showDialog();
 
-                                    }
-
-                                }
-                            });
+                    loginUser();
+                }
+                }
 
 
 
-            }
+
+        });
 
 
 
@@ -189,7 +178,27 @@ public class Login extends AppCompatActivity {
 
 
 
-//     Phương thức hiển thị dialog thông báo
+
+
+
+    }
+    private void loginUser(){
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            startActivity(new Intent(Login.this, HomeActivity.class));
+                            finish();
+                        } else {
+                            showDialog();
+
+                        }
+
+                    }
+                });
+        }
+    //     Phương thức hiển thị dialog thông báo
 
     private void showDialog() {
         // Tạo dialog
@@ -216,7 +225,8 @@ public class Login extends AppCompatActivity {
         // Hiển thị dialog
         dialog.show();
 
-    };
-        });
     }
+
+
+
 }

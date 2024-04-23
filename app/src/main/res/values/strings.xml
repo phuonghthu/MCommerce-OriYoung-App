@@ -101,6 +101,22 @@
     <string name="Login_option">hoặc đăng nhập với</string>
     <string name="Login_mail_error">Email không hợp lệ, vui lòng thử lại</string>
     <string name="Login_pass_error">Mật khẩu từ 8 ký tự trở lên và chứa ít nhất 1 chữ số</string>
+    <string name="Empty_error">Vui lòng nhập thông tin!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Signup_title">Đăng ký tài khoản OriYoung</string>
+    <string name="Signup_name">Họ và tên</string>
+    <string name="Signup_name_hint">Nhập tên của bạn</string>
+    <string name="Signup_DOB">Sinh nhật</string>
+    <string name="Signup_DOB_hint">DD/MM/YYYY</string>
+    <string name="Signup_gender">Giới tính</string>
+    <string name="Signup_gender_f">Nữ</string>
+    <string name="Signup_gender_m">Nam</string>
+    <string name="Signup_gender_n">Không tiết lộ</string>
+    <string name="Signup_ques">Bạn đã là thành viên Nhà Ori?</string>
+    <string name="Signup_pass">Mật khẩu</string>
+    <string name="Signup_policy">Tôi đã đọc và đồng ý với</string>
+    <string name="Signup_policy_detail">Điều khoản và chính sách</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Forget_pass_title">Quên mật khẩu</string>
     <string name="Forget_pass_subtitle">Email</string>

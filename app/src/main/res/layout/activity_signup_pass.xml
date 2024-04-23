@@ -59,7 +59,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mật khẩu"
+                    android:text="@string/Signup_pass"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_medium"
                     android:textSize="@dimen/medium_textSize"
@@ -88,7 +88,6 @@
                     android:id="@+id/txtinputpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nhập mật khẩu"
                     android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
                     app:counterEnabled="true"
@@ -104,6 +103,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
+                        android:hint="@string/Login_password"
+                        android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -115,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nhập lại mật khẩu"
+                    android:text="@string/Reset_pass_subtitle_2"
                     android:textColor="@color/black"
                     android:fontFamily="@font/gilroy_medium"
                     android:textSize="@dimen/medium_textSize"
@@ -160,6 +161,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
+                        android:hint="@string/Login_password"
+                        android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -173,11 +176,11 @@
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/xsmall_textSize"
                     android:fontFamily="@font/gilroy_medium"
-                    android:text="Tôi đã đọc và đồng ý với"/>
+                    android:text="@string/Signup_policy"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Điều khoản và chính sách"
+                    android:text="@string/Signup_policy_detail"
                     android:textSize="@dimen/xsmall_textSize"
                     android:fontFamily="@font/gilroy_medium"
                     android:layout_marginStart="3dp"
@@ -187,7 +190,7 @@
                 android:id="@+id/btnXacnhan"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="Xác nhận"
+                android:text="@string/Confirm"
                 android:textSize="@dimen/h4_textSize"
                 android:fontFamily="@font/gilroy_bold"
                 android:backgroundTint="@color/primarygreen"
