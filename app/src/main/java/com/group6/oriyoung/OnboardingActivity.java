@@ -43,6 +43,7 @@ public class OnboardingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         // Kiểm tra trạng thái đăng nhập từ SharedPreferences
 //        SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
 //        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);

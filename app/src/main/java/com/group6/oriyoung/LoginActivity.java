@@ -189,26 +189,22 @@ public class LoginActivity extends AppCompatActivity {
 
         // Kiểm tra trạng thái đăng nhập của người dùng
         boolean isUserLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+        boolean hasShownOnboarding = sharedPreferences.getBoolean("hasShownOnboarding", false);
 
-        if (isUserLoggedIn) {
+        if (isUserLoggedIn && !hasShownOnboarding) {
+            // Người dùng đã đăng nhập và chưa hiển thị onboarding
             FirebaseUser currentUser = authProfile.getCurrentUser();
             if (currentUser != null) {
-                // Nếu người dùng đã đăng nhập và có thông tin người dùng hiện tại, điều hướng đến HomeActivity
+                // Đã đăng nhập và chưa đăng xuất, điều hướng đến HomeActivity
                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
                 finish();
-            } else {
-                // Trường hợp người dùng đã đăng nhập nhưng không có thông tin người dùng hiện tại
-                // (có thể do lỗi xảy ra trong quá trình đăng nhập), xóa trạng thái đăng nhập và điều hướng về màn hình đăng nhập
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putBoolean("isLoggedIn", false);
-                editor.apply();
-
-                // Điều hướng về màn hình đăng nhập
-                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
             }
+        } else {
+            // Người dùng đã đăng xuất hoặc đã hiển thị onboarding, điều hướng đến OnboardingActivity
+            Intent intent = new Intent(LoginActivity.this, OnboardingActivity.class);
+            startActivity(intent);
+            finish();
         }
     }
 }

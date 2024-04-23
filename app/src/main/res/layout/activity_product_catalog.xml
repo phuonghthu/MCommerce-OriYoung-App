@@ -119,8 +119,7 @@
             android:orientation="vertical">
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_constraintTop_toBottomOf="@id/txtSaleProduct">
+                android:layout_height="match_parent">
                 <ProgressBar
                     android:id="@+id/progressBarListProduct"
                     style="?android:attr/progressBarStyle"
@@ -137,26 +136,26 @@
                     android:paddingHorizontal="@dimen/horizontal_padding"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-            <LinearLayout
-                android:id="@+id/imvSeemore"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/stroke_button"
-                android:gravity="center"
-                android:layout_marginBottom="20dp"
-                tools:layout_editor_absoluteX="155dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:gravity="center"
-                    android:text="Xem thêm"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+<!--            <LinearLayout-->
+<!--                android:id="@+id/imvSeemore"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:background="@drawable/stroke_button"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginBottom="20dp"-->
+<!--                tools:layout_editor_absoluteX="155dp">-->
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:fontFamily="@font/gilroy_medium"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Xem thêm"-->
+<!--                    android:textColor="@color/black" />-->
+<!--            </LinearLayout>-->
         </LinearLayout>
     </ScrollView>
 
