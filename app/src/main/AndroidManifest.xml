@@ -20,7 +20,7 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".ForgetPwActivity"
+            android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -115,13 +115,13 @@
             android:exported="false"
             android:launchMode="singleTop" />
         <activity
-            android:name=".ForgetPassword"
+            android:name=".ForgetPwActivity"
             android:exported="false" />
         <activity
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".ForgetPassword"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

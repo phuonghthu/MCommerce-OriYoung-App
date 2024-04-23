@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.txtForgetPw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, ForgetPwActivity.class);
+                Intent intent = new Intent(LoginActivity.this, ForgetPassword.class);
                 startActivity(intent);
             }
         });

@@ -105,6 +105,7 @@
     <string name="Forget_pass_title">Quên mật khẩu</string>
     <string name="Forget_pass_subtitle">Email</string>
     <string name="Forget_pass_description">Chúng tôi gửi thông báo qua email để phục vụ mục đích bảo mật và hỗ trợ bạn đăng nhập.</string>
+    <string name="Empty_error">Vui lòng nhập thông tin</string>
     <string name="Continue">Tiếp tục</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Reset_pass_title">Đặt lại mật khẩu</string>
