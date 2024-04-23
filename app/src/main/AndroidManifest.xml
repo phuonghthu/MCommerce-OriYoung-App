@@ -20,11 +20,13 @@
         android:theme="@style/Theme.Oriyoung"
         tools:targetApi="31">
         <activity
-            android:name=".ForgetPwActivity"
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/Theme.Oriyoung"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -76,13 +78,13 @@
             android:name=".DialogLogout"
             android:exported="false" />
         <activity
-            android:name=".ChangePassword"
+            android:name=".UserInfoDetail"
             android:exported="false" />
         <activity
             android:name=".UserInformation"
             android:exported="false" />
         <activity
-            android:name=".UserInfoDetail"
+            android:name=".ForgetPassword"
             android:exported="false" />
         <activity
             android:name=".CartActivity"
@@ -91,7 +93,7 @@
             android:name=".SignUp"
             android:exported="false" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".ForgetPwActivity"
             android:exported="false" />
         <activity
             android:name=".signup_success"
@@ -115,9 +117,7 @@
             android:name=".ProductCatalog"
             android:exported="false"
             android:launchMode="singleTop" />
-        <activity
-            android:name=".ForgetPassword"
-            android:exported="false" />
+
         <activity
             android:name=".ResetPassword"
             android:exported="false" />
