@@ -4,9 +4,12 @@ import static androidx.core.app.NavUtils.getParentActivityName;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 import androidx.fragment.app.FragmentManager;
@@ -15,6 +18,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.ReviewAdapter;
 import com.group6.fragments.HomeFragment;
@@ -121,11 +126,48 @@ public class ProductDetail extends BaseActivity {
         binding.GroupButtons.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                object.setNumberInCart(num);
-                managementCart.insertProduct(object);
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (currentUser != null) {
+                    object.setNumberInCart(num);
+                    managementCart.insertProduct(object);
+                } else {
+
+                    showLoginDialog();
+
+                }
             }
         });
 
+    }
+
+    private void showLoginDialog() {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.custom_dialog_confirm, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProductDetail.this);
+        builder.setView(dialogView);
+
+        Button btndongy = dialogView.findViewById(R.id.btndongy);
+        Button btnhuy = dialogView.findViewById(R.id.btnhuy);
+        TextView txtTitle = dialogView.findViewById(R.id.txtTitle);
+        TextView txtContent = dialogView.findViewById(R.id.txtContent);
+
+        btndongy.setVisibility(View.GONE);
+        btnhuy.setText("Đăng nhập");
+        txtTitle.setText("Vui lòng đăng nhập!");
+        txtContent.setText("Vui lòng đăng nhập để tiếp tục mua sắm và trải nghiệm tại OriYoung!");
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+
+        // Dẫn đến trang Login
+        btnhuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetail.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

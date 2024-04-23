@@ -24,6 +24,7 @@
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
+            android:theme="@style/Theme.Oriyoung"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
