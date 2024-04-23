@@ -35,6 +35,7 @@ public class ChangePassword extends AppCompatActivity {
     String current, newpass, passagain;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     String TAG = "ChangePassword";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,7 @@ public class ChangePassword extends AppCompatActivity {
 
 
     }
+
 
 
 
@@ -158,18 +160,18 @@ public class ChangePassword extends AppCompatActivity {
                 passagain = txtPassAgain.getText().toString().trim();
                 if (TextUtils.isEmpty(current)){
                     inputCurrentPass.setError(getString(R.string.Empty_error));
-                } else if (current.length() < 8 || !current.matches("^(?=.*\\\\d).{8,}$")) {
-                    inputCurrentPass.setError(getString(R.string.Login_pass_error));
+//                } else if (current.length() < 8 || !current.matches("^(?=.*\\\\d).{8,}$")) {
+//                    inputCurrentPass.setError(getString(R.string.Login_pass_error));
                 } else if (TextUtils.isEmpty(newpass)) {
                     inputNewPass.setError(getString(R.string.Empty_error));
-                } else if (newpass.length() < 8 || !newpass.matches("^(?=.*\\\\d).{8,}$")) {
-                    inputNewPass.setError(getString(R.string.Login_pass_error));
+//                } else if (newpass.length() < 8 || !newpass.matches("^(?=.*\\\\d).{8,}$")) {
+//                    inputNewPass.setError(getString(R.string.Login_pass_error));
                 } else if (newpass.compareTo(current) == 0) {
                     inputNewPass.setError("Vui lòng nhập mật khẩu mới!");
                 } else if (TextUtils.isEmpty(passagain)) {
                     inputPassAgain.setError(getString(R.string.Empty_error));
-                } else if (passagain.length() < 8 || !passagain.matches("^(?=.*\\\\d).{8,}$")) {
-                    inputPassAgain.setError(getString(R.string.Login_pass_error));
+//                } else if (passagain.length() < 8 || !passagain.matches("^(?=.*\\\\d).{8,}$")) {
+//                    inputPassAgain.setError(getString(R.string.Login_pass_error));
                 } else if (passagain.compareTo(newpass) != 0 ) {
                     inputPassAgain.setError("Mật khẩu không khớp");
                 }else {
@@ -181,28 +183,45 @@ public class ChangePassword extends AppCompatActivity {
     }
 
     private void changePassword() {
-        user.updatePassword(newpass).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    DialogNotificationSuccessfully dialogNotificationSuccessfully = new DialogNotificationSuccessfully(ChangePassword.this);
-                        dialogNotificationSuccessfully.show();
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (dialogNotificationSuccessfully != null && dialogNotificationSuccessfully.isShowing()) {
-                                    dialogNotificationSuccessfully.dismiss();
-                                }
-                            }
-                        }, 3000); // Đóng dialog sau 3 giây (3000 mili giây)
-                    Log.d(TAG, "Mật khẩu đã được cập nhật");
-                } else {
-                    Toast.makeText(ChangePassword.this, "Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        // Get auth credentials from the user for re-authentication. The example below shows
+// email and password credentials but there are multiple possible providers,
+// such as GoogleAuthProvider or FacebookAuthProvider.
+        AuthCredential credential = EmailAuthProvider.getCredential(user.getEmail(), current);
+
+        user.reauthenticate(credential)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Re-authenticate thành công, cập nhật mật khẩu mới cho người dùng
+                            user.updatePassword(newpass)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                // Cập nhật mật khẩu thành công, hiển thị thông báo và thoát
+                                                Toast.makeText(ChangePassword.this, "Thay đổi mật khẩu thành công!", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            } else {
+                                                // Cập nhật mật khẩu thất bại, hiển thị thông báo lỗi
+                                                Toast.makeText(ChangePassword.this, "Đã có lỗi xảy ra khi cập nhật mật khẩu. Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        } else {
+                            // Re-authenticate thất bại, hiển thị thông báo lỗi
+                            Toast.makeText(ChangePassword.this, "Xác thực thất bại. Vui lòng kiểm tra lại mật khẩu hiện tại!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
 
     }
+
+
+
+
 
 //        user.reauthenticate(authCredential).addOnSuccessListener(new OnSuccessListener<Void>() {
 //            @Override

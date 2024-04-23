@@ -23,7 +23,7 @@
             android:name=".OnboardingActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ChangePassword"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"
@@ -121,7 +121,7 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".ChangePassword"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
