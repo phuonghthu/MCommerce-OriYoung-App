@@ -1,6 +1,8 @@
 package com.group6.oriyoung;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -40,8 +42,23 @@ public class OnboardingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityOnboardingBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+
+        // Kiểm tra trạng thái đăng nhập từ SharedPreferences
+//        SharedPreferences sharedPreferences = getSharedPreferences("login_status", MODE_PRIVATE);
+//        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+//
+//        if (isLoggedIn) {
+//            // Nếu người dùng đã đăng nhập, chuyển đến HomeActivity
+//            Intent intent = new Intent(OnboardingActivity.this, HomeActivity.class);
+//            startActivity(intent);
+//            finish(); // Kết thúc OnboardingActivity để ngăn người dùng quay lại nó
+//        } else {
+            binding = ActivityOnboardingBinding.inflate(getLayoutInflater());
+            setContentView(binding.getRoot());
+
+            // Các mã khác trong onCreate() của OnboardingActivity
+
+
 
         initUI();
 //        addEvents();
@@ -114,5 +131,6 @@ public class OnboardingActivity extends AppCompatActivity {
 
 
     }
+
 
 }

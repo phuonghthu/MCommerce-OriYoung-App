@@ -1,6 +1,7 @@
 package com.group6.oriyoung;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -36,11 +37,16 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth authProfile;
     private static final String TAG = "LoginActivity";
 
+    private SharedPreferences sharedPreferences;
+    private static final String SHARED_PREFS_FILE = "login_status";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLogin2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        sharedPreferences = getSharedPreferences(SHARED_PREFS_FILE, MODE_PRIVATE);
 
         authProfile = FirebaseAuth.getInstance();
         binding.txtInputEmail.requestFocus();
@@ -108,6 +114,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putBoolean("isLoggedIn", true);
+                    editor.apply();
+
                     FirebaseUser firebaseUser = authProfile.getCurrentUser();
                     Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -170,5 +180,35 @@ public class LoginActivity extends AppCompatActivity {
         final AlertDialog dialog = builder.create();
         dialog.show();
 
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Kiểm tra trạng thái đăng nhập của người dùng
+        boolean isUserLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (isUserLoggedIn) {
+            FirebaseUser currentUser = authProfile.getCurrentUser();
+            if (currentUser != null) {
+                // Nếu người dùng đã đăng nhập và có thông tin người dùng hiện tại, điều hướng đến HomeActivity
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                // Trường hợp người dùng đã đăng nhập nhưng không có thông tin người dùng hiện tại
+                // (có thể do lỗi xảy ra trong quá trình đăng nhập), xóa trạng thái đăng nhập và điều hướng về màn hình đăng nhập
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putBoolean("isLoggedIn", false);
+                editor.apply();
+
+                // Điều hướng về màn hình đăng nhập
+                Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }
     }
 }

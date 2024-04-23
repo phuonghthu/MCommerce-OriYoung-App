@@ -5,13 +5,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.group6.fragments.AccountFirstFragment;
+import com.group6.fragments.AccountFragment;
 import com.group6.oriyoung.databinding.ActivityContactOriyoungBinding;
 
 public class ContactOriyoung extends AppCompatActivity {
@@ -32,7 +28,7 @@ public class ContactOriyoung extends AppCompatActivity {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ContactOriyoung.this, AccountFirstFragment.class);
+                Intent intent = new Intent(ContactOriyoung.this, AccountFragment.class);
                 finish();
             }
         });

@@ -10,12 +10,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
-import com.group6.fragments.AccountFirstFragment;
-import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
-import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
+import com.group6.fragments.AccountFragment;
 import com.group6.fragments.DeliveryFragment;
 import com.group6.fragments.ReturnFragment;
 import com.group6.fragments.SecurityFragment;
+import com.group6.oriyoung.databinding.ActivitySupportCenterBinding;
 
 public class SupportCenter extends AppCompatActivity {
     ActivitySupportCenterBinding binding;
@@ -84,7 +83,7 @@ public class SupportCenter extends AppCompatActivity {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SupportCenter.this, AccountFirstFragment.class);
+                Intent intent = new Intent(SupportCenter.this, AccountFragment.class);
                 finish();
             }
         });

@@ -3,72 +3,145 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.group6.fragments.AccountFirstFragment"
+    tools:context="com.group6.fragments.AccountFragment"
     android:layout_gravity="center"
     android:paddingVertical="@dimen/vertical_padding"
     android:paddingHorizontal="@dimen/horizontal_padding"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_frame"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:id="@+id/OriYoungxinchao"
-            android:layout_width="wrap_content"
+        android:id="@+id/head">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userLoggedin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/account_title"
-            android:textSize="20sp"
-            android:fontFamily="@font/gilroy_bold"
-            android:gravity="center"
-            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_frame"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <LinearLayout
-            android:id="@+id/dangnhapdetrainghiem"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/OriYoungxinchao"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp">
-
-            <TextView
+            <ImageView
+                android:id="@+id/imguser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/account_subtitle"
-                android:textSize="15sp"
-                android:fontFamily="@font/gilroy_regular"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal" />
+                android:src="@drawable/ic_user"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/txtconstraint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/imguser"
+                app:layout_constraintTop_toTopOf="@id/imguser"
+                app:layout_constraintBottom_toBottomOf="@id/imguser"
+                android:layout_marginStart="10dp">
 
-        </LinearLayout>
+                <TextView
+                    android:id="@+id/txtXinchao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xin chào!"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/gilroy_regular"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <TextView
+                    android:id="@+id/txtUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_user_name"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:textSize="20sp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtXinchao"
+                    tools:ignore="MissingConstraints"
+                    app:layout_constraintStart_toStartOf="parent"/>
+                <ImageView
+                    android:id="@+id/imvEdit"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintStart_toEndOf="@id/txtUserName"
+                    app:layout_constraintTop_toTopOf="@id/txtUserName"
+                    app:layout_constraintBottom_toBottomOf="@id/txtUserName"
+                    android:layout_marginStart="10dp"/>
 
-        <Button
-            android:id="@+id/btnDangnhapngay"
-            android:layout_width="wrap_content"
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/userBlank"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ĐĂNG NHẬP NGAY"
-            android:fontFamily="@font/gilroy_bold"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@id/dangnhapdetrainghiem"
+            android:background="@drawable/bg_frame"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="10dp"
-            android:backgroundTint="@color/primarygreen"/>
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent">
 
+            <TextView
+                android:id="@+id/OriYoungxinchao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/account_title"
+                android:textSize="@dimen/large_textSize"
+                android:fontFamily="@font/gilroy_bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/dangnhapdetrainghiem"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/OriYoungxinchao"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_subtitle"
+                    android:textSize="@dimen/small_textSize"
+                    android:fontFamily="@font/gilroy_regular"
+                    android:gravity="center"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnDangnhapngay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ĐĂNG NHẬP NGAY"
+                android:fontFamily="@font/gilroy_bold"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/dangnhapdetrainghiem"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/primarygreen"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/thongtincanhan"
         android:layout_width="0dp"
@@ -299,9 +372,28 @@
             app:layout_constraintTop_toTopOf="@id/imgview5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/lienheoriyoung"
+        android:layout_marginTop="30dp">
 
-
-
+        <Button
+            android:id="@+id/btnlogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/primarybackground"
+            android:drawableLeft="@drawable/ic_logout"
+            android:paddingStart="110dp"
+            android:paddingEnd="110dp"
+            android:text="ĐĂNG XUẤT"
+            android:fontFamily="@font/gilroy_bold"
+            android:textColor="@color/primarydarker"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

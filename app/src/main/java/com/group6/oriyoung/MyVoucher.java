@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.group6.fragments.AccountFirstFragment;
+import com.group6.fragments.AccountFragment;
 import com.group6.fragments.HomeFragment;
 import com.group6.oriyoung.databinding.ActivityMyVoucherBinding;
 
@@ -32,7 +28,7 @@ public class MyVoucher extends AppCompatActivity {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MyVoucher.this, AccountFirstFragment.class);
+                Intent intent = new Intent(MyVoucher.this, AccountFragment.class);
                 finish();
             }
         });
