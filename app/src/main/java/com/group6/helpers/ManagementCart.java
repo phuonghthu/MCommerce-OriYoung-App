@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.group6.models.Cart;
 import com.group6.models.Product;
 import com.group6.oriyoung.R;
 
@@ -90,4 +91,6 @@ public class ManagementCart {
         tinyDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
+
+
 }

@@ -1,47 +1,52 @@
 package com.group6.models;
 
 public class Cart {
-    int imvProductCart;
-    String txtProductNameCart;
-    double txtPriceCart;
-    double txtTemp;
+    String productID;
+    String productName;
+    double productPrice;
+    int quantity;
 
-    public Cart(int imvProductCart, String txtProductNameCart, double txtPriceCart, double txtTemp) {
-        this.imvProductCart = imvProductCart;
-        this.txtProductNameCart = txtProductNameCart;
-        this.txtPriceCart = txtPriceCart;
-        this.txtTemp = txtTemp;
+    public Cart () {
+
     }
 
-    public int getImvProductCart() {
-        return imvProductCart;
+    public Cart(String productID, String productName, double productPrice, int quantity) {
+        this.productID = productID;
+        this.productName = productName;
+        this.productPrice = productPrice;
+        this.quantity = quantity;
     }
 
-    public void setImvProductCart(int imvProductCart) {
-        this.imvProductCart = imvProductCart;
+    public String getProductID() {
+        return productID;
     }
 
-    public String getTxtProductNameCart() {
-        return txtProductNameCart;
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 
-    public void setTxtProductNameCart(String txtProductNameCart) {
-        this.txtProductNameCart = txtProductNameCart;
+    public String getProductName() {
+        return productName;
     }
 
-    public double getTxtPriceCart() {
-        return txtPriceCart;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
-    public void setTxtPriceCart(double txtPriceCart) {
-        this.txtPriceCart = txtPriceCart;
+    public double getProductPrice() {
+        return productPrice;
     }
 
-    public double getTxtTemp() {
-        return txtTemp;
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public void setTxtTemp(double txtTemp) {
-        this.txtTemp = txtTemp;
+    public int getQuantity() {
+        return quantity;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
 }

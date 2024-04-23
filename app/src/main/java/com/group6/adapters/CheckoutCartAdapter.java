@@ -21,12 +21,12 @@ import com.group6.oriyoung.R;
 import java.util.ArrayList;
 
 public class CheckoutCartAdapter extends RecyclerView.Adapter<CheckoutCartAdapter.ViewHolder> {
-    private Context mcontext;
-    ArrayList<Product> cartItem;
+    private Context context;
+    ArrayList<Product> cartItems;
 
-    public CheckoutCartAdapter(Context mcontext, ManagementCart managementCart) {
-        this.mcontext = mcontext;
-        cartItem = managementCart.getListCart();
+    public CheckoutCartAdapter(Context context, ArrayList<Product> cartItems) {
+        this.context = context;
+        this.cartItems = cartItems;
     }
 
     @NonNull
@@ -38,19 +38,19 @@ public class CheckoutCartAdapter extends RecyclerView.Adapter<CheckoutCartAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product c = cartItem.get(position);
+        Product c = cartItems.get(position);
         holder.txtProductName.setText(c.getProductName());
         holder.txtProductPrice.setText(String.valueOf(Math.round(c.getProductPrice())) + " VNĐ");
         holder.txtItemTotal.setText(String.valueOf(Math.round(c.getNumberInCart()
                 *c.getProductPrice())) + " VNĐ");
-        holder.txtItemQuantity.setText(c.getNumberInCart() + "");
+        holder.txtItemQuantity.setText("x" + c.getNumberInCart() );
 
         Glide.with(holder.itemView.getContext()).load(c.getImagePath()).transform(new CenterCrop()).into(holder.imvProductThumb);
     }
 
     @Override
     public int getItemCount() {
-        return cartItem.size();
+        return cartItems.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

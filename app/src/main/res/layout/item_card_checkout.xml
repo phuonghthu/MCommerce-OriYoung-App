@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
     android:orientation="horizontal"
-    android:backgroundTint="@color/white">
+    android:padding="10dp"
+    android:background="@color/white"
+    app:cardUseCompatPadding="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +29,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingEnd="10dp">
+                android:paddingEnd="20dp">
                 <TextView
                     android:id="@+id/txtProductName"
                     android:layout_width="match_parent"
@@ -39,7 +43,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/small_margin">
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -80,16 +85,10 @@
                         android:textSize="@dimen/medium_textSize"/>
 
                 </LinearLayout>
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="0.5dp"
-                    android:background="@color/grey"
-                    android:layout_marginTop="@dimen/medium_margin" />
 
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>
