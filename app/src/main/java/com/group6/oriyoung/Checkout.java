@@ -60,6 +60,8 @@ public class Checkout extends AppCompatActivity {
         binding.toolbar.toolbarTitle.setText("Thanh toán");
         cartItems = (ArrayList<Product>) getIntent().getSerializableExtra("cart_items");
 
+        managementCart = new ManagementCart(this); // Khởi tạo ManagementCart
+
         loadCheckoutCart();
         makePayment();
         addEvents();
@@ -129,11 +131,12 @@ public class Checkout extends AppCompatActivity {
                 Order newOrder = new Order(orderID, userUID, "Đang giao", paymentMethod, getCurrentDate(),
                         String.format("%.0f", shippingFee), cartList, totalQuantity, totalAmount);
 
-                database.child("Order").child(orderID).setValue(newOrder)
-                        .addOnCompleteListener(task -> {
+                database.child("Order").child(orderID).setValue(newOrder).addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
-                                Toast.makeText(getApplicationContext(), "Đơn hàng đã được đặt thành công!", Toast.LENGTH_SHORT).show();
-                                finish();
+                                managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
+                                DialogPaymentSuccessfully dialogInforReceiving = new DialogPaymentSuccessfully(Checkout.this);
+                                dialogInforReceiving.show();
+
                             } else {
                                 Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
                             }
@@ -189,7 +192,7 @@ public class Checkout extends AppCompatActivity {
             public void onClick(View v) {
                 isPaymentWhenReceiveSelected = true;
                 isPaymentByMomoSelected = false; // Hủy chọn cái còn lại
-                binding.PaymentWhenReceive.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                binding.PaymentWhenReceive.setBackgroundResource(R.drawable.bg_frame);
                 binding.PaymentByMomo.setBackgroundResource(R.drawable.linear_bg_state);
             }
         });
@@ -199,7 +202,7 @@ public class Checkout extends AppCompatActivity {
             public void onClick(View v) {
                 isPaymentByMomoSelected = true;
                 isPaymentWhenReceiveSelected = false; // Hủy chọn cái còn lại
-                binding.PaymentByMomo.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                binding.PaymentByMomo.setBackgroundResource(R.drawable.bg_frame);
                 binding.PaymentWhenReceive.setBackgroundResource(R.drawable.linear_bg_state);
             }
         });

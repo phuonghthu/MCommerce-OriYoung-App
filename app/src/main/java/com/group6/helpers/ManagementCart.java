@@ -19,11 +19,13 @@ public class ManagementCart {
     private TinyDB tinyDB;
     private static final String KEY_ITEM_TOTAL = "itemTotal";
     private static final String KEY_ITEM_QUANTITY = "itemQuantity";
+    private static final String CART_KEY = "CartList"; // Khóa sử dụng để lưu giỏ hàng
+
 
 
     public ManagementCart(Context context) {
         this.context = context;
-        this.tinyDB=new TinyDB(context);
+        this.tinyDB = new TinyDB(context);
 
     }
 
@@ -86,11 +88,12 @@ public class ManagementCart {
         tinyDB.putListObject("CartList",listItem);
         changeNumberItemsListener.change();
     }
-    public  void plusNumberItem(ArrayList<Product> listItem,int position,ChangeNumberItemsListener changeNumberItemsListener){
-        listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart()+1);
-        tinyDB.putListObject("CartList",listItem);
+    public  void plusNumberItem(ArrayList<Product> listItem,int position,ChangeNumberItemsListener changeNumberItemsListener) {
+        listItem.get(position).setNumberInCart(listItem.get(position).getNumberInCart() + 1);
+        tinyDB.putListObject("CartList", listItem);
         changeNumberItemsListener.change();
     }
-
-
+    public void clearCart() {
+        tinyDB.remove(CART_KEY);
+    }
 }
