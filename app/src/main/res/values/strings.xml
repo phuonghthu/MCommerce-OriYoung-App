@@ -75,7 +75,7 @@
     <string name="cart_tempTotal">Tạm tính</string>
     <string name="cart_tempTotalDetail">1.000.000</string>
     <string name="cart_discount">Giảm giá</string>
-    <string name="cart_discountDetail">30.000</string>
+    <string name="cart_discountDetail">0</string>
     <string name="cart_total">Tổng thanh toán</string>
     <string name="cart_totalDetail">1.000.000</string>
     <string name="cart_checkout">Thanh toán</string>

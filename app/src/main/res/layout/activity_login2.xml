@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@color/white"
+    android:paddingTop="@dimen/horizontal_padding">
+    <ProgressBar
+        android:id="@+id/progressLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/imvBack"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@drawable/ic_back_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/horizontal_padding">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/round_arrow_back_10" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/vertical_padding">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/xlarge_margin"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/logo_icon" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Đăng nhập"
+                android:textColor="@color/primarygreen"
+                android:fontFamily="@font/gilroy_bold"
+                android:textSize="@dimen/h1_textSize"
+                android:layout_marginTop="@dimen/xlarge_margin"
+                android:layout_gravity="center"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/xlarge_margin">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxStrokeWidth="0dp"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_input_field"
+                        android:drawableStart="@drawable/ic_email"
+                        android:drawablePadding="10dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/large_textSize"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/gilroy_medium"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputPw"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="false"
+                    app:boxStrokeWidth="0dp"
+                    android:layout_marginTop="@dimen/large_margin"
+                    app:endIconMode="password_toggle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtInputPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_pw"
+                        android:drawablePadding="10dp"
+                        android:background="@drawable/bg_input_field"
+                        android:inputType="textPassword"
+                        android:hint="Mật khẩu"
+                        android:textColorHint="@color/grey"
+                        android:textSize="@dimen/large_textSize"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/gilroy_medium"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtForgetPw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Forget_pass"
+                    android:textSize="@dimen/medium_textSize"
+                    android:fontFamily="@font/gilroy_medium"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="@dimen/large_margin"/>
+
+                <Button
+                    android:id="@+id/btnLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/primarygreen"
+                    app:backgroundTint="@null"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_layout_cancel"
+                    android:text="Đăng nhập"
+                    android:fontFamily="@font/gilroy_bold"
+                    android:textSize="@dimen/large_textSize"
+                    android:layout_marginTop="@dimen/large_margin"/>
+
+                <LinearLayout
+                    android:id="@+id/LoginOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/btnLogin"
+                    android:layout_marginTop="@dimen/xlarge_margin"
+                    app:layout_constraintEnd_toEndOf="@id/ForgetLogin"
+                    android:weightSum="10">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:src="@drawable/line"
+                        android:layout_weight="5"
+                        android:layout_gravity="center_vertical"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Login_option"
+                        android:textSize="@dimen/medium_textSize"
+                        android:textColor="@color/primarygreen"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:paddingHorizontal="@dimen/medium_margin"
+                        android:gravity="center_horizontal"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="1dp"
+                        android:src="@drawable/line"
+                        android:layout_weight="5"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LoginOptionButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@id/LoginOption"
+                    android:layout_marginTop="@dimen/large_margin"
+                    app:layout_constraintEnd_toEndOf="@id/ForgetLogin">
+                    <ImageView
+                        android:id="@+id/imvGoogle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:src="@drawable/logo_googletxt"
+                        android:scaleType="centerInside"
+                        android:layout_weight="1"
+                        android:background="@drawable/stroke_button"
+                        android:padding="@dimen/medium_margin"/>
+                    <ImageView
+                        android:id="@+id/imvFacebook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/logo_fbtxt"
+                        android:layout_weight="1"
+                        android:background="@drawable/stroke_button"
+                        android:padding="@dimen/medium_margin"
+                        android:layout_marginStart="@dimen/medium_margin"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:layout_gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:textSize="@dimen/medium_textSize"
+                        android:text="Bạn chưa có tài khoản?"/>
+                    <TextView
+                        android:id="@+id/txtSignUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đăng ký ngay!"
+                        android:fontFamily="@font/gilroy_bold"
+                        android:textSize="@dimen/medium_textSize"
+                        android:textColor="@color/secondaryorange"
+                        android:layout_marginStart="5dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

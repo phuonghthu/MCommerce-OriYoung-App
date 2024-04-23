@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.group6.adapters.CheckoutCartAdapter;
 import com.group6.models.CheckoutCart;
+import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityCheckoutBinding;
 
 import java.util.ArrayList;
@@ -27,23 +28,28 @@ public class Checkout extends AppCompatActivity {
         setContentView(binding.getRoot());
         addEvents();
         binding.toolbar.toolbarTitle.setText("Thanh toán");
-        cartItems = new ArrayList<>();
-        adapter = new CheckoutCartAdapter(this, cartItems);
-        RecyclerView recyclerView = findViewById(R.id.lvCheckoutCart);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(adapter);
-        cartItems.add(new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.img_product, 2));
-        cartItems.add(new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.cocon, 3));
-        cartItems.add(new CheckoutCart("Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 155000, R.drawable.cocon, 1));
+
+//        loadCheckoutCart();
+
+
     }
+
+//    private void loadCheckoutCart() {
+//        Intent intent = getIntent();
+//        ArrayList<Product> cartItems = intent.getParcelableArrayListExtra("cartItems")
+//        RecyclerView recyclerView = findViewById(R.id.rvCheckoutCart);
+//        CheckoutCartAdapter adapter = new CheckoutCartAdapter(this, cartItems);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(adapter);
+//
+//    }
+
     private boolean isPaymentWhenReceiveSelected = false;
     private boolean isPaymentByMomoSelected = false;
     private void addEvents() {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Checkout.this, CartActivity.class);
-                startActivity(intent);
                 finish();
             }
         });

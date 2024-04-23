@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.group6.helpers.ManagementCart;
 import com.group6.models.CheckoutCart;
+import com.group6.models.Product;
 import com.group6.oriyoung.Checkout;
 import com.group6.oriyoung.R;
 
@@ -18,13 +22,12 @@ import java.util.ArrayList;
 
 public class CheckoutCartAdapter extends RecyclerView.Adapter<CheckoutCartAdapter.ViewHolder> {
     private Context mcontext;
-    private ArrayList<CheckoutCart> mCartList;
+    ArrayList<Product> cartItem;
 
-    public CheckoutCartAdapter(Context context, ArrayList<CheckoutCart> cartList) {
-        mcontext = context;
-        mCartList = cartList;
+    public CheckoutCartAdapter(Context mcontext, ManagementCart managementCart) {
+        this.mcontext = mcontext;
+        cartItem = managementCart.getListCart();
     }
-
 
     @NonNull
     @Override
@@ -35,30 +38,32 @@ public class CheckoutCartAdapter extends RecyclerView.Adapter<CheckoutCartAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        CheckoutCart cartItem = mCartList.get(position);
-        holder.imvproductThumb.setImageResource(cartItem.getProductThumb());
-        holder.txtproductName.setText(cartItem.getProductName());
-        holder.txtproductPrice.setText(String.valueOf(cartItem.getProductPrice()));
-        holder.txtproductQuantity.setText(String.valueOf(cartItem.getProductQuantity()));
-        holder.txtproductAmount.setText(String.valueOf(cartItem.getProductAmount()));
+        Product c = cartItem.get(position);
+        holder.txtProductName.setText(c.getProductName());
+        holder.txtProductPrice.setText(String.valueOf(Math.round(c.getProductPrice())) + " VNĐ");
+        holder.txtItemTotal.setText(String.valueOf(Math.round(c.getNumberInCart()
+                *c.getProductPrice())) + " VNĐ");
+        holder.txtItemQuantity.setText(c.getNumberInCart() + "");
+
+        Glide.with(holder.itemView.getContext()).load(c.getImagePath()).transform(new CenterCrop()).into(holder.imvProductThumb);
     }
 
     @Override
     public int getItemCount() {
-        return mCartList.size();
+        return cartItem.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imvproductThumb;
-        TextView txtproductName, txtproductPrice, txtproductQuantity, txtproductAmount;
+        ImageView imvProductThumb;
+        TextView txtProductName, txtProductPrice, txtItemQuantity, txtItemTotal;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imvproductThumb = itemView.findViewById(R.id.imvCart);
-            txtproductName = itemView.findViewById(R.id.txtProductNameCart);
-            txtproductPrice = itemView.findViewById(R.id.txtProductPriceCart);
-            txtproductQuantity = itemView.findViewById(R.id.txtProductQuantityCart);
-            txtproductAmount = itemView.findViewById(R.id.txtProductAmountCart);
+            imvProductThumb = itemView.findViewById(R.id.imvProductThumb);
+            txtProductName = itemView.findViewById(R.id.txtProductName);
+            txtProductPrice = itemView.findViewById(R.id.txtProductPrice);
+            txtItemQuantity = itemView.findViewById(R.id.txtItemQuantity);
+            txtItemTotal = itemView.findViewById(R.id.txtItemTotal);
         }
     }
 }

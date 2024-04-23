@@ -14,7 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.group6.helpers.ManagementCart;
+import com.group6.models.Category;
 import com.group6.models.Product;
+import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
 
@@ -23,10 +26,14 @@ import java.util.ArrayList;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
     Context context;
     ArrayList<Product> products;
+    private Product object;
+    private int num = 1;
+    private ManagementCart managementCart;
 
     public ProductAdapter(Context context, ArrayList<Product> products) {
         this.context = context;
         this.products = products;
+        this.managementCart = new ManagementCart(context);
     }
 
     @NonNull
@@ -66,6 +73,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 // Thêm cờ vào Intent
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 context.startActivity(intent);
+            }
+        });
+        holder.btnAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                object = products.get(position); // Assign the correct Product object
+                object.setNumberInCart(num);
+                managementCart.insertProduct(object);
             }
         });
     }

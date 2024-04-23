@@ -1,24 +1,17 @@
 package com.group6.oriyoung;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.group6.adapters.OrderHistoryVPAdapter;
-import com.group6.fragments.AccountFirstFragment;
-import com.group6.fragments.CancelOrderFragment;
-import com.group6.fragments.DeliveringOrderFragment;
-import com.group6.fragments.ReceivedOrderFragment;
-import com.group6.oriyoung.R;
+import com.group6.fragments.AccountFragment;
 import com.group6.oriyoung.databinding.ActivityOrderHistoryBinding;
 
 public class OrderHistoryActivity extends AppCompatActivity {
@@ -43,7 +36,7 @@ public class OrderHistoryActivity extends AppCompatActivity {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(OrderHistoryActivity.this, AccountFirstFragment.class);
+                Intent intent = new Intent(OrderHistoryActivity.this, AccountFragment.class);
                 finish();
             }
         });

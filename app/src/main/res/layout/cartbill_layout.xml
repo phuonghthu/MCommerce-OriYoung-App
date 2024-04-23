@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gilroy_bold"
-            android:text="@string/cart_orderInfo" />
+            android:text="@string/cart_orderInfo"
+            android:textSize="@dimen/large_textSize"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/Discount"
@@ -64,16 +65,16 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cart_tempTotal"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:layout_gravity="start"/>
             <TextView
-                android:id="@+id/txtTempTotal"
+                android:id="@+id/txtSubTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cart_tempTotalDetail"
                 android:layout_weight="1"
                 android:fontFamily="@font/gilroy_semibold"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout
@@ -86,17 +87,17 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cart_discount"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:layout_gravity="start"/>
             <TextView
-                android:id="@+id/txtShippingFee"
+                android:id="@+id/txtDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/cart_discountDetail"
                 android:layout_weight="1"
                 android:textColor="@color/secondaryorange"
-                android:fontFamily="@font/gilroy_bold"
-                android:textSize="@dimen/small_textSize"
+                android:fontFamily="@font/gilroy_regular"
+                android:textSize="@dimen/medium_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout
@@ -109,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/cart_total"
                 android:fontFamily="@font/gilroy_regular"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:layout_gravity="start"/>
             <TextView
                 android:id="@+id/txtTotal"
@@ -119,7 +120,7 @@
                 android:layout_weight="1"
                 android:textColor="@color/secondaryorange"
                 android:fontFamily="@font/gilroy_bold"
-                android:textSize="@dimen/small_textSize"
+                android:textSize="@dimen/medium_textSize"
                 android:gravity="end"/>
         </LinearLayout>
         <LinearLayout

@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 //import com.group6.Adapter.CartAdapter;
 import com.google.android.material.textfield.TextInputEditText;
 import com.group6.adapters.CartAdapter;
+import com.group6.helpers.ChangeNumberItemsListener;
+import com.group6.helpers.ManagementCart;
+import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityCartBinding;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ public class CartActivity extends AppCompatActivity {
     ActivityCartBinding binding;
     ArrayList<com.group6.models.Cart> carts;
     CartAdapter adapter;
+    private ManagementCart managementCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +31,12 @@ public class CartActivity extends AppCompatActivity {
         binding = ActivityCartBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.toolbar.toolbarTitle.setText("Giỏ hàng");
-        loadData();
+
+        managementCart = new ManagementCart(this);
+
+        setVariable();
+        calculateCart();
+        loadCartItem();
         addEvent();
     }
 
@@ -39,31 +48,72 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.cartbill.btnCheckout.setOnClickListener(new View.OnClickListener() {
+//        binding.cartbill.btnCheckout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Lấy danh sách sản phẩm trong giỏ hàng
+//                ArrayList<Product> cartItem = managementCart.getListCart();
+//
+//                // Tạo Intent để chuyển dữ liệu
+//                Intent intent = new Intent(CartActivity.this, Checkout.class);
+//                intent.putParcelableArrayListExtra("cartItems", cartItem);
+//                startActivity(intent);
+//            }
+//        });
+
+
+    }
+
+    private void calculateCart() {
+        double discount = 0;
+
+        double total = Math.round(managementCart.getTotalFee());
+        double subTotal = Math.round(managementCart.getTotalFee());
+
+        binding.cartbill.txtSubTotal.setText(String.valueOf(subTotal) + " VNĐ");
+        binding.cartbill.txtTotal.setText(String.valueOf(total) + " VNĐ");
+    }
+
+    private void loadCartItem() {
+        if (managementCart.getListCart().isEmpty()) {
+            binding.blankCart.setVisibility(View.VISIBLE);
+            binding.scrollViewCart.setVisibility(View.GONE);
+            binding.cartbillLayout.setVisibility(View.GONE);
+            binding.btnGoToStore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
+        } else {
+            binding.blankCart.setVisibility(View.GONE);
+            binding.scrollViewCart.setVisibility(View.VISIBLE);
+            binding.cartbillLayout.setVisibility(View.VISIBLE);
+        }
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        binding.rvCart.setLayoutManager(layoutManager);
+        adapter = new CartAdapter(managementCart.getListCart(), this, new ChangeNumberItemsListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CartActivity.this, Checkout.class);
-                startActivity(intent);
+            public void change() {
+                calculateCart();
             }
         });
 
-
-    }
-
-
-    private void loadData() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        binding.rvCart.setLayoutManager(layoutManager);
-        carts = new ArrayList<>();
-        carts.add(new com.group6.models.Cart(R.drawable.img_product, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 0));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 18000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 18000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 280000, 28000));
-        carts.add(new com.group6.models.Cart(R.drawable.cocon, "Cocoon Kem Ủ Tóc Bưởi Giảm Gãy Rụng & Dưỡng Mềm Tóc 200ml", 180000, 28000));
-//        adapter = new CartAdapter(getApplicationContext(), carts);
-        adapter = new CartAdapter(getApplicationContext(), carts);
         binding.rvCart.setAdapter(adapter);
+
     }
+
+    private void setVariable() {
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
 
 
 }

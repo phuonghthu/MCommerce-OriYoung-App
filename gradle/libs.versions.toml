@@ -24,6 +24,7 @@ firebaseDatabase = "20.3.1"
 notificationBadge = "1.0.5"
 butterknifeCompiler = "10.2.3"
 eventbus = "3.3.1"
+gson = "2.10.1"
 
 
 [libraries]
@@ -53,6 +54,7 @@ firebase-database = { group = "com.google.firebase", name = "firebase-database",
 notification-badge = { group = "com.nex3z", name = "notification-badge", version.ref = "notificationBadge" }
 butterknife-compiler = { group = "com.jakewharton", name = "butterknife-compiler", version.ref = "butterknifeCompiler" }
 eventbus = { group = "org.greenrobot", name = "eventbus", version.ref = "eventbus" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

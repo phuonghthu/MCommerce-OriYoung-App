@@ -7,9 +7,8 @@ import android.view.View;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.group6.fragments.AccountFirstFragment;
+import com.group6.fragments.AccountFragment;
 import com.group6.oriyoung.databinding.ActivitySettingBinding;
-import com.group6.oriyoung.databinding.FragmentAccountFirstBinding;
 
 public class Setting extends AppCompatActivity {
     ActivitySettingBinding binding;
@@ -42,7 +41,7 @@ public class Setting extends AppCompatActivity {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Setting.this, AccountFirstFragment.class);
+                Intent intent = new Intent(Setting.this, AccountFragment.class);
                 finish();
             }
         });

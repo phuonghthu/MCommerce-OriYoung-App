@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/horizontal_padding"
     tools:context=".UserInformation"
     android:paddingVertical="@dimen/vertical_padding"
-    android:background="@color/primarybackground"
+    android:background="@color/white"
     android:orientation="vertical">
     <include layout="@layout/custom_toolbar_back"
         android:id="@+id/toolbar"/>
@@ -47,32 +47,32 @@
                     tools:ignore="TextSizeCheck" />
 
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/LineGioiTinh"
-                app:layout_constraintTop_toBottomOf="@+id/LineHoTen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="20dp">
+<!--            <LinearLayout-->
+<!--                android:id="@+id/LineGioiTinh"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/LineHoTen"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_marginTop="20dp">-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/gilroy_medium"
-                    android:text="@string/Info_gender"
-                    android:textSize="@dimen/small_textSize"
-                    tools:ignore="TextSizeCheck" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/gilroy_medium"-->
+<!--                    android:text="@string/Info_gender"-->
+<!--                    android:textSize="@dimen/small_textSize"-->
+<!--                    tools:ignore="TextSizeCheck" />-->
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:gravity="end"
-                    android:text="@string/Info_GenderDetail"
-                    android:textSize="12dp"
-                    tools:ignore="TextSizeCheck" />
-            </LinearLayout>
+<!--                <TextView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:fontFamily="@font/gilroy_semibold"-->
+<!--                    android:gravity="end"-->
+<!--                    android:text="@string/Info_GenderDetail"-->
+<!--                    android:textSize="12dp"-->
+<!--                    tools:ignore="TextSizeCheck" />-->
+<!--            </LinearLayout>-->
             <LinearLayout
                 android:id="@+id/LineDate"
                 android:layout_width="match_parent"

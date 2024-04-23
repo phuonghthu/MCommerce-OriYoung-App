@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.ReviewAdapter;
 import com.group6.fragments.HomeFragment;
+import com.group6.helpers.ManagementCart;
 import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.databinding.ActivityProductDetailBinding;
@@ -33,10 +34,12 @@ public class ProductDetail extends BaseActivity {
     ArrayList<Product> product;
     ArrayList<Review> reviews;
     TextView quantity;
-    private int total_quantity = 1;
+    private int num = 1;
+    private ManagementCart managementCart;
     int lastVisibleItemIndex = 2; // Vị trí của item cuối cùng muốn hiển thị
     ProductAdapter productAdapter;
     ReviewAdapter reviewAdapter;
+
 
 
     @Override
@@ -44,7 +47,7 @@ public class ProductDetail extends BaseActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityProductDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        binding.toolbar.toolbarTitle.setText("Chi tiết sản phẩm");
         
         getIntentExtra();
         setVariable();
@@ -53,6 +56,7 @@ public class ProductDetail extends BaseActivity {
 
 
         quantity = findViewById(R.id.txtQuantity);
+
 //        addtoCart = findViewById(R.id.btnAddToCart);
 //
     }
@@ -63,6 +67,7 @@ public class ProductDetail extends BaseActivity {
             }
 
     private void setVariable() {
+        managementCart = new ManagementCart(this);
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,24 +94,17 @@ public class ProductDetail extends BaseActivity {
 
     private void addEvents() {
 
-
-        binding.GroupButtons.btnBuyNow.setOnClickListener(new View.OnClickListener() {
+        binding.reviewLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductDetail.this, CartActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(ProductDetail.this, ReviewDetail.class));
             }
         });
-
-        binding.toolbar.toolbarTitle.setText("Chi tiết sản phẩm");
         binding.GroupButtons.imvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (total_quantity < 100){
-                    total_quantity ++;
-                    quantity.setText(String.valueOf(total_quantity));
-                }
-
+                num = num+1;
+                quantity.setText(num+" ");
 
             }
         });
@@ -114,20 +112,21 @@ public class ProductDetail extends BaseActivity {
         binding.GroupButtons.imvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (total_quantity > 1) {
-                    total_quantity--;
-                    quantity.setText(String.valueOf(total_quantity));
+                if (num>1){
+                    num=num-1;
+                    quantity.setText(num+"");
                 }
             }
         });
-        binding.reviewLayout.setOnClickListener(new View.OnClickListener() {
+        binding.GroupButtons.btnAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProductDetail.this, ReviewDetail.class));
+                object.setNumberInCart(num);
+                managementCart.insertProduct(object);
             }
         });
 
-
     }
+
 
 }
