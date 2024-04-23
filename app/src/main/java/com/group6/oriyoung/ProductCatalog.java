@@ -48,7 +48,12 @@ public class ProductCatalog extends BaseActivity {
     private boolean is100kTo250kChecked = false;
     private boolean is250kTo400kChecked = false;
     private boolean isOver400kChecked = false;
-    private boolean isAnyCheckboxChecked =false;
+    private boolean isAnyCheckboxChecked = false;
+    private boolean isSortBottomSheetShown = false;
+    private boolean isFilterBottomSheetShown = false;
+
+    private boolean isSortButtonClicked = false;
+    private boolean isFilterButtonClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,7 @@ public class ProductCatalog extends BaseActivity {
         filterEvent();
         originalCatalog = new ArrayList<>();
         filteredCatalog = new ArrayList<>();
+        initButtonStates(); // Khởi tạo trạng thái mặc định cho các button
     }
 
     @Override
@@ -143,70 +149,15 @@ public class ProductCatalog extends BaseActivity {
         binding.imvSort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Change the background color of imvSort
-                binding.imvSort.setBackgroundResource(R.drawable.linear_bg_selected_state);
-
-                // Display the corresponding bottom sheet
-                Dialog dialog = getBottomSheetDialog(binding.imvSort);
-                dialog.show();
-
-                // Handle the event when the bottom sheet is dismissed
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        // Reset the background color of imvSort
-                        binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
-                    }
-                });
-
-                RadioButton radioButtonName = dialog.findViewById(R.id.radioButtonName);
-                RadioButton radioButtonPriceAscending = dialog.findViewById(R.id.radioButtonPriceAscending);
-                RadioButton radioButtonPriceDescending = dialog.findViewById(R.id.radioButtonPriceDescending);
-
-                radioButtonName.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Sort the catalog by product name (A-Z)
-                        Collections.sort(catalog, new Comparator<Product>() {
-                            @Override
-                            public int compare(Product p1, Product p2) {
-                                return p1.getProductName().compareToIgnoreCase(p2.getProductName());
-                            }
-                        });
-                        // Update the RecyclerView adapter with sorted data
-                        catalogAdapter.notifyDataSetChanged();
-                    }
-                });
-
-                radioButtonPriceAscending.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Sort the catalog by price in ascending order
-                        Collections.sort(catalog, new Comparator<Product>() {
-                            @Override
-                            public int compare(Product p1, Product p2) {
-                                return Double.compare(p1.getProductPrice(), p2.getProductPrice());
-                            }
-                        });
-                        // Update the RecyclerView adapter with sorted data
-                        catalogAdapter.notifyDataSetChanged();
-                    }
-                });
-
-                radioButtonPriceDescending.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Sort the catalog by price in descending order
-                        Collections.sort(catalog, new Comparator<Product>() {
-                            @Override
-                            public int compare(Product p1, Product p2) {
-                                return Double.compare(p2.getProductPrice(), p1.getProductPrice());
-                            }
-                        });
-                        // Update the RecyclerView adapter with sorted data
-                        catalogAdapter.notifyDataSetChanged();
-                    }
-                });
+                // Hiện bottom sheet sắp xếp nếu chưa hiện, đóng nếu đã hiện
+                if (!isSortBottomSheetShown) {
+                    binding.imvSort.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                    showSortBottomSheet();
+                    isSortBottomSheetShown = true;
+                    isSortButtonClicked = true;
+                } else {
+                    dismissSortBottomSheet();
+                }
             }
         });
 
@@ -214,72 +165,17 @@ public class ProductCatalog extends BaseActivity {
         binding.imvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Change the background color of imvFilter
-                binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_selected_state);
-
-                // Display the corresponding bottom sheet
-                Dialog dialog = getBottomSheetDialog(binding.imvFilter);
-                dialog.show();
-
-                // Handle the event when the bottom sheet is dismissed
-                dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        // Reset the background color of imvFilter
-                        binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
-                        // Check if any checkbox is checked
-                        if (!isAnyCheckboxChecked) {
-                            // If no checkbox is checked, reset the catalog to original state
-                            resetCatalog();
-                        }
-                        // Reset the flag
-                        isAnyCheckboxChecked = false;
-                    }
-                });
-
-                // Get checkboxes from the bottom sheet layout
-                CheckBox checkBoxUnder100k = dialog.findViewById(R.id.checkBoxUnder100k);
-                CheckBox checkBox100kTo250k = dialog.findViewById(R.id.checkBox100kTo250k);
-                CheckBox checkBox250kTo400k = dialog.findViewById(R.id.checkBox250kTo400k);
-                CheckBox checkBoxOver400k = dialog.findViewById(R.id.checkBoxOver400k);
-
-                // Set onClickListener for each checkbox
-                checkBoxUnder100k.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Cập nhật trạng thái của biến khi checkbox được chọn hoặc bỏ chọn
-                        isUnder100kChecked = checkBoxUnder100k.isChecked();
-                        // Xử lý lọc dữ liệu tương ứng với checkbox
-                        filterProducts();
-                    }
-                });
-
-                checkBox100kTo250k.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        is100kTo250kChecked = checkBox100kTo250k.isChecked();
-                        filterProducts();
-                    }
-                });
-
-                checkBox250kTo400k.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        is250kTo400kChecked = checkBox250kTo400k.isChecked();
-                        filterProducts();
-                    }
-                });
-
-                checkBoxOver400k.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        isOver400kChecked = checkBoxOver400k.isChecked();
-                        filterProducts();
-                    }
-                });
+                // Hiện bottom sheet lọc nếu chưa hiện, đóng nếu đã hiện
+                if (!isFilterBottomSheetShown) {
+                    binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                    showFilterBottomSheet();
+                    isFilterBottomSheetShown = true;
+                    isFilterButtonClicked = true;
+                } else {
+                    dismissFilterBottomSheet();
+                }
             }
         });
-
     }
 
     // Function to filter products based on all selected filters
@@ -302,15 +198,181 @@ public class ProductCatalog extends BaseActivity {
         }
         catalogAdapter.updateData(filteredCatalog);
     }
+
+    // Function to reset catalog to its original state
     private void resetCatalog() {
         catalog.clear();
         catalog.addAll(originalCatalog);
         catalogAdapter.notifyDataSetChanged();
     }
 
+    // Function to initialize button states
+    private void initButtonStates() {
+        if (!isSortButtonClicked) {
+            binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
+        }
+        if (!isFilterButtonClicked) {
+            binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
+        }
+    }
 
+    // Function to show sort bottom sheet
+    private void showSortBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvSort);
+        dialog.show();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                isSortBottomSheetShown = false;
+                binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
+            }
+        });
+
+        RadioButton radioButtonName = dialog.findViewById(R.id.radioButtonName);
+        RadioButton radioButtonPriceAscending = dialog.findViewById(R.id.radioButtonPriceAscending);
+        RadioButton radioButtonPriceDescending = dialog.findViewById(R.id.radioButtonPriceDescending);
+
+        radioButtonName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sort the catalog by product name (A-Z)
+                Collections.sort(catalog, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return p1.getProductName().compareToIgnoreCase(p2.getProductName());
+                    }
+                });
+                // Update the RecyclerView adapter with sorted data
+                catalogAdapter.notifyDataSetChanged();
+                // Dismiss the bottom sheet after sorting
+                dismissSortBottomSheet();
+            }
+        });
+
+        radioButtonPriceAscending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sort the catalog by price in ascending order
+                Collections.sort(catalog, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return Double.compare(p1.getProductPrice(), p2.getProductPrice());
+                    }
+                });
+                // Update the RecyclerView adapter with sorted data
+                catalogAdapter.notifyDataSetChanged();
+                // Dismiss the bottom sheet after sorting
+                dismissSortBottomSheet();
+            }
+        });
+
+        radioButtonPriceDescending.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Sort the catalog by price in descending order
+                Collections.sort(catalog, new Comparator<Product>() {
+                    @Override
+                    public int compare(Product p1, Product p2) {
+                        return Double.compare(p2.getProductPrice(), p1.getProductPrice());
+                    }
+                });
+                // Update the RecyclerView adapter with sorted data
+                catalogAdapter.notifyDataSetChanged();
+                // Dismiss the bottom sheet after sorting
+                dismissSortBottomSheet();
+            }
+        });
+    }
+
+    // Function to show filter bottom sheet
+    private void showFilterBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvFilter);
+        dialog.show();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                isFilterBottomSheetShown = false;
+                binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
+                // Check if any checkbox is checked
+                if (!isAnyCheckboxChecked) {
+                    // If no checkbox is checked, reset the catalog to original state
+                    resetCatalog();
+                }
+                // Reset the flag
+                isAnyCheckboxChecked = false;
+            }
+        });
+
+        // Get checkboxes from the bottom sheet layout
+        CheckBox checkBoxUnder100k = dialog.findViewById(R.id.checkBoxUnder100k);
+        CheckBox checkBox100kTo250k = dialog.findViewById(R.id.checkBox100kTo250k);
+        CheckBox checkBox250kTo400k = dialog.findViewById(R.id.checkBox250kTo400k);
+        CheckBox checkBoxOver400k = dialog.findViewById(R.id.checkBoxOver400k);
+
+        // Set onClickListener for each checkbox
+        checkBoxUnder100k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Update the state of the variable when checkbox is checked or unchecked
+                isUnder100kChecked = checkBoxUnder100k.isChecked();
+                // Filter data accordingly to checkbox
+                filterProducts();
+                // Set the flag to true indicating at least one checkbox is checked
+                isAnyCheckboxChecked = true;
+            }
+        });
+
+        checkBox100kTo250k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                is100kTo250kChecked = checkBox100kTo250k.isChecked();
+                filterProducts();
+                isAnyCheckboxChecked = true;
+            }
+        });
+
+        checkBox250kTo400k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                is250kTo400kChecked = checkBox250kTo400k.isChecked();
+                filterProducts();
+                isAnyCheckboxChecked = true;
+            }
+        });
+
+        checkBoxOver400k.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isOver400kChecked = checkBoxOver400k.isChecked();
+                filterProducts();
+                isAnyCheckboxChecked = true;
+            }
+        });
+    }
+
+    // Function to dismiss sort bottom sheet
+    private void dismissSortBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvSort);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+            // Reset the button state
+            binding.imvSort.setBackgroundResource(R.drawable.linear_bg_state);
+            // Reset the flag
+            isSortBottomSheetShown = false;
+            isSortButtonClicked = false;
+        }
+    }
+
+    // Function to dismiss filter bottom sheet
+    private void dismissFilterBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvFilter);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+            // Reset the button state
+            binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
+            // Reset the flag
+            isFilterBottomSheetShown = false;
+            isFilterButtonClicked = false;
+        }
+    }
 }
-
-
-
-
