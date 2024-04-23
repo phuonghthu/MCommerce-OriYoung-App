@@ -159,6 +159,7 @@
                         android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
+
             </androidx.constraintlayout.widget.ConstraintLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -196,7 +197,9 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:endIconMode="clear_text">
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_calendar"
+                    app:endIconTint="@color/primarygreen">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/txtday"
@@ -206,10 +209,10 @@
                         android:hint="@string/Signup_DOB_hint"
                         android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"
-                        android:drawableEnd="@drawable/ic_calendar"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -274,10 +277,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Empty_error"
-                android:textColor="@color/error"
+                android:textColor="@color/design_default_color_error"
                 android:visibility="gone"
-                android:fontFamily="@font/gilroy_medium"
-                android:textSize="@dimen/medium_textSize"/>
+                android:textSize="@dimen/small_textSize"
+                android:layout_marginStart="@dimen/large_margin"/>
 
 
 

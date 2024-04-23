@@ -1,6 +1,7 @@
 package com.group6.oriyoung;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +13,7 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -51,6 +53,8 @@ public class SignUp extends AppCompatActivity {
     boolean checked = false;
     Calendar calendar;
     int day, month, year;
+    RadioButton Male, Female, Other;
+    RadioGroup gender;
 
 
 
@@ -61,12 +65,11 @@ public class SignUp extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
+        Male = findViewById(R.id.radioButtonMale);
+        Female = findViewById(R.id.radioButtonFemale);
+        Other = findViewById(R.id.radioButtonOther);
         mAuth =  FirebaseAuth.getInstance();
-        calendar = Calendar.getInstance();
-        day = calendar.get(Calendar.DAY_OF_MONTH);
-        month = calendar.get(Calendar.MONTH);
-        year = calendar.get(Calendar.YEAR);
+
 
 
 
@@ -94,16 +97,16 @@ public class SignUp extends AppCompatActivity {
                 // Kiểm tra xem RadioButton nào được chọn
                 if (checkedId == R.id.radioButtonMale) {
                     // Nếu là RadioButton Nam được chọn, loại bỏ chọn các RadioButton khác
-                    binding.radioButtonFemale.setChecked(false);
-                    binding.radioButtonOther.setChecked(false);
+                    Female.setChecked(false);
+                    Other.setChecked(false);
                 } else if (checkedId == R.id.radioButtonFemale) {
                     // Nếu là RadioButton Nữ được chọn, loại bỏ chọn các RadioButton khác
-                    binding.radioButtonMale.setChecked(false);
-                    binding.radioButtonOther.setChecked(false);
+                    Male.setChecked(false);
+                    Other.setChecked(false);
                 } else if (checkedId == R.id.radioButtonOther) {
                     // Nếu là RadioButton Không tiết lộ được chọn, loại bỏ chọn các RadioButton khác
-                    binding.radioButtonMale.setChecked(false);
-                    binding.radioButtonFemale.setChecked(false);
+                    Male.setChecked(false);
+                    Female.setChecked(false);
                 }
             }
         });
@@ -160,6 +163,20 @@ public class SignUp extends AppCompatActivity {
         binding.inputday.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                calendar = Calendar.getInstance();
+                day = calendar.get(Calendar.DAY_OF_MONTH);
+                month = calendar.get(Calendar.MONTH);
+                year = calendar.get(Calendar.YEAR);
+                DatePickerDialog datePickerDialog = new DatePickerDialog(SignUp.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        binding.txtday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                    }
+                },year, month, day);
+
+                datePickerDialog.show();
+                datePickerDialog.getButton(datePickerDialog.BUTTON_NEGATIVE).setTextColor(ContextCompat.getColor(SignUp.this, R.color.error));
+                datePickerDialog.getButton(datePickerDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(SignUp.this, R.color.primarygreen));
 
             }
         });
@@ -170,11 +187,14 @@ public class SignUp extends AppCompatActivity {
                 name = binding.txtname.getText().toString().trim();
                 dob = binding.txtday.getText().toString().trim();
 
-                if(email.isEmpty() && name.isEmpty() && dob.isEmpty()) {
+                if(email.isEmpty() && name.isEmpty() && dob.isEmpty() && (!Male.isChecked() || !Female.isChecked() || !Other.isChecked())){
                     binding.inputEmail.setError(getString(R.string.Empty_error));
                     binding.inputName.setError(getString(R.string.Empty_error));
                     binding.inputday.setError(getString(R.string.Empty_error));
+                    binding.inputday.setErrorIconDrawable(null);
+                    binding.inputday.setEndIconDrawable(R.drawable.ic_calendar);
                     binding.inputEmail.requestFocus();
+                    binding.errorgender.setVisibility(View.VISIBLE);
                 } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     binding.inputEmail.setError(getString(R.string.Login_mail_error));
                 } else if (name.isEmpty()) {
@@ -185,7 +205,9 @@ public class SignUp extends AppCompatActivity {
                     binding.inputEmail.requestFocus();
                 } else if (dob.isEmpty()) {
                     binding.inputday.setError(getString(R.string.Empty_error));
-                } else if () {
+                    binding.inputday.setErrorIconDrawable(null);
+                    binding.inputday.setEndIconDrawable(R.drawable.ic_calendar);
+                } else if (!Male.isChecked() || !Female.isChecked() || !Other.isChecked()) {
                     binding.errorgender.setVisibility(View.VISIBLE);
                 } else{
                     NewUser();
@@ -225,7 +247,6 @@ public class SignUp extends AppCompatActivity {
     private void NewUser(){
 
     }
-    private void DatePickerDialog(){
 
-    }
+
 }
