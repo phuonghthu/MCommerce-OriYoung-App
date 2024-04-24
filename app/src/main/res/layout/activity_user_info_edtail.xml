@@ -50,23 +50,24 @@
                     android:id="@+id/inputName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="@dimen/large_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:endIconMode="clear_text"
-                    app:boxStrokeErrorColor="@color/error">
+                    app:helperTextTextColor="@color/error">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
                         android:hint="Tên khách hàng"
-                        android:textColorHint="@color/black"
-                        android:fontFamily="@font/gilroy_regular"
-                        android:inputType="text"
-                        android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/button_bg_state"
-                        android:layout_marginBottom="15dp" />
-
+                        android:textColorHint="@color/primarygreen"
+                        android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 <!--            <RadioGroup-->
@@ -110,7 +111,9 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    >
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -128,32 +131,36 @@
                         tools:ignore="TextSizeCheck" />
                 </LinearLayout>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputBirth"
+                    android:id="@+id/inputday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
-                    app:boxStrokeErrorColor="@color/error">
+                    android:layout_marginTop="@dimen/large_margin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_calendar"
+                    app:endIconTint="@color/primarygreen">
+
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtBirth"
+                        android:id="@+id/txtday"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/button_bg_state"
-                        android:fontFamily="@font/gilroy_regular"
-                        android:hint="Ngày sinh"
-                        android:inputType="none"
-                        android:textColorHint="@color/black"
+                        android:fontFamily="@font/gilroy_medium"
+                        android:hint="DD/MM/YYYY"
+                        android:textColorHint="@color/primarygreen"
                         android:textSize="@dimen/medium_textSize"
-                        android:focusable="false"
-                        android:onClick="showDatePicker"/>
+                        />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/medium_margin">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,26 +168,26 @@
                     android:textSize="@dimen/medium_textSize"
                     android:fontFamily="@font/gilroy_medium"/>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputEmail"
+                    android:id="@+id/inputPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="10dp"
-                    app:layout_constraintTop_toBottomOf="@id/toolbar"
+                    android:textColorHint="@color/greylight"
                     app:hintEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:endIconMode="clear_text"
-                    app:errorContentDescription="Để thay đổi thông tin vui lòng liên hệ bộ phận chăm sóc khách hàng"
-                    app:boxStrokeErrorColor="@color/error"
-                    app:errorIconDrawable="@drawable/ic_error">
+                    android:layout_marginTop="@dimen/large_margin">
+
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/gilroy_medium"
                         android:hint="Số điện thoại"
-                        android:textColorHint="@color/black"
-                        android:fontFamily="@font/gilroy_regular"
-                        android:inputType="phone"
-                        android:textSize="@dimen/medium_textSize"
-                        android:background="@drawable/button_bg_state"
-                        android:backgroundTint="#16000000"/>
+                        android:textColorHint="@color/primarygreen"
+                        android:textSize="@dimen/medium_textSize" />
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -202,7 +209,7 @@
                     android:textSize="@dimen/medium_textSize"
                     android:fontFamily="@font/gilroy_semibold"/>
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/inputPhone"
+                    android:id="@+id/inputEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingVertical="10dp"
@@ -211,16 +218,17 @@
                     app:errorContentDescription="Vui lòng liên hệ nhân viên CSKH để thay đổi số điện thoại."
                     app:errorIconDrawable="@drawable/ic_error">
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
                         android:textColorHint="@color/primarygreen"
                         android:fontFamily="@font/gilroy_regular"
-                        android:inputType="phone"
                         android:enabled="false"
                         android:textSize="@dimen/medium_textSize"
                         android:backgroundTint="#16000000"
-                        android:background="@drawable/stroke"/>
+                        android:background="@drawable/stroke"
+                        android:textStyle="italic"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <TextView
                     android:layout_width="match_parent"
