@@ -32,6 +32,7 @@ import com.group6.oriyoung.R;
 import com.group6.oriyoung.RegisterActivity;
 import com.group6.oriyoung.Setting;
 import com.group6.oriyoung.SupportCenter;
+import com.group6.oriyoung.UserInfoDetail;
 import com.group6.oriyoung.UserInformation;
 import com.group6.oriyoung.databinding.FragmentAccountBinding;
 
@@ -78,13 +79,19 @@ public class AccountFragment extends Fragment {
                     binding.userLoggedin.setVisibility(View.VISIBLE);
                     binding.userBlank.setVisibility(View.GONE);
 
-                    binding.txtUserName.setText(userName + " ngoan xinh yêu!");
+                    binding.txtUserName.setText(userName + " xinh yêu!");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+        binding.imvEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(requireContext(), UserInfoDetail.class));
             }
         });
         binding.thongtincanhan.setOnClickListener(new View.OnClickListener() {
@@ -184,6 +191,18 @@ public class AccountFragment extends Fragment {
     private void blankScreen() {
         binding.userLoggedin.setVisibility(View.GONE);
         binding.userBlank.setVisibility(View.VISIBLE);
+        binding.hotro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), SupportCenter.class));
+            }
+        });
+        binding.lienheoriyoung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ContactOriyoung.class));
+            }
+        });
         binding.btnDangnhapngay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

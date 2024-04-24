@@ -26,10 +26,10 @@
             android:name=".ChangePassword"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".UserInformation"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ReviewDetail"
@@ -78,10 +78,10 @@
             android:name=".DialogLogout"
             android:exported="false" />
         <activity
-            android:name=".UserInfoDetail"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".UserInformation"
+            android:name=".UserInfoDetail"
             android:exported="false" />
         <activity
             android:name=".ForgetPassword"

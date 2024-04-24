@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.butterknife.compiler)
     implementation(libs.eventbus)
     implementation(libs.gson)
+    implementation(libs.firebase.storage)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
