@@ -62,6 +62,14 @@ public class ProductCatalog extends BaseActivity {
     private boolean isSortButtonClicked = false;
     private boolean isFilterButtonClicked = false;
     private boolean isCatalogButtonClicked = false;
+    private String getCategoryNameByID(int categoryID) {
+        for (Category cat : category) {
+            if (cat.getCategoryID() == categoryID) {
+                return cat.getCategoryName();
+            }
+        }
+        return ""; // Trả về một giá trị mặc định nếu không tìm thấy categoryName
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -398,8 +406,13 @@ public class ProductCatalog extends BaseActivity {
                 public void onClick(View v) {
                     // Lọc sản phẩm có categoryID tương ứng từ cơ sở dữ liệu
                     filterCatalogByCategoryFromDatabase(categoryID);
+                    updateToolbarTitle(categoryName);
                     // Dismiss the bottom sheet after filtering
                     dismissCatalogBottomSheet();
+                }
+
+                private void updateToolbarTitle(String categoryName) {
+                    binding.toolbar.toolbarTitle.setText(categoryName);
                 }
 
                 private void filterCatalogByCategoryFromDatabase(int categoryID) {
