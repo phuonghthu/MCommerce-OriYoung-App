@@ -9,6 +9,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -19,9 +20,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.group6.adapters.CatalogAdapter;
+import com.group6.adapters.MenuAdapter;
+import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityProductCatalogBinding;
 
@@ -35,7 +39,10 @@ public class ProductCatalog extends BaseActivity {
     CatalogAdapter catalogAdapter;
     ArrayList<Product> originalCatalog;
     ArrayList<Product> filteredCatalog;
-
+    MenuAdapter menuAdapter;
+    private DatabaseReference myRef;
+    ArrayList<Category> category;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     int categoryID;
     String categoryName;
     String searchText;
@@ -51,9 +58,10 @@ public class ProductCatalog extends BaseActivity {
     private boolean isAnyCheckboxChecked = false;
     private boolean isSortBottomSheetShown = false;
     private boolean isFilterBottomSheetShown = false;
-
+    private boolean isCatalogBottomSheetShown = false;
     private boolean isSortButtonClicked = false;
     private boolean isFilterButtonClicked = false;
+    private boolean isCatalogButtonClicked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -160,7 +168,6 @@ public class ProductCatalog extends BaseActivity {
                 }
             }
         });
-
         // Set onClickListener for imvFilter
         binding.imvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,8 +183,21 @@ public class ProductCatalog extends BaseActivity {
                 }
             }
         });
+        // Set onClickListener for imvCatalog
+        binding.imvCatalog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!isCatalogBottomSheetShown){
+                    binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_selected_state);
+                    showCatalogBottomSheet();
+                    isCatalogBottomSheetShown = true;
+                    isCatalogButtonClicked = true;
+                }else {
+                    dismissCatalogBottomSheet();
+                }
+            }
+        });
     }
-
     // Function to filter products based on all selected filters
     private void filterProducts() {
         filteredCatalog.clear();
@@ -213,6 +233,9 @@ public class ProductCatalog extends BaseActivity {
         }
         if (!isFilterButtonClicked) {
             binding.imvFilter.setBackgroundResource(R.drawable.linear_bg_state);
+        }
+        if (!isCatalogButtonClicked) {
+            binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
         }
     }
 
@@ -349,6 +372,66 @@ public class ProductCatalog extends BaseActivity {
             }
         });
     }
+    private void showCatalogBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvCatalog);
+        dialog.show();
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                isCatalogBottomSheetShown = false;
+                binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
+            }
+        });
+        setCategoryButtonClickListener(0, dialog.findViewById(R.id.btnTayTrang));
+        setCategoryButtonClickListener(2, dialog.findViewById(R.id.btnSRM));
+        setCategoryButtonClickListener(3, dialog.findViewById(R.id.btnSerum));
+        setCategoryButtonClickListener(4, dialog.findViewById(R.id.btnKemDuong));
+        setCategoryButtonClickListener(6, dialog.findViewById(R.id.btnChongNang));
+        setCategoryButtonClickListener(1, dialog.findViewById(R.id.btnToner));
+        setCategoryButtonClickListener(5, dialog.findViewById(R.id.btnMatNa));
+        setCategoryButtonClickListener(7, dialog.findViewById(R.id.btnAll));
+    }
+    private void setCategoryButtonClickListener(int categoryID, LinearLayout button) {
+        if (button != null) {
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Lọc sản phẩm có categoryID tương ứng từ cơ sở dữ liệu
+                    filterCatalogByCategoryFromDatabase(categoryID);
+                    // Dismiss the bottom sheet after filtering
+                    dismissCatalogBottomSheet();
+                }
+
+                private void filterCatalogByCategoryFromDatabase(int categoryID) {
+                    filteredCatalog.clear();
+                    // Thực hiện truy vấn để lấy các sản phẩm có categoryID tương ứng
+                    Query query = databaseRef.orderByChild("categoryID").equalTo(categoryID);
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.exists()) {
+                                for (DataSnapshot issue : snapshot.getChildren()) {
+                                    filteredCatalog.add(issue.getValue(Product.class));
+                                }
+                                // Cập nhật RecyclerView adapter với dữ liệu đã lọc
+                                catalogAdapter.updateData(filteredCatalog);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            // Xử lý khi truy vấn bị hủy
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+
+
+
+
 
     // Function to dismiss sort bottom sheet
     private void dismissSortBottomSheet() {
@@ -373,6 +456,17 @@ public class ProductCatalog extends BaseActivity {
             // Reset the flag
             isFilterBottomSheetShown = false;
             isFilterButtonClicked = false;
+        }
+    }
+    private void dismissCatalogBottomSheet() {
+        Dialog dialog = getBottomSheetDialog(binding.imvCatalog);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+            //Reset the button state
+            binding.imvCatalog.setBackgroundResource(R.drawable.linear_bg_state);
+            //Reset the flag
+            isCatalogBottomSheetShown = false;
+            isCatalogButtonClicked = false;
         }
     }
 }
