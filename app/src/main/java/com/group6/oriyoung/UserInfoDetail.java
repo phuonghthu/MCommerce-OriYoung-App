@@ -3,9 +3,13 @@ package com.group6.oriyoung;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,25 +21,34 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.group6.models.User;
 import com.group6.oriyoung.databinding.ActivityUserInfoEdtailBinding;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserInfoDetail extends AppCompatActivity {
     ActivityUserInfoEdtailBinding binding;
     private EditText edtBirth;
     private DatePickerDialog datePickerDialog;
     private Calendar selectedDateCalendar;
-    String username, NameUser, dob, email, phone;
-    FirebaseDatabase database;
+    String name, dob, email, phone;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     DatabaseReference reference;
 
     @Override
@@ -45,11 +58,101 @@ public class UserInfoDetail extends AppCompatActivity {
         binding = ActivityUserInfoEdtailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.toolbar.toolbarTitle.setText("Thông tin cá nhân");
-        addEvents();
 
-        showUserInfo();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        addEvents();
+        showUserInfo(user);
+
+
     }
-//=============Xử lý Intent và Dialog ==============================
+
+    private void showUserInfo(FirebaseUser user) {
+        String userID = user.getUid();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+        reference.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User userinfo = snapshot.getValue(User.class);
+                if (userinfo != null){
+                    name = userinfo.getUserName();
+                    phone = userinfo.getPhoneNumber();
+                    dob = userinfo.getDob();
+                    email= user.getEmail();
+
+
+                    binding.txtname.setText(name);
+                    binding.txtPhone.setText(phone);
+                    binding.txtday.setText(dob);
+                    binding.txtEmail.setText(email);
+                }
+                if (phone != null){
+                    binding.inputPhone.setEnabled(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void editprofile(FirebaseUser user) {
+        name = binding.txtname.getText().toString().trim();
+        dob = binding.txtday.getText().toString().trim();
+        phone = binding.txtPhone.getText().toString().trim();
+
+        //Validate phone number
+        String mobileregex = "0\\d{9}$";
+        Pattern pattern = Pattern.compile(mobileregex);
+        Matcher matcher = pattern.matcher(phone);
+
+
+        if (TextUtils.isEmpty(name)){
+            binding.inputName.setError(getString(R.string.Empty_error));
+        }
+        else if (TextUtils.isEmpty(dob)){
+            binding.inputday.setError(getString(R.string.Empty_error));
+        }
+        else if (TextUtils.isEmpty(phone)){
+            binding.inputPhone.setError(getString(R.string.Empty_error));
+        } else if (!phone.matches(mobileregex)) {
+            binding.inputPhone.setError("Số điện thoại không đúng, vui lòng kiểm tra lại!");
+        } else if (!matcher.find()) {
+            binding.inputPhone.setError(getString(R.string.Empty_error));
+        }else{
+            //get data from user
+            binding.txtname.getText().toString();
+            binding.txtday.getText().toString();
+            binding.txtPhone.getText().toString();
+            binding.inputPhone.setEnabled(false);
+
+
+            //Enter into database
+            User userdata = new User(name,phone, email, dob);
+            reference = FirebaseDatabase.getInstance().getReference("User");
+             String userID = user.getUid();
+             reference.child(userID).setValue(userdata).addOnCompleteListener(new OnCompleteListener<Void>() {
+                 @Override
+                 public void onComplete(@NonNull Task<Void> task) {
+                     if (task.isSuccessful()){
+                         UserProfileChangeRequest updateinfo =new UserProfileChangeRequest.Builder().setDisplayName(name).build();
+                         user.updateProfile(updateinfo);
+                         showNotification();
+                     }else {
+                         try {
+                             throw task.getException();
+                         } catch (Exception e){
+                             Toast.makeText(UserInfoDetail.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                         }
+                     }
+                 }
+             });
+        }
+    }
+
+    //=============Xử lý Intent và Dialog ==============================
     private void addEvents() {
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +165,7 @@ public class UserInfoDetail extends AppCompatActivity {
         binding.btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNameChanged() || isDOBChanged() || isEmailChanged() || isPhoneChanged()){
-                    showNotification();
-                }else {
-                    Toast.makeText(UserInfoDetail.this, "Không có thông mới nào được thay đổi!", Toast.LENGTH_SHORT).show();
-                }
+                editprofile(user);
 
             }
         });
@@ -115,91 +214,14 @@ public class UserInfoDetail extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().setWindowAnimations(R.style.DialogAnimation_Zoom);
         dialog.getWindow().setGravity(Gravity.CENTER);
-    }
-    public boolean isNameChanged(){
-        if(!username.equals( binding.txtname.getText().toString())){
-            reference.child(NameUser).child("userName").setValue(binding.txtname.getText().toString());
-            username = binding.txtname.getText().toString();
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public boolean isEmailChanged(){
-        if(!email.equals( binding.txtEmail.getText().toString())){
-            reference.child(NameUser).child("email").setValue(binding.txtEmail.getText().toString());
-            email = binding.txtEmail.getText().toString();
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public boolean isPhoneChanged(){
-        if(!phone.equals( binding.txtPhone.getText().toString())){
-            reference.child(NameUser).child("phone").setValue(binding.txtPhone.getText().toString());
-            phone = binding.txtPhone.getText().toString();
-            return true;
-        }else{
-            return false;
-        }
-    }
-    public boolean isDOBChanged(){
-        if(!dob.equals( binding.txtday.getText().toString())){
-            reference.child(NameUser).child("dob").setValue(binding.txtday.getText().toString());
-            dob = binding.txtday.getText().toString();
-            return true;
-        }else{
-            return false;
-        }
-    }
-//    public void showinfo(){
-//        Intent intent = getIntent();
-//        username = intent.getStringExtra("userName");
-//        phone = intent.getStringExtra("phone");
-//        email = intent.getStringExtra("email");
-//        dob = intent.getStringExtra("dob");
-//
-//        binding.txtname.setText(username);
-//        binding.txtday.setText(dob);
-//        binding.txtPhone.setText(phone);
-//        binding.txtEmail.setText(email);
-//
-//
-//    }
-//public void showinfo() {
-//    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("User").child(username);
-//    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//            if (snapshot.exists()) {
-//                String nameFromDB = snapshot.child("userName").getValue(String.class);
-//                String dobFromDB = snapshot.child("dob").getValue(String.class);
-//                String phoneFromDB = snapshot.child("phone").getValue(String.class);
-//                String emailFromDB = snapshot.child("email").getValue(String.class);
-//
-//                // Hiển thị thông tin người dùng từ cơ sở dữ liệu Firebase lên giao diện
-//                binding.txtname.setText(nameFromDB);
-//                binding.txtday.setText(dobFromDB);
-//                binding.txtPhone.setText(phoneFromDB);
-//                binding.txtEmail.setText(emailFromDB);
-//            }
-//        }
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError error) {
-//            // Xử lý lỗi (nếu cần)
-//        }
-//    });
-//}
 
-    private void showUserInfo(){
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
-            binding.txtname.setText(bundle.getString("userName"));
-            binding.txtEmail.setText(bundle.getString("email"));
-            binding.txtday.setText(bundle.getString("dob"));
-            binding.txtPhone.setText(bundle.getString("phone"));
-        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+            }
+        }, 5000); // 5 giây
+        showUserInfo(user);
     }
 
-}
+    }

@@ -2,6 +2,7 @@ package com.group6.oriyoung;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.group6.oriyoung.databinding.ActivityUserInformationBinding;
 public class UserInformation extends AppCompatActivity {
     ActivityUserInformationBinding binding;
     FirebaseAuth mAuth;
+    FirebaseUser user;
     String name, phone, dob, email;
 
     @Override
@@ -35,7 +37,7 @@ public class UserInformation extends AppCompatActivity {
         binding.toolbar.toolbarTitle.setText("Thông tin cá nhân");
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
+        user = mAuth.getCurrentUser();
         if (user == null){
             Toast.makeText(this, "Vui lòng đăng nhập!", Toast.LENGTH_LONG).show();
         }else {
@@ -49,15 +51,8 @@ public class UserInformation extends AppCompatActivity {
         binding.btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                updateinfo();
-                startActivity(new Intent(UserInformation.this, UserInfoDetail.class)
-                        .putExtra("userName", binding.txtName.getText().toString())
-                        .putExtra("phone", binding.txtPhone.getText().toString())
-                        .putExtra("dob", binding.txtDOB.getText().toString())
-                        .putExtra("email", binding.txtEmail.getText().toString())
-                );
-
+                startActivity(new Intent(UserInformation.this, UserInfoDetail.class));
+                finish();
             }
         });
         binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
@@ -69,82 +64,8 @@ public class UserInformation extends AppCompatActivity {
             }
         });
     }
-//    private void showUserInfo(){
-//        Intent intent = getIntent();
-//        String UserName = intent.getStringExtra("userName");
-//        String DOB = intent.getStringExtra("DOB");
-//        String Phone = intent.getStringExtra("phone");
-//        String Email = intent.getStringExtra("email");
-//
-//        binding.txtName.setText(UserName);
-//        binding.txtDOB.setText(DOB);
-//        binding.txtPhone.setText(Phone);
-//        binding.txtEmail.setText(Email);
-//
-//    }
-//private void showUserInfo() {
-//    // Lấy tên người dùng từ SharedPreferences hoặc một nguồn khác
-//    String userName = "Tên người dùng mặc định";
-//
-//    // Thực hiện truy vấn để lấy thông tin người dùng từ cơ sở dữ liệu Firebase
-//    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("User").child(userName);
-//    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-//        @Override
-//        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//            if (snapshot.exists()) {
-//                String userName = snapshot.child("userName").getValue(String.class);
-//                String dob = snapshot.child("dob").getValue(String.class);
-//                String phone = snapshot.child("phone").getValue(String.class);
-//                String email = snapshot.child("email").getValue(String.class);
-//
-//                // Hiển thị thông tin người dùng lên giao diện
-//                binding.txtName.setText(userName);
-//                binding.txtDOB.setText(dob);
-//                binding.txtPhone.setText(phone);
-//                binding.txtEmail.setText(email);
-//            }
-//        }
-//
-//        @Override
-//        public void onCancelled(@NonNull DatabaseError error) {
-//            // Xử lý lỗi (nếu cần)
-//        }
-//    });
-//}
 
-//    public void updateinfo(){
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference reference = database.getReference("User");
-//
-//
-//        String Name = binding.txtName.getText().toString().trim();
-//
-//
-//        Query checkUser = reference.orderByChild("userName").equalTo(Name);
-//        checkUser.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if( snapshot.exists()){
-//                    String NamefromDB = snapshot.child(Name).child("userName").getValue(String.class);
-//                    String PhonefromDB = snapshot.child(Name).child("phone").getValue(String.class);
-//                    String DOBfromDB = snapshot.child(Name).child("dob").getValue(String.class);
-//                    String EmailfromDB = snapshot.child(Name).child("email").getValue(String.class);
-//
-//                    Intent intent = getIntent();
-//                    intent.putExtra("userName", NamefromDB);
-//                    intent.putExtra("phone", PhonefromDB);
-//                    intent.putExtra("dob", DOBfromDB);
-//                    intent.putExtra("email", EmailfromDB);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
+
 
     private void showUserInfo( FirebaseUser user){
         String userID = user.getUid();
@@ -154,8 +75,8 @@ public class UserInformation extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User userinfo = snapshot.getValue(User.class);
                 if (userinfo != null){
-                    name = user.getDisplayName();
-                    phone = user.getPhoneNumber();
+                    name = userinfo.getUserName();
+                    phone = userinfo.getPhoneNumber();
                     dob = userinfo.getDob();
                     email= user.getEmail();
 
@@ -163,6 +84,8 @@ public class UserInformation extends AppCompatActivity {
                     binding.txtPhone.setText(phone);
                     binding.txtDOB.setText(dob);
                     binding.txtEmail.setText(email);
+                }else {
+                    Toast.makeText(UserInformation.this, "Đã có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
                 }
             }
 

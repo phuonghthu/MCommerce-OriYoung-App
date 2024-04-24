@@ -221,7 +221,6 @@
                         android:id="@+id/txtEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Email"
                         android:textColorHint="@color/primarygreen"
                         android:fontFamily="@font/gilroy_regular"
                         android:enabled="false"
