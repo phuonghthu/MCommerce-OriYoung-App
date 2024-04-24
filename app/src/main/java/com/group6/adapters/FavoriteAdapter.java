@@ -32,7 +32,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
     @Override
     public FavoriteViewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_product, parent, false);
+        View view = inflater.inflate(R.layout.item_favproduct, parent, false);
         return new FavoriteAdapter.FavoriteViewholder(view);
     }
 
@@ -62,7 +62,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
 
     public class FavoriteViewholder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;
-        TextView txtName, txtPrice, txtRatingValue, btnAddToCart, txtDiscountPercent;
+        TextView txtName, txtPrice, txtRatingValue, txtDiscountPercent;
 
 
         public FavoriteViewholder(@NonNull View itemView) {
@@ -71,7 +71,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.Favori
             txtName= itemView.findViewById(R.id.txtName);
             txtPrice= itemView.findViewById(R.id.txtPrice);
             txtRatingValue = itemView.findViewById(R.id.txtRatingValue);
-            btnAddToCart = itemView.findViewById(R.id.btnAddToCart);
             imvAddToFav = itemView.findViewById(R.id.imvAddToFav);
             txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
         }

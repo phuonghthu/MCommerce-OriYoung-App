@@ -1,9 +1,11 @@
 package com.group6.fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,12 +18,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,11 +38,14 @@ import com.group6.adapters.BrandAdapter;
 import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.SaleProductAdapter;
+import com.group6.helpers.CustomMenuBarListener;
+import com.group6.helpers.OnSearchFocusChangeListener;
 import com.group6.models.Brand;
 import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
+import com.group6.oriyoung.LoginActivity;
 import com.group6.oriyoung.MenuSearch;
 import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
@@ -65,9 +74,11 @@ public class HomeFragment extends Fragment {
 
 
 
+
     public HomeFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -76,13 +87,15 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
+
+
         loadCategory();
         loadBanner();
         loadHotProduct();
         loadSaleProduct();
         loadBrand();
-        addEvents();
 
+        addEvents();
 
         return view;
     }
@@ -205,6 +218,7 @@ public class HomeFragment extends Fragment {
             }
         });
     }
+
     private void loadBrand() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
 //        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2, RecyclerView.HORIZONTAL, false);
@@ -231,15 +245,8 @@ public class HomeFragment extends Fragment {
 
     }
 
-    private void addEvents() {
-        binding.searchBar.btnCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CartActivity.class);
-                startActivity(intent);
-            }
-        });
 
+    private void addEvents() {
         binding.searchBar.btnNoti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -247,6 +254,19 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        binding.searchBar.btnCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                if (currentUser != null) {
+                    Intent intent = new Intent(getContext(), CartActivity.class);
+                    startActivity(intent);
+                } else {
+                    showLoginDialog();
+                }
+            }
+        });
+
         binding.searchBar.edtSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
@@ -259,4 +279,32 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    private void showLoginDialog() {
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.custom_dialog_confirm, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setView(dialogView);
+
+        Button btndongy = dialogView.findViewById(R.id.btndongy);
+        Button btnhuy = dialogView.findViewById(R.id.btnhuy);
+        TextView txtTitle = dialogView.findViewById(R.id.txtTitle);
+        TextView txtContent = dialogView.findViewById(R.id.txtContent);
+
+        btndongy.setVisibility(View.GONE);
+        btnhuy.setText("Đăng nhập");
+        txtTitle.setText("Vui lòng đăng nhập!");
+        txtContent.setText("Vui lòng đăng nhập để tiếp tục mua sắm và trải nghiệm tại OriYoung!");
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        // Dẫn đến trang Login
+        btnhuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
