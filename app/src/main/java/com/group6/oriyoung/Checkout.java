@@ -132,15 +132,15 @@ public class Checkout extends AppCompatActivity {
                         String.format("%.0f", shippingFee), cartList, totalQuantity, totalAmount);
 
                 database.child("Order").child(orderID).setValue(newOrder).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
-                                DialogPaymentSuccessfully dialogInforReceiving = new DialogPaymentSuccessfully(Checkout.this);
-                                dialogInforReceiving.show();
+                    if (task.isSuccessful()) {
+                        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
+                        DialogPaymentSuccessfully dialogInforReceiving = new DialogPaymentSuccessfully(Checkout.this);
+                        dialogInforReceiving.show();
 
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
-                            }
-                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
     }
@@ -208,4 +208,3 @@ public class Checkout extends AppCompatActivity {
         });
     }
 }
-

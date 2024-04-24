@@ -250,6 +250,4 @@ public class ChangePassword extends AppCompatActivity {
 //                        Toast.makeText(ChangePassword.this, e.getMessage() , Toast.LENGTH_SHORT).show();
 //                    }
 //                });
-    }
-
-
+}
