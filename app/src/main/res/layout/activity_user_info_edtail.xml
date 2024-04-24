@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
                         android:hint="Tên khách hàng"
-                        android:textColorHint="@color/primarygreen"
+                        android:textColorHint="@color/black"
                         android:textSize="@dimen/medium_textSize"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -151,7 +151,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
                         android:hint="DD/MM/YYYY"
-                        android:textColorHint="@color/primarygreen"
+                        android:textColorHint="@color/black"
                         android:textSize="@dimen/medium_textSize"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -186,28 +186,22 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gilroy_medium"
                         android:hint="Số điện thoại"
-                        android:textColorHint="@color/primarygreen"
+                        android:textColorHint="@color/black"
                         android:textSize="@dimen/medium_textSize" />
                 </com.google.android.material.textfield.TextInputLayout>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Vui lòng liên hệ nhân viên CSKH để thay đổi số điện thoại"
-                    android:fontFamily="@font/gilroy_regular"
-                    android:textSize="@dimen/small_textSize"
-                    android:textColor="@color/error"
-                    android:layout_marginBottom="15dp"/>
+
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/medium_margin">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Email"
                     android:textSize="@dimen/medium_textSize"
-                    android:fontFamily="@font/gilroy_semibold"/>
+                    android:fontFamily="@font/gilroy_medium"/>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/inputEmail"
                     android:layout_width="match_parent"

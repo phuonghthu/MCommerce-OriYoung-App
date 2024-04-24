@@ -176,7 +176,7 @@ public class UserInfoDetail extends AppCompatActivity {
                 finish();
             }
         });
-        binding.txtday.setOnClickListener(new View.OnClickListener() {
+        binding.inputday.setEndIconOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showDatePicker();

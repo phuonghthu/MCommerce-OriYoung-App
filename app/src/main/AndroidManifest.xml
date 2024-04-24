@@ -78,7 +78,7 @@
             android:name=".DialogLogout"
             android:exported="false" />
         <activity
-            android:name=".OnboardingActivity"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".UserInfoDetail"
@@ -122,7 +122,7 @@
             android:name=".ResetPassword"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".OnboardingActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
