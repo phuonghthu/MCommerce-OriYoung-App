@@ -84,7 +84,7 @@ public class ChangePassword extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 current = binding.txtCurrentPass.getText().toString().trim();
 
-                if (!current.matches("^(?=.*\\d).{8,}$")) {
+                if (current.length() < 6) {
                     inputCurrentPass.setError(getString(R.string.Login_pass_error));
                     inputCurrentPass.setErrorIconDrawable(null);
                     inputCurrentPass.setBoxStrokeErrorColor(ColorStateList.valueOf(getColor(R.color.error)));
@@ -110,7 +110,7 @@ public class ChangePassword extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 newpass = binding.txtNewPass.getText().toString().trim();
 
-                if (!newpass.matches("^(?=.*\\d).{8,}$")) {
+                if (newpass.length() < 6) {
                     inputNewPass.setError(getString(R.string.Login_pass_error));
                     inputNewPass.setErrorIconDrawable(null);
                     inputNewPass.setBoxStrokeErrorColor(ColorStateList.valueOf(getColor(R.color.error)));
@@ -136,7 +136,7 @@ public class ChangePassword extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 passagain = binding.txtPassAgain.getText().toString().trim();
 
-                if (!passagain.matches("^(?=.*\\d).{8,}$")) {
+                if (passagain.length() < 6 ) {
                     inputPassAgain.setError(getString(R.string.Login_pass_error));
                     inputPassAgain.setErrorIconDrawable(null);
                     inputPassAgain.setBoxStrokeErrorColor(ColorStateList.valueOf(getColor(R.color.error)));

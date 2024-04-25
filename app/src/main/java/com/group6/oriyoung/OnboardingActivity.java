@@ -13,8 +13,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 
-
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.group6.adapters.ViewPagerAdapter;
 import com.group6.adapters.ViewPagerAdapter;
 
@@ -38,6 +38,8 @@ public class OnboardingActivity extends AppCompatActivity {
 
     ViewPagerAdapter viewPagerAdapter;
     ArrayList<Fragment> fragmentList;
+    SharedPreferences sharedPreferences;
+    FirebaseAuth authProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +126,7 @@ public class OnboardingActivity extends AppCompatActivity {
 
 
 
+
         // Khởi tạo danh sách fragment
         fragmentList = new ArrayList<>();
         fragmentList.add(new OnboardFirstFragment());
@@ -132,6 +135,8 @@ public class OnboardingActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }
