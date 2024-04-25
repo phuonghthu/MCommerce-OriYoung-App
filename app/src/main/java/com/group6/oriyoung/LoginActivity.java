@@ -183,33 +183,33 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        // Kiểm tra trạng thái đăng nhập của người dùng
-        boolean isUserLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
-        boolean hasShownOnboarding = sharedPreferences.getBoolean("hasShownOnboarding", false);
-        FirebaseUser currentUser = authProfile.getCurrentUser();
-
-        if (currentUser == null && hasShownOnboarding) {
-            Intent intent = new Intent(LoginActivity.this, OnboardingActivity.class);
-            startActivity(intent);
-            finish();
-        } else if (currentUser != null && !hasShownOnboarding) {
-            return;
-        }
-//            // Người dùng đã đăng nhập và chưa hiển thị onboarding
-//            FirebaseUser currentUser = authProfile.getCurrentUser();
-//            if (currentUser != null) {
-//                // Đã đăng nhập và chưa đăng xuất, điều hướng đến HomeActivity
-//                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-//                startActivity(intent);
-//                finish();
-//            }
-         else {
-            // Người dùng đã đăng xuất hoặc đã hiển thị onboarding, điều hướng đến OnboardingActivity
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        }
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//
+//        // Kiểm tra trạng thái đăng nhập của người dùng
+//        boolean isUserLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+//        boolean hasShownOnboarding = sharedPreferences.getBoolean("hasShownOnboarding", false);
+//        FirebaseUser currentUser = authProfile.getCurrentUser();
+//
+//        if (currentUser == null && hasShownOnboarding) {
+//            Intent intent = new Intent(LoginActivity.this, OnboardingActivity.class);
+//            startActivity(intent);
+//            finish();
+//        } else if (currentUser != null && !hasShownOnboarding) {
+//            return;
+//        }
+////            // Người dùng đã đăng nhập và chưa hiển thị onboarding
+////            FirebaseUser currentUser = authProfile.getCurrentUser();
+////            if (currentUser != null) {
+////                // Đã đăng nhập và chưa đăng xuất, điều hướng đến HomeActivity
+////                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+////                startActivity(intent);
+////                finish();
+////            }
+//         else {
+//            // Người dùng đã đăng xuất hoặc đã hiển thị onboarding, điều hướng đến OnboardingActivity
+//            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+//        }
+//    }
 }
