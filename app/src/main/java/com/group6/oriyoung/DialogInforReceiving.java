@@ -6,53 +6,55 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 
 import com.group6.oriyoung.databinding.ActivityDialogInforReceivingBinding;
 public class DialogInforReceiving extends Dialog {
-    ArrayAdapter<CharSequence> provinceAdapter;
-    ArrayAdapter<CharSequence> districtAdapter;
-    ArrayAdapter<CharSequence> villageAdapter;
-    ActivityDialogInforReceivingBinding binding;
+    private EditText edtName, edtPhone, edtAddress;
+    private Button btnSave, btnHuy;
 
     public DialogInforReceiving(Context context) {
         super(context);
-        Typeface typeface = ResourcesCompat.getFont(context, R.font.gilroy_regular);
-        provinceAdapter = createAdapter(context, R.array.province_array, typeface);
-        districtAdapter = createAdapter(context, R.array.district_array, typeface);
-        villageAdapter = createAdapter(context, R.array.village_array, typeface);
-    }
+        setContentView(R.layout.activity_dialog_infor_receiving); // Sử dụng layout tùy chỉnh
 
-    private ArrayAdapter<CharSequence> createAdapter(Context context, int provinceArray, Typeface typeface) {
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, provinceArray, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        edtName = findViewById(R.id.edtName);
+        edtPhone = findViewById(R.id.edtPhone);
+        edtAddress = findViewById(R.id.edtAddress);
+        btnSave = findViewById(R.id.btnSave);
+        btnHuy = findViewById(R.id.btnHuy);
 
-        return adapter;
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityDialogInforReceivingBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.btnHuy.setOnClickListener(new View.OnClickListener() {
+        // Xử lý khi nhấn nút "Lưu"
+        btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dismiss();
+                String name = edtName.getText().toString();
+                String phone = edtPhone.getText().toString();
+                String address = edtAddress.getText().toString();
+
+                if (name.isEmpty() || phone.isEmpty() || address.isEmpty()) {
+                    Toast.makeText(getContext(), "Vui lòng điền đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Truyền thông tin về Activity chính hoặc cập nhật trực tiếp
+                    Checkout activity = (Checkout) getOwnerActivity();
+                    activity.binding.txtUserName.setText(name);
+                    activity.binding.txtUserPhone.setText(phone);
+                    activity.binding.txtUserAddress.setText(address);
+                    dismiss(); // Đóng dialog sau khi lưu
+                }
             }
         });
-        Spinner spinnerProvince = findViewById(R.id.spinnerProvince);
-        spinnerProvince.setAdapter(provinceAdapter);
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss(); // Đóng dialog khi người dùng nhấn nút "Hủy"
+            }
+        });
 
-        Spinner spinnerDistrict = findViewById(R.id.spinnerDistrict);
-        spinnerDistrict.setAdapter(districtAdapter);
-
-        Spinner spinnerVillage = findViewById(R.id.spinnerVillage);
-        spinnerVillage.setAdapter(villageAdapter);
     }
 }

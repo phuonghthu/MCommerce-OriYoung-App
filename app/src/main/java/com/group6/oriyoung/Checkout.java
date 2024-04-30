@@ -100,6 +100,24 @@ public class Checkout extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Vui lòng chọn phương thức thanh toán!", Toast.LENGTH_SHORT).show();
                     return; // Dừng thực hiện nếu không có phương thức nào được chọn
                 }
+                // Kiểm tra nếu txtUserPhone hoặc txtUserAddress trống
+                // Giá trị mặc định cho số điện thoại và địa chỉ
+                String defaultPhone = "Số điện thoại";
+                String defaultAddress = "Địa chỉ";
+
+                // Kiểm tra nếu nội dung là giá trị mặc định
+                if (binding.txtUserPhone.getText().toString().equals(defaultPhone) ||
+                        binding.txtUserAddress.getText().toString().equals(defaultAddress)) {
+                    Toast.makeText(getApplicationContext(), "Vui lòng nhập thông tin nhận hàng", Toast.LENGTH_SHORT).show();
+
+                    // Mở dialog để người dùng nhập thông tin
+                    DialogInforReceiving dialog = new DialogInforReceiving(Checkout.this);
+                    dialog.setOwnerActivity(Checkout.this); // Để cập nhật dữ liệu trong Activity
+                    dialog.show();
+
+                    return; // Dừng tiến trình thanh toán
+                }
+
                 // Lưu dữ liệu vào Firebase khi thanh toán
                 ArrayList<Cart> cartList = new ArrayList<>();
 
@@ -129,7 +147,7 @@ public class Checkout extends AppCompatActivity {
                 String orderID = database.child("Order").push().getKey();
 
                 Order newOrder = new Order(orderID, userUID, "Đang giao", paymentMethod, getCurrentDate(),
-                        String.format("%.0f", shippingFee), cartList, totalQuantity, totalAmount);
+                        String.format("%.0f", shippingFee), null, cartList, totalQuantity, totalAmount);
 
                 database.child("Order").child(orderID).setValue(newOrder).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -169,6 +187,16 @@ public class Checkout extends AppCompatActivity {
                 // Xử lý nếu có lỗi
             }
         });
+
+        binding.imvEditInforShipping.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogInforReceiving dialog = new DialogInforReceiving(Checkout.this);
+                dialog.setOwnerActivity(Checkout.this); // Để truy cập tới Activity chính
+                dialog.show();
+            }
+        });
+
     }
 
     private void addEvents() {
@@ -179,13 +207,7 @@ public class Checkout extends AppCompatActivity {
                 finish();
             }
         });
-        binding.imvEditInforShipping.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DialogInforReceiving dialogInforReceiving = new DialogInforReceiving(Checkout.this);
-                dialogInforReceiving.show();
-            }
-        });
+
         // Xử lý khi người dùng chọn phương thức thanh toán
         binding.PaymentWhenReceive.setOnClickListener(new View.OnClickListener() {
             @Override

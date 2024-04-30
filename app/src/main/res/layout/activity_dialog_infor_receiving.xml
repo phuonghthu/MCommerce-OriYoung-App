@@ -56,7 +56,7 @@
         android:layout_marginStart="2dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputLayout1"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_margin"
         android:hint="Nhập họ và tên"
@@ -70,7 +70,7 @@
         app:boxStrokeErrorColor="@color/error">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtInputEditText1"
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập họ và tên"
@@ -103,7 +103,7 @@
         android:layout_marginStart="2dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputLayout2"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,6 +114,7 @@
         app:boxStrokeErrorColor="@color/error"
         app:layout_constraintTop_toBottomOf="@id/txtnewPhone">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -123,67 +124,67 @@
             android:textColorHint="@color/greylight"
             android:hint="Nhập số điện thoại" />
     </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-        android:id="@+id/txtnewAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Địa chỉ"
-        android:textColor="@color/black"
-        android:fontFamily="@font/gilroy_regular"
-        android:textSize="@dimen/small_textSize"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtInputLayout2"
-        android:layout_marginTop="@dimen/small_margin"/>
-    <TextView
-        android:id="@+id/redrequired3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*"
-        android:textColor="#F44336"
-        app:layout_constraintStart_toEndOf="@id/txtnewAddress"
-        app:layout_constraintTop_toTopOf="@id/txtnewAddress"
-        android:textSize="@dimen/xsmall_textSize"
-        android:layout_marginStart="2dp"/>
-    <LinearLayout
-        android:id="@+id/linearLayoutInputAddress"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintTop_toBottomOf="@id/txtnewAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+<!--    <TextView-->
+<!--        android:id="@+id/txtnewAddress"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Địa chỉ"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/gilroy_regular"-->
+<!--        android:textSize="@dimen/small_textSize"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/txtInputLayout2"-->
+<!--        android:layout_marginTop="@dimen/small_margin"/>-->
+<!--    <TextView-->
+<!--        android:id="@+id/redrequired3"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="*"-->
+<!--        android:textColor="#F44336"-->
+<!--        app:layout_constraintStart_toEndOf="@id/txtnewAddress"-->
+<!--        app:layout_constraintTop_toTopOf="@id/txtnewAddress"-->
+<!--        android:textSize="@dimen/xsmall_textSize"-->
+<!--        android:layout_marginStart="2dp"/>-->
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayoutInputAddress"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="@dimen/small_margin"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/txtnewAddress"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent">-->
 
 
-        <Spinner
-            android:id="@+id/spinnerProvince"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/button_bg_state" />
+<!--        <Spinner-->
+<!--            android:id="@+id/spinnerProvince"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/button_bg_state" />-->
 
 
-        <Spinner
-            android:id="@+id/spinnerDistrict"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            style="@style/HintText"
-            android:background="@drawable/button_bg_state"
-       />
+<!--        <Spinner-->
+<!--            android:id="@+id/spinnerDistrict"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            style="@style/HintText"-->
+<!--            android:background="@drawable/button_bg_state"-->
+<!--       />-->
 
 
-        <Spinner
-            android:id="@+id/spinnerVillage"
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:layout_marginStart="5dp"
-            android:background="@drawable/button_bg_state"/>
-    </LinearLayout>
+<!--        <Spinner-->
+<!--            android:id="@+id/spinnerVillage"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:background="@drawable/button_bg_state"/>-->
+<!--    </LinearLayout>-->
 
     <TextView
         android:id="@+id/txtpaticularAddress"
@@ -194,7 +195,7 @@
         android:textSize="@dimen/small_textSize"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayoutInputAddress"
+        app:layout_constraintTop_toBottomOf="@id/txtInputLayout2"
         android:layout_marginTop="10dp"/>
     <TextView
         android:id="@+id/redrequired4"
@@ -208,7 +209,7 @@
         android:layout_marginStart="2dp"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txtInputLayoutPaticularAddress"
-        android:layout_width="320dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -218,63 +219,50 @@
         app:endIconMode="clear_text"
 
         app:layout_constraintTop_toBottomOf="@id/txtpaticularAddress">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập địa chỉ của bạn"
+            android:background="@drawable/button_bg_state"
             android:fontFamily="@font/gilroy_regular"
+            android:hint="Nhập địa chỉ của bạn"
             android:textColorHint="@color/greylight"
-            android:textSize="@dimen/small_textSize"
-            android:background="@drawable/button_bg_state" />
+            android:textSize="@dimen/small_textSize" />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:id="@+id/linearButtons"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintTop_toBottomOf="@id/txtInputLayoutPaticularAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:weightSum="2"
         android:layout_marginTop="20dp">
-        <LinearLayout
-            android:id="@+id/btnHuy"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:background="@drawable/button_layout_white_green"
-            android:paddingVertical="5dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_marginEnd="10dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LƯU"
+                android:background="@drawable/button_layout_cancel"
+                app:backgroundTint="@null"
+                android:textColor="@color/white"
+                android:fontFamily="@font/gilroy_semibold"
+                android:textSize="@dimen/medium_textSize"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/small_margin"/>
+            <Button
+                android:id="@+id/btnHuy"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="HỦY"
-                android:layout_gravity="center"
+                android:background="@drawable/button_layout"
+                app:backgroundTint="@null"
+                android:textColor="@color/primarygreen"
                 android:fontFamily="@font/gilroy_semibold"
-                android:textColor="@color/black"
-                android:gravity="start"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:background="@drawable/stroke_button"
-            android:paddingVertical="5dp"
-            android:gravity="center"
-            android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:backgroundTint="@color/primarygreen"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="LƯU THAY ĐỔI"
-                android:layout_gravity="center"
-                android:fontFamily="@font/gilroy_bold"
-                android:textColor="@color/white"
-                android:gravity="center"/>
-        </LinearLayout>
-
+                android:textSize="@dimen/medium_textSize"
+                android:layout_weight="1"/>
 
     </LinearLayout>
 

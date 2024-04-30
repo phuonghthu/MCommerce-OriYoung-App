@@ -10,18 +10,22 @@ public class Order {
     private String paymentMethod;
     private String orderDate;
     private String shippingFee;
+    private String address;
     private List<Cart> orderItems;
     private int totalQuantity;
     private double totalAmount;
 
+
+
     public Order(String orderID, String userID, String orderStatus, String paymentMethod,
-                 String orderDate, String shippingFee, List<Cart> orderItems, int totalQuantity, double totalAmount) {
+                 String orderDate, String shippingFee, String address, List<Cart> orderItems, int totalQuantity, double totalAmount) {
         this.orderID = orderID;
         this.userID = userID;
         this.orderStatus = orderStatus;
         this.paymentMethod = paymentMethod;
         this.orderDate = orderDate;
         this.shippingFee = shippingFee;
+        this.address = address;
         this.orderItems = orderItems;
         this.totalQuantity = totalQuantity;
         this.totalAmount = totalAmount;
@@ -74,6 +78,11 @@ public class Order {
     public void setShippingFee(String shippingFee) {
         this.shippingFee = shippingFee;
     }
+
+    public String getAddress() {return address;}
+
+    public void setAddress(String address) {
+        this.address = address;}
 
     public List<Cart> getOrderItems() {
         return orderItems;

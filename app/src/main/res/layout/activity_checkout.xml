@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/gilroy_regular"
                 android:textSize="@dimen/small_textSize"
-                android:text="Linh Trung Thủ Đức Việt Nam"
+                android:text="Địa chỉ"
                 android:layout_marginTop="3dp"/>
         </LinearLayout>
         <LinearLayout
