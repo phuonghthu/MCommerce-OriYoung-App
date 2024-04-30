@@ -24,6 +24,7 @@ public class CheckoutCartAdapter extends RecyclerView.Adapter<CheckoutCartAdapte
     private Context context;
     ArrayList<Product> cartItems;
 
+
     public CheckoutCartAdapter(Context context, ArrayList<Product> cartItems) {
         this.context = context;
         this.cartItems = cartItems;

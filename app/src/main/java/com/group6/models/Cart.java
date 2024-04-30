@@ -1,6 +1,8 @@
 package com.group6.models;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     String productID;
     String productName;
     double productPrice;

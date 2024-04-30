@@ -1,6 +1,5 @@
 package com.group6.oriyoung;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -8,28 +7,24 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.group6.adapters.CartAdapter;
 import com.group6.adapters.CheckoutCartAdapter;
-import com.group6.helpers.ChangeNumberItemsListener;
 import com.group6.helpers.ManagementCart;
 import com.group6.models.Cart;
 import com.group6.models.Order;
 import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityCheckoutBinding;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Checkout extends AppCompatActivity {
     private CheckoutCartAdapter adapter;
@@ -145,16 +140,45 @@ public class Checkout extends AppCompatActivity {
 
                 DatabaseReference database = FirebaseDatabase.getInstance().getReference();
                 String orderID = database.child("Order").push().getKey();
+                String orderStatus = "Đang giao"; // Trạng thái đơn hàng
+                String orderDate = getCurrentDate(); // Ngày đặt hàng
 
-                Order newOrder = new Order(orderID, userUID, "Đang giao", paymentMethod, getCurrentDate(),
+                Order newOrder = new Order(orderID, userUID, orderStatus, paymentMethod, orderDate,
                         String.format("%.0f", shippingFee), null, cartList, totalQuantity, totalAmount);
 
+                int finalTotalQuantity = totalQuantity;
                 database.child("Order").child(orderID).setValue(newOrder).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
-                        DialogPaymentSuccessfully dialogInforReceiving = new DialogPaymentSuccessfully(Checkout.this);
-                        dialogInforReceiving.show();
 
+                        // Tạo danh sách sản phẩm và thông tin người dùng
+                        ArrayList<Product> cartItems = managementCart.getListCart();
+                        String userName = binding.txtUserName.getText().toString();
+                        String userPhone = binding.txtUserPhone.getText().toString();
+                        String userAddress = binding.txtUserAddress.getText().toString();
+
+
+
+// Tạo DialogPaymentSuccessfully với dữ liệu cần thiết
+                        DialogPaymentSuccessfully dialog = new DialogPaymentSuccessfully(
+                                Checkout.this,  // Ngữ cảnh
+                                cartItems,  // Danh sách sản phẩm
+                                userName,  // Tên người nhận
+                                userPhone,  // Số điện thoại
+                                userAddress,  // Địa chỉ
+                                orderID,  // Mã đơn hàng
+                                orderStatus,  // Trạng thái đơn hàng
+                                orderDate,  // Ngày đặt hàng
+                                paymentMethod,
+                                finalTotalQuantity,  // Tổng số lượng sản phẩm
+                                totalAmount  // Tổng giá trị đơn hàng
+                        );
+
+
+                        dialog.setOwnerActivity(Checkout.this); // Thiết lập OwnerActivity để truy cập tới Checkout
+
+
+                        dialog.show();
+                        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
                     } else {
                         Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
                     }
