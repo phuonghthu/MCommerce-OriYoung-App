@@ -140,7 +140,6 @@
                 android:paddingVertical="5dp"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:layout_marginEnd="10dp"
                 android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
@@ -152,25 +151,7 @@
                     android:gravity="start"
                     android:textSize="@dimen/small_textSize"/>
             </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnXitKhoang"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:background="@drawable/button_layout_white_green"
-                android:paddingVertical="5dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Xịt khoáng"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textColor="@color/primarydarker"
-                    android:gravity="start"
-                    android:textSize="@dimen/small_textSize"/>
-            </LinearLayout>
+
         </TableRow>
         <TableRow
             android:layout_marginTop="15dp">
@@ -196,49 +177,6 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/btnDuongMat"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:background="@drawable/button_layout_white_green"
-                android:paddingVertical="5dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dưỡng mắt"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textColor="@color/primarydarker"
-                    android:gravity="start"
-                    android:textSize="@dimen/small_textSize"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnDuongMoi"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:background="@drawable/button_layout_white_green"
-                android:paddingVertical="5dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Dưỡng Môi"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textColor="@color/primarydarker"
-                    android:gravity="start"
-                    android:textSize="@dimen/small_textSize"/>
-            </LinearLayout>
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="15dp">
-            <LinearLayout
                 android:id="@+id/btnToner"
                 android:layout_width="100dp"
                 android:layout_height="35dp"
@@ -252,26 +190,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Toner"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/gilroy_semibold"
-                    android:textColor="@color/primarydarker"
-                    android:gravity="start"
-                    android:textSize="@dimen/small_textSize"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/btnTayTeBaoChet"
-                android:layout_width="100dp"
-                android:layout_height="35dp"
-                android:background="@drawable/button_layout_white_green"
-                android:paddingVertical="5dp"
-                android:gravity="center"
-                android:layout_weight="1"
-                android:layout_marginEnd="10dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Tẩy tế bào chết"
                     android:layout_gravity="center"
                     android:fontFamily="@font/gilroy_semibold"
                     android:textColor="@color/primarydarker"

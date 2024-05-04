@@ -7,7 +7,6 @@
     app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true"
     app:contentPadding="10dp"
-    android:layout_marginTop="@dimen/medium_margin"
     android:gravity="center">
 
     <LinearLayout

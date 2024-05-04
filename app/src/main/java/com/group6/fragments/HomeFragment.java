@@ -1,8 +1,13 @@
 package com.group6.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -10,22 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import androidx.viewbinding.ViewBinding;
-
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -38,19 +31,14 @@ import com.group6.adapters.BrandAdapter;
 import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.SaleProductAdapter;
-import com.group6.helpers.CustomMenuBarListener;
-import com.group6.helpers.OnSearchFocusChangeListener;
 import com.group6.models.Brand;
 import com.group6.models.Category;
 import com.group6.models.Product;
-import com.group6.models.Review;
 import com.group6.oriyoung.CartActivity;
 import com.group6.oriyoung.LoginActivity;
 import com.group6.oriyoung.MenuSearch;
 import com.group6.oriyoung.NotiActivity;
 import com.group6.oriyoung.R;
-import com.google.firebase.database.DatabaseReference;
-import com.group6.oriyoung.SearchBarActivity;
 import com.group6.oriyoung.databinding.FragmentHomeBinding;
 
 import java.util.ArrayList;
@@ -105,7 +93,7 @@ public class HomeFragment extends Fragment {
 
         ArrayList<SlideModel> slideModels = new ArrayList<>(); //Create image list
         slideModels.add(new SlideModel(R.drawable.home_banner, ScaleTypes.FIT));
-        slideModels.add(new SlideModel(R.drawable.home_banner, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner2, ScaleTypes.FIT));
 
         bannerSlider.setImageList(slideModels, ScaleTypes.FIT);
     }
