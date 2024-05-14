@@ -2,7 +2,6 @@ package com.group6.oriyoung;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -59,7 +58,6 @@ public class UserInformation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(UserInformation.this, AccountFragment.class);
-                startActivity(intent);
                 finish();
             }
         });
