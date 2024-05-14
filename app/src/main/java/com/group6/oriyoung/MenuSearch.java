@@ -34,7 +34,7 @@ import java.util.List;
 public class MenuSearch extends BaseActivity {
     ActivityMenuSearchBinding binding;
     CategoryNameAdapter categoryNameAdapter;
-    ProductAdapter productAdapter;
+    SearchListProductAdapter productAdapter;
     ArrayList<Product> products;
     ArrayList<Category> categories;
     androidx.appcompat.widget.SearchView searchView;
@@ -95,7 +95,7 @@ public class MenuSearch extends BaseActivity {
 
     private void loadProduct() {
         products = new ArrayList<>();
-        productAdapter = new ProductAdapter(MenuSearch.this, products);
+        productAdapter = new SearchListProductAdapter(MenuSearch.this, products);
         binding.rvSearchSanpham.setAdapter(productAdapter);
         binding.rvSearchSanpham.setLayoutManager(new LinearLayoutManager(this)); // Thiết lập LayoutManager
 
