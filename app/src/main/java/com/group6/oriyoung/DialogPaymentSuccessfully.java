@@ -91,6 +91,7 @@ public class DialogPaymentSuccessfully extends Dialog {
 
                 // Khởi chạy OrderDetailActivity
                 getContext().startActivity(intent);
+
             }
         });
     }
