@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,8 +29,9 @@ import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder>{
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
     Context context;
     ArrayList<Product> products;
     private Product object;
@@ -101,6 +104,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public int getItemCount() { return
         products.size();
     }
+
+    public void searchProduct(ArrayList<Product> searchList){
+        products = searchList;
+        notifyDataSetChanged();
+    }
+
+
 
     public class ProductViewHolder extends RecyclerView.ViewHolder{
         ImageView imvProductThumb, imvAddToFav;

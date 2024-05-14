@@ -37,10 +37,10 @@
                         android:src="@drawable/round_arrow_back_green"
                         android:layout_gravity="center_vertical"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/search_bar" />
-                    <SearchView
+                        app:layout_constraintEnd_toStartOf="@+id/searchbar" />
+                    <androidx.appcompat.widget.SearchView
                         android:queryBackground="@null"
-                        android:id="@+id/search_bar"
+                        android:id="@+id/searchbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -51,17 +51,18 @@
                         android:textSize="@dimen/small_textSize"
                         app:theme="@style/SearchViewHintTextStyle"/>
                 </LinearLayout>
-                <Button
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginEnd="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_width="68dp"
-                    android:layout_height="45dp"
-                    android:backgroundTint="@color/primarygreen"
-                    android:text="Tìm"
-                    android:textSize="@dimen/small_textSize"
-                    android:fontFamily="@font/gilroy_semibold"/>
+<!--                <Button-->
+<!--                    android:id="@+id/btnSearch"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    android:layout_marginEnd="10dp"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    android:layout_width="68dp"-->
+<!--                    android:layout_height="45dp"-->
+<!--                    android:backgroundTint="@color/primarygreen"-->
+<!--                    android:text="Tìm"-->
+<!--                    android:textSize="@dimen/small_textSize"-->
+<!--                    android:fontFamily="@font/gilroy_semibold"/>-->
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -71,8 +72,8 @@
                 android:layout_height="0.8dp"
                 android:layout_marginTop="20dp"
                 android:background="@color/grey" />
-            <ListView
-                android:id="@+id/lvSearchSanpham"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchSanpham"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:scrollbars="none"
