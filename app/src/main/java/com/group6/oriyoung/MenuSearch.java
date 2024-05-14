@@ -1,35 +1,36 @@
 package com.group6.oriyoung;
 
 import android.app.SearchManager;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.SearchRecentSuggestions;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.group6.adapters.CategoryAdapter;
 import com.group6.adapters.CategoryNameAdapter;
-import com.group6.adapters.ProductAdapter;
 import com.group6.adapters.SearchListProductAdapter;
 import com.group6.models.Category;
 import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityMenuSearchBinding;
 
+import java.net.URI;
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class MenuSearch extends BaseActivity {
     ActivityMenuSearchBinding binding;
@@ -53,6 +54,8 @@ public class MenuSearch extends BaseActivity {
         searchView = findViewById(R.id.searchbar);
         searchView.clearFocus();
 
+
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -69,26 +72,6 @@ public class MenuSearch extends BaseActivity {
 
 
 
-        // Initialize GridView for categories
-
-
-        // Initialize ListView for products
-
-
-        // Initialize list of products
-//        products = new ArrayList<>();
-//        products.add(new Product(0, 0,"Nước Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-//        products.add(new Product(0, 0,"Bông Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-//        products.add(new Product(0, 0,"Sữa rửa mặt L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-//        products.add(new Product(0, 0,"Chai Tẩy Trang L'Oreal Tươi Mát Cho Da Dầu, Hỗn Hợp 400ml Micellar Water 3-in-1 Refreshing Even For Sensitive Skin", 100000, 0, null, R.drawable.product_place_holder, false, false, 0, 0,null));
-//
-//        // Add products here...
-//
-//        // Initialize Adapter and set up ListView for products
-//        productAdapter = new SearchListProductAdapter(this, products);
-//        listView.setAdapter(productAdapter);
-
-        // Hide ListView initially
 
 
     }
@@ -128,8 +111,15 @@ public class MenuSearch extends BaseActivity {
 
     private void searchList(String text) {
         ArrayList<Product> searchList = new ArrayList<>();
+        String normalizedText = removeDiacritics(text.toLowerCase());
+
         for (Product product: products){
             if (product.getProductName().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(product);
+            }
+            String normalizedProductName = removeDiacritics(product.getProductName().toLowerCase());
+
+            if (normalizedProductName.contains(normalizedText)) {
                 searchList.add(product);
             }
         }
@@ -158,36 +148,23 @@ public class MenuSearch extends BaseActivity {
 
             }
         });
+
     }
 
-//    private void onQuery() {
-//        // Show ListView when search bar gains focus
-//        binding.searchbar.setOnQueryTextFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View view, boolean hasFocus) {
-//                if (hasFocus) {
-//                    listView.setVisibility(View.VISIBLE);
-//                } else {
-//                    listView.setVisibility(View.GONE);
-//                }
-//            }
-//        });
+    private String removeDiacritics(String str) {
+        if (str == null) {
+            return null;
+        }
+        String nfdNormalizedString = Normalizer.normalize(str, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(nfdNormalizedString).replaceAll("");
+    }
 
 
-//        binding.searchbar.setOnQueryTextListener(new SearchView().OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                // Gọi phương thức filter của adapter khi văn bản tìm kiếm thay đổi
-//                productAdapter.filter(newText);
-//                return true;
-//            }
-//        });
-//    }
+
+
+
+
 
 
     private void addEvents() {
@@ -202,5 +179,6 @@ public class MenuSearch extends BaseActivity {
             }
         });
     }
+
 
 }
