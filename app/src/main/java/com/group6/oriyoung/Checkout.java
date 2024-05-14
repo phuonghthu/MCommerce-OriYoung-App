@@ -84,6 +84,7 @@ public class Checkout extends AppCompatActivity {
         binding.txtSubTotal.setText(String.format("%.0f VNĐ", subTotal));
         binding.txtShippingFee.setText(String.format("%.0f VNĐ", shippingFee));
         binding.txtTotalAmount.setText(String.format("%.0f VNĐ", totalAmount));
+        binding.txtProductQuantity.setText(String.format("%d sản phẩm", totalQuantity));
     }
 
     private void makePayment() {

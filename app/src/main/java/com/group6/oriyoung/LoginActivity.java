@@ -12,13 +12,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -80,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                     txtInputPassword.setError("Mật khẩu phải có ít nhất 6 kí tự", null);
                     txtInputPassword.requestFocus();
                 } else {
-                    binding.progressLogin.setVisibility(View.GONE);
+                    binding.progressLogin.setVisibility(View.VISIBLE);
                     loginUser(email, password);
                 }
             }
@@ -100,13 +96,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.imvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                finish();
-            }
-        });
+        binding.imvBack.setVisibility(View.GONE);
     }
 
     private void loginUser(String email, String password) {

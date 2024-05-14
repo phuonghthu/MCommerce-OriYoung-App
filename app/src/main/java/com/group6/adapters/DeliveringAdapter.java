@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -18,7 +17,6 @@ import com.group6.oriyoung.R;
 import com.theophrast.ui.widget.SquareImageView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DeliveringAdapter extends RecyclerView.Adapter<DeliveringAdapter.ViewHolder>{
 
@@ -58,7 +56,7 @@ public class DeliveringAdapter extends RecyclerView.Adapter<DeliveringAdapter.Vi
         holder.txtItemQty.setText((String.valueOf(order.getItemQuantity()) + " sản phẩm"));
         holder.txtTotalAmount.setText(String.valueOf(order.getTotalPayment()));
         holder.btnLeft.setText("Đã nhận");
-        holder.btnLeft.setText("Hủy");
+        holder.btnRight.setText("Hủy");
 
     }
 
