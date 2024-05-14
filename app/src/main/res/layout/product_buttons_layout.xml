@@ -63,18 +63,18 @@
                 android:fontFamily="@font/gilroy_bold"
                 android:layout_weight="1"/>
 
-            <Button
-                android:id="@+id/btnBuyNow"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/buy"
-                android:textSize="@dimen/medium_textSize"
-                android:fontFamily="@font/gilroy_bold"
-                app:backgroundTint="@null"
-                android:textColor="@color/white"
-                android:background="@drawable/button_layout_cancel"
-                android:layout_marginStart="@dimen/small_margin"
-                android:layout_weight="1"/>
+<!--            <Button-->
+<!--                android:id="@+id/btnBuyNow"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="@string/buy"-->
+<!--                android:textSize="@dimen/medium_textSize"-->
+<!--                android:fontFamily="@font/gilroy_bold"-->
+<!--                app:backgroundTint="@null"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:background="@drawable/button_layout_cancel"-->
+<!--                android:layout_marginStart="@dimen/small_margin"-->
+<!--                android:layout_weight="1"/>-->
         </LinearLayout>
 
     </LinearLayout>

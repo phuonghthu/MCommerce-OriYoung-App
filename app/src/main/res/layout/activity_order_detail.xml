@@ -318,7 +318,7 @@
                         android:gravity="start"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/btnContactShop"
+                    android:id="@+id/btnHome"
                     android:layout_width="150dp"
                     android:layout_height="40dp"
                     android:background="@drawable/button_layout_white_green"
@@ -330,7 +330,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="LIÊN HỆ SHOP"
+                        android:text="TRANG CHỦ"
                         android:layout_gravity="center"
                         android:fontFamily="@font/gilroy_semibold"
                         android:textColor="@color/black"
