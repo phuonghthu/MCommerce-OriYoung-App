@@ -58,6 +58,9 @@ public class DialogPaymentSuccessfully extends Dialog {
         binding = ActivityDialogPaymentSuccessfullyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setCancelable(false);
+        setCanceledOnTouchOutside(false);
+
         addEvents();
     }
 
@@ -68,6 +71,7 @@ public class DialogPaymentSuccessfully extends Dialog {
             public void onClick(View v) {
                 // Tạo Intent để mở OrderDetailActivity
                 Intent intent = new Intent(getContext(), OrderDetailActivity.class);
+
 
                 // Tạo Bundle để truyền dữ liệu
                 Bundle bundle = new Bundle();

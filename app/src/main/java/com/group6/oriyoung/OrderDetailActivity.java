@@ -1,9 +1,13 @@
 package com.group6.oriyoung;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.group6.adapters.CheckoutCartAdapter;
 import com.group6.helpers.ManagementCart;
 import com.group6.models.Product;
 import com.group6.oriyoung.databinding.ActivityOrderDetailBinding;
@@ -23,22 +27,37 @@ public class OrderDetailActivity extends AppCompatActivity {
         binding = ActivityOrderDetailBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.toolbar.toolbarTitle.setText("Chi tiết đơn hàng");
-        
-        getInfo();
 
-//        loadOderItem();
+        managementCart = new ManagementCart(this);
+
+
+        getInfo();
+        loadOderItem();
+        addEvents();
     }
 
-//    private void loadOderItem() {
-//        cartItems = (ArrayList<Product>) getIntent().getSerializableExtra("cart_items");
-//
-//            // Khởi tạo ManagementCart và thiết lập RecyclerView
-//            managementCart = new ManagementCart(this);
-//            binding.rvOrderItem.setLayoutManager(new LinearLayoutManager(this));
-//            CheckoutCartAdapter adapter = new CheckoutCartAdapter(getApplicationContext(), cartItems);
-//            binding.rvOrderItem.setAdapter(adapter);
-//
-//    }
+    private void addEvents() {
+        binding.btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderDetailActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        binding.toolbar.btnBack.setVisibility(View.GONE);
+    }
+
+    private void loadOderItem() {
+            cartItems = (ArrayList<Product>) getIntent().getSerializableExtra("cart_items");
+
+            // Khởi tạo ManagementCart và thiết lập RecyclerView
+            managementCart = new ManagementCart(this);
+            binding.rvOrderItem.setLayoutManager(new LinearLayoutManager(this));
+            CheckoutCartAdapter adapter = new CheckoutCartAdapter(getApplicationContext(), cartItems);
+            binding.rvOrderItem.setAdapter(adapter);
+
+    }
 
 
     private void getInfo() {
@@ -67,6 +86,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             binding.txtOrderStatus.setText(orderStatus);
             binding.txtTotalAmount.setText(String.format("%.0f VNĐ", totalAmount));
         }
-
+        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
     }
 }

@@ -178,7 +178,7 @@ public class Checkout extends AppCompatActivity {
 
 
                         dialog.show();
-                        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
+//                        managementCart.clearCart(); // Đặt hàng thành công thì xóa cart
                     } else {
                         Toast.makeText(getApplicationContext(), "Có lỗi xảy ra!", Toast.LENGTH_SHORT).show();
                     }
