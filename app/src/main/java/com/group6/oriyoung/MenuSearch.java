@@ -49,7 +49,7 @@ public class MenuSearch extends BaseActivity {
 
         addEvents();
 //        onQuery();
-        loadCategory();
+//        loadCategory();
         loadProduct();
         searchView = findViewById(R.id.searchbar);
         searchView.clearFocus();
@@ -126,30 +126,30 @@ public class MenuSearch extends BaseActivity {
         productAdapter.searchProduct(searchList);
     }
 
-    private void loadCategory() {
-        DatabaseReference myRef = database.getReference("Category");
-        categories = new ArrayList<>();
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    for (DataSnapshot issue : snapshot.getChildren()) {
-                        categories.add(issue.getValue(Category.class));
-                    }
-                }
-                if (categories.size() > 0) {
-                    GridView gridView = findViewById(R.id.category_grid_view);
-                    categoryNameAdapter = new CategoryNameAdapter(MenuSearch.this, categories);
-                    gridView.setAdapter(categoryNameAdapter);
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-    }
+//    private void loadCategory() {
+//        DatabaseReference myRef = database.getReference("Category");
+//        categories = new ArrayList<>();
+//        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    for (DataSnapshot issue : snapshot.getChildren()) {
+//                        categories.add(issue.getValue(Category.class));
+//                    }
+//                }
+//                if (categories.size() > 0) {
+//                    GridView gridView = findViewById(R.id.category_grid_view);
+//                    categoryNameAdapter = new CategoryNameAdapter(MenuSearch.this, categories);
+//                    gridView.setAdapter(categoryNameAdapter);
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//
+//    }
 
     private String removeDiacritics(String str) {
         if (str == null) {
