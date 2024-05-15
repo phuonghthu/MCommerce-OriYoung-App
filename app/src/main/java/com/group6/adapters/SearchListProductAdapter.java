@@ -1,94 +1,109 @@
 package com.group6.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.group6.helpers.ManagementCart;
 import com.group6.models.Product;
+import com.group6.oriyoung.LoginActivity;
+import com.group6.oriyoung.ProductDetail;
 import com.group6.oriyoung.R;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class SearchListProductAdapter extends ArrayAdapter<Product> {
+public class SearchListProductAdapter extends RecyclerView.Adapter<SearchListProductAdapter.ProductViewHolder> {
+    Context context;
+    ArrayList<Product> products;
 
-    private ArrayList<Product> productList;
-    private ArrayList<Product> filteredList;
-    private LayoutInflater inflater;
 
-    public SearchListProductAdapter(Context context, ArrayList<Product> productList) {
-        super(context, 0, productList);
-        this.productList = productList;
-        this.filteredList = new ArrayList<>(productList);
-        this.inflater = LayoutInflater.from(context);
+    public SearchListProductAdapter(Context context, ArrayList<Product> products) {
+        this.context = context;
+        this.products = products;
+    }
+
+    @NonNull
+    @Override
+    public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.item_search_list, parent, false);
+        return new ProductViewHolder(view);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
-        if (convertView == null) {
-            convertView = inflater.inflate(R.layout.item_search_list, parent, false);
-            viewHolder = new ViewHolder();
-            viewHolder.productName = convertView.findViewById(R.id.txtProductNameList);
-            viewHolder.productPrice = convertView.findViewById(R.id.txtProductPriceList);
-            viewHolder.productImage = convertView.findViewById(R.id.imvList);
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
+    public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
+        Glide.with(context).load(products.get(position).getImagePath()).transform(new CenterCrop(),
+                new RoundedCorners(30)).into(holder.imvList);
 
-        Product product = productList.get(position);
-        viewHolder.productName.setText(product.getProductName());
-        viewHolder.productPrice.setText(String.valueOf(product.getProductPrice()));
-        Glide.with(convertView).load(product.getImagePath()).transform(new CenterCrop(),
-                new RoundedCorners(30)).into(viewHolder.productImage);
-        return convertView;
-    }
+        holder.txtProductNameList.setText(products.get(position).getProductName());
 
-    static class ViewHolder {
-        TextView productName;
-        TextView productPrice;
-        ImageView productImage;
-    }
 
-    public void filter(String query) {
-        query = query.toLowerCase().trim();
+        holder.txtProductPriceList.setText(String.valueOf(Math.round(products.get(position).getProductPrice())) + " VNĐ");
 
-        ArrayList<Product> matchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm trùng khớp
-        ArrayList<Product> unmatchedProducts = new ArrayList<>(); // Danh sách lưu trữ các sản phẩm không trùng khớp
 
-        if (!query.isEmpty()) {
-            // Duyệt qua danh sách sản phẩm để tìm kiếm trùng khớp
-            for (Product product : productList) {
-                if (product.getProductName().toLowerCase().startsWith(query)) {
-                    matchedProducts.add(product); // Thêm sản phẩm trùng khớp vào danh sách mới
-                } else {
-                    unmatchedProducts.add(product); // Thêm sản phẩm không trùng khớp vào danh sách mới
-                }
+
+        // Nhấn vào từng item gửi tt mở detail
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ProductDetail.class);
+                intent.putExtra("object", products.get(position));
+                // Thêm cờ vào Intent
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                context.startActivity(intent);
             }
-        } else {
-            matchedProducts.addAll(productList); // Nếu query rỗng, thì danh sách không trùng khớp sẽ giống với danh sách gốc
-        }
+        });
 
-        // Đưa các sản phẩm trùng khớp lên đầu danh sách
-        productList.clear();
-        productList.addAll(matchedProducts);
-        productList.addAll(unmatchedProducts);
+    }
 
-        // Cập nhật lại RecyclerView
+    @Override
+    public int getItemCount() { return
+            products.size();
+    }
+
+    public void searchProduct(ArrayList<Product> searchList){
+        products = searchList;
         notifyDataSetChanged();
     }
 
 
 
+    public class ProductViewHolder extends RecyclerView.ViewHolder{
+        ImageView imvList;
+        TextView txtProductNameList, txtProductPriceList;
 
+
+        public ProductViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imvList= itemView.findViewById(R.id.imvList);
+            txtProductNameList= itemView.findViewById(R.id.txtProductNameList);
+            txtProductPriceList= itemView.findViewById(R.id.txtProductPriceList);
+
+
+        }
+    }
 
 }
+
+
+
+
+
+

@@ -195,6 +195,12 @@ public class ProductDetail extends BaseActivity {
                 }
             }
         });
+        binding.toolbar.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProductDetail.this, HomeActivity.class));
+            }
+        });
 
     }
 
