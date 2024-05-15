@@ -1,6 +1,7 @@
 package com.group6.oriyoung;
 
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,30 +10,51 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.auth.api.identity.BeginSignInRequest;
+import com.google.android.gms.auth.api.identity.BeginSignInResult;
+import com.google.android.gms.auth.api.identity.Identity;
+import com.google.android.gms.auth.api.identity.SignInClient;
+import com.google.android.gms.auth.api.identity.SignInCredential;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
+import com.group6.models.User;
 import com.group6.oriyoung.databinding.ActivityLogin2Binding;
 
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLogin2Binding binding;
+    ImageView googleAuth, facebookAuth;
+    FirebaseDatabase database;
+    GoogleSignInClient signInClient;
+    GoogleSignInOptions signInOptions;
+    BeginSignInRequest signInRequest;
+    int RC_SIGN_IN = 1234;
     private TextInputEditText txtInputEmail, txtInputPassword;
     private FirebaseAuth authProfile;
     private static final String TAG = "LoginActivity";
@@ -50,10 +72,121 @@ public class LoginActivity extends AppCompatActivity {
 
         authProfile = FirebaseAuth.getInstance();
         binding.txtInputEmail.requestFocus();
-        
+
+
+        googleAuth = findViewById(R.id.imvGoogle);
+        facebookAuth = findViewById(R.id.imvFacebook);
+        database = FirebaseDatabase.getInstance();
+
+//        signInClient = Identity.getSignInClient(this);
+//        signInRequest = BeginSignInRequest.builder()
+//                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
+//                        .setSupported(true)
+//                        .build())
+//                        .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
+//                                .setSupported(true)
+//                                .setServerClientId(getString(R.string.default_web_client_id))
+//                                .setFilterByAuthorizedAccounts(false)
+//                                .build())
+//                                .setAutoSelectEnabled(true)
+//                                        .build();
+
+
+        signInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        signInClient = GoogleSignIn.getClient(this,signInOptions);
+
+
+        googleAuth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                googleSignIn();
+            }
+
+        });
+
+
+
+
+
         addEvents();
         binding();
     }
+
+
+    private void googleSignIn() {
+        Intent intent = signInClient.getSignInIntent();
+        startActivityForResult(intent, RC_SIGN_IN);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                authProfile(account.getIdToken());
+            } catch (ApiException e) {
+
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();;
+            }
+        }
+    }
+
+    private void authProfile(String idToken) {
+        AuthCredential authCredential = GoogleAuthProvider.getCredential(idToken,null);
+        authProfile.signInWithCredential(authCredential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()){
+                            FirebaseUser firebaseUser = authProfile.getCurrentUser();
+                            User user = new User();
+                            firebaseUser.getUid();
+                            user.setUserName(firebaseUser.getDisplayName());
+                            user.setEmail(firebaseUser.getEmail());
+//
+                            database.getReference().child("User").child(firebaseUser.getUid()).setValue(user);
+//
+
+                            Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                        }else {
+                            Toast.makeText(LoginActivity.this, "Vui lòng thử lại!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+    }
+
+//    private void googleSignIn() {
+//        signInClient.beginSignIn(signInRequest)
+//                .addOnSuccessListener(this, new OnSuccessListener<BeginSignInResult>() {
+//                    @Override
+//                    public void onSuccess(BeginSignInResult beginSignInResult) {
+//                        try {
+//                            startIntentSenderForResult(
+//                                    beginSignInResult.getPendingIntent().getIntentSender(), REQ_ONE_TAP, null, 0, 0, 0);
+//
+//                        }catch (IntentSender.SendIntentException e){
+//                            Log.e (TAG ,"Đã xảy ra lỗi!" +e.getLocalizedMessage());
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(this, (OnFailureListener) e -> Log.d(TAG, e.getLocalizedMessage()));
+//    }
+
+
+
+
+
 
     private void binding() {
         txtInputEmail = binding.txtInputEmail;
@@ -80,7 +213,7 @@ public class LoginActivity extends AppCompatActivity {
                     txtInputPassword.setError("Mật khẩu phải có ít nhất 6 kí tự", null);
                     txtInputPassword.requestFocus();
                 } else {
-                    binding.progressLogin.setVisibility(View.GONE);
+                    binding.progressLogin.setVisibility(View.VISIBLE);
                     loginUser(email, password);
                 }
             }
@@ -100,13 +233,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        binding.imvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                finish();
-            }
-        });
+        binding.imvBack.setVisibility(View.GONE);
     }
 
     private void loginUser(String email, String password) {
